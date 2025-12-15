@@ -35,6 +35,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            /* FIX: Stabilizes background image size when content height changes */
+            background-attachment: fixed; 
         }
 
         /* Scroll Offset Fix (Compensates for the sticky header) */
@@ -43,39 +45,44 @@
             margin-top: -120px; 
         }
 
-        /* Nav centering adjustment: Added extra space/padding to the Nav links wrapper to push it away from the logo */
-        .nav-link-wrapper {
-             /* Increased left padding for visual centering */
-            padding-left: 5rem; 
+        /* FIX: New centering logic: forces the navigation to be truly centered */
+        .nav-center-adjust {
+            /* Use a 3-column grid: [Left 1fr] [Center auto] [Right 1fr] */
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center;
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 nav-center-adjust">
             
-            <div class="flex items-center space-x-4">
+            <div class="flex flex-1 items-center justify-start">
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
                 <a href="#about" class="hover:text-gold-rhm transition">About</a> 
                 <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
                 <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
             </nav>
 
-            <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                Contact Us
-            </a>
+            <div class="flex flex-1 justify-end">
+                 <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+                    Contact Us
+                </a>
+            </div>
+           
         </div>
     </header>
 
     <main class="hero-bg py-16 sm:py-24">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
+            <div class="space-y-6 bg-white/90 p-6 sm:p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
                     <span class="block text-3xl font-semibold text-gray-700 mt-2">
@@ -143,8 +150,12 @@
                     <div id="mortgageResult" class="mt-6">
                         <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
                     </div>
+                    
+                    <a href="https://2453979.my1003app.com/" class="block text-center mt-6 w-full py-3 border-2 border-navy-rhm text-navy-rhm font-bold rounded-xl shadow-sm hover:bg-navy-rhm/5 transition duration-200">
+                        Start Your Full Application
+                    </a>
                 </div> 
-                </div>
+            </div>
             
         </div>
     </main>
@@ -275,6 +286,15 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultDiv = document.getElementById('mortgageResult');
 
+            // Add event listeners to input fields to clear result on change
+            const inputs = document.querySelectorAll('#calculator input, #calculator select');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    // Clear the previous result when any input changes
+                    resultDiv.innerHTML = '<p class="text-center text-gray-500 italic">Enter loan details and click \'Calculate\' to see your estimated monthly Principal & Interest payment.</p>';
+                });
+            });
+
             calculateBtn.addEventListener('click', calculateMortgage);
 
             function calculateMortgage() {
@@ -285,8 +305,13 @@
                 const termYears = parseFloat(document.getElementById('term').value);
 
                 // Basic validation
-                if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || annualRate <= 0 || termYears <= 0) {
+                if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || termYears <= 0) {
                     resultDiv.innerHTML = '<p class="text-center text-red-500 font-bold">Please enter valid, non-zero values for all fields (Purchase Price must be greater than Down Payment).</p>';
+                    return;
+                }
+                
+                if (annualRate < 0) {
+                     resultDiv.innerHTML = '<p class="text-center text-red-500 font-bold">Interest Rate cannot be negative.</p>';
                     return;
                 }
 
@@ -296,15 +321,13 @@
                 const totalPayments = termYears * 12; // n
 
                 // 3. Apply the Monthly Payment Formula
+                // M = P * [ i(1 + i)^n ] / [ (1 + i)^n – 1]
                 let monthlyPayment;
 
-                if (monthlyRate === 0) {
-                    // Handle zero interest rate (simple division)
-                    monthlyPayment = principal / totalPayments;
-                } else {
-                    const powerFactor = Math.pow(1 + monthlyRate, totalPayments);
-                    monthlyPayment = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
-                }
+                // Using the standard mortgage formula provided in the original script
+                const powerFactor = Math.pow(1 + monthlyRate, totalPayments);
+                monthlyPayment = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
+
 
                 // 4. Format and Display Result
                 const formattedPayment = monthlyPayment.toLocaleString('en-US', {
@@ -314,13 +337,13 @@
                     maximumFractionDigits: 2
                 });
                 
-                // Updated result div styling and text size
+                // Reworked result box: Changed background, added border, reduced font size (text-5xl to text-4xl)
                 resultDiv.innerHTML = `
-                    <div class="p-4 bg-gold-rhm/30 rounded-lg border border-gold-rhm shadow-inner">
-                        <p class="text-center text-lg font-semibold text-navy-rhm">Estimated Monthly Principal & Interest Payment</p>
-                        <p class="text-center text-5xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
-                        <p class="text-center text-sm text-gray-600">
-                            Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${annualRate * 100}% APR.
+                    <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
+                        <p class="text-center text-xl font-semibold text-gray-700">Estimated Monthly Principal & Interest Payment</p>
+                        <p class="text-center text-4xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
+                        <p class="text-center text-sm text-gray-500">
+                            Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.
                         </p>
                         <p class="text-center text-xs text-red-700 italic mt-2">
                             *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
