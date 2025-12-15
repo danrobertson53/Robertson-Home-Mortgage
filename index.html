@@ -25,6 +25,16 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* FIX 2: Absolute Scroll Fix using scroll-margin-top 
+           This property is the modern, non-hacky way to account for sticky headers. 
+           We target the H2 headings directly for clean scrolling. */
+        #calculator-heading, 
+        #contact-heading, 
+        #about-heading {
+            scroll-margin-top: 120px; /* Must be larger than the sticky header height */
+        }
+
         /* Custom styles for the Hero Background */
         .hero-bg {
             background-image: url('./town-hero.png'); 
@@ -37,17 +47,10 @@
             align-items: center;
         }
 
-        /* Scroll Offset Fix (Compensates for the sticky header) */
-        .scroll-offset {
-            padding-top: 200px; 
-            margin-top: -200px; 
-        }
-
-        /* FIX 3: Mortgage Result Min-Height to prevent layout shift (jumping) */
+        /* Mortgage Result Min-Height to prevent layout shift (jumping) */
         #mortgageResult {
             min-height: 100px; 
         }
-        /* Style for the initial placeholder text to match the min-height */
         #mortgageResult p {
              line-height: 100px; /* Forces the initial text line height to hold space */
         }
@@ -56,16 +59,16 @@
 <body class="font-sans bg-gray-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-around items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
             
             <div class="flex items-center space-x-4">
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                <a href="#calculator-target" class="hover:text-gold-rhm transition">Calculator</a> 
+                <a href="#about-target" class="hover:text-gold-rhm transition">About</a> 
+                <a href="#calculator-target" class="hover:text-gold-rhm transition">Calculator</a>
                 <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
             </nav>
 
@@ -107,10 +110,7 @@
                 </a>
 
                 <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
-                    
-                    <span id="calculator-target" class="scroll-offset"></span>
-                    
-                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                    <h2 id="calculator-target" class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
                     
@@ -173,9 +173,7 @@
     <section class="py-16 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <span id="contact-target" class="scroll-offset"></span>
-            
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Contact Us</h2>
+            <h2 id="contact-target" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Contact Us</h2>
             <div class="grid md:grid-cols-3 gap-10">
                 <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
                     <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
@@ -242,9 +240,7 @@
     <section class="py-10 sm:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <span id="about-target" class="scroll-offset"></span>
-            
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
+            <h2 id="about-target" class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
                 Our Mission
             </h2>
             
