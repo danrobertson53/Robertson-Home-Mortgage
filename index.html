@@ -21,28 +21,37 @@
         }
     </script>
     <style>
+        /* Ensures smooth scrolling for anchor links */
         html {
             scroll-behavior: smooth;
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* Path corrected to root directory */
+            /* FIX 2: Background position adjusted to show more town/scenery */
             background-image: url('./town-hero.png'); 
             background-size: cover;
-            background-position: center 30%; 
+            background-position: center 20%; 
             background-repeat: no-repeat;
             min-height: 80vh; 
-            /* Added flex properties to center the single content block */
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* FIX 4: Scroll Offset Fix (Compensates for the sticky header) 
+           This pushes the target content down so the section title isn't hidden. 
+           We use a small negative margin to pull the anchor point up higher 
+           than the padding pushes the content. */
+        .scroll-offset {
+            padding-top: 100px; /* Space needed below the header */
+            margin-top: -100px; /* Pulls the anchor point up by the same amount */
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-around items-center">
             
             <div class="flex items-center space-x-4">
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
@@ -62,7 +71,7 @@
     </header>
 
     <main class="hero-bg py-16 sm:py-24">
-        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
@@ -92,8 +101,8 @@
                     Apply Now &rarr;
                 </a>
 
-                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
-                    <h2 class="text-3xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300 scroll-offset">
+                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
                     
@@ -138,7 +147,7 @@
         </div>
     </main>
     
-    <section id="apply" class="bg-gold-rhm/10 py-16 sm:py-20 border-t border-b border-gold-rhm/30">
+    <section id="apply" class="py-16 sm:py-20 border-t border-b border-gold-rhm/30 bg-gold-rhm/10">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4">Ready to Apply?</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
@@ -150,7 +159,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-16 sm:py-24 bg-white">
+    <section id="contact" class="py-16 sm:py-24 bg-white scroll-offset">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Get In Touch</h2>
             <div class="grid md:grid-cols-3 gap-10">
@@ -216,7 +225,7 @@
         </div>
     </section>
     
-    <section id="about" class="py-10 sm:py-16 bg-gray-100">
+    <section id="about" class="py-10 sm:py-16 bg-gray-100 scroll-offset">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
