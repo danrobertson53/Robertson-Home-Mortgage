@@ -43,29 +43,33 @@
             margin-top: -200px; 
         }
 
-        /* FIX 1: Mortgage Result Min-Height to prevent layout shift (jumping) */
+        /* FIX 3: Mortgage Result Min-Height to prevent layout shift (jumping) */
         #mortgageResult {
-            min-height: 100px; /* Allocate space for the result before it appears */
+            min-height: 100px; 
+        }
+        /* Style for the initial placeholder text to match the min-height */
+        #mortgageResult p {
+             line-height: 100px; /* Forces the initial text line height to hold space */
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-around items-center">
             
             <div class="flex items-center space-x-4">
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
                 <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
+                <a href="#calculator-target" class="hover:text-gold-rhm transition">Calculator</a> 
                 <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
             </nav>
 
-            <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+            <a href="#contact-target" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
                 Contact Us
             </a>
         </div>
@@ -102,7 +106,10 @@
                     Apply Now &rarr;
                 </a>
 
-                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300 scroll-offset">
+                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
+                    
+                    <span id="calculator-target" class="scroll-offset"></span>
+                    
                     <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
@@ -165,7 +172,10 @@
 
     <section class="py-16 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="contact" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center scroll-offset">Contact Us</h2>
+            
+            <span id="contact-target" class="scroll-offset"></span>
+            
+            <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Contact Us</h2>
             <div class="grid md:grid-cols-3 gap-10">
                 <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
                     <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
@@ -232,15 +242,17 @@
     <section class="py-10 sm:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <h2 id="about" class="text-4xl font-extrabold text-navy-rhm mb-4 text-center scroll-offset">
+            <span id="about-target" class="scroll-offset"></span>
+            
+            <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
                 Our Mission
             </h2>
             
             <div class="max-w-4xl mx-auto mt-10">
-                <p class="text-xl text-gray-700 mb-8">
+                <p class="text-xl text-gray-700 mb-8 p-6 bg-gray-50 rounded-lg shadow-md">
                     Robertson Home Mortgage began with a simple conviction: homeownership can be within reach for anyone when the right strategy and financing options come together. We founded this brokerage to give clients genuine choice—pairing a wide network of lending partners with the kind of one-on-one guidance that turns possibilities into clear, confident decisions. We learned that offering a wider menu of loans, tailored to each borrower’s goals and timeline, creates better outcomes and a smoother path to “yes.”
                 </p>
-                <p class="text-xl text-gray-700 mb-8">
+                <p class="text-xl text-gray-700 mb-8 p-6 bg-gray-50 rounded-lg shadow-md">
                     Today, every file we touch reflects that purpose. You will see a full spectrum of programs—conventional, government-backed, bridge, equity, and custom solutions for self-employed income—distilled into a financing strategy that fits your life. Our team ensures you receive direct, expert service from the first call to closing, backed by experience that puts clarity and momentum at the center of your journey.
                 </p>
             </div>
@@ -316,7 +328,7 @@
                     maximumFractionDigits: 2
                 });
                 
-                // FIX 3: Updated result div styling and text size
+                // Updated result div styling and text size
                 resultDiv.innerHTML = `
                     <div class="p-4 bg-navy-rhm/10 rounded-lg border border-navy-rhm shadow-inner">
                         <p class="text-center text-lg font-semibold text-navy-rhm">Estimated Monthly Principal & Interest Payment</p>
