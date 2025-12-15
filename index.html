@@ -25,16 +25,6 @@
         html {
             scroll-behavior: smooth;
         }
-
-        /* FIX 2: Absolute Scroll Fix using scroll-margin-top 
-           This property is the modern, non-hacky way to account for sticky headers. 
-           We target the H2 headings directly for clean scrolling. */
-        #calculator-heading, 
-        #contact-heading, 
-        #about-heading {
-            scroll-margin-top: 120px; /* Must be larger than the sticky header height */
-        }
-
         /* Custom styles for the Hero Background */
         .hero-bg {
             background-image: url('./town-hero.png'); 
@@ -47,12 +37,16 @@
             align-items: center;
         }
 
-        /* Mortgage Result Min-Height to prevent layout shift (jumping) */
-        #mortgageResult {
-            min-height: 100px; 
+        /* Scroll Offset Fix (Compensates for the sticky header) */
+        .scroll-offset {
+            padding-top: 120px; 
+            margin-top: -120px; 
         }
-        #mortgageResult p {
-             line-height: 100px; /* Forces the initial text line height to hold space */
+
+        /* Nav centering adjustment: Added extra space/padding to the Nav links wrapper to push it away from the logo */
+        .nav-link-wrapper {
+             /* Increased left padding for visual centering */
+            padding-left: 5rem; 
         }
     </style>
 </head>
@@ -67,12 +61,12 @@
 
             <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                <a href="#about-target" class="hover:text-gold-rhm transition">About</a> 
-                <a href="#calculator-target" class="hover:text-gold-rhm transition">Calculator</a>
+                <a href="#about" class="hover:text-gold-rhm transition">About</a> 
+                <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
                 <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
             </nav>
 
-            <a href="#contact-target" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+            <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
                 Contact Us
             </a>
         </div>
@@ -110,235 +104,34 @@
                 </a>
 
                 <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
-                    <h2 id="calculator-target" class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
                     
-                    <div class="calculator-inputs-wrap">
-                        <div class="space-y-4">
-                            <div>
-                                <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
-                                <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-
-                            <div>
-                                <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
-                                <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
-                                    <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                                </div>
-                                
-                                <div>
-                                    <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
-                                    <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
-                                        <option value="30">30 Years</option>
-                                        <option value="20">20 Years</option>
-                                        <option value="15">15 Years</option>
-                                        <option value="10">10 Years</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
-                            Calculate P&I Estimate
-                        </button>
-                    </div>
-
-                    <div id="mortgageResult" class="mt-6">
-                        <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
-                    </div>
-                </div> 
-                </div>
-            
-        </div>
-    </main>
-    
-    <section id="apply" class="py-16 sm:py-20 border-t border-b border-gold-rhm/30 bg-navy-rhm text-white">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
-            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
-            </p>
-            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105">
-                Start Your Application Now &rarr;
-            </a>
-        </div>
-    </section>
-
-    <section class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <h2 id="contact-target" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Contact Us</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
-                    <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
-                    <p class="mb-6 text-gray-200">
-                        We are here to answer all your mortgage questions. Reach out to our expert team today!
-                    </p>
                     <div class="space-y-4">
-                        <div class="flex items-start space-x-3">
-                            <svg class="w-6 h-6 text-gold-rhm flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243m10.106-10.106L13.414 3.1a1.998 1.998 0 00-2.828 0l-4.243 4.243M9.828 9.828L12 12m0 0l2.172 2.172M12 12V21"/></svg>
-                            <div>
-                                <p class="font-semibold">Office Address</p>
-                                <p class="text-sm text-gray-300">19 High Street, Goffstown NH 03045</p>
-                            </div>
+                        <div>
+                            <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
+                            <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
                         </div>
-                        <div class="flex items-start space-x-3">
-                            <svg class="w-6 h-6 text-gold-rhm flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 18.72V21a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
-                            <div>
-                                <p class="font-semibold">Phone</p>
-                                <p class="text-sm text-gray-300">603-801-8822</p>
-                            </div>
+
+                        <div>
+                            <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
+                            <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
                         </div>
-                        <div class="flex items-start space-x-3">
-                            <svg class="w-6 h-6 text-gold-rhm flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <p class="font-semibold">Email</p>
-                                <p class="text-sm text-gray-300">dan@robertsonhomemortgage.com</p>
+                                <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
+                                <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            </div>
+                            
+                            <div>
+                                <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
+                                <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
+                                    <option value="30">30 Years</option>
+                                    <option value="20">20 Years</option>
+                                    <option value="15">15 Years</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="md:col-span-2 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <form name="contact" method="POST" data-netlify="true" class="space-y-4">
-                        <input type="hidden" name="form-name" value="contact" />
-                        
-                        <div>
-                            <label for="contactName" class="block text-sm font-medium text-gray-700">Full Name</label>
-                            <input type="text" id="contactName" name="name" placeholder="John Doe" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="contactEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                <input type="email" id="contactEmail" name="email" placeholder="you@example.com" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-                            <div>
-                                <label for="contactPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="tel" id="contactPhone" name="phone" placeholder="(555) 123-4567" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="contactMessage" class="block text-sm font-medium text-gray-700">How can we help you?</label>
-                            <textarea id="contactMessage" name="message" rows="4" placeholder="I'd like to discuss refinancing options..." class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3 bg-gold-rhm text-navy-rhm font-extrabold rounded-xl shadow-md hover:bg-gold-rhm/80 transition duration-200">
-                            Send Message
-                        </button>
-                        <div id="contactFormMessage" class="text-center p-2 rounded-lg hidden"></div> 
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="py-10 sm:py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <h2 id="about-target" class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
-                Our Mission
-            </h2>
-            
-            <div class="max-w-4xl mx-auto mt-10">
-                <p class="text-xl text-gray-700 mb-8 p-6 bg-gray-50 rounded-lg shadow-md">
-                    Robertson Home Mortgage began with a simple conviction: homeownership can be within reach for anyone when the right strategy and financing options come together. We founded this brokerage to give clients genuine choice—pairing a wide network of lending partners with the kind of one-on-one guidance that turns possibilities into clear, confident decisions. We learned that offering a wider menu of loans, tailored to each borrower’s goals and timeline, creates better outcomes and a smoother path to “yes.”
-                </p>
-                <p class="text-xl text-gray-700 mb-8 p-6 bg-gray-50 rounded-lg shadow-md">
-                    Today, every file we touch reflects that purpose. You will see a full spectrum of programs—conventional, government-backed, bridge, equity, and custom solutions for self-employed income—distilled into a financing strategy that fits your life. Our team ensures you receive direct, expert service from the first call to closing, backed by experience that puts clarity and momentum at the center of your journey.
-                </p>
-            </div>
-            
-        </div>
-    </section>
-
-    <footer class="bg-navy-rhm text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <p class="text-sm">
-                <span class="font-bold text-gold-rhm">Robertson Home Mortgage</span> |
-                <span class="text-gray-300">dan@robertsonhomemortgage.com</span> |
-                <span class="text-gray-300">19 High Street, Goffstown NH 03045</span>
-            </p>
-
-            <div class="flex items-center justify-center space-x-3">
-                <img src="./eho-logo.png" alt="Equal Housing Opportunity Logo" class="h-8 w-8 flex-shrink-0">
-                
-                <p class="text-sm font-bold text-gray-100">
-                    Equal Housing Opportunity - Licensed by the NH Department of Banking
-                </p>
-            </div>
-
-            <p class="text-sm font-semibold text-gray-200 pt-1">
-                &copy;2025 Robertson Home Mortgage LLC 
-                <span class="text-gold-rhm">NMLS # 2453979</span> |
-                <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gold-rhm transition">www.nmlsconsumeraccess.org</a>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const calculateBtn = document.getElementById('calculateBtn');
-            const resultDiv = document.getElementById('mortgageResult');
-
-            calculateBtn.addEventListener('click', calculateMortgage);
-
-            function calculateMortgage() {
-                // 1. Get Input Values and Convert to Numbers
-                const purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
-                const downPayment = parseFloat(document.getElementById('downPayment').value);
-                const annualRate = parseFloat(document.getElementById('rate').value) / 100;
-                const termYears = parseFloat(document.getElementById('term').value);
-
-                // Basic validation
-                if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || annualRate <= 0 || termYears <= 0) {
-                    resultDiv.innerHTML = '<p class="text-center text-red-500 font-bold">Please enter valid, non-zero values for all fields (Purchase Price must be greater than Down Payment).</p>';
-                    return;
-                }
-
-                // 2. Calculate Loan Principal and Monthly Rate/Term
-                const principal = purchasePrice - downPayment;
-                const monthlyRate = annualRate / 12; // r
-                const totalPayments = termYears * 12; // n
-
-                // 3. Apply the Monthly Payment Formula
-                let monthlyPayment;
-
-                if (monthlyRate === 0) {
-                    // Handle zero interest rate (simple division)
-                    monthlyPayment = principal / totalPayments;
-                } else {
-                    const powerFactor = Math.pow(1 + monthlyRate, totalPayments);
-                    monthlyPayment = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
-                }
-
-                // 4. Format and Display Result
-                const formattedPayment = monthlyPayment.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-                
-                // Updated result div styling and text size
-                resultDiv.innerHTML = `
-                    <div class="p-4 bg-navy-rhm/10 rounded-lg border border-navy-rhm shadow-inner">
-                        <p class="text-center text-lg font-semibold text-navy-rhm">Estimated Monthly Principal & Interest Payment</p>
-                        <p class="text-center text-4xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
-                        <p class="text-center text-sm text-gray-600">
-                            Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${annualRate * 100}% APR.
-                        </p>
-                        <p class="text-center text-xs text-red-700 italic mt-2">
-                            *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
-                        </p>
-                    </div>
-                `;
-            }
-        });
-    </script>
-</body>
-</html>
