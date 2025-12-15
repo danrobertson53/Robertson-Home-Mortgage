@@ -22,21 +22,20 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Hero Background to incorporate the design image */
+        /*
+        -- OPTION B HERO IMPLEMENTATION --
+        Using the vibrant gold background with a subtle overlay pattern for texture
+        to avoid image loading/contrast issues, while keeping the bold color impact.
+        */
         .hero-bg {
-            /* Fallback color */
-            background-color: #f8f8f8;
-            /* Placeholder for the design image - REPLACE THIS URL with your actual hosted image */
-            background-image: url('https://placehold.co/1200x600/f59e0b/1e3a8a?text=Family+Mortgage+Success'); 
-            background-size: cover;
-            background-position: right center;
-            background-repeat: no-repeat;
+            background-color: #f59e0b; /* Base Gold Color */
+            background-image: radial-gradient(at 0% 0%, #1e3a8a30 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, #1e3a8a30 0px, transparent 50%);
+            background-size: 100% 100%;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
-
-    <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
+<body class="font-sans bg-gray-100 text-gray-800"> <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <svg class="h-8 w-8 text-navy-rhm" fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +54,7 @@
                 <a href="#contact" class="hover:text-gold-rhm transition">Contact</a>
             </nav>
 
-            <a href="#contact" class="hidden sm:inline-block px-4 py-2 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+            <a href="#contact" class="hidden sm:inline-block px-4 py-2 bg-navy-rhm text-white font-bold rounded-full shadow-md hover:bg-navy-rhm/90 transition duration-300">
                 Contact Us
             </a>
         </div>
@@ -64,7 +63,7 @@
     <main class="hero-bg py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
             
-            <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
+            <div class="space-y-6 bg-white p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.<br class="hidden sm:block"> Your trusted partner in finding the right mortgage.
                 </h1>
@@ -73,15 +72,15 @@
                 </p>
                 <ul class="space-y-2 text-lg text-gray-700">
                     <li class="flex items-center space-x-3">
-                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span class="text-navy-rhm font-bold text-2xl">&bull;</span>
                         <span>Competitive Rates</span>
                     </li>
                     <li class="flex items-center space-x-3">
-                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span class="text-navy-rhm font-bold text-2xl">&bull;</span>
                         <span>Expert Guidance</span>
                     </li>
                     <li class="flex items-center space-x-3">
-                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span class="text-navy-rhm font-bold text-2xl">&bull;</span>
                         <span>Fast Closings</span>
                     </li>
                 </ul>
@@ -132,7 +131,7 @@
         </div>
     </main>
     
-    <section id="apply" class="bg-gold-rhm/10 py-16 sm:py-20 border-t border-b border-gold-rhm/30">
+    <section id="apply" class="bg-gray-100 py-16 sm:py-20 border-t border-b border-gray-200">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4">Ready to Apply?</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
