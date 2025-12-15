@@ -66,6 +66,15 @@
         .calculator-content-container {
             min-height: 500px;
         }
+        
+        /* Mobile menu specific styling */
+        #mobile-menu {
+            transition: transform 0.3s ease-out;
+            transform: translateY(-100%);
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -74,7 +83,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 nav-center-adjust">
             
             <div class="flex flex-1 items-center justify-start">
-                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 md:h-20 w-auto flex-shrink-0">
+                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 md:h-20 w-auto flex-shrink-0 object-contain">
             </div>
 
             <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
@@ -84,13 +93,27 @@
                 <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
             </nav>
 
-            <div class="flex flex-1 justify-end">
+            <div class="flex flex-1 justify-end items-center space-x-4">
                  <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
                     Contact Us
                 </a>
+
+                <button id="mobileMenuButton" class="md:hidden text-navy-rhm p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-rhm">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
            
         </div>
+        
+        <nav id="mobile-menu" class="absolute w-full bg-white shadow-xl md:hidden top-[92px] z-50 overflow-hidden">
+            <div class="flex flex-col space-y-2 px-4 py-4 text-navy-rhm font-semibold border-t border-gray-100">
+                <a href="#" class="py-2 px-3 hover:bg-gray-50 rounded-lg transition">Home</a>
+                <a href="#about" class="py-2 px-3 hover:bg-gray-50 rounded-lg transition">About</a> 
+                <a href="#calculator" class="py-2 px-3 hover:bg-gray-50 rounded-lg transition">Calculator</a>
+                <a href="https://2453979.my1003app.com/" class="py-2 px-3 bg-gold-rhm text-navy-rhm font-bold rounded-lg transition hover:bg-gold-rhm/80">Apply Now</a>
+                <a href="#contact" class="py-2 px-3 bg-navy-rhm text-white font-bold rounded-lg transition hover:bg-navy-rhm/90">Contact Us</a>
+            </div>
+        </nav>
     </header>
 
     <main class="hero-bg py-16 sm:py-24">
@@ -310,7 +333,24 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultPayment = document.getElementById('resultPayment');
             const resultDetails = document.getElementById('resultDetails');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobile-menu');
 
+            // --- Mobile Menu Logic ---
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+            // Close menu on link click (important for UX)
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+
+
+            // --- Calculator Logic ---
+            
             // Function to reset the display when inputs change
             function resetResult() {
                 resultPayment.innerText = '---';
