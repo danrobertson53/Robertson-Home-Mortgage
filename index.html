@@ -27,7 +27,6 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* Background position adjusted to show more town/scenery */
             background-image: url('./town-hero.png'); 
             background-size: cover;
             background-position: center 50%; 
@@ -43,6 +42,20 @@
             padding-top: 200px; 
             margin-top: -200px; 
         }
+
+        /* FIX 1: Custom CSS for Nav Centering - Pushes the Nav links slightly left 
+           to visually center them against the wide logo. */
+        .centered-nav {
+            margin-right: auto;
+            margin-left: 10%; /* Pushes the nav to the left to balance the wide logo */
+        }
+
+        @media (max-width: 1024px) { /* Adjust for smaller screens */
+             .centered-nav {
+                margin-left: auto; /* Reset margin on smaller screens */
+            }
+        }
+
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -54,7 +67,7 @@
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg centered-nav">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
                 <a href="#about" class="hover:text-gold-rhm transition">About</a> 
                 <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
@@ -98,42 +111,45 @@
                     Apply Now &rarr;
                 </a>
 
-                <div class="pt-6 mt-6 border-t border-gray-300">
-                    <h2 id="calculator" class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm scroll-offset">
+                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300 scroll-offset">
+                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
                     
-                    <div class="space-y-4">
-                        <div>
-                            <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
-                            <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                    <div class="calculator-inputs-wrap">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
+                                <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            </div>
+
+                            <div>
+                                <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
+                                <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
+                                    <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                </div>
+                                
+                                <div>
+                                    <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
+                                    <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
+                                        <option value="30">30 Years</option>
+                                        <option value="20">20 Years</option>
+                                        <option value="15">15 Years</option>
+                                        <option value="10">10 Years</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
-                            <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
-                                <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-                            
-                            <div>
-                                <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
-                                <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
-                                    <option value="30">30 Years</option>
-                                    <option value="20">20 Years</option>
-                                    <option value="15">15 Years</option>
-                                </select>
-                            </div>
-                        </div>
+                        <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
+                            Calculate P&I Estimate
+                        </button>
                     </div>
-
-                    <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
-                        Calculate P&I Estimate
-                    </button>
 
                     <div id="mortgageResult" class="mt-6">
                         <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
@@ -309,10 +325,11 @@
                     maximumFractionDigits: 2
                 });
                 
+                // FIX 3: Updated result div styling and text size
                 resultDiv.innerHTML = `
-                    <div class="p-4 bg-gold-rhm/30 rounded-lg border border-gold-rhm shadow-inner">
+                    <div class="p-4 bg-navy-rhm/10 rounded-lg border border-navy-rhm shadow-inner">
                         <p class="text-center text-lg font-semibold text-navy-rhm">Estimated Monthly Principal & Interest Payment</p>
-                        <p class="text-center text-5xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
+                        <p class="text-center text-4xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
                         <p class="text-center text-sm text-gray-600">
                             Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${annualRate * 100}% APR.
                         </p>
