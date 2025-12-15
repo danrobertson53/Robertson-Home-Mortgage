@@ -29,8 +29,8 @@
         .hero-bg {
             background-image: url('./town-hero.png'); 
             background-size: cover;
-            /* FIX: Adjusted position to see more sky and town */
-            background-position: center 35%; 
+            /* FIX: Reverting vertical position to default 50% for stability */
+            background-position: center 50%; 
             background-repeat: no-repeat;
             min-height: 80vh; 
             display: flex;
@@ -44,7 +44,8 @@
         @media (max-width: 768px) {
             .hero-bg {
                 background-attachment: scroll;
-                background-position: center 30%; 
+                /* FIX: Reverting mobile position to default 50% for stability */
+                background-position: center 50%; 
             }
         }
 
