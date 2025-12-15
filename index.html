@@ -26,10 +26,10 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* Path corrected to root directory */
+            /* FIX 5: Adjust background position to show more of the town/scenery */
             background-image: url('./town-hero.png'); 
             background-size: cover;
-            background-position: center center;
+            background-position: center 30%; 
             background-repeat: no-repeat;
             min-height: 80vh; 
         }
@@ -41,7 +41,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
             
             <div class="flex items-center space-x-4">
-                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 w-auto flex-shrink-0">
+                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
             <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
@@ -58,9 +58,9 @@
     </header>
 
     <main class="hero-bg py-16 sm:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-12 items-center">
             
-            <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
+            <div class="md:col-span-2 space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
                     <span class="block text-3xl font-semibold text-gray-700 mt-2">
@@ -89,7 +89,7 @@
                 </a>
             </div>
 
-            <div id="calculator" class="bg-white p-6 sm:p-8 shadow-2xl rounded-2xl border-2 border-navy-rhm">
+            <div id="calculator" class="md:col-span-1 bg-white p-6 sm:p-8 shadow-2xl rounded-2xl border-2 border-navy-rhm">
                 <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                     Monthly Payment Calculator
                 </h2>
@@ -212,7 +212,7 @@
         </div>
     </section>
     
-    <section id="about" class="py-16 sm:py-24 bg-white">
+    <section id="about" class="py-10 sm:py-16 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
