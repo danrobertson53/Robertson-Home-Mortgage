@@ -64,9 +64,78 @@
     <main class="hero-bg py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
             
-            <div class="space-y-6 bg-white/90 p-8 rounded-xl shadow-xl">
+            <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.<br class="hidden sm:block"> Your trusted partner in finding the right mortgage.
                 </h1>
                 <p class="text-xl text-gray-600">
-                    Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey
+                    Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey to your new home. Start with a quick estimate below!
+                </p>
+                <ul class="space-y-2 text-lg text-gray-700">
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Competitive Rates</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Expert Guidance</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Fast Closings</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="calculator" class="bg-white p-6 sm:p-8 shadow-2xl rounded-2xl border-2 border-navy-rhm">
+                <h2 class="text-3xl font-bold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                    Monthly Payment Calculator
+                </h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
+                        <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                    </div>
+
+                    <div>
+                        <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
+                        <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
+                            <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                        </div>
+                        
+                        <div>
+                            <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
+                            <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
+                                <option value="30">30 Years</option>
+                                <option value="20">20 Years</option>
+                                <option value="15">15 Years</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
+                    Calculate P&I Estimate
+                </button>
+
+                <div id="mortgageResult" class="mt-6">
+                    <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <section id="apply" class="bg-gold-rhm/10 py-16 sm:py-20 border-t border-b border-gold-rhm/30">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-navy-rhm mb-4">Ready to Apply?</h2>
+            <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
+            </p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-navy-rhm text-white font-bold text-xl rounded
