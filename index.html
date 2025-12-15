@@ -11,7 +11,7 @@
                 extend: {
                     colors: {
                         'navy-rhm': '#1e3a8a', // Navy Blue
-                        'gold-rhm': '#f59e0b', // Golden Yellow
+                        'gold-rhm': '#ffc107', // Brighter Golden Yellow
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -22,20 +22,18 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /*
-        -- OPTION B HERO IMPLEMENTATION --
-        Using the vibrant gold background with a subtle overlay pattern for texture
-        to avoid image loading/contrast issues, while keeping the bold color impact.
-        */
+        /* Using the vibrant gold background with a subtle overlay pattern for texture */
         .hero-bg {
-            background-color: #f59e0b; /* Base Gold Color */
+            background-color: #ffc107; /* NEW Gold Color */
             background-image: radial-gradient(at 0% 0%, #1e3a8a30 0px, transparent 50%),
                               radial-gradient(at 100% 100%, #1e3a8a30 0px, transparent 50%);
             background-size: 100% 100%;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-100 text-gray-800"> <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
+<body class="font-sans bg-gray-100 text-gray-800">
+
+    <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <svg class="h-8 w-8 text-navy-rhm" fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +45,7 @@
                     <span class="text-gold-rhm block text-sm font-semibold leading-none -mt-1">HOME MORTGAGE</span>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-6 text-navy-rhm font-semibold">
+            <nav class="hidden md:flex space-x-6 text-navy-rhm font-semibold text-lg">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
                 <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
                 <a href="#apply" class="hover:text-gold-rhm transition">Apply Now</a>
@@ -65,7 +63,8 @@
             
             <div class="space-y-6 bg-white p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
-                    Ready, Set, Own.<br class="hidden sm:block"> Your trusted partner in finding the right mortgage.
+                    Ready, Set, Own.<br class="hidden sm:block"> 
+                    <span class="text-4xl font-extrabold block mt-2">Your trusted partner in finding the right mortgage.</span>
                 </h1>
                 <p class="text-xl text-gray-600">
                     Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey to your new home. Start with a quick estimate below!
@@ -131,7 +130,7 @@
         </div>
     </main>
     
-    <section id="apply" class="bg-gray-100 py-16 sm:py-20 border-t border-b border-gray-200">
+    <section id="apply" class="bg-gray-100 py-24 border-t border-b border-gray-200">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4">Ready to Apply?</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
@@ -143,7 +142,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-16 sm:py-24 bg-white">
+    <section id="contact" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Get In Touch</h2>
             <div class="grid md:grid-cols-3 gap-10">
@@ -189,31 +188,4 @@
                                 <input type="email" id="contactEmail" placeholder="you@example.com" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
                             </div>
                             <div>
-                                <label for="contactPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="tel" id="contactPhone" placeholder="(555) 123-4567" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="contactMessage" class="block text-sm font-medium text-gray-700">How can we help you?</label>
-                            <textarea id="contactMessage" rows="4" placeholder="I'd like to discuss refinancing options..." class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition"></textarea>
-                        </div>
-                        <button type="submit" onclick="showContactMessage(event)" class="w-full py-3 bg-gold-rhm text-navy-rhm font-extrabold rounded-xl shadow-md hover:bg-gold-rhm/80 transition duration-200">
-                            Send Message
-                        </button>
-                        <div id="contactFormMessage" class="text-center p-2 rounded-lg hidden"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-navy-rhm text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gold-rhm font-semibold mb-2">&copy; 2024 Robertson Home Mortgage. All Rights Reserved.</p>
-            <p class="text-sm text-gray-300">NMLS #123456 | Equal Housing Opportunity. | <a href="#contact" class="underline hover:text-gold-rhm">Contact Us</a></p>
-        </div>
-    </footer>
-
-    <script src="app.js"></script>
-</body>
-</html>
+                                <label for="contactPhone" class="block text-sm font-medium text-gray
