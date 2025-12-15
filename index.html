@@ -32,6 +32,7 @@
             /* FIX: Adjusted position to see more sky and town */
             background-position: center 35%; 
             background-repeat: no-repeat;
+            /* Keep min-height to ensure the hero area is substantial */
             min-height: 80vh; 
             display: flex;
             justify-content: center;
@@ -40,17 +41,13 @@
             background-attachment: fixed; 
         }
 
-        /* FIX 1: Mobile Background Stability Override (Height fix added) */
+        /* FIX 1: Mobile Background Stability Override (REMOVED FIXED HEIGHT) */
         @media (max-width: 768px) {
             .hero-bg {
                 /* Set attachment to scroll on mobile to fix the shift/reflow bug */
                 background-attachment: scroll;
                 /* Kept slightly lower position for mobile screens */
                 background-position: center 30%; 
-                
-                /* *** DEFINITIVE FIX: Set fixed height to prevent container expansion and image resizing on content change *** */
-                height: 700px;
-                min-height: 700px;
             }
         }
 
@@ -368,8 +365,7 @@
                 `;
             }
 
-            // FIX: Removed the automatic call to calculateMortgage() on load.
-            // Result will only appear after the user clicks the button.
+            // The result will only appear after the user clicks the button.
         });
     </script>
 </body>
