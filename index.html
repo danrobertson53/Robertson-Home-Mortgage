@@ -29,22 +29,22 @@
         .hero-bg {
             background-image: url('./town-hero.png'); 
             background-size: cover;
-            /* FIX: Reverting vertical position to default 50% for stability */
+            /* Reverting vertical position to default 50% for stability */
             background-position: center 50%; 
             background-repeat: no-repeat;
             min-height: 80vh; 
             display: flex;
             justify-content: center;
             align-items: center;
-            /* FIX: Stabilizes background image size on desktop */
+            /* Stabilizes background image size on desktop */
             background-attachment: fixed; 
         }
 
-        /* Mobile Background Stability Override (using original CSS background method) */
+        /* Mobile Background Stability Override */
         @media (max-width: 768px) {
             .hero-bg {
                 background-attachment: scroll;
-                /* FIX: Reverting mobile position to default 50% for stability */
+                /* Reverting mobile position to default 50% for stability */
                 background-position: center 50%; 
             }
         }
@@ -55,12 +55,16 @@
             margin-top: -120px; 
         }
 
-        /* FIX: Navigation Centering Logic */
+        /* Navigation Centering Logic */
         .nav-center-adjust {
-            /* Use a 3-column grid: [Left 1fr] [Center auto] [Right 1fr] */
             display: grid;
             grid-template-columns: 1fr auto 1fr; 
             align-items: center;
+        }
+        
+        /* Ensures the calculator content box is always tall enough */
+        .calculator-content-container {
+            min-height: 500px;
         }
     </style>
 </head>
@@ -92,7 +96,7 @@
     <main class="hero-bg py-16 sm:py-24">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="space-y-6 bg-white/90 p-6 sm:p-8 rounded-2xl shadow-2xl min-h-[500px]">
+            <div class="space-y-6 bg-white/90 p-6 sm:p-8 rounded-2xl shadow-2xl calculator-content-container">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
                     <span class="block text-3xl font-semibold text-gray-700 mt-2">
@@ -159,7 +163,16 @@
                     </button>
 
                     <div id="mortgageResult" class="mt-6 transition-all duration-300 ease-out">
-                        <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
+                        <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
+                            <p class="text-center text-xl font-semibold text-gray-700" id="resultTitle">Estimated Monthly Principal & Interest Payment</p>
+                            <p class="text-center text-4xl font-extrabold text-navy-rhm my-2" id="resultPayment">---</p>
+                            <p class="text-center text-sm text-gray-500" id="resultDetails">
+                                Enter loan details and click 'Calculate' to see your estimate.
+                            </p>
+                            <p class="text-center text-xs text-red-700 italic mt-2">
+                                *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
+                            </p>
+                        </div>
                     </div>
                     
                     <a href="https://2453979.my1003app.com/" class="block text-center mt-6 w-full py-3 border-2 border-navy-rhm text-navy-rhm font-bold rounded-xl shadow-sm hover:bg-navy-rhm/5 transition duration-200">
@@ -296,14 +309,19 @@
         document.addEventListener('DOMContentLoaded', () => {
             const calculateBtn = document.getElementById('calculateBtn');
             const resultDiv = document.getElementById('mortgageResult');
+            const resultPayment = document.getElementById('resultPayment');
+            const resultDetails = document.getElementById('resultDetails');
+
+            // Function to reset the display when inputs change
+            function resetResult() {
+                resultPayment.innerText = '---';
+                resultDetails.innerText = 'Enter loan details and click \'Calculate\' to see your estimate.';
+            }
 
             // Add event listeners to input fields to clear result on change
             const inputs = document.querySelectorAll('#calculator input, #calculator select');
             inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    // Clear the previous result when any input changes
-                    resultDiv.innerHTML = '<p class="text-center text-gray-500 italic">Enter loan details and click \'Calculate\' to see your estimated monthly Principal & Interest payment.</p>';
-                });
+                input.addEventListener('input', resetResult);
             });
 
             calculateBtn.addEventListener('click', calculateMortgage);
@@ -316,13 +334,9 @@
                 const termYears = parseFloat(document.getElementById('term').value);
 
                 // Basic validation
-                if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || termYears <= 0) {
-                    resultDiv.innerHTML = '<p class="text-center text-red-500 font-bold">Please enter valid, non-zero values for all fields (Purchase Price must be greater than Down Payment).</p>';
-                    return;
-                }
-                
-                if (annualRate < 0) {
-                     resultDiv.innerHTML = '<p class="text-center text-red-500 font-bold">Interest Rate cannot be negative.</p>';
+                if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || termYears <= 0 || annualRate < 0) {
+                    resultPayment.innerText = "ERROR";
+                    resultDetails.innerText = "Please ensure Purchase Price is > Down Payment and all values are valid and non-zero.";
                     return;
                 }
 
@@ -335,7 +349,6 @@
                 // M = P * [ i(1 + i)^n ] / [ (1 + i)^n – 1]
                 let monthlyPayment;
 
-                // Using the standard mortgage formula provided in the original script
                 const powerFactor = Math.pow(1 + monthlyRate, totalPayments);
                 monthlyPayment = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
 
@@ -348,22 +361,14 @@
                     maximumFractionDigits: 2
                 });
                 
-                // Reworked result box: Changed background, added border, reduced font size (text-5xl to text-4xl)
-                resultDiv.innerHTML = `
-                    <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
-                        <p class="text-center text-xl font-semibold text-gray-700">Estimated Monthly Principal & Interest Payment</p>
-                        <p class="text-center text-4xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
-                        <p class="text-center text-sm text-gray-500">
-                            Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.
-                        </p>
-                        <p class="text-center text-xs text-red-700 italic mt-2">
-                            *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
-                        </p>
-                    </div>
-                `;
+                // Update specific elements within the permanently visible box
+                resultPayment.innerText = formattedPayment;
+                resultDetails.innerText = 
+                    `Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.`;
             }
 
-            // The result will only appear after the user clicks the button.
+            // Initialization: Set the initial placeholder content 
+            resetResult();
         });
     </script>
 </body>
