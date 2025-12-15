@@ -63,6 +63,14 @@
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
 
+<form name="contact" netlify data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="message"></textarea>
+</form>
+
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8">
             
@@ -304,10 +312,7 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultPayment = document.getElementById('resultPayment');
             const resultDetails = document.getElementById('resultDetails');
-            // contactForm and formMessage are still defined but no longer used for submission logic
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('contactFormMessage'); 
-
+            
             // --- Calculator Logic ---
             
             // Function to reset the display when inputs change
@@ -371,8 +376,6 @@
             // Initialization: Set the initial placeholder content 
             resetResult();
 
-            // *** IMPORTANT: The custom submission logic for the contact form has been removed. ***
-            // *** Netlify will now handle the form submission automatically upon deployment. ***
         });
     </script>
 </body>
