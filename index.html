@@ -346,3 +346,28 @@
                     style: 'currency',
                     currency: 'USD',
                     minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                
+                // Reworked result box: Changed background, added border, reduced font size (text-5xl to text-4xl)
+                resultDiv.innerHTML = `
+                    <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
+                        <p class="text-center text-xl font-semibold text-gray-700">Estimated Monthly Principal & Interest Payment</p>
+                        <p class="text-center text-4xl font-extrabold text-navy-rhm my-2">${formattedPayment}</p>
+                        <p class="text-center text-sm text-gray-500">
+                            Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.
+                        </p>
+                        <p class="text-center text-xs text-red-700 italic mt-2">
+                            *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
+                        </p>
+                    </div>
+                `;
+            }
+
+            // FIX: Trigger calculation immediately when the page loads, using default values
+            // This ensures the calculator works immediately and is not blank.
+            calculateMortgage();
+        });
+    </script>
+</body>
+</html>
