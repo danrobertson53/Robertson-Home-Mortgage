@@ -27,7 +27,7 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* FIX 2: Background position adjusted to show more town/scenery */
+            /* Background position adjusted to show more town/scenery */
             background-image: url('./town-hero.png'); 
             background-size: cover;
             background-position: center 20%; 
@@ -38,35 +38,34 @@
             align-items: center;
         }
 
-        /* FIX 4: Scroll Offset Fix (Compensates for the sticky header) 
-           This pushes the target content down so the section title isn't hidden. 
-           We use a small negative margin to pull the anchor point up higher 
-           than the padding pushes the content. */
+        /* FIX: Increased Scroll Offset to 120px for better visibility */
         .scroll-offset {
-            padding-top: 100px; /* Space needed below the header */
-            margin-top: -100px; /* Pulls the anchor point up by the same amount */
+            padding-top: 120px; 
+            margin-top: -120px; 
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
 
     <header class="sticky top-0 z-10 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-around items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
             
             <div class="flex items-center space-x-4">
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
-                <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
-                <a href="https://2453979.my1003app.com/" class="hover:text-gold-rhm transition">Apply Now</a> 
-            </nav>
+            <div class="flex items-center space-x-8">
+                <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
+                    <a href="#" class="hover:text-gold-rhm transition">Home</a>
+                    <a href="#about" class="hover:text-gold-rhm transition">About</a> 
+                    <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
+                    <a href="https://2453979.my1003app.com/" class="hover:text-gold-rhm transition">Apply Now</a> 
+                </nav>
 
-            <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                Contact Us
-            </a>
+                <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+                    Contact Us
+                </a>
+            </div>
         </div>
     </header>
 
