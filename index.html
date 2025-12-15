@@ -22,15 +22,14 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Hero Background to incorporate the design image */
+        /* Custom styles for the Hero Background */
         .hero-bg {
-            /* Fallback color */
-            background-color: #f8f8f8;
-            /* Placeholder for the design image - REPLACE THIS URL with your actual hosted image */
-            background-image: url('https://placehold.co/1200x600/f59e0b/1e3a8a?text=Family+Mortgage+Success'); 
+            /* **FINAL CORRECTED PATH** based on files being in the root directory */
+            background-image: url('./town-hero.png'); 
             background-size: cover;
-            background-position: right center;
+            background-position: center center;
             background-repeat: no-repeat;
+            min-height: 80vh; 
         }
     </style>
 </head>
@@ -66,7 +65,10 @@
             
             <div class="space-y-6 bg-white/90 p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
-                    Ready, Set, Own.<br class="hidden sm:block"> Your trusted partner in finding the right mortgage.
+                    Ready, Set, Own.
+                    <span class="block text-3xl font-semibold text-gray-700 mt-2">
+                        Your trusted partner in finding the right mortgage.
+                    </span>
                 </h1>
                 <p class="text-xl text-gray-600">
                     Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey to your new home. Start with a quick estimate below!
@@ -209,9 +211,26 @@
     </section>
 
     <footer class="bg-navy-rhm text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gold-rhm font-semibold mb-2">&copy; 2024 Robertson Home Mortgage. All Rights Reserved.</p>
-            <p class="text-sm text-gray-300">NMLS #123456 | Equal Housing Opportunity. | <a href="#contact" class="underline hover:text-gold-rhm">Contact Us</a></p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
+            <p class="text-sm">
+                <span class="font-bold text-gold-rhm">Robertson Home Mortgage</span> |
+                <span class="text-gray-300">dan@robertsonhomemortgage.com</span> |
+                <span class="text-gray-300">19 High Street, Goffstown NH 03045</span>
+            </p>
+
+            <div class="flex items-center justify-center space-x-3">
+                <img src="./eho-logo.png" alt="Equal Housing Opportunity Logo" class="h-8 w-8 flex-shrink-0">
+                
+                <p class="text-sm font-bold text-gray-100">
+                    Equal Housing Opportunity - Licensed by the NH Department of Banking
+                </p>
+            </div>
+
+            <p class="text-sm font-semibold text-gray-200 pt-1">
+                &copy;2024 Robertson Home Mortgage LLC 
+                <span class="text-gold-rhm">NMLS # 2453979</span> |
+                <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gold-rhm transition">www.nmlsconsumeraccess.org</a>
+            </p>
         </div>
     </footer>
 
