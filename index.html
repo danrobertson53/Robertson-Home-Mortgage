@@ -27,7 +27,7 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* FIX: Background position adjusted to center 50% for a better crop */
+            /* Background position adjusted to show more town/scenery */
             background-image: url('./town-hero.png'); 
             background-size: cover;
             background-position: center 50%; 
@@ -38,10 +38,10 @@
             align-items: center;
         }
 
-        /* Scroll Offset Fix (Compensates for the sticky header) */
+        /* FIX: Increased Scroll Offset to 200px for guaranteed visibility */
         .scroll-offset {
-            padding-top: 120px; 
-            margin-top: -120px; 
+            padding-top: 200px; 
+            margin-top: -200px; 
         }
 
         /* Nav centering adjustment: Added extra space/padding to the Nav links wrapper to push it away from the logo */
@@ -60,14 +60,12 @@
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <div class="flex items-center space-x-8 nav-link-wrapper">
-                <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
-                    <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                    <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                    <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
-                    <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
-                </nav>
-            </div>
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
+                <a href="#" class="hover:text-gold-rhm transition">Home</a>
+                <a href="#about" class="hover:text-gold-rhm transition">About</a> 
+                <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
+                <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
+            </nav>
 
             <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
                 Contact Us
@@ -106,8 +104,8 @@
                     Apply Now &rarr;
                 </a>
 
-                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300 scroll-offset">
-                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                <div class="pt-6 mt-6 border-t border-gray-300">
+                    <h2 id="calculator" class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm scroll-offset">
                         Monthly Payment Calculator
                     </h2>
                     
@@ -164,9 +162,9 @@
         </div>
     </section>
 
-    <section id="contact" class="py-16 sm:py-24 bg-white scroll-offset">
+    <section class="py-16 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Get In Touch</h2>
+            <h2 id="contact" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center scroll-offset">Get In Touch</h2>
             <div class="grid md:grid-cols-3 gap-10">
                 <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
                     <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
@@ -230,10 +228,10 @@
         </div>
     </section>
     
-    <section id="about" class="py-10 sm:py-16 bg-gray-100 scroll-offset">
+    <section class="py-10 sm:py-16 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
+            <h2 id="about" class="text-4xl font-extrabold text-navy-rhm mb-4 text-center scroll-offset">
                 Our Mission
             </h2>
             
