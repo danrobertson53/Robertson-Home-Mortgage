@@ -43,19 +43,10 @@
             margin-top: -200px; 
         }
 
-        /* FIX 1: Custom CSS for Nav Centering - Pushes the Nav links slightly left 
-           to visually center them against the wide logo. */
-        .centered-nav {
-            margin-right: auto;
-            margin-left: 10%; /* Pushes the nav to the left to balance the wide logo */
+        /* FIX 1: Mortgage Result Min-Height to prevent layout shift (jumping) */
+        #mortgageResult {
+            min-height: 100px; /* Allocate space for the result before it appears */
         }
-
-        @media (max-width: 1024px) { /* Adjust for smaller screens */
-             .centered-nav {
-                margin-left: auto; /* Reset margin on smaller screens */
-            }
-        }
-
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -67,7 +58,7 @@
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg centered-nav">
+            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg mx-auto">
                 <a href="#" class="hover:text-gold-rhm transition">Home</a>
                 <a href="#about" class="hover:text-gold-rhm transition">About</a> 
                 <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
@@ -160,13 +151,13 @@
         </div>
     </main>
     
-    <section id="apply" class="py-16 sm:py-20 border-t border-b border-gold-rhm/30 bg-gold-rhm/10">
+    <section id="apply" class="py-16 sm:py-20 border-t border-b border-gold-rhm/30 bg-navy-rhm text-white">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-4">Ready to Apply?</h2>
-            <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
                 Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
             </p>
-            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-navy-rhm text-white font-bold text-xl rounded-full shadow-2xl hover:bg-navy-rhm/90 transition duration-300 transform hover:scale-105">
+            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105">
                 Start Your Application Now &rarr;
             </a>
         </div>
@@ -174,7 +165,7 @@
 
     <section class="py-16 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="contact" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center scroll-offset">Get In Touch</h2>
+            <h2 id="contact" class="text-4xl font-extrabold text-navy-rhm mb-12 text-center scroll-offset">Contact Us</h2>
             <div class="grid md:grid-cols-3 gap-10">
                 <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
                     <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
@@ -238,7 +229,7 @@
         </div>
     </section>
     
-    <section class="py-10 sm:py-16 bg-gray-100">
+    <section class="py-10 sm:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <h2 id="about" class="text-4xl font-extrabold text-navy-rhm mb-4 text-center scroll-offset">
@@ -274,7 +265,7 @@
             </div>
 
             <p class="text-sm font-semibold text-gray-200 pt-1">
-                &copy;2024 Robertson Home Mortgage LLC 
+                &copy;2025 Robertson Home Mortgage LLC 
                 <span class="text-gold-rhm">NMLS # 2453979</span> |
                 <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gold-rhm transition">www.nmlsconsumeraccess.org</a>
             </p>
