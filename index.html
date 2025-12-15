@@ -1,3 +1,20 @@
+<main class="hero-bg py-16 sm:py-24">
+        
+        <img 
+            src="./town-hero.png" 
+            alt="Town background image" 
+            class="hero-image-absolute" 
+            style="object-position: center 35%;"
+        >
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        ```
+
+By using the `<img>` tag, it scales reliably across mobile devices, and positioning it `fixed` keeps its frame stable relative to the viewport, which should solve the image jump when the content inside the white box expands.
+
+Here is the complete, final version with the new background image structure:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,29 +44,29 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            background-image: url('./town-hero.png'); 
-            background-size: cover;
-            /* FIX: Adjusted position to see more sky and town */
-            background-position: center 35%; 
+            /* Removed CSS background properties. Now using an <img> tag. */
             background-repeat: no-repeat;
-            /* Keep min-height to ensure the hero area is substantial */
             min-height: 80vh; 
             display: flex;
             justify-content: center;
             align-items: center;
-            /* FIX: Stabilizes background image size on desktop */
-            background-attachment: fixed; 
+            position: relative; /* Container for content */
+            overflow: hidden; 
         }
 
-        /* FIX 1: Mobile Background Stability Override (REMOVED FIXED HEIGHT) */
-        @media (max-width: 768px) {
-            .hero-bg {
-                /* Set attachment to scroll on mobile to fix the shift/reflow bug */
-                background-attachment: scroll;
-                /* Kept slightly lower position for mobile screens */
-                background-position: center 30%; 
-            }
+        /* New CSS for the absolute image tag to simulate a stable background */
+        .hero-image-absolute {
+            position: fixed; /* Fixed relative to viewport for stability */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Scales the image to cover the area */
+            z-index: -1; /* Puts the image behind the content */
         }
+        
+        /* Media query removed as the fixed <img> tag should solve stability */
+        /* If issues persist, object-position can be adjusted in the tag's style attribute */
 
         /* Scroll Offset Fix (Compensates for the sticky header) */
         .scroll-offset {
@@ -92,7 +109,15 @@
     </header>
 
     <main class="hero-bg py-16 sm:py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <img 
+            src="./town-hero.png" 
+            alt="Town background image" 
+            class="hero-image-absolute" 
+            style="object-position: center 35%;"
+        >
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
             
             <div class="space-y-6 bg-white/90 p-6 sm:p-8 rounded-2xl shadow-2xl">
                 <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
