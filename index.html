@@ -224,7 +224,9 @@
                 </div>
 
                 <div class="md:col-span-2 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <form id="contactForm" method="POST" action="https://formspree.io/f/{YOUR_FORMSPREE_ID}" class="space-y-4">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="bot-field" />
                         
                         <div>
                             <label for="contactName" class="block text-sm font-medium text-gray-700">Full Name</label>
@@ -302,8 +304,9 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultPayment = document.getElementById('resultPayment');
             const resultDetails = document.getElementById('resultDetails');
+            // contactForm and formMessage are still defined but no longer used for submission logic
             const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('contactFormMessage');
+            const formMessage = document.getElementById('contactFormMessage'); 
 
             // --- Calculator Logic ---
             
@@ -368,56 +371,8 @@
             // Initialization: Set the initial placeholder content 
             resetResult();
 
-            // --- Formspree Contact Form Logic ---
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', async (event) => {
-                    event.preventDefault(); // Stop default form submission
-                    
-                    const form = event.target;
-                    const formData = new FormData(form);
-                    const button = form.querySelector('button[type="submit"]');
-
-                    // Disable button and change text while submitting
-                    button.disabled = true;
-                    button.innerText = 'Sending...';
-
-                    // Clear previous message
-                    formMessage.classList.add('hidden');
-
-                    try {
-                        const response = await fetch(form.action, {
-                            method: form.method,
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        });
-
-                        if (response.ok) {
-                            formMessage.innerText = "Thank you! Your message has been sent successfully. We will be in touch shortly.";
-                            formMessage.className = 'text-center p-3 rounded-lg bg-green-100 text-green-700';
-                            form.reset(); // Clear form fields
-                        } else {
-                            // Attempt to parse JSON response for specific errors
-                            const data = await response.json();
-                            if (data.errors) {
-                                formMessage.innerText = data.errors.map(error => error.message).join(", ");
-                            } else {
-                                formMessage.innerText = "Oops! There was an issue sending your message. Please try again or call us.";
-                            }
-                            formMessage.className = 'text-center p-3 rounded-lg bg-red-100 text-red-700';
-                        }
-                    } catch (error) {
-                        formMessage.innerText = "A network error occurred. Please check your connection and try again.";
-                        formMessage.className = 'text-center p-3 rounded-lg bg-red-100 text-red-700';
-                    } finally {
-                        formMessage.classList.remove('hidden');
-                        button.disabled = false;
-                        button.innerText = 'Send Message';
-                    }
-                });
-            }
+            // *** IMPORTANT: The custom submission logic for the contact form has been removed. ***
+            // *** Netlify will now handle the form submission automatically upon deployment. ***
         });
     </script>
 </body>
