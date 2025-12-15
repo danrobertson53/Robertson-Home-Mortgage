@@ -58,6 +58,8 @@
         /* Navigation Centering Logic */
         .nav-center-adjust {
             display: grid;
+            /* For mobile, 1fr auto 1fr is causing crowding. For desktop, it's fine. 
+               The fix below works because we are hiding elements to give space back. */
             grid-template-columns: 1fr auto 1fr; 
             align-items: center;
         }
@@ -94,7 +96,7 @@
             </nav>
 
             <div class="flex flex-1 justify-end items-center space-x-4">
-                 <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+                 <a href="#contact" class="hidden sm:inline-block md:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
                     Contact Us
                 </a>
 
