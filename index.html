@@ -35,8 +35,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* FIX: Stabilizes background image size when content height changes */
+            /* FIX: Stabilizes background image size on desktop */
             background-attachment: fixed; 
+        }
+
+        /* FIX 1: Mobile Background Stability Override */
+        @media (max-width: 768px) {
+            .hero-bg {
+                /* Set attachment to scroll on mobile to fix the shift/reflow bug */
+                background-attachment: scroll;
+                /* Adjust position slightly for better mobile viewport visibility */
+                background-position: center 30%; 
+            }
         }
 
         /* Scroll Offset Fix (Compensates for the sticky header) */
@@ -45,7 +55,7 @@
             margin-top: -120px; 
         }
 
-        /* FIX: New centering logic: forces the navigation to be truly centered */
+        /* FIX: Navigation Centering Logic */
         .nav-center-adjust {
             /* Use a 3-column grid: [Left 1fr] [Center auto] [Right 1fr] */
             display: grid;
@@ -60,7 +70,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 nav-center-adjust">
             
             <div class="flex flex-1 items-center justify-start">
-                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
+                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 md:h-20 w-auto flex-shrink-0">
             </div>
 
             <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
