@@ -159,7 +159,7 @@
                         Calculate P&I Estimate
                     </button>
 
-                    <div id="mortgageResult" class="mt-6">
+                    <div id="mortgageResult" class="mt-6 transition-all duration-300 ease-out">
                         <p class="text-center text-gray-500 italic">Enter loan details and click 'Calculate' to see your estimated monthly Principal & Interest payment.</p>
                     </div>
                     
@@ -364,9 +364,8 @@
                 `;
             }
 
-            // FIX: Trigger calculation immediately when the page loads, using default values
-            // This ensures the calculator works immediately and is not blank.
-            calculateMortgage();
+            // FIX: Removed the automatic call to calculateMortgage() on load.
+            // The result will now only appear after the user clicks the button.
         });
     </script>
 </body>
