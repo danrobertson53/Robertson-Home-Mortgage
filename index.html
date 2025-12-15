@@ -27,10 +27,10 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            /* Background position adjusted to show more town/scenery */
+            /* FIX: Background position adjusted to center 50% for a better crop */
             background-image: url('./town-hero.png'); 
             background-size: cover;
-            background-position: center 20%; 
+            background-position: center 50%; 
             background-repeat: no-repeat;
             min-height: 80vh; 
             display: flex;
@@ -38,10 +38,16 @@
             align-items: center;
         }
 
-        /* FIX: Increased Scroll Offset to 120px for better visibility */
+        /* Scroll Offset Fix (Compensates for the sticky header) */
         .scroll-offset {
             padding-top: 120px; 
             margin-top: -120px; 
+        }
+
+        /* Nav centering adjustment: Added extra space/padding to the Nav links wrapper to push it away from the logo */
+        .nav-link-wrapper {
+             /* Increased left padding for visual centering */
+            padding-left: 5rem; 
         }
     </style>
 </head>
@@ -54,18 +60,18 @@
                 <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-20 w-auto flex-shrink-0">
             </div>
 
-            <div class="flex items-center space-x-8">
+            <div class="flex items-center space-x-8 nav-link-wrapper">
                 <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg">
                     <a href="#" class="hover:text-gold-rhm transition">Home</a>
                     <a href="#about" class="hover:text-gold-rhm transition">About</a> 
                     <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
-                    <a href="https://2453979.my1003app.com/" class="hover:text-gold-rhm transition">Apply Now</a> 
+                    <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
                 </nav>
-
-                <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                    Contact Us
-                </a>
             </div>
+
+            <a href="#contact" class="hidden sm:inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+                Contact Us
+            </a>
         </div>
     </header>
 
