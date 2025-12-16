@@ -27,17 +27,17 @@
         }
         /* Custom styles for the Hero Background */
         .hero-bg {
-            background-image: url('./town-hero.png'); 
+            background-image: url('./town-hero.png');
             background-size: cover;
             /* Reverting vertical position to default 50% for stability */
-            background-position: center 50%; 
+            background-position: center 50%;
             background-repeat: no-repeat;
-            min-height: 80vh; 
+            min-height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
             /* Stabilizes background image size on desktop */
-            background-attachment: fixed; 
+            background-attachment: fixed;
         }
 
         /* Mobile Background Stability Override */
@@ -45,14 +45,14 @@
             .hero-bg {
                 background-attachment: scroll;
                 /* Reverting mobile position to default 50% for stability */
-                background-position: center 50%; 
+                background-position: center 50%;
             }
         }
 
         /* Scroll Offset Fix (Compensates for the sticky header) */
         .scroll-offset {
-            padding-top: 120px; 
-            margin-top: -120px; 
+            padding-top: 120px;
+            margin-top: -120px;
         }
 
         /* Ensure the calculator content box is always tall enough */
@@ -87,8 +87,8 @@
 
             <div class="flex justify-end items-center">
                  <a href="#contact" class="inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                    Contact Us
-                </a>
+                     Contact Us
+                 </a>
             </div>
             
         </div>
@@ -127,7 +127,7 @@
 
                 <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
                     <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
-                        Monthly Payment Calculator
+                        Monthly Payment Calculator (PITI Estimate)
                     </h2>
                     
                     <div class="space-y-4">
@@ -141,6 +141,16 @@
                             <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
                         </div>
 
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="annualTaxes" class="block text-sm font-medium text-gray-700">Annual Property Taxes ($)</label>
+                                <input type="number" id="annualTaxes" value="4800" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            </div>
+                            <div>
+                                <label for="annualInsurance" class="block text-sm font-medium text-gray-700">Annual Home Insurance ($)</label>
+                                <input type="number" id="annualInsurance" value="1200" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            </div>
+                        </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
@@ -160,18 +170,18 @@
                     </div>
 
                     <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
-                        Calculate P&I Estimate
+                        Calculate Total Monthly Payment
                     </button>
 
                     <div id="mortgageResult" class="mt-6 transition-all duration-300 ease-out">
                         <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
-                            <p class="text-center text-xl font-semibold text-gray-700" id="resultTitle">Estimated Monthly Principal & Interest Payment</p>
+                            <p class="text-center text-xl font-semibold text-gray-700" id="resultTitle">Estimated Total Monthly Payment (PITI)</p>
                             <p class="text-center text-4xl font-extrabold text-navy-rhm my-2" id="resultPayment">---</p>
                             <p class="text-center text-sm text-gray-500" id="resultDetails">
                                 Enter loan details and click 'Calculate' to see your estimate.
                             </p>
                             <p class="text-center text-xs text-red-700 italic mt-2">
-                                *This is an estimate for P&I only. Actual payments may include taxes, insurance, and PMI.
+                                *This is an estimate for Principal, Interest, Taxes, and Insurance (PITI) only. **It does not include Private Mortgage Insurance (PMI)**, which may be required. Contact us for an official rate quote and final payment details.
                             </p>
                         </div>
                     </div>
@@ -335,11 +345,15 @@
                 const downPayment = parseFloat(document.getElementById('downPayment').value);
                 const annualRate = parseFloat(document.getElementById('rate').value) / 100;
                 const termYears = parseFloat(document.getElementById('term').value);
+                
+                // NEW: Get Tax and Insurance Inputs (Default to 0 if NaN)
+                const annualTaxes = parseFloat(document.getElementById('annualTaxes').value) || 0;
+                const annualInsurance = parseFloat(document.getElementById('annualInsurance').value) || 0;
 
                 // Basic validation
                 if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || termYears <= 0 || annualRate < 0) {
                     resultPayment.innerText = "ERROR";
-                    resultDetails.innerText = "Please ensure Purchase Price is > Down Payment and all values are valid and non-zero.";
+                    resultDetails.innerText = "Please ensure Purchase Price is > Down Payment and all loan values are valid and non-zero.";
                     return;
                 }
 
@@ -348,34 +362,43 @@
                 const monthlyRate = annualRate / 12; // i
                 const totalPayments = termYears * 12; // n
 
-                // 3. Apply the Monthly Payment Formula (M = P * [ i(1 + i)^n ] / [ (1 + i)^n – 1])
-                let monthlyPayment;
+                // 3. Apply the Monthly Payment Formula (P&I Component)
+                let monthlyPAndI;
 
-                // Handle zero interest rate case
                 if (monthlyRate === 0) {
-                    monthlyPayment = principal / totalPayments;
+                    monthlyPAndI = principal / totalPayments;
                 } else {
                     const powerFactor = Math.pow(1 + monthlyRate, totalPayments);
-                    monthlyPayment = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
+                    monthlyPAndI = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
                 }
+                
+                // 4. Calculate Monthly Taxes and Insurance (T&I Component)
+                const monthlyTaxes = annualTaxes / 12;
+                const monthlyInsurance = annualInsurance / 12;
+                
+                // 5. Calculate Total Payment (PITI)
+                const totalMonthlyPayment = monthlyPAndI + monthlyTaxes + monthlyInsurance;
 
-                // 4. Format and Display Result
-                const formattedPayment = monthlyPayment.toLocaleString('en-US', {
+                // 6. Format and Display Result
+                const formattedPayment = totalMonthlyPayment.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
                 
-                // Update specific elements within the permanently visible box
+                const formattedPAndI = monthlyPAndI.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const formattedTaxesAndInsurance = (monthlyTaxes + monthlyInsurance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                
+                // Update specific elements
                 resultPayment.innerText = formattedPayment;
-                resultDetails.innerText = 
-                    `Based on a loan amount of $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.`;
+                resultDetails.innerHTML = 
+                    `Loan Amount: $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}% APR.<br>
+                    Breakdown: P&I $${formattedPAndI} + Taxes & Insurance $${formattedTaxesAndInsurance}.`;
             }
 
             // Initialization: Set the initial placeholder content 
             resetResult();
-
         });
     </script>
 </body>
