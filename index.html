@@ -25,6 +25,7 @@
         html {
             scroll-behavior: smooth;
         }
+        
         /* Custom styles for the Hero Background */
         .hero-bg {
             background-image: url('./town-hero.png');
@@ -38,11 +39,15 @@
             background-attachment: fixed;
         }
 
-        /* Mobile Background Stability Override */
+        /* --- MOBILE FIX 1: Remove Background Image to stop jumping --- */
         @media (max-width: 768px) {
             .hero-bg {
+                background-image: none !important; /* Force removal on mobile */
+                background-color: #f9fafb; /* Clean light gray fallback */
                 background-attachment: scroll;
-                background-position: center 50%;
+                min-height: auto; /* Let content dictate height */
+                padding-top: 40px; 
+                padding-bottom: 40px;
             }
         }
 
@@ -208,15 +213,17 @@
         </div>
     </main>
     
-    <section id="apply" class="py-16 sm:py-20 bg-navy-rhm shadow-inner">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
-            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
-            </p>
-            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105">
+    <section id="apply" class="pb-16 pt-0 bg-navy-rhm shadow-inner relative z-0">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            
+            <a href="https://2453979.my1003app.com/" class="-mt-8 mb-8 inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl border-4 border-white hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105 z-10">
                 Start Your Application Now &rarr;
             </a>
+
+            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
+            <p class="text-xl text-gray-200 mb-0 max-w-2xl mx-auto">
+                Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
+            </p>
         </div>
     </section>
 
