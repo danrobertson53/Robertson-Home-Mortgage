@@ -31,9 +31,6 @@
             scroll-behavior: smooth;
         }
         
-        /* --- PRO BACKGROUND FIX --- 
-           This div sits behind everything and never moves or resizes 
-           when the mobile keyboard opens. */
         .fixed-bg {
             position: fixed;
             top: 0;
@@ -44,10 +41,9 @@
             background-size: cover;
             background-position: center 50%;
             background-repeat: no-repeat;
-            z-index: -50; /* Sends it to the very back */
+            z-index: -50;
         }
 
-        /* Adjusts the hero container to be transparent so we see the fixed bg */
         .hero-section {
             background: transparent; 
             min-height: 80vh;
@@ -56,7 +52,6 @@
             align-items: center;
         }
 
-        /* Scroll Offset Fix */
         .scroll-offset {
             padding-top: 120px;
             margin-top: -120px;
@@ -66,7 +61,6 @@
             min-height: 500px;
         }
 
-        /* Number Input Cleaning */
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -76,13 +70,12 @@
             -moz-appearance: textfield;
         }
         
-        /* Button Straddle Effect */
         .straddle-btn-container {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            transform: translateY(50%); /* Moves button down 50% of its height */
+            transform: translateY(50%);
             display: flex;
             justify-content: center;
             z-index: 20;
@@ -151,7 +144,7 @@
                 
                 <h1 class="text-3xl md:text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
-                    <span class="block text-xl md:text-3xl font-extrabold text-navy-rhm mt-2">
+                    <span class="block text-lg md:text-2xl font-normal text-navy-rhm mt-3">
                         Your trusted partner in finding the right mortgage.
                     </span>
                 </h1>
@@ -376,8 +369,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Mobile Menu Logic ---
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
 
@@ -387,12 +378,10 @@
                 });
             }
 
-            // Global function to close menu when a link is clicked
             window.closeMenu = function() {
                 if(menu) menu.classList.add('hidden');
             }
 
-            // --- Calculator Logic ---
             const calculateBtn = document.getElementById('calculateBtn');
             const resultPayment = document.getElementById('resultPayment');
             const resultDetails = document.getElementById('resultDetails');
@@ -449,7 +438,6 @@
                 resultPayment.innerText = formattedPayment;
                 resultDetails.innerHTML = `Loan Amount: $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}%.`;
                 
-                // Add Breakdown
                 const breakdownDetails = `
                     <div class="grid grid-cols-2 gap-2 mt-4 text-xs border-t border-gray-200 pt-3">
                         <div class="text-left text-gray-600">Principal & Interest:</div>
@@ -465,7 +453,6 @@
 
             resetResult();
 
-            // --- Contact Form AJAX Logic ---
             const contactForm = document.getElementById('contactForm');
             const formMessage = document.getElementById('contactFormMessage');
 
