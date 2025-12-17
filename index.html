@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robertson Home Mortgage in Goffstown, NH offers competitive mortgage rates, expert guidance, and fast closings. Use our mortgage calculator and apply online today.">
     <title>Robertson Home Mortgage - Ready, Set, Own</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,41 +31,42 @@
             scroll-behavior: smooth;
         }
         
-        /* Hero Background */
-        .hero-bg {
+        /* --- PRO BACKGROUND FIX --- 
+           This div sits behind everything and never moves or resizes 
+           when the mobile keyboard opens. */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background-image: url('./town-hero.png');
             background-size: cover;
             background-position: center 50%;
             background-repeat: no-repeat;
+            z-index: -50; /* Sends it to the very back */
+        }
+
+        /* Adjusts the hero container to be transparent so we see the fixed bg */
+        .hero-section {
+            background: transparent; 
             min-height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-attachment: fixed;
         }
 
-        /* Mobile Fix: Remove Background Image */
-        @media (max-width: 768px) {
-            .hero-bg {
-                background-image: none !important;
-                background-color: #f9fafb;
-                background-attachment: scroll;
-                min-height: auto;
-                padding-top: 40px; 
-                padding-bottom: 40px;
-            }
-        }
-
-        /* Scroll anchor fix (prevents header covering content) */
-        .anchor-section {
-            scroll-margin-top: 140px; 
+        /* Scroll Offset Fix */
+        .scroll-offset {
+            padding-top: 120px;
+            margin-top: -120px;
         }
 
         .calculator-content-container {
             min-height: 500px;
         }
 
-        /* Clean number inputs */
+        /* Number Input Cleaning */
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -68,9 +75,23 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
+        
+        /* Button Straddle Effect */
+        .straddle-btn-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(50%); /* Moves button down 50% of its height */
+            display: flex;
+            justify-content: center;
+            z-index: 20;
+        }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
+<body class="font-sans bg-gray-50 text-gray-800 relative">
+
+<div class="fixed-bg"></div>
 
 <form name="contact" netlify data-netlify="true" hidden>
     <input type="hidden" name="form-name" value="contact" />
@@ -78,41 +99,63 @@
     <input type="email" name="email" />
     <input type="tel" name="phone" />
     <textarea name="message"></textarea>
+    <input type="hidden" name="bot-field" />
 </form>
 
     <header class="sticky top-0 z-50 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8">
-            
-            <div class="flex flex-1 items-center justify-start">
-                <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 md:h-20 w-auto flex-shrink-0 object-contain">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-5 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8">
+                
+                <div class="flex flex-1 items-center justify-start">
+                    <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage Logo" class="h-16 md:h-20 w-auto flex-shrink-0 object-contain">
+                </div>
+
+                <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
+                    <a href="#" class="hover:text-gold-rhm transition">Home</a>
+                    <a href="#about" class="hover:text-gold-rhm transition">About</a> 
+                    <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
+                    <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
+                </nav>
+
+                <div class="hidden md:flex justify-end items-center">
+                     <a href="#contact" class="inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
+                         Contact Us
+                     </a>
+                </div>
+
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" class="text-navy-rhm hover:text-gold-rhm focus:outline-none p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
-            <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
-                <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
-                <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
-            </nav>
-
-            <div class="flex justify-end items-center">
-                 <a href="#contact" class="inline-block px-5 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                     Contact Us
-                 </a>
+            <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100 transition-all duration-300">
+                <nav class="flex flex-col space-y-4 mt-4 text-center font-semibold text-navy-rhm text-lg">
+                    <a href="#" class="block hover:text-gold-rhm" onclick="closeMenu()">Home</a>
+                    <a href="#about" class="block hover:text-gold-rhm" onclick="closeMenu()">About</a>
+                    <a href="#calculator" class="block hover:text-gold-rhm" onclick="closeMenu()">Calculator</a>
+                    <a href="https://2453979.my1003app.com/" class="block text-gold-rhm font-bold" onclick="closeMenu()">Apply Now</a>
+                    <a href="#contact" class="inline-block mx-auto px-6 py-2 bg-navy-rhm text-white rounded-full hover:bg-navy-rhm/90" onclick="closeMenu()">Contact Us</a>
+                </nav>
             </div>
-            
         </div>
     </header>
 
-    <main class="hero-bg py-16 sm:py-24 relative z-0">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="hero-section py-16 sm:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             
-            <div class="space-y-6 bg-white/90 p-6 sm:p-8 rounded-2xl shadow-2xl calculator-content-container">
-                <h1 class="text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
+            <div class="space-y-6 bg-white/95 p-6 sm:p-8 rounded-2xl shadow-2xl calculator-content-container backdrop-blur-sm">
+                
+                <h1 class="text-3xl md:text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
-                    <span class="block text-3xl font-semibold text-gray-700 mt-2">
+                    <span class="block text-xl md:text-3xl font-extrabold text-navy-rhm mt-2">
                         Your trusted partner in finding the right mortgage.
                     </span>
                 </h1>
+
                 <p class="text-xl text-gray-600">
                     Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey to your new home. Start with a quick estimate below!
                 </p>
@@ -134,41 +177,41 @@
                     Apply Now &rarr;
                 </a>
 
-                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300 anchor-section">
-                    <h2 class="text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
+                <div id="calculator" class="pt-6 mt-6 border-t border-gray-300">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-rhm mb-6 border-b pb-2 border-gold-rhm">
                         Monthly Payment Calculator
                     </h2>
                     
                     <div class="space-y-4">
                         <div>
                             <label for="purchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
-                            <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            <input type="number" id="purchasePrice" value="300000" min="1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition outline-none">
                         </div>
 
                         <div>
                             <label for="downPayment" class="block text-sm font-medium text-gray-700">Down Payment ($)</label>
-                            <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            <input type="number" id="downPayment" value="60000" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition outline-none">
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="annualTaxes" class="block text-sm font-medium text-gray-700">Annual Property Taxes ($)</label>
-                                <input type="number" id="annualTaxes" value="4800" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                <input type="number" id="annualTaxes" value="4800" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition outline-none">
                             </div>
                             <div>
                                 <label for="annualInsurance" class="block text-sm font-medium text-gray-700">Annual Home Insurance ($)</label>
-                                <input type="number" id="annualInsurance" value="1200" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                <input type="number" id="annualInsurance" value="1200" min="0" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition outline-none">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
-                                <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                <input type="number" id="rate" value="6.5" step="0.01" min="0.01" max="15" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition outline-none">
                             </div>
                             
                             <div>
                                 <label for="term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
-                                <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none bg-white">
+                                <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm focus:border-gold-rhm transition appearance-none">
                                     <option value="30">30 Years</option>
                                     <option value="20">20 Years</option>
                                     <option value="15">15 Years</option>
@@ -186,16 +229,16 @@
                         <div class="p-4 bg-white rounded-lg border-2 border-navy-rhm shadow-xl">
                             <p class="text-center text-xl font-semibold text-gray-700" id="resultTitle">Estimated Total Monthly Payment</p>
                             <p class="text-center text-4xl font-extrabold text-navy-rhm my-2" id="resultPayment">---</p>
-                            <p class="text-center text-sm text-gray-500" id="resultDetails">
+                            <div class="text-center text-sm text-gray-500" id="resultDetails">
                                 Enter loan details and click 'Calculate' to see your estimate.
-                            </p>
+                            </div>
                             
                             <div class="mt-3 space-y-1">
                                 <p class="text-center text-xs text-red-700 italic">
-                                    *This is an estimate for Principal, Interest, Taxes, and Insurance (PITI) only. **It does not include Private Mortgage Insurance (PMI)**, which may be required. Contact us for an official rate quote and final payment details.
+                                    *This is an estimate for Principal, Interest, Taxes, and Insurance (PITI) only. **It does not include Private Mortgage Insurance (PMI)**, which may be required.
                                 </p>
                                 <p class="text-center text-xs text-gray-500 italic">
-                                    **Actual Annual Percentage Rate (APR) is subject to a complete application, credit approval, and final loan terms.
+                                    **Actual APR is subject to a complete application, credit approval, and final loan terms.
                                 </p>
                             </div>
                         </div>
@@ -210,23 +253,22 @@
         </div>
     </main>
     
-    <section id="apply" class="relative pb-16 pt-20 bg-navy-rhm shadow-inner z-0">
-        
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center z-10">
-            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl border-4 border-white hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105">
+    <section id="apply" class="relative py-16 sm:py-20 bg-navy-rhm shadow-inner pb-24 z-10">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
+            <p class="text-xl text-gray-200 mb-2 max-w-2xl mx-auto">
+                Get pre-approved in minutes and take the first step toward securing your dream home. Our process is fast, simple, and secure.
+            </p>
+        </div>
+
+        <div class="straddle-btn-container">
+            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105 border-4 border-white">
                 Start Your Application Now &rarr;
             </a>
         </div>
-
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
-            <p class="text-xl text-gray-200 mb-0 max-w-2xl mx-auto">
-                Take the next step with confidence. Whether you are purchasing, refinancing, or exploring equity options, our secure online application is the best way to get started.
-            </p>
-        </div>
     </section>
 
-    <section id="contact" class="py-24 sm:py-32 bg-white anchor-section">
+    <section id="contact" class="py-24 bg-white relative z-0 pt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Get In Touch</h2>
             <div class="grid md:grid-cols-3 gap-10">
@@ -260,28 +302,28 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                <div class="md:col-span-2 p-6 rounded-xl shadow-lg border border-gray-200 bg-white">
+                    <form id="contactForm" class="space-y-4">
                         <input type="hidden" name="form-name" value="contact" />
                         <input type="hidden" name="bot-field" />
                         
                         <div>
                             <label for="contactName" class="block text-sm font-medium text-gray-700">Full Name</label>
-                            <input type="text" id="contactName" name="name" placeholder="John Doe" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                            <input type="text" id="contactName" name="name" placeholder="John Doe" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm focus:border-gold-rhm transition">
                         </div>
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
                                 <label for="contactEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                <input type="email" id="contactEmail" name="email" placeholder="you@example.com" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm focus:border-gold-rhm transition">
                             </div>
                             <div>
                                 <label for="contactPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="tel" id="contactPhone" name="phone" placeholder="(555) 123-4567" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition">
+                                <input type="tel" id="contactPhone" name="phone" placeholder="(555) 123-4567" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm focus:border-gold-rhm transition">
                             </div>
                         </div>
                         <div>
                             <label for="contactMessage" class="block text-sm font-medium text-gray-700">How can we help you?</label>
-                            <textarea id="contactMessage" name="message" rows="4" placeholder="I'd like to discuss refinancing options..." class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-gold-rhm focus:border-gold-rhm transition"></textarea>
+                            <textarea id="contactMessage" name="message" rows="4" placeholder="I'd like to discuss refinancing options..." required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm focus:border-gold-rhm transition"></textarea>
                         </div>
                         <button type="submit" class="w-full py-3 bg-gold-rhm text-navy-rhm font-extrabold rounded-xl shadow-md hover:bg-gold-rhm/80 transition duration-200">
                             Send Message
@@ -293,13 +335,11 @@
         </div>
     </section>
     
-    <section id="about" class="py-12 sm:py-20 bg-gray-100 anchor-section">
+    <section id="about" class="py-12 sm:py-20 bg-gray-100 scroll-offset relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
             <h2 class="text-4xl font-extrabold text-navy-rhm mb-4 text-center">
                 Our Mission
             </h2>
-            
             <div class="max-w-4xl mx-auto mt-10">
                 <p class="text-xl text-gray-700 mb-8">
                     Robertson Home Mortgage began with a simple conviction: homeownership can be within reach for anyone when the right strategy and financing options come together. We founded this brokerage to give clients genuine choice—pairing a wide network of lending partners with the kind of one-on-one guidance that turns possibilities into clear, confident decisions. We learned that offering a wider menu of loans, tailored to each borrower’s goals and timeline, creates better outcomes and a smoother path to “yes.”
@@ -308,11 +348,10 @@
                     Today, every file we touch reflects that purpose. You will see a full spectrum of programs—conventional, government-backed, bridge, equity, and custom solutions for self-employed income—distilled into a financing strategy that fits your life. Our team ensures you receive direct, expert service from the first call to closing, backed by experience that puts clarity and momentum at the center of your journey.
                 </p>
             </div>
-            
         </div>
     </section>
 
-    <footer class="bg-navy-rhm text-white py-8">
+    <footer class="bg-navy-rhm text-white py-8 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
             <p class="text-sm">
                 <span class="font-bold text-gold-rhm">Robertson Home Mortgage</span> |
@@ -322,7 +361,6 @@
 
             <div class="flex items-center justify-center space-x-3">
                 <img src="./eho-logo.png" alt="Equal Housing Opportunity Logo" class="h-8 w-8 flex-shrink-0">
-                
                 <p class="text-sm font-bold text-gray-100">
                     Equal Housing Opportunity - Licensed by the NH Department of Banking
                 </p>
@@ -338,19 +376,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Mobile Menu Logic ---
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            if(btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+
+            // Global function to close menu when a link is clicked
+            window.closeMenu = function() {
+                if(menu) menu.classList.add('hidden');
+            }
+
+            // --- Calculator Logic ---
             const calculateBtn = document.getElementById('calculateBtn');
             const resultPayment = document.getElementById('resultPayment');
             const resultDetails = document.getElementById('resultDetails');
             
-            // --- Calculator Logic ---
-            
-            // Function to reset the display when inputs change
             function resetResult() {
                 resultPayment.innerText = '---';
                 resultDetails.innerText = 'Enter loan details and click \'Calculate\' to see your estimate.';
             }
 
-            // Add event listeners to input fields to clear result on change
             const inputs = document.querySelectorAll('#calculator input, #calculator select');
             inputs.forEach(input => {
                 input.addEventListener('input', resetResult);
@@ -359,31 +410,24 @@
             calculateBtn.addEventListener('click', calculateMortgage);
 
             function calculateMortgage() {
-                // 1. Get Input Values and Convert to Numbers
                 const purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
                 const downPayment = parseFloat(document.getElementById('downPayment').value);
                 const annualRate = parseFloat(document.getElementById('rate').value) / 100;
                 const termYears = parseFloat(document.getElementById('term').value);
-                
-                // Get Tax and Insurance Inputs (Default to 0 if NaN)
                 const annualTaxes = parseFloat(document.getElementById('annualTaxes').value) || 0;
                 const annualInsurance = parseFloat(document.getElementById('annualInsurance').value) || 0;
 
-                // Basic validation
                 if (isNaN(purchasePrice) || isNaN(downPayment) || isNaN(annualRate) || isNaN(termYears) || purchasePrice <= 0 || purchasePrice <= downPayment || termYears <= 0 || annualRate < 0) {
                     resultPayment.innerText = "ERROR";
                     resultDetails.innerText = "Please ensure Purchase Price is > Down Payment and all loan values are valid and non-zero.";
                     return;
                 }
 
-                // 2. Calculate Loan Principal and Monthly Rate/Term
                 const principal = purchasePrice - downPayment;
-                const monthlyRate = annualRate / 12; // i
-                const totalPayments = termYears * 12; // n
+                const monthlyRate = annualRate / 12; 
+                const totalPayments = termYears * 12; 
 
-                // 3. Apply the Monthly Payment Formula (P&I Component)
                 let monthlyPAndI;
-
                 if (monthlyRate === 0) {
                     monthlyPAndI = principal / totalPayments;
                 } else {
@@ -391,14 +435,10 @@
                     monthlyPAndI = principal * (monthlyRate * powerFactor) / (powerFactor - 1);
                 }
                 
-                // 4. Calculate Monthly Taxes and Insurance (T&I Component)
                 const monthlyTaxes = annualTaxes / 12;
                 const monthlyInsurance = annualInsurance / 12;
-                
-                // 5. Calculate Total Payment (PITI)
                 const totalMonthlyPayment = monthlyPAndI + monthlyTaxes + monthlyInsurance;
 
-                // 6. Format and Display Result
                 const formattedPayment = totalMonthlyPayment.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',
@@ -406,14 +446,51 @@
                     maximumFractionDigits: 2
                 });
                 
-                // Update specific elements
                 resultPayment.innerText = formattedPayment;
-                resultDetails.innerHTML = 
-                    `Loan Amount: $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}%.`;
+                resultDetails.innerHTML = `Loan Amount: $${principal.toLocaleString()} over ${termYears} years at ${(annualRate * 100).toFixed(2)}%.`;
+                
+                // Add Breakdown
+                const breakdownDetails = `
+                    <div class="grid grid-cols-2 gap-2 mt-4 text-xs border-t border-gray-200 pt-3">
+                        <div class="text-left text-gray-600">Principal & Interest:</div>
+                        <div class="text-right font-bold text-navy-rhm">$${monthlyPAndI.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                        <div class="text-left text-gray-600">Property Taxes:</div>
+                        <div class="text-right font-bold text-navy-rhm">$${monthlyTaxes.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                        <div class="text-left text-gray-600">Home Insurance:</div>
+                        <div class="text-right font-bold text-navy-rhm">$${monthlyInsurance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                    </div>
+                `;
+                resultDetails.innerHTML += breakdownDetails;
             }
 
-            // Initialization: Set the initial placeholder content 
             resetResult();
+
+            // --- Contact Form AJAX Logic ---
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('contactFormMessage');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault(); 
+                    const formData = new FormData(contactForm);
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(formData).toString()
+                    })
+                    .then(() => {
+                        contactForm.reset();
+                        formMessage.innerText = "Thanks for reaching out! We'll be in touch shortly.";
+                        formMessage.classList.remove('hidden', 'text-red-700', 'bg-red-100');
+                        formMessage.classList.add('block', 'text-green-700', 'bg-green-100');
+                    })
+                    .catch((error) => {
+                        formMessage.innerText = "Something went wrong. Please call us directly.";
+                        formMessage.classList.remove('hidden', 'text-green-700', 'bg-green-100');
+                        formMessage.classList.add('block', 'text-red-700', 'bg-red-100');
+                    });
+                });
+            }
         });
     </script>
 </body>
