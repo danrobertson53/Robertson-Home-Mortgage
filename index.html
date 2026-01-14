@@ -74,7 +74,11 @@
 </form>
 <form name="quote-request" netlify data-netlify="true" hidden>
     <input type="hidden" name="form-name" value="quote-request" />
-    <input type="text" name="firstName" /> <input type="text" name="lastName" /> <input type="email" name="email" /> <input type="number" name="loanAmount" /> <input type="tel" name="phone" /> <select name="goal"></select>
+    <input type="text" name="firstName" /> <input type="text" name="lastName" /> 
+    <input type="email" name="email" /> <input type="tel" name="phone" /> 
+    <input type="number" name="propertyValue" /> <input type="number" name="loanAmount" />
+    <select name="propertyType"></select> <select name="creditScore"></select>
+    <input type="text" name="desiredRate" /> <select name="goal"></select>
 </form>
 
     <header class="sticky top-0 z-50 bg-white shadow-lg border-t-4 border-gold-rhm">
@@ -122,13 +126,36 @@
     <main class="hero-section py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             
-            <div class="text-center mb-10 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-sm md:max-w-4xl md:mx-auto">
+            <div class="space-y-6 bg-white/95 p-6 sm:p-8 rounded-2xl shadow-2xl backdrop-blur-sm mb-10 max-w-4xl mx-auto">
                 <h1 class="text-3xl md:text-5xl font-extrabold text-navy-rhm leading-tight tracking-tight">
                     Ready, Set, Own.
+                    <span class="block text-xl md:text-3xl font-extrabold text-navy-rhm mt-2">
+                        Your trusted partner in finding the right mortgage.
+                    </span>
                 </h1>
-                <p class="text-xl text-gray-600 mt-4">
-                    Calculate your payments or get a custom rate quote in seconds.
+
+                <p class="text-xl text-gray-600">
+                    Robertson Home Mortgage provides personalized loan solutions and expert guidance to help you navigate the journey to your new home. Start with a quick estimate below!
                 </p>
+                
+                <ul class="space-y-2 text-lg text-gray-700">
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Competitive Rates</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Expert Guidance</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-gold-rhm font-bold text-2xl">&bull;</span>
+                        <span>Fast Closings</span>
+                    </li>
+                </ul>
+                
+                <a href="https://2453979.my1003app.com/" class="inline-block px-6 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-lg hover:bg-gold-rhm/80 transition duration-300 transform hover:scale-105">
+                    Apply Now &rarr;
+                </a>
             </div>
     
             <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -191,13 +218,13 @@
                         Get a Custom Rate Quote
                     </h2>
                     <p class="text-gray-300 mb-6 text-sm relative z-10">
-                        Rates change daily. Fill out this quick form and we'll send you a custom quote based on today's market.
+                        Fill out this quick form and we'll send you a custom scenario based on today's market.
                     </p>
     
                     <form name="quote-request" netlify data-netlify="true" id="quoteForm" class="space-y-4 relative z-10">
                         <input type="hidden" name="form-name" value="quote-request" />
                         
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-semibold text-gold-rhm mb-1">First Name</label>
                                 <input type="text" name="firstName" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
@@ -208,34 +235,75 @@
                             </div>
                         </div>
     
-                        <div>
-                            <label class="block text-xs font-semibold text-gold-rhm mb-1">Email Address</label>
-                            <input type="email" name="email" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
-                        </div>
-    
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Loan Amount ($)</label>
-                                <input type="number" name="loanAmount" placeholder="300000" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Email Address</label>
+                                <input type="email" name="email" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gold-rhm mb-1">Phone</label>
                                 <input type="tel" name="phone" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
                             </div>
                         </div>
-    
-                        <div>
-                            <label class="block text-xs font-semibold text-gold-rhm mb-1">Goal</label>
-                            <select name="goal" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
-                                <option value="Purchase" class="text-navy-rhm">I want to buy a home</option>
-                                <option value="Refinance" class="text-navy-rhm">I want to refinance</option>
-                                <option value="Pre-Approval" class="text-navy-rhm">Get Pre-Approved</option>
-                            </select>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Est. Property Value</label>
+                                <input type="number" name="propertyValue" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Loan Amount</label>
+                                <input type="number" name="loanAmount" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Property Type</label>
+                                <select name="propertyType" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
+                                    <option value="" disabled selected class="text-gray-500">Select...</option>
+                                    <option value="Single Family" class="text-navy-rhm">Single Family Home</option>
+                                    <option value="Condo" class="text-navy-rhm">Condo / Townhome</option>
+                                    <option value="Multi-Family" class="text-navy-rhm">Multi-Family (2-4 Units)</option>
+                                    <option value="Manufactured" class="text-navy-rhm">Manufactured Home</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Est. Credit Score</label>
+                                <select name="creditScore" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
+                                    <option value="" disabled selected class="text-gray-500">Select...</option>
+                                    <option value="780+" class="text-navy-rhm">780+</option>
+                                    <option value="740-779" class="text-navy-rhm">740 - 779</option>
+                                    <option value="680-739" class="text-navy-rhm">680 - 739</option>
+                                    <option value="640-679" class="text-navy-rhm">640 - 679</option>
+                                    <option value="620-639" class="text-navy-rhm">620 - 639</option>
+                                    <option value="Below 620" class="text-navy-rhm">Below 620</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Desired Rate (%)</label>
+                                <input type="text" name="desiredRate" placeholder="ex: 6.25" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Goal</label>
+                                <select name="goal" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
+                                    <option value="Purchase" class="text-navy-rhm">I want to buy a home</option>
+                                    <option value="Refinance" class="text-navy-rhm">I want to refinance</option>
+                                    <option value="Pre-Approval" class="text-navy-rhm">Get Pre-Approved</option>
+                                </select>
+                            </div>
                         </div>
     
-                        <button type="submit" class="w-full py-3 mt-2 bg-gold-rhm text-navy-rhm font-bold text-lg rounded-xl shadow-lg hover:bg-white hover:text-navy-rhm transition duration-300">
+                        <button type="submit" class="w-full py-3 mt-4 bg-gold-rhm text-navy-rhm font-bold text-lg rounded-xl shadow-lg hover:bg-white hover:text-navy-rhm transition duration-300">
                             Get My Quote &rarr;
                         </button>
+
+                        <p class="text-[10px] text-gray-400 mt-2 leading-tight opacity-70">
+                            <strong>Disclosure:</strong> The rate quote provided is an estimate for informational purposes only and does not constitute a commitment to lend or an official Loan Estimate. Actual terms, rates, and eligibility are subject to a full mortgage application, credit approval, and property appraisal.
+                        </p>
                         
                         <div id="quoteFormMessage" class="text-center text-sm p-2 rounded hidden"></div>
                     </form>
