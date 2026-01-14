@@ -424,21 +424,27 @@
             function setCalcMode(mode) {
                 calcMode = mode;
                 if(mode === 'Purchase') {
-                    // Update Button Styles
-                    calcBtnPurch.classList.add('bg-navy-rhm', 'text-white');
-                    calcBtnPurch.classList.remove('text-gray-600');
-                    calcBtnRefi.classList.remove('bg-navy-rhm', 'text-white');
-                    calcBtnRefi.classList.add('text-gray-600');
+                    // Purchase Active (Add Blue, Remove Gray/Hover)
+                    calcBtnPurch.classList.add('bg-navy-rhm', 'text-white', 'shadow-sm');
+                    calcBtnPurch.classList.remove('text-gray-600', 'hover:text-navy-rhm');
                     
-                    // Show/Hide Fields
+                    // Refi Inactive (Remove Blue, Add Gray/Hover)
+                    calcBtnRefi.classList.remove('bg-navy-rhm', 'text-white', 'shadow-sm');
+                    calcBtnRefi.classList.add('text-gray-600', 'hover:text-navy-rhm');
+                    
+                    // Fields
                     calcPurchFields.classList.remove('hidden-field');
                     calcRefiFields.classList.add('hidden-field');
                 } else {
-                    calcBtnRefi.classList.add('bg-navy-rhm', 'text-white');
-                    calcBtnRefi.classList.remove('text-gray-600');
-                    calcBtnPurch.classList.remove('bg-navy-rhm', 'text-white');
-                    calcBtnPurch.classList.add('text-gray-600');
+                    // Refi Active
+                    calcBtnRefi.classList.add('bg-navy-rhm', 'text-white', 'shadow-sm');
+                    calcBtnRefi.classList.remove('text-gray-600', 'hover:text-navy-rhm');
 
+                    // Purchase Inactive
+                    calcBtnPurch.classList.remove('bg-navy-rhm', 'text-white', 'shadow-sm');
+                    calcBtnPurch.classList.add('text-gray-600', 'hover:text-navy-rhm');
+
+                    // Fields
                     calcRefiFields.classList.remove('hidden-field');
                     calcPurchFields.classList.add('hidden-field');
                 }
