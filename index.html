@@ -1,598 +1,670 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Robertson Home Mortgage in Goffstown, NH offers competitive mortgage rates, expert guidance, and fast closings.">
-    <title>Robertson Home Mortgage - Ready, Set, Own</title>
+    <meta name="description" content="Robertson Home Mortgage - Expert mortgage strategy and financing in NH. We structure debt that aligns with your financial goals.">
+    <title>Robertson Home Mortgage | Strategy & Finance</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'navy-rhm': '#1e3a8a', // Navy Blue
-                        'gold-rhm': '#f59e0b', // Golden Yellow
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <style>
-        html { scroll-behavior: smooth; }
-        
-        /* Fixed Background */
-        .fixed-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('./town-hero.png'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -50;
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --mortgage-blue: #003366;      
+            --brand-gold: #FFC72C;        
+            --white: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f4f6f8;
+            --footer-bg: #002855;
+            --success-green: #28a745;
         }
 
-        .hero-section {
-            background: transparent; 
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        html { scroll-behavior: smooth; } 
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; background-color: var(--white); }
+
+        /* --- LAYOUT CONTROL --- */
+        .content-wrapper { display: flex; flex-direction: column; }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            background: white; 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 3px solid var(--brand-gold); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo-container { display: flex; align-items: center; }
+        .nav-img { height: 50px; width: auto; object-fit: contain; display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--mortgage-blue); font-weight: 600; font-size: 0.9rem; transition: color 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: var(--brand-gold); }
+
+        .nav-btn-portal {
+            background-color: var(--mortgage-blue);
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease;
         }
+        .nav-btn-portal:hover { background-color: var(--brand-gold); color: var(--text-dark) !important; }
 
-        /* Input Cleanup */
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        input[type=number] { -moz-appearance: textfield; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .bar { width: 25px; height: 3px; background-color: var(--mortgage-blue); transition: 0.3s; }
         
-        /* Floating Button Mobile */
-        .straddle-btn-container {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            transform: translateY(50%);
-            display: flex; justify-content: center; z-index: 20;
+        /* MOBILE MENU (Floating Right Card) */
+        .mobile-menu {
+            position: fixed;
+            top: 75px; 
+            right: 0;  
+            width: 240px; 
+            background: white;
+            padding: 15px 0;
+            box-shadow: -5px 10px 20px rgba(0,0,0,0.1); 
+            display: none; 
+            flex-direction: column;
+            align-items: flex-end; 
+            gap: 0;
+            z-index: 999;
+            border-bottom: 4px solid var(--brand-gold);
+            border-bottom-left-radius: 15px; 
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a { 
+            text-decoration: none; 
+            color: var(--mortgage-blue); 
+            font-weight: 600; 
+            font-size: 1rem; 
+            padding: 12px 25px; 
+            border-bottom: 1px solid #f9f9f9; 
+            width: 100%; 
+            text-align: right; 
+            display: block;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+
+        /* --- HERO SECTION --- */
+        .hero { position: relative; height: 60vh; min-height: 550px; background-image: url('town-hero.png'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 40, 85, 0.8), rgba(0, 40, 85, 0.5)); }
+        .hero-content { position: relative; z-index: 1; padding: 0 20px; width: 100%; max-width: 800px; transform: translateY(-20px); }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.35rem; font-weight: 500; margin: 0 auto; opacity: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); max-width: 700px; line-height: 1.5; }
+
+        .hero-apply-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 35px;
+            background-color: var(--brand-gold);
+            color: var(--text-dark);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .hero-apply-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); background-color: white; }
+
+        /* --- SERVICES SECTION (Revised for Mortgage Only) --- */
+        .services-section { background-color: var(--bg-light); padding: 0px 5% 40px 5%; display: flex; justify-content: center; }
+        .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1100px; }
+        /* Desktop: Negative margin pulls it up */
+        .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
+        
+        .service-card { background: white; flex: 1; min-width: 300px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        
+        .service-card h2 { margin: 10px 0 5px 0; font-size: 1.8rem; font-weight: 800; color: var(--mortgage-blue); }
+        .service-card h4 { margin: 0 0 15px 0; font-weight: 600; color: #889bb0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem; }
+        .service-card p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
+
+        .btn-container { margin-top: auto; display: flex; justify-content: center; }
+        .btn { display: inline-block; padding: 12px 35px; color: white; font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: transform 0.2s, box-shadow 0.2s; width: 100%; max-width: 250px; cursor: pointer; border: none; background: var(--mortgage-blue); }
+        .btn:hover { background: var(--brand-gold); color: var(--text-dark); }
+
+        .calc-trigger-box { margin-top: 40px; margin-bottom: 30px; text-align: center; font-size: 0.9rem; color: #666; position: relative; z-index: 10; }
+        .calc-link { color: var(--mortgage-blue); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--brand-gold); transition: all 0.3s; cursor: pointer; }
+        .calc-link:hover { color: var(--brand-gold); border-bottom-style: solid; }
+
+        /* --- PROGRAMS SECTION --- */
+        .programs-section { background-color: white; padding: 60px 5%; text-align: center; border-bottom: 1px solid #eee; }
+        .programs-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+        .programs-header p { color: #666; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .programs-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
+        
+        .program-card {
+            background: white;
+            color: var(--text-dark);
+            flex: 1;
+            min-width: 220px;
+            max-width: 320px;
+            padding: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eee;
+            border-bottom: 4px solid var(--brand-gold);
+            text-align: left;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .program-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .program-card h3 { color: var(--mortgage-blue); margin: 0 0 8px 0; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .program-card p { font-size: 0.9rem; color: #666; margin: 0; line-height: 1.5; }
+        .program-card span { display: block; margin-top: 15px; color: var(--mortgage-blue); font-size: 0.8rem; font-weight: 600; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section { background-color: white; padding: 60px 5% 80px 5%; text-align: left; }
+        .about-container { max-width: 900px; margin: 0 auto; }
+        .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
+        .about-container p, .team-bio-text p { 
+            color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 400; 
+        }
+        
+        /* TEAM ACCORDION CARD */
+        .team-card {
+            background-color: #f8f9fa; border-radius: 15px; margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold);
+            overflow: hidden; transition: all 0.3s ease;
+        }
+        .team-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .team-header { display: flex; align-items: center; gap: 30px; padding: 30px; cursor: pointer; position: relative; }
+        .team-photo { 
+            width: 120px; height: 120px; border-radius: 15px; object-fit: cover; object-position: top center; 
+            border: 3px solid var(--brand-gold); flex-shrink: 0; 
+        }
+        .team-info { flex: 1; }
+        .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; }
+        .team-info h4 { color: #889bb0; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin: 0; font-weight: 700; }
+        .team-toggle-icon { font-size: 1.5rem; color: var(--brand-gold); transition: transform 0.3s ease; margin-left: 10px; }
+        .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 30px; background: #fff; }
+        .team-card.active .team-content { padding: 20px 30px 30px 30px; border-top: 1px solid #eee; }
+        .team-card.active .team-toggle-icon { transform: rotate(180deg); }
+
+        .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
+
+        /* --- ROADMAP / STRATEGY SECTION --- */
+        .roadmap-section { background-color: var(--mortgage-blue); padding: 80px 5%; display: none; justify-content: center; } /* Hidden by default until triggered */
+        .roadmap-container { background: white; width: 100%; max-width: 800px; padding: 50px; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .fade-in { animation: fadeIn 0.8s ease forwards; }
+        .roadmap-header { text-align: center; margin-bottom: 30px; }
+        .roadmap-header h2 { color: var(--mortgage-blue); font-weight: 800; font-size: 2rem; margin: 0; }
+        .what-is-this-link { font-size: 0.8rem; color: #889bb0; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 5px; }
+        .what-is-this-content { display: none; background: #f9f9f9; padding: 15px; margin-top: 15px; border-radius: 6px; font-size: 0.9rem; color: #555; text-align: left; border-left: 3px solid var(--brand-gold); }
+
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .form-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 240px; text-align: left; }
+        .form-group label { font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: var(--mortgage-blue); }
+        .form-group input, .form-group select, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fdfdfd; width: 100%; box-sizing: border-box; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
+        
+        .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
+        .btn-submit:hover { background: var(--brand-gold); color: var(--text-dark); }
+        
+        .success-box { text-align: center; padding: 20px; animation: fadeIn 0.5s ease; }
+        .check-icon { font-size: 4rem; color: var(--success-green); margin-bottom: 10px; }
+
+        /* --- QUOTE SECTION --- */
+        .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; }
+        .quote-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
+        .quote-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
+        .quote-header p { margin-bottom: 30px; color: #666; }
+        .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; }
+
+        /* --- GENERAL CONTACT SECTION --- */
+        .simple-contact-section { background-color: white; padding: 80px 5%; }
+        .simple-contact-container { max-width: 700px; margin: 0 auto; text-align: center; }
+        .simple-contact-container h2 { color: var(--mortgage-blue); font-weight: 800; font-size: 2rem; margin-bottom: 10px; }
+        .simple-contact-container p { color: #666; margin-bottom: 30px; }
+
+        /* --- MODALS --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.85); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-top: 5px solid var(--brand-gold); animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto;}
+        .close-calc { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; cursor: pointer; color: #999; }
+        .calc-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 15px; }
+        .calc-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-weight: 600; color: #888; font-size: 0.9rem; }
+        .calc-tab.active { color: var(--mortgage-blue); border-bottom: 3px solid var(--mortgage-blue); }
+        .calc-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .calc-col { flex: 1; }
+        .calc-col label { font-size: 0.75rem; font-weight: 700; color: #666; display: block; margin-bottom: 5px; }
+        .calc-col input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; box-sizing: border-box;}
+        .calc-btn { width: 100%; background: var(--mortgage-blue); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 15px; }
+        .calc-btn-outline { width: 100%; background: white; color: var(--mortgage-blue); border: 2px solid var(--mortgage-blue); padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .calc-result { background: #f4f8fb; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border: 1px solid #dae1e7; }
+        .calc-result h3 { color: var(--mortgage-blue); font-size: 1.8rem; margin: 0; font-weight: 800; line-height: 1.1; }
+        .calc-disclaimer { font-size: 0.65rem; color: #999; text-align: center; margin-top: 10px; line-height: 1.3; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 20px 5%; font-size: 0.9rem; text-align: center; }
+        .footer-logo { max-width: 200px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        .footer-contact p { margin-bottom: 10px; line-height: 1.6; }
+        .footer-email-link { color: var(--brand-gold); text-decoration: none; font-weight: 600; }
+        .disclaimer { color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 800px; margin: 40px auto 0 auto; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .disclaimer a { color: rgba(255,255,255,0.7); transition: color 0.3s; }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            nav { padding: 10px 15px; }
+            .nav-links { display: none; } 
+            .nav-img { height: 40px; } 
+            .hamburger { display: flex; } 
+
+            .hero { height: auto; min-height: 0; padding: 60px 0 80px 0; align-items: center; }
+            .hero-content { transform: translateY(0); margin-top: 0; padding: 0 15px; }
+            .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+            .hero p { font-size: 1.1rem; line-height: 1.4; }
+            
+            .services-container { margin-top: -40px; flex-direction: column; gap: 20px; padding: 0 15px; }
+            .service-card { width: auto; margin-bottom: 0px; padding: 30px 20px; }
+            
+            .programs-grid { display: grid; grid-template-columns: 1fr; gap: 15px; padding: 0 10px; }
+            .program-card { max-width: none; }
+
+            .quote-section, .simple-contact-section, .about-section, .programs-section { padding: 40px 20px; }
+            .roadmap-section { padding: 20px 15px 40px 15px; } 
+            
+            .form-row { flex-direction: column; gap: 15px; } 
+            .form-group { width: 100%; min-width: 0; }
         }
 
-        /* Transition for Form Fields */
-        .form-section {
-            transition: all 0.3s ease-in-out;
-        }
-        .hidden-field {
-            display: none;
+        /* Tablet specific to fix overlap */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services-container { margin-top: -60px; gap: 15px; }
+            .service-card { padding: 30px 20px; }
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800 relative">
+<body>
 
-<div class="fixed-bg"></div>
+    <nav>
+        <div class="nav-logo-container">
+            <a href="#"><img src="robertson-home-mortgage.png" alt="Robertson Home Mortgage" class="nav-img"></a>
+        </div>
+        
+        <div class="nav-links">
+            <a onclick="smoothScrollTo('about')">About</a>
+            <a href="#" onclick="openCalc(); return false;">Wealth Tool</a>
+            <a onclick="smoothScrollTo('programs')">Programs</a>
+            <a onclick="startStrategy('both')">Strategize</a>
+            <a onclick="smoothScrollTo('quote')">Get Quote</a>
+            <a onclick="smoothScrollTo('general-contact')">Contact</a>
+            <a href="https://2453979.my1003app.com/" class="nav-btn-portal" target="_blank">Apply Now</a>
+        </div>
 
-<form name="contact" netlify data-netlify="true" hidden>
-    <input type="hidden" name="form-name" value="contact" />
-    <input type="text" name="name" /> <input type="email" name="email" /> <input type="tel" name="phone" /> <textarea name="message"></textarea>
-</form>
-<form name="quote-request" netlify data-netlify="true" hidden>
-    <input type="hidden" name="form-name" value="quote-request" />
-    <input type="text" name="firstName" /> <input type="text" name="lastName" /> 
-    <input type="email" name="email" /> <input type="tel" name="phone" /> 
-    <select name="goal"></select> <input type="text" name="desiredRate" />
-    <select name="propertyType"></select> <select name="creditScore"></select>
-    <input type="number" name="purchasePrice" /> <input type="number" name="downPayment" />
-    <input type="number" name="estValue" /> <input type="number" name="currentBalance" /> <input type="number" name="cashOutAmount" />
-</form>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
 
-    <header class="sticky top-0 z-50 bg-white shadow-lg border-t-4 border-gold-rhm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8">
-                
-                <div class="flex flex-1 items-center justify-start">
-                    <img src="./robertson-logo-new.png" alt="Robertson Home Mortgage" class="h-14 md:h-16 w-auto object-contain">
+    <div id="mobileMenu" class="mobile-menu">
+        <a onclick="toggleMobileMenu(); startStrategy('both')">Strategize</a>
+        <a href="#" onclick="toggleMobileMenu(); openCalc(); return false;">Wealth Tool</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('programs')">Programs</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('quote')">Rate Quote</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
+        <a href="https://2453979.my1003app.com/" target="_blank" style="color:var(--brand-gold);">Apply Now</a>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="main-text">
+                    <h1>Ready, Set, Own.</h1>
+                    <p>Expert mortgage guidance and personalized financing strategies. We find more pathways to <strong>YES</strong>.</p>
+                    <a href="https://2453979.my1003app.com/" target="_blank" class="hero-apply-btn">Start Your Application</a>
                 </div>
-
-                <nav class="hidden md:flex space-x-8 text-navy-rhm font-semibold text-lg justify-center">
-                    <a href="#" class="hover:text-gold-rhm transition">Home</a>
-                    <a href="#about" class="hover:text-gold-rhm transition">About</a> 
-                    <a href="#calculator" class="hover:text-gold-rhm transition">Calculator</a>
-                    <a href="https://2453979.my1003app.com/" class="text-gold-rhm font-bold hover:text-navy-rhm transition">Apply Now</a> 
-                </nav>
-
-                <div class="hidden md:flex justify-end items-center">
-                     <a href="#contact" class="inline-block px-5 py-2 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-md hover:bg-gold-rhm/80 transition duration-300">
-                         Contact Us
-                     </a>
-                </div>
-
-                <div class="flex items-center md:hidden">
-                    <button id="mobile-menu-btn" class="text-navy-rhm hover:text-gold-rhm focus:outline-none p-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100">
-                <nav class="flex flex-col space-y-4 mt-4 text-center font-semibold text-navy-rhm text-lg">
-                    <a href="#" class="block hover:text-gold-rhm" onclick="closeMenu()">Home</a>
-                    <a href="#about" class="block hover:text-gold-rhm" onclick="closeMenu()">About</a>
-                    <a href="#calculator" class="block hover:text-gold-rhm" onclick="closeMenu()">Calculator</a>
-                    <a href="https://2453979.my1003app.com/" class="block text-gold-rhm font-bold" onclick="closeMenu()">Apply Now</a>
-                    <a href="#contact" class="inline-block mx-auto px-6 py-2 bg-navy-rhm text-white rounded-full" onclick="closeMenu()">Contact Us</a>
-                </nav>
             </div>
         </div>
-    </header>
 
-    <main class="hero-section py-12 sm:py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            
-            <div class="text-center mb-10 max-w-3xl mx-auto bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border-b-4 border-gold-rhm">
-                <h1 class="text-3xl md:text-5xl font-extrabold text-navy-rhm tracking-tight">
-                    Ready, Set, Own.
-                </h1>
-                <p class="text-lg text-gray-700 mt-2 font-medium">
-                    Your trusted partner in finding the right mortgage.
-                </p>
-                
-                <div class="mt-4">
-                    <a href="https://2453979.my1003app.com/" class="inline-block px-8 py-3 bg-gold-rhm text-navy-rhm font-bold rounded-full shadow-lg hover:bg-gold-rhm/80 transition duration-300 transform hover:scale-105">
-                        Apply Now &rarr;
-                    </a>
+        <div id="services" class="services-section">
+            <div class="services-wrapper">
+                <div class="services-container">
+                    <div class="service-card" onclick="startStrategy('purchase')">
+                        <h2>PURCHASE</h2>
+                        <h4>Buying a Home</h4>
+                        <p>First-time buyer or upgrading? We structure debt that aligns with your financial goals and helps you win the bid.</p>
+                        <div class="btn-container"><button class="btn">Start Purchase Strategy</button></div>
+                    </div>
+                    <div class="service-card" onclick="startStrategy('refi')">
+                        <h2>REFINANCE</h2>
+                        <h4>Lower Rate / Cash Out</h4>
+                        <p>Tap into your home's equity or lower your monthly payments. Get a clear analysis of your savings.</p>
+                        <div class="btn-container"><button class="btn">Start Refi Strategy</button></div>
+                    </div>
+                </div>
+
+                <div class="calc-trigger-box">
+                    <span style="opacity: 0.8;">Just browsing numbers?</span> <br class="mobile-break">
+                    <a href="javascript:void(0)" onclick="openCalc()" class="calc-link">Quick Calculator</a>
+                    <span style="margin: 0 10px; color: #ccc;">|</span>
+                    <a href="#" onclick="openCalc(); return false;" class="calc-link" style="color: var(--mortgage-blue);">Advanced Payment Planner &rarr;</a>
                 </div>
             </div>
-    
-            <div class="grid md:grid-cols-2 gap-8 items-start">
-                
-                <div class="bg-white/95 p-6 sm:p-8 rounded-2xl shadow-2xl backdrop-blur-sm relative">
-                    <div class="flex justify-between items-center mb-6 border-b border-gray-200 pb-2">
-                        <h2 class="text-2xl font-extrabold text-navy-rhm">
-                            Payment Calculator
-                        </h2>
-                        <div class="bg-gray-200 p-1 rounded-lg flex text-xs font-bold">
-                            <button id="calcModePurchase" class="px-3 py-1.5 rounded-md bg-navy-rhm text-white shadow-sm transition-all">Purchase</button>
-                            <button id="calcModeRefi" class="px-3 py-1.5 rounded-md text-gray-600 hover:text-navy-rhm transition-all">Refinance</button>
+        </div>
+
+        <div id="roadmap" class="roadmap-section">
+            <div class="roadmap-container">
+                <div id="success-message" class="success-box" style="display: none;">
+                    <div class="check-icon">✓</div>
+                    <h2>Request Received.</h2>
+                    <p>Thank you. We are reviewing your scenario and will be in touch shortly.</p>
+                    <button onclick="window.location.reload()" class="btn">Back to Home</button>
+                </div>
+
+                <div id="form-wrapper">
+                    <div class="roadmap-header">
+                        <h2>Build Your Strategy.</h2>
+                        <span class="what-is-this-link" onclick="toggleExplanation()">What is this?</span>
+                        <div id="strategy-explanation" class="what-is-this-content">
+                            By filling this out, you give us the data points we need to build a purchasing or refinancing options specific to your income, goals, and timeline. Feel free to call directly as well!
                         </div>
                     </div>
                     
-                    <div id="calculator" class="space-y-4">
+                    <form class="contact-form" id="leadForm" name="strategy-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                        <input type="hidden" name="form-name" value="strategy-form" />
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
                         
-                        <div id="calc-purchase-fields">
-                            <label for="calcPurchasePrice" class="block text-sm font-medium text-gray-700">Purchase Price ($)</label>
-                            <input type="number" id="calcPurchasePrice" value="400000" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm outline-none transition">
-                            
-                            <label for="calcDownPayment" class="block text-sm font-medium text-gray-700 mt-4">Down Payment ($)</label>
-                            <input type="number" id="calcDownPayment" value="80000" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm outline-none transition">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="loan_goal">Primary Goal</label>
+                                <select id="loan_goal" name="loan_goal">
+                                    <option value="purchase">Buy a Home</option>
+                                    <option value="refi_rate">Refinance (Lower Rate)</option>
+                                    <option value="refi_cash">Refinance (Cash Out)</option>
+                                    <option value="invest">Investment Property</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                            </div>
                         </div>
 
-                        <div id="calc-refi-fields" class="hidden-field">
-                            <label for="calcHomeValue" class="block text-sm font-medium text-gray-700">Estimated Home Value ($)</label>
-                            <input type="number" id="calcHomeValue" value="400000" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm outline-none transition">
-                            
-                            <label for="calcNewLoanAmount" class="block text-sm font-medium text-gray-700 mt-4">New Loan Amount ($)</label>
-                            <input type="number" id="calcNewLoanAmount" value="320000" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm outline-none transition">
-                            <p class="text-xs text-gray-500 mt-1 italic">Include your current balance plus any cash out.</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label for="rate" class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
-                                <input type="number" id="rate" value="6.5" step="0.01" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm outline-none transition">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Estimated Credit Score</label>
+                                <select name="credit_score">
+                                    <option value="excellent">Excellent (740+)</option>
+                                    <option value="good">Good (700-739)</option>
+                                    <option value="average">Average (660-699)</option>
+                                    <option value="fair">Fair (620-659)</option>
+                                    <option value="needs_work">Below 620</option>
+                                </select>
                             </div>
-                            <div>
-                                <label for="term" class="block text-sm font-medium text-gray-700">Loan Term</label>
-                                <select id="term" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm transition appearance-none">
-                                    <option value="30">30 Years</option>
-                                    <option value="20">20 Years</option>
-                                    <option value="15">15 Years</option>
-                                    <option value="10">10 Years</option>
+                            <div class="form-group">
+                                <label>Timeline</label>
+                                <select name="timeline">
+                                    <option>ASAP / Urgent</option>
+                                    <option>Within 3 Months</option>
+                                    <option>3 - 6 Months</option>
+                                    <option>Just browsing / Future Goal</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4 border-t pt-4 border-gray-200">
-                             <div>
-                                <label for="annualTaxes" class="block text-sm font-medium text-gray-700">Annual Taxes ($)</label>
-                                <input type="number" id="annualTaxes" value="4800" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm transition outline-none">
-                            </div>
-                            <div>
-                                <label for="annualInsurance" class="block text-sm font-medium text-gray-700">Annual Insurance ($)</label>
-                                <input type="number" id="annualInsurance" value="1200" class="mt-1 block w-full rounded-lg border-gray-300 shadow-inner p-3 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gold-rhm transition outline-none">
-                            </div>
+                        <div class="form-group">
+                            <label for="message">Specific Goals or Challenges:</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Tell us about your situation..."></textarea>
                         </div>
-    
-                        <button id="calculateBtn" class="mt-6 w-full py-3 bg-navy-rhm text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-navy-rhm/90 transform hover:scale-[1.01] transition duration-200">
-                            Calculate Payment
-                        </button>
-    
-                        <div id="mortgageResult" class="mt-6 transition-all duration-300 ease-out"></div>
-                    </div> 
+
+                        <button type="submit" class="btn-submit">Submit Request</button>
+                    </form>
                 </div>
-    
-                <div class="bg-navy-rhm p-6 sm:p-8 rounded-2xl shadow-2xl text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-gold-rhm opacity-10 rounded-full blur-3xl"></div>
-                    
-                    <h2 class="text-2xl font-extrabold text-white mb-2 relative z-10">
-                        Get a Custom Rate Quote
-                    </h2>
-                    <p class="text-gray-300 mb-6 text-sm relative z-10">
-                        Select your goal below to customize your quote scenario.
-                    </p>
-    
-                    <form name="quote-request" netlify data-netlify="true" id="quoteForm" class="space-y-4 relative z-10">
-                        <input type="hidden" name="form-name" value="quote-request" />
-                        
-                        <div>
-                            <label class="block text-xs font-semibold text-gold-rhm mb-1 uppercase tracking-wide">I want to...</label>
-                            <select id="quoteGoal" name="goal" class="w-full rounded-lg bg-white text-navy-rhm font-bold p-3 focus:border-gold-rhm focus:ring-2 focus:ring-gold-rhm outline-none transition appearance-none border-2 border-gold-rhm">
-                                <option value="Purchase">Buy a Home</option>
-                                <option value="Refinance - Limited Cash Out">Refinance (Lower Rate/Term)</option>
-                                <option value="Refinance - Cash Out">Refinance (Cash Out)</option>
-                                <option value="HELOC/HELOAN">Get a 2nd Lien (HELOC/HELOAN)</option>
+            </div>
+        </div>
+
+        <div id="programs" class="programs-section">
+            <div class="programs-header">
+                <h2>Loan Programs.</h2>
+                <p>Explore our lending products.</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card" onclick="openProgramModal('Conventional', 'The standard for borrowers with good credit. Offers competitive rates and flexible down payment options as low as 3%.')">
+                    <h3>Conventional</h3>
+                    <p>Low rates for strong credit profiles.</p>
+                    <span>View Details &rarr;</span>
+                </div>
+                <div class="program-card" onclick="openProgramModal('FHA', 'Perfect for first-time buyers or those with lower credit scores. Requires only 3.5% down and offers flexible qualification.')">
+                    <h3>FHA</h3>
+                    <p>Low down payment & flexible credit.</p>
+                    <span>View Details &rarr;</span>
+                </div>
+                <div class="program-card" onclick="openProgramModal('VA', 'Exclusive to Veterans and active military. $0 Down Payment and no monthly mortgage insurance (PMI).')">
+                    <h3>VA</h3>
+                    <p>$0 Down for Military Veterans.</p>
+                    <span>View Details &rarr;</span>
+                </div>
+                <div class="program-card" onclick="openProgramModal('DSCR / Investor', 'Qualify based on the rental income of the property, not your personal income. Ideal for real estate investors.')">
+                    <h3>Investor / DSCR</h3>
+                    <p>No income verification investment loans.</p>
+                    <span>View Details &rarr;</span>
+                </div>
+                <div class="program-card" onclick="openProgramModal('Fix & Flip / Rehab', 'Designed for investors. Covers up to 100% of construction budgets with draws in as little as 4 days.')">
+                    <h3>Fix & Flip</h3>
+                    <p>Up to 100% Reno Budget & Fast Draws.</p>
+                    <span>View Details &rarr;</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="quote" class="quote-section">
+            <div class="quote-container">
+                <div class="quote-header">
+                    <h2>Rate Quote.</h2>
+                    <p>Receive a custom rate quote.</p>
+                </div>
+                <form class="contact-form" id="quoteForm" name="quote-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="form-name" value="quote-form" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction Type</label>
+                            <select id="quoteType" name="transaction_type" onchange="toggleQuoteFields()">
+                                <option value="buy">Buying a Home</option>
+                                <option value="refi">Refinance (Lower Rate)</option>
+                                <option value="cashout">Refinance (Cash Out)</option>
+                                <option value="equity">Home Equity Loan / Line</option>
                             </select>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">First Name</label>
-                                <input type="text" name="firstName" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Last Name</label>
-                                <input type="text" name="lastName" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                            </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label id="lblQuoteAmount">Purchase Price ($)</label>
+                            <input type="text" name="amount" placeholder="e.g. $450,000">
                         </div>
-    
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Email</label>
-                                <input type="email" name="email" required class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Phone</label>
-                                <input type="tel" name="phone" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                            </div>
+                        <div class="form-group" id="groupQuoteDown">
+                            <label>Down Payment ($)</label>
+                            <input type="text" name="down_payment" placeholder="e.g. $20,000">
                         </div>
-
-                        <div id="quote-purchase-fields" class="form-section">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-gold-rhm mb-1">Purchase Price</label>
-                                    <input type="number" name="purchasePrice" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-gold-rhm mb-1">Down Payment</label>
-                                    <input type="number" name="downPayment" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="quote-refi-fields" class="form-section hidden-field">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-gold-rhm mb-1">Est. Property Value</label>
-                                    <input type="number" name="estValue" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-gold-rhm mb-1">Current Mortgage Bal.</label>
-                                    <input type="number" name="currentBalance" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                                </div>
-                            </div>
-                            <div id="quote-cashout-field" class="mt-4 hidden-field">
-                                <label class="block text-xs font-semibold text-gold-rhm mb-1">Cash Out Amount Requested</label>
-                                <input type="number" name="cashOutAmount" placeholder="$" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Property Type</label>
-                                <select name="propertyType" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
-                                    <option value="Single Family" class="text-navy-rhm">Single Family</option>
-                                    <option value="Condo" class="text-navy-rhm">Condo</option>
-                                    <option value="Multi-Family" class="text-navy-rhm">Multi-Family</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Credit Score</label>
-                                <select name="creditScore" class="w-full rounded-lg bg-white/10 border border-white/20 text-white p-2.5 focus:border-gold-rhm focus:ring-1 focus:ring-gold-rhm outline-none transition appearance-none">
-                                    <option value="780+" class="text-navy-rhm">780+</option>
-                                    <option value="740-779" class="text-navy-rhm">740 - 779</option>
-                                    <option value="680-739" class="text-navy-rhm">680 - 739</option>
-                                    <option value="640-679" class="text-navy-rhm">640 - 679</option>
-                                    <option value="620-639" class="text-navy-rhm">620 - 639</option>
-                                    <option value="Below 620" class="text-navy-rhm">Below 620</option>
-                                </select>
-                            </div>
-                        </div>
-    
-                        <button type="submit" class="w-full py-3 mt-4 bg-gold-rhm text-navy-rhm font-bold text-lg rounded-xl shadow-lg hover:bg-white hover:text-navy-rhm transition duration-300">
-                            Get My Quote &rarr;
-                        </button>
-
-                        <p class="text-[10px] text-gray-400 mt-2 leading-tight opacity-70">
-                            <strong>Disclosure:</strong> Informational purposes only. Does not constitute a commitment to lend. Subject to full application and approval.
-                        </p>
-                        
-                        <div id="quoteFormMessage" class="text-center text-sm p-2 rounded hidden"></div>
-                    </form>
+                    </div>
+                    <button type="submit" class="btn-submit">Request Quote</button>
+                    <div class="disclaimer-box">
+                        * This is a request for information and does not constitute an offer to lend or a lock of interest rate. An official Loan Estimate will be provided upon submission of a full application.
+                    </div>
+                </form>
+                <div id="quote-success" style="display:none; text-align:center; padding:20px;">
+                    <div class="check-icon">✓</div>
+                    <h3>Request Sent!</h3>
+                    <p>We are running your numbers and will reach out shortly.</p>
                 </div>
             </div>
-            
-        </div>
-    </main>
-    
-    <section id="apply" class="relative py-16 sm:py-20 bg-navy-rhm shadow-inner pb-24 z-10">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to Apply?</h2>
-            <p class="text-xl text-gray-200 mb-2 max-w-2xl mx-auto">
-                Get pre-approved in minutes and take the first step toward securing your dream home.
-            </p>
         </div>
 
-        <div class="straddle-btn-container">
-            <a href="https://2453979.my1003app.com/" class="inline-block px-10 py-4 bg-gold-rhm text-navy-rhm font-bold text-xl rounded-full shadow-2xl hover:bg-gold-rhm/90 transition duration-300 transform hover:scale-105 border-4 border-white">
-                Start Application &rarr;
-            </a>
+        <div id="general-contact" class="simple-contact-section">
+            <div class="simple-contact-container">
+                <h2>Get in Touch.</h2>
+                <p>Have a quick question? Send us a message.</p>
+                <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="form-name" value="contact-form" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" name="message" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
         </div>
-    </section>
 
-    <section id="contact" class="py-24 bg-white relative z-0 pt-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-navy-rhm mb-12 text-center">Get In Touch</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="md:col-span-1 bg-navy-rhm p-8 rounded-xl text-white shadow-xl">
-                    <h3 class="text-2xl font-bold text-gold-rhm mb-4">Contact Details</h3>
-                    <div class="space-y-4 text-gray-200">
-                        <p><span class="font-bold text-gold-rhm">Address:</span><br>19 High Street, Goffstown NH 03045</p>
-                        <p><span class="font-bold text-gold-rhm">Phone:</span><br>603-801-8822</p>
-                        <p><span class="font-bold text-gold-rhm">Email:</span><br>dan@robertsonhomemortgage.com</p>
+        <div id="about" class="about-section">
+            <div class="about-container">
+                <div class="gold-line"></div>
+                <h2>The Robertson Approach.</h2>
+                <p>Most lenders focus solely on the "approval"—the finish line of a single transaction. At Robertson Home Mortgage, we believe that ignores the bigger picture: your financial trajectory.</p>
+                <p>We were formed to ensure your financing supports your goals long after the keys are handed over. We analyze the market, structure your debt intelligently, and give you total deal visibility from day one.</p>
+
+                <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
+                    <div class="team-header">
+                        <img src="dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
+                        <div class="team-info">
+                            <h3>Dan Robertson</h3>
+                            <h4>STRATEGIST & FOUNDER</h4>
+                            <span style="font-size:0.8rem; color:#888; display:block; margin-top:5px;">Click to read bio</span>
+                        </div>
+                        <div class="team-toggle-icon">▼</div>
+                    </div>
+                    <div class="team-content">
+                        <div class="team-bio-text">
+                            <p>With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures.</p>
+                            <p>Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies.</p>
+                            <p>Now, as the founder of his own firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:col-span-2 p-6 rounded-xl shadow-lg border border-gray-200 bg-white">
-                    <form id="contactForm" class="space-y-4">
-                        <input type="hidden" name="form-name" value="contact" />
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Full Name</label>
-                            <input type="text" name="name" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm">
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" name="email" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Phone</label>
-                                <input type="tel" name="phone" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea name="message" rows="4" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-gold-rhm"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3 bg-gold-rhm text-navy-rhm font-extrabold rounded-xl shadow-md hover:bg-gold-rhm/80 transition duration-200">
-                            Send Message
-                        </button>
-                        <div id="contactFormMessage" class="text-center p-3 rounded-lg hidden"></div> 
-                    </form>
-                </div>
             </div>
         </div>
-    </section>
-    
-    <footer class="bg-navy-rhm text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <p class="text-sm">
-                <span class="font-bold text-gold-rhm">Robertson Home Mortgage</span> | NMLS # 2453979
-            </p>
-            <div class="flex items-center justify-center space-x-2">
-                <img src="./eho-logo.png" alt="EHO" class="h-6 w-6">
-                <span class="text-xs">Equal Housing Opportunity</span>
+
+    </div>
+
+    <footer>
+        <div class="footer-contact">
+            <img src="robertson-home-mortgage.png" alt="Robertson Home Mortgage" class="footer-logo">
+            <p>19 High Street, Goffstown, NH 03045</p>
+            <p><a href="mailto:dan@robertsonhomemortgage.com" class="footer-email-link">dan@robertsonhomemortgage.com</a></p>
+        </div>
+        
+        <div class="disclaimer">
+            <p>©2025 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
+            <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
+            <p style="margin-top: 10px;"><a href="#" style="color: #889bb0; text-decoration: underline;">Privacy Policy</a></p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <img src="eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
             </div>
-            <p class="text-xs text-gray-300">&copy;2025 Robertson Home Mortgage LLC</p>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Mobile Menu ---
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            if(btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-            window.closeMenu = function() { if(menu) menu.classList.add('hidden'); }
-
-            // ==========================================
-            //       DYNAMIC CALCULATOR LOGIC
-            // ==========================================
-            let calcMode = 'Purchase'; // Default
-            
-            const calcBtnPurch = document.getElementById('calcModePurchase');
-            const calcBtnRefi = document.getElementById('calcModeRefi');
-            const calcPurchFields = document.getElementById('calc-purchase-fields');
-            const calcRefiFields = document.getElementById('calc-refi-fields');
-
-            // Toggle Switches
-            calcBtnPurch.addEventListener('click', () => setCalcMode('Purchase'));
-            calcBtnRefi.addEventListener('click', () => setCalcMode('Refinance'));
-
-            function setCalcMode(mode) {
-                calcMode = mode;
-                if(mode === 'Purchase') {
-                    // Purchase Active (Add Blue, Remove Gray/Hover)
-                    calcBtnPurch.classList.add('bg-navy-rhm', 'text-white', 'shadow-sm');
-                    calcBtnPurch.classList.remove('text-gray-600', 'hover:text-navy-rhm');
-                    
-                    // Refi Inactive (Remove Blue, Add Gray/Hover)
-                    calcBtnRefi.classList.remove('bg-navy-rhm', 'text-white', 'shadow-sm');
-                    calcBtnRefi.classList.add('text-gray-600', 'hover:text-navy-rhm');
-                    
-                    // Fields
-                    calcPurchFields.classList.remove('hidden-field');
-                    calcRefiFields.classList.add('hidden-field');
-                } else {
-                    // Refi Active
-                    calcBtnRefi.classList.add('bg-navy-rhm', 'text-white', 'shadow-sm');
-                    calcBtnRefi.classList.remove('text-gray-600', 'hover:text-navy-rhm');
-
-                    // Purchase Inactive
-                    calcBtnPurch.classList.remove('bg-navy-rhm', 'text-white', 'shadow-sm');
-                    calcBtnPurch.classList.add('text-gray-600', 'hover:text-navy-rhm');
-
-                    // Fields
-                    calcRefiFields.classList.remove('hidden-field');
-                    calcPurchFields.classList.add('hidden-field');
-                }
-                calculateMortgage(); // Recalculate immediately
-            }
-
-            function calculateMortgage() {
-                // Common Inputs
-                const annualRate = parseFloat(document.getElementById('rate').value);
-                const termYears = parseFloat(document.getElementById('term').value);
-                const annualTaxes = parseFloat(document.getElementById('annualTaxes').value) || 0;
-                const annualInsurance = parseFloat(document.getElementById('annualInsurance').value) || 0;
-                const resultDiv = document.getElementById('mortgageResult');
-
-                let loanAmount = 0;
-                let displayPrincipal = 0;
-
-                // Mode Specific Logic
-                if (calcMode === 'Purchase') {
-                    const price = parseFloat(document.getElementById('calcPurchasePrice').value);
-                    const down = parseFloat(document.getElementById('calcDownPayment').value);
-                    if(isNaN(price) || price <= 0) return; // Silent return if empty
-                    loanAmount = price - down;
-                    displayPrincipal = loanAmount;
-                } else {
-                    // Refinance Logic
-                    const newLoan = parseFloat(document.getElementById('calcNewLoanAmount').value);
-                    if(isNaN(newLoan) || newLoan <= 0) return;
-                    loanAmount = newLoan;
-                    displayPrincipal = newLoan;
-                }
-
-                if (loanAmount <= 0) {
-                     resultDiv.innerHTML = '<p class="text-red-400 text-sm text-center">Invalid loan amount.</p>';
-                     return;
-                }
-
-                // Math
-                const monthlyRate = (annualRate / 100) / 12; 
-                const totalPayments = termYears * 12; 
-                let monthlyPI;
-
-                if (monthlyRate === 0) {
-                    monthlyPI = loanAmount / totalPayments;
-                } else {
-                    const compoundFactor = Math.pow((1 + monthlyRate), totalPayments);
-                    monthlyPI = loanAmount * ((monthlyRate * compoundFactor) / (compoundFactor - 1));
-                }
-
-                const monthlyTaxes = annualTaxes / 12;
-                const monthlyInsurance = annualInsurance / 12;
-                const totalMonthlyPayment = monthlyPI + monthlyTaxes + monthlyInsurance;
-
-                const fmtMoney = (num) => num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
-                resultDiv.innerHTML = `
-                    <div class="mt-6 p-5 bg-navy-rhm/95 rounded-xl shadow-2xl transition-all duration-300 transform border border-gold-rhm/20">
-                        <h3 class="text-white text-lg font-bold mb-3 border-b border-gold-rhm/50 pb-2">Estimated Monthly Payment</h3>
-                        
-                        <p class="text-gold-rhm text-4xl font-extrabold flex justify-between items-center mb-4">
-                            <span>Total:</span>
-                            <span>${fmtMoney(totalMonthlyPayment)}</span>
-                        </p>
-                        
-                        <div class="mt-4 pt-3 text-sm text-gray-200 space-y-2 border-t border-gray-600">
-                            <p class="flex justify-between"><span class="text-gray-300">Principal & Interest:</span> <span>${fmtMoney(monthlyPI)}</span></p>
-                            <p class="flex justify-between"><span class="text-gray-300">Taxes:</span> <span>${fmtMoney(monthlyTaxes)}</span></p>
-                            <p class="flex justify-between"><span class="text-gray-300">Insurance:</span> <span>${fmtMoney(monthlyInsurance)}</span></p>
-                            <p class="flex justify-between mt-2 pt-2 border-t border-gray-600">
-                                <span class="font-semibold text-gold-rhm">Loan Amount:</span>
-                                <span class="font-bold text-white">${fmtMoney(displayPrincipal)}</span>
-                            </p>
-                        </div>
+    <div id="calcModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-calc" onclick="closeCalc()">&times;</span>
+            <div class="modal-header">
+                <h3>Payment Estimator</h3>
+            </div>
+            <div class="calc-tabs">
+                <div class="calc-tab active" id="tabPurchase" onclick="switchCalcMode('purchase')">Purchase</div>
+                <div class="calc-tab" id="tabRefi" onclick="switchCalcMode('refi')">Refinance</div>
+            </div>
+            <div class="calc-body">
+                <div class="calc-col" style="margin-bottom:10px;">
+                    <label id="lblAmount">Home Price ($)</label>
+                    <input type="number" id="calcPrice" value="450000">
+                </div>
+                <div class="calc-row">
+                    <div class="calc-col">
+                        <label id="lblDown">Down Payment ($)</label>
+                        <input type="number" id="calcDown" value="20000">
                     </div>
-                `;
-            }
+                    <div class="calc-col">
+                        <label>Int. Rate (%)</label>
+                        <input type="number" id="calcRate" value="6.5" step="0.125">
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-col">
+                        <label>Annual Tax ($)</label>
+                        <input type="number" id="calcTaxes" value="5000">
+                    </div>
+                    <div class="calc-col">
+                        <label>Annual Ins. ($)</label>
+                        <input type="number" id="calcIns" value="1200">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calculatePayment()">Calculate Total Payment</button>
+                <div class="calc-result">
+                    <span style="display:block; margin-bottom:5px;">Est. Monthly Payment</span>
+                    <h3 id="calcResultDisplay">$0</h3>
+                </div>
+                <p class="calc-disclaimer">Includes P&I, Taxes, and Insurance. Does not include PMI or HOA.</p>
+                <button class="calc-btn-outline" onclick="closeCalc(); smoothScrollTo('quote')">Get Official Rate Quote &rarr;</button>
+            </div>
+        </div>
+    </div>
 
-            // Bind Calculator Events
-            document.getElementById('calculateBtn').addEventListener('click', calculateMortgage);
-            document.querySelectorAll('#calculator input, #calculator select').forEach(input => {
-                input.addEventListener('input', calculateMortgage); 
-            });
-            calculateMortgage(); // Init
-
-            // ==========================================
-            //       DYNAMIC QUOTE FORM LOGIC
-            // ==========================================
-            const quoteGoalSelect = document.getElementById('quoteGoal');
-            const qPurchFields = document.getElementById('quote-purchase-fields');
-            const qRefiFields = document.getElementById('quote-refi-fields');
-            const qCashOutField = document.getElementById('quote-cashout-field');
-
-            quoteGoalSelect.addEventListener('change', (e) => {
-                const val = e.target.value;
-                
-                // Reset visibility
-                qPurchFields.classList.add('hidden-field');
-                qRefiFields.classList.add('hidden-field');
-                qCashOutField.classList.add('hidden-field');
-
-                if (val === 'Purchase') {
-                    qPurchFields.classList.remove('hidden-field');
-                } else {
-                    // It's a Refi or HELOC
-                    qRefiFields.classList.remove('hidden-field');
-                    
-                    // Specific check for Cash Out
-                    if(val === 'Refinance - Cash Out' || val === 'HELOC/HELOAN') {
-                        qCashOutField.classList.remove('hidden-field');
-                    }
-                }
-            });
-
-            // --- FORM SUBMISSIONS (Netlify) ---
-            const handleForm = (formId, msgId) => {
-                const form = document.getElementById(formId);
-                const msg = document.getElementById(msgId);
-                if(form){
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        const formData = new FormData(form);
-                        fetch('/', {
-                            method: 'POST',
-                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                            body: new URLSearchParams(formData).toString()
-                        })
-                        .then(() => {
-                            form.reset();
-                            msg.innerText = "Sent! We'll be in touch shortly.";
-                            msg.classList.remove('hidden', 'text-red-300', 'text-red-700', 'bg-red-100');
-                            msg.classList.add('block', 'text-green-500', 'font-bold', 'mt-2');
-                            // Reset dynamic logic to default
-                            if(formId === 'quoteForm') quoteGoalSelect.dispatchEvent(new Event('change'));
-                        })
-                        .catch(() => {
-                            msg.innerText = "Error. Please call us.";
-                            msg.classList.remove('hidden');
-                            msg.classList.add('block', 'text-red-500');
-                        });
-                    });
-                }
-            };
-
-            handleForm('contactForm', 'contactFormMessage');
-            handleForm('quoteForm', 'quoteFormMessage');
-
-        });
-    </script>
-</body>
-</html>
+    <div id="programModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-calc" onclick="closeProgram()">&times;</span>
+            <div class="modal-header">
+                <h3 id="programTitle">Program Name</h3>
+            </div>
+            <div style="text-align:center;">
+                <p id="programDesc" style
