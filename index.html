@@ -18,7 +18,7 @@
             --text-dark: #333333;
             --bg-light: #f4f6f8;
             --footer-bg: #002855;
-            --accent-red: #C8102E; /* Kept for subtle highlights if needed */
+            --accent-red: #C8102E; 
         }
 
         html { scroll-behavior: auto; } 
@@ -99,7 +99,6 @@
             box-sizing: border-box;
         }
         .mobile-menu a:last-child { border-bottom: none; }
-        .mobile-portal-btn { display: none; }
 
         /* --- HERO SECTION --- */
         .hero { position: relative; height: 55vh; min-height: 500px; background-image: url('town-hero.png'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
@@ -128,7 +127,6 @@
         /* --- SERVICES SECTION --- */
         .services-section { background-color: var(--bg-light); padding: 0px 5% 40px 5%; display: flex; justify-content: center; }
         .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1000px; }
-        /* Desktop: Negative margin pulls it up */
         .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
         
         .service-card { background: white; flex: 1; min-width: 300px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
@@ -139,57 +137,27 @@
         .service-card p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
 
         .btn-container { margin-top: auto; display: flex; justify-content: center; }
-        .btn { display: inline-block; padding: 12px 35px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; max-width: 250px; border: none; }
+        .btn { display: inline-block; padding: 12px 35px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; max-width: 250px; border: none; cursor: pointer;}
         .btn:hover { background: #002244; transform: scale(1.02); }
 
         .calc-trigger-box { margin-top: 40px; margin-bottom: 30px; text-align: center; font-size: 0.9rem; color: #666; position: relative; z-index: 10; }
         .calc-link { color: var(--mortgage-blue); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--brand-gold); transition: all 0.3s; cursor: pointer; }
         .calc-link:hover { color: var(--accent-red); border-bottom-style: solid; }
 
-        /* --- PROGRAMS SECTION --- */
-        .programs-section { background-color: white; padding: 60px 5%; text-align: center; border-bottom: 1px solid #eee; }
-        .programs-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
-        .programs-header p { color: #666; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
-        
-        .programs-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto; }
-        
-        .program-card {
-            background: white;
-            color: var(--text-dark);
-            flex: 1;
-            min-width: 220px;
-            max-width: 320px;
-            padding: 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #eee;
-            border-bottom: 4px solid var(--brand-gold);
-            text-align: left;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .program-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .program-card h3 { color: var(--mortgage-blue); margin: 0 0 8px 0; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .program-card p { font-size: 0.9rem; color: #666; margin: 0; line-height: 1.5; }
-        .program-card span { display: block; margin-top: 15px; color: var(--brand-gold); font-size: 0.8rem; font-weight: 700; }
-
         /* --- ABOUT SECTION --- */
         .about-section { background-color: white; padding: 40px 5% 60px 5%; text-align: left; }
         .about-container { max-width: 900px; margin: 0 auto; }
         .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
-        .about-container p, .team-bio-text p { 
-            color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 400; 
-        }
+        .about-container p, .team-bio-text p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 400; }
         
         /* TEAM ACCORDION CARD */
         .team-card {
             background-color: #f8f9fa; border-radius: 15px; margin-top: 40px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold);
-            overflow: hidden; transition: all 0.3s ease;
+            overflow: hidden; transition: all 0.3s ease; cursor: pointer;
         }
         .team-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .team-header { display: flex; align-items: center; gap: 30px; padding: 30px; cursor: pointer; position: relative; }
+        .team-header { display: flex; align-items: center; gap: 30px; padding: 30px; position: relative; }
         .team-photo { 
             width: 120px; height: 120px; border-radius: 15px; object-fit: cover; object-position: 50% 15%; 
             border: 3px solid var(--brand-gold); flex-shrink: 0; 
@@ -223,8 +191,6 @@
         .form-group label { font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: var(--mortgage-blue); }
         .form-group input, .form-group select, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fdfdfd; width: 100%; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
-        .hidden-field { display: none; margin-top: 20px; }
-        .visible-field { display: flex; margin-top: 20px; }
         
         .btn-submit { background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 15px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
         .btn-submit:hover { background: #e5b327; }
@@ -276,8 +242,8 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            #roadmap, #quote, #about, #general-contact, #programs { 
-                scroll-margin-top: 125px; 
+            #roadmap, #quote, #about, #general-contact { 
+                scroll-margin-top: 85px; 
             }
 
             nav { padding: 10px 15px; }
@@ -287,20 +253,28 @@
             .hamburger { display: flex; } 
 
             .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; align-items: center; }
-            .hero-content { transform: translateY(0); margin-top: 0; padding: 0 15px 80px 15px; }
+            .hero-content { transform: translateY(0); margin-top: 0; padding: 0 15px 40px 15px; }
             .hero h1 { font-size: 2.2rem; margin-bottom: 5px; }
             .hero p { font-size: 1.1rem; line-height: 1.4; max-width: 100%;}
             
-            .services-container { margin-top: -50px; flex-direction: column; align-items: stretch; gap: 15px; padding: 0 15px; }
-            .service-card { width: auto; padding: 25px 20px; }
-            
-            /* Programs Grid (Tightened for Mobile) */
-            .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 10px; }
-            .program-card { min-width: 0; max-width: none; padding: 15px; text-align: center; }
-            .program-card h3 { font-size: 0.9rem; }
-            .program-card p { display: none; }
-            .program-card span { margin-top: 5px; font-size: 0.7rem; color: var(--brand-gold); }
-            .program-card:last-child { grid-column: span 2; }
+            /* DYNAMIC BUTTON CARDS FOR MOBILE */
+            .services-container { margin-top: -30px; flex-direction: column; align-items: stretch; gap: 15px; padding: 0 15px; }
+            .service-card { 
+                width: auto; 
+                padding: 15px; 
+                border-radius: 12px; 
+                display: flex; 
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center; 
+                border-top: 3px solid var(--brand-gold);
+            }
+            .service-card:active { transform: scale(0.98); }
+            .service-card h2 { font-size: 1.3rem; margin: 0; }
+            .service-card h4 { font-size: 0.8rem; margin: 5px 0 0 0; }
+            /* Hide description and button to make it a unified clean button */
+            .service-card p { display: none; } 
+            .service-card .btn-container { display: none; } 
 
             /* Team Card Mobile */
             .team-header { padding: 20px; gap: 20px; }
@@ -311,18 +285,17 @@
 
             /* ORDERING */
             #services { order: 1; }
-            #roadmap { order: 2; }
-            #programs { order: 3; padding-top: 30px; } 
-            #quote { order: 4; }
-            #general-contact { order: 5; }
-            #about { order: 6; margin-bottom: 20px; }
+            #roadmap { order: 2; padding-top: 30px; }
+            #quote { order: 3; }
+            #general-contact { order: 4; }
+            #about { order: 5; margin-bottom: 20px; }
 
-            .quote-section, .simple-contact-section, .about-section, .programs-section { padding: 40px 20px; }
+            .quote-section, .simple-contact-section, .about-section { padding: 40px 20px; }
             .quote-container { padding: 25px 20px; }
             .roadmap-section { padding: 20px 15px 40px 15px; } 
             .roadmap-container { padding: 25px 20px; } 
             
-            .roadmap-header h2, .programs-header h2, .quote-header h2, .simple-contact-container h2, .about-container h2 { font-size: 1.5rem; }
+            .roadmap-header h2, .quote-header h2, .simple-contact-container h2, .about-container h2 { font-size: 1.5rem; }
             .roadmap-header { margin-bottom: 20px; }
 
             .form-row { flex-direction: column; gap: 15px; } 
@@ -330,7 +303,6 @@
             
             footer { padding: 40px 15px; }
             .footer-split { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; padding-bottom: 20px; }
-            .mobile-portal-btn { display: block; background-color: var(--brand-gold); color: var(--mortgage-blue); text-align: center; text-decoration: none; font-weight: 700; width: 100%; padding: 12px; border-radius: 6px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         }
     </style>
 </head>
@@ -338,13 +310,12 @@
 
     <nav>
         <div class="nav-logo-container">
-            <a href="#"><img src="robertson-home-mortgage.png" alt="Robertson Home Mortgage" class="nav-img"></a>
+            <a href="#"><img src="./robertson-logo-new.png" alt="Robertson Home Mortgage" class="nav-img"></a>
         </div>
         
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
-            <a onclick="smoothScrollTo('programs')">Loan Programs</a>
             <a onclick="selectStrategy('purchase')">Strategize</a>
             <a onclick="smoothScrollTo('quote')">Get Quote</a>
             <a onclick="smoothScrollTo('general-contact')">Contact</a>
@@ -362,7 +333,6 @@
         <a onclick="toggleMobileMenu(); selectStrategy('purchase')">Purchase Strategy</a>
         <a onclick="toggleMobileMenu(); selectStrategy('refi')">Refinance Strategy</a>
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
-        <a onclick="toggleMobileMenu(); smoothScrollTo('programs')">Loan Programs</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('quote')">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
@@ -459,40 +429,6 @@
             </div>
         </div>
 
-        <div id="programs" class="programs-section">
-            <div class="programs-header">
-                <h2>Loan Programs.</h2>
-                <p>Explore our wide array of mortgage products.</p>
-            </div>
-            <div class="programs-grid">
-                <div class="program-card" onclick="openProgramModal('Conventional', 'The standard for borrowers with good credit. Offers competitive rates and flexible down payment options as low as 3%.')">
-                    <h3>Conventional</h3>
-                    <p>Low rates for strong credit profiles.</p>
-                    <span>View Details &rarr;</span>
-                </div>
-                <div class="program-card" onclick="openProgramModal('FHA', 'Perfect for first-time buyers or those with lower credit scores. Requires only 3.5% down and offers flexible qualification.')">
-                    <h3>FHA</h3>
-                    <p>Low down payment & flexible credit.</p>
-                    <span>View Details &rarr;</span>
-                </div>
-                <div class="program-card" onclick="openProgramModal('VA', 'Exclusive to Veterans and active military. $0 Down Payment and no monthly mortgage insurance (PMI).')">
-                    <h3>VA</h3>
-                    <p>$0 Down for Military Veterans.</p>
-                    <span>View Details &rarr;</span>
-                </div>
-                <div class="program-card" onclick="openProgramModal('DSCR / Investor', 'Qualify based on the rental income of the property, not your personal income. Ideal for real estate investors.')">
-                    <h3>Investor / DSCR</h3>
-                    <p>No income verification investment loans.</p>
-                    <span>View Details &rarr;</span>
-                </div>
-                <div class="program-card" onclick="openProgramModal('Fix & Flip / Rehab', 'Designed for investors. Covers up to 100% of construction budgets with draws in as little as 4 days. Loans from $100k to $5M, up to 92.5% LTC, and non-recourse options available.')">
-                    <h3>Fix & Flip</h3>
-                    <p>Up to 100% Reno Budget & Fast Draws.</p>
-                    <span>View Details &rarr;</span>
-                </div>
-            </div>
-        </div>
-
         <div id="quote" class="quote-section">
             <div class="quote-container">
                 <div class="quote-header">
@@ -531,9 +467,9 @@
                             <label id="lblQuoteAmount">Purchase Price ($)</label>
                             <input type="text" name="amount" placeholder="e.g. $450,000">
                         </div>
-                        <div class="form-group" id="groupQuoteDown">
-                            <label>Down Payment ($)</label>
-                            <input type="text" name="down_payment" placeholder="e.g. $20,000">
+                        <div class="form-group" id="groupQuoteSecondary">
+                            <label id="lblQuoteSecondary">Down Payment ($)</label>
+                            <input type="text" id="inputQuoteSecondary" name="down_payment" placeholder="e.g. $20,000">
                         </div>
                     </div>
                     <button type="submit" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Request Quote</button>
@@ -583,7 +519,7 @@
 
                 <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
                     <div class="team-header">
-                        <img src="dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
+                        <img src="./dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
                         <div class="team-info">
                             <h3>Dan Robertson</h3>
                             <h4>STRATEGIST & FOUNDER</h4>
@@ -615,11 +551,11 @@
             </div>
         </div>
         <div class="disclaimer">
-            <p>©2025 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
+            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
             <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
             <p style="margin-top: 10px;"><a href="#" style="color: #889bb0; text-decoration: underline;">Privacy Policy</a></p>
             <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
-                <img src="eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
+                <img src="./eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
             </div>
         </div>
     </footer>
@@ -666,20 +602,6 @@
                 </div>
                 <p class="calc-disclaimer">Includes P&I, Taxes, and Insurance. Does not include PMI or HOA.</p>
                 <button class="calc-btn-outline" onclick="closeCalc(); smoothScrollTo('quote')">Get Official Rate Quote &rarr;</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="programModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-calc" onclick="closeProgram()">&times;</span>
-            <div class="modal-header">
-                <h3 id="programTitle">Program Name</h3>
-            </div>
-            <div style="text-align:center;">
-                <p id="programDesc" style="color:#666; margin-bottom:25px; line-height:1.6;">Description here...</p>
-                <button class="calc-btn" onclick="closeProgram(); window.open('https://2453979.my1003app.com/', '_blank')">Start Application</button>
-                <button class="calc-btn-outline" onclick="closeProgram(); smoothScrollTo('quote')">Get a Quote</button>
             </div>
         </div>
     </div>
@@ -751,17 +673,32 @@
             container.innerHTML = portalHtml + fieldsHtml;
         }
 
-        // --- TOGGLES ---
+        // --- DYNAMIC QUOTE LOGIC ---
         function toggleQuoteFields() {
             const type = document.getElementById('quoteType').value;
             const lblAmount = document.getElementById('lblQuoteAmount');
-            const groupDown = document.getElementById('groupQuoteDown');
+            const groupSecondary = document.getElementById('groupQuoteSecondary');
+            const lblSecondary = document.getElementById('lblQuoteSecondary');
+            const inputSecondary = document.getElementById('inputQuoteSecondary');
+
             if (type === 'buy') {
                 lblAmount.innerText = "Purchase Price ($)";
-                groupDown.style.display = 'flex';
-            } else {
-                lblAmount.innerText = "Loan Amount / Balance ($)";
-                groupDown.style.display = 'none';
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Down Payment ($)";
+                inputSecondary.placeholder = "e.g. $20,000";
+                inputSecondary.name = "down_payment";
+            } else if (type === 'refi') {
+                lblAmount.innerText = "Est. Property Value ($)";
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Current Loan Balance ($)";
+                inputSecondary.placeholder = "e.g. $300,000";
+                inputSecondary.name = "current_balance";
+            } else if (type === 'cashout' || type === 'equity') {
+                lblAmount.innerText = "Est. Property Value ($)";
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Cash Out Desired ($)";
+                inputSecondary.placeholder = "e.g. $50,000";
+                inputSecondary.name = "cash_out_amount";
             }
         }
 
@@ -850,14 +787,6 @@
             }
         }
 
-        function openProgramModal(title, desc) {
-            document.getElementById('programTitle').innerText = title;
-            document.getElementById('programDesc').innerText = desc;
-            document.getElementById('programModal').style.display = 'flex';
-        }
-        function closeProgram() {
-            document.getElementById('programModal').style.display = 'none';
-        }
     </script>
 </body>
 </html>
