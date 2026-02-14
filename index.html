@@ -199,7 +199,7 @@
         .btn-outline-small { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 600; }
 
         /* --- QUOTE SECTION --- */
-        .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; }
+        .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; display: none; }
         .quote-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
         .quote-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
         .quote-header p { margin-bottom: 30px; color: #666; }
@@ -258,10 +258,11 @@
             .hero p { font-size: 1.1rem; line-height: 1.4; max-width: 100%;}
             
             /* DYNAMIC BUTTON CARDS FOR MOBILE */
-            .services-container { margin-top: -30px; flex-direction: column; align-items: stretch; gap: 15px; padding: 0 15px; }
+            .services-container { margin-top: -40px; flex-direction: row; align-items: stretch; gap: 10px; padding: 0 15px; }
             .service-card { 
-                width: auto; 
-                padding: 15px; 
+                flex: 1;
+                min-width: 0;
+                padding: 15px 10px; 
                 border-radius: 12px; 
                 display: flex; 
                 flex-direction: column; 
@@ -270,11 +271,14 @@
                 border-top: 3px solid var(--brand-gold);
             }
             .service-card:active { transform: scale(0.98); }
-            .service-card h2 { font-size: 1.3rem; margin: 0; }
-            .service-card h4 { font-size: 0.8rem; margin: 5px 0 0 0; }
+            .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
+            .service-card h4 { font-size: 0.7rem; margin: 5px 0 0 0; text-align: center; }
             /* Hide description and button to make it a unified clean button */
             .service-card p { display: none; } 
             .service-card .btn-container { display: none; } 
+
+            /* Tightened spacing under calculator */
+            .calc-trigger-box { margin-top: 25px; margin-bottom: 5px; }
 
             /* Team Card Mobile */
             .team-header { padding: 20px; gap: 20px; }
@@ -283,12 +287,13 @@
             .team-content { padding: 0 20px; }
             .team-card.active .team-content { padding: 10px 20px 25px 20px; }
 
-            /* ORDERING */
+            /* ORDERING: Move About directly under Services/Calc */
+            #home { order: 0; }
             #services { order: 1; }
-            #roadmap { order: 2; padding-top: 30px; }
-            #quote { order: 3; }
-            #general-contact { order: 4; }
-            #about { order: 5; margin-bottom: 20px; }
+            #about { order: 2; margin-top: 10px; margin-bottom: 20px; }
+            #roadmap { order: 3; padding-top: 30px; }
+            #quote { order: 4; }
+            #general-contact { order: 5; }
 
             .quote-section, .simple-contact-section, .about-section { padding: 40px 20px; }
             .quote-container { padding: 25px 20px; }
@@ -316,8 +321,7 @@
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
-            <a onclick="selectStrategy('purchase')">Strategize</a>
-            <a onclick="smoothScrollTo('quote')">Get Quote</a>
+            <a onclick="showQuoteSection()">Get Quote</a>
             <a onclick="smoothScrollTo('general-contact')">Contact</a>
             <a href="https://2453979.my1003app.com/" class="nav-btn-portal" target="_blank">Apply Now</a>
         </div>
@@ -330,10 +334,8 @@
     </nav>
 
     <div id="mobileMenu" class="mobile-menu">
-        <a onclick="toggleMobileMenu(); selectStrategy('purchase')">Purchase Strategy</a>
-        <a onclick="toggleMobileMenu(); selectStrategy('refi')">Refinance Strategy</a>
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
-        <a onclick="toggleMobileMenu(); smoothScrollTo('quote')">Rate Quote</a>
+        <a onclick="toggleMobileMenu(); showQuoteSection()">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
         <a href="https://2453979.my1003app.com/" target="_blank" style="color:var(--brand-gold);">Apply Now</a>
@@ -601,7 +603,7 @@
                     <h3 id="calcResultDisplay">$0</h3>
                 </div>
                 <p class="calc-disclaimer">Includes P&I, Taxes, and Insurance. Does not include PMI or HOA.</p>
-                <button class="calc-btn-outline" onclick="closeCalc(); smoothScrollTo('quote')">Get Official Rate Quote &rarr;</button>
+                <button class="calc-btn-outline" onclick="closeCalc(); showQuoteSection()">Get Official Rate Quote &rarr;</button>
             </div>
         </div>
     </div>
@@ -625,6 +627,14 @@
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+
+        // Display quote section dynamically and scroll to it
+        function showQuoteSection() {
+            const quoteSection = document.getElementById('quote');
+            quoteSection.style.display = 'block';
+            quoteSection.classList.add('fade-in');
+            setTimeout(() => smoothScrollTo('quote'), 100);
         }
 
         function toggleExplanation() {
