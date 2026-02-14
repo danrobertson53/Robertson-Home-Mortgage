@@ -231,12 +231,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 20px 5%; font-size: 0.9rem; }
-        .footer-split { display: flex; justify-content: center; gap: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; flex-wrap: wrap; }
-        .footer-col { flex: 1; min-width: 250px; max-width: 350px; text-align: center; }
-        .footer-col h4 { color: var(--brand-gold); border-bottom: 2px solid var(--brand-gold); display: inline-block; padding-bottom: 8px; margin-bottom: 15px; font-weight: 700; letter-spacing: 1px; font-size: 1rem; }
-        .footer-col p { line-height: 1.8; font-size: 0.9rem; }
-        .footer-email-link { color: rgba(255,255,255,0.9); text-decoration: none; word-break: break-all; }
+        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
         .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
         .disclaimer a { color: rgba(255,255,255,0.7); transition: color 0.3s; }
 
@@ -307,7 +302,6 @@
             .form-group { width: 100%; min-width: 0; }
             
             footer { padding: 40px 15px; }
-            .footer-split { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; padding-bottom: 20px; }
         }
     </style>
 </head>
@@ -321,6 +315,7 @@
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
+            <a onclick="selectStrategy('purchase')">Strategize</a>
             <a onclick="showQuoteSection()">Get Quote</a>
             <a onclick="smoothScrollTo('general-contact')">Contact</a>
             <a href="https://2453979.my1003app.com/" class="nav-btn-portal" target="_blank">Apply Now</a>
@@ -474,6 +469,12 @@
                             <input type="text" id="inputQuoteSecondary" name="down_payment" placeholder="e.g. $20,000">
                         </div>
                     </div>
+                    
+                    <div class="form-group">
+                        <label>Estimated FICO Score</label>
+                        <input type="text" name="fico_score" placeholder="e.g. 740">
+                    </div>
+
                     <button type="submit" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Request Quote</button>
                     <div class="disclaimer-box">
                         * This is a request for information and does not constitute an offer to lend or a lock of interest rate. An official Loan Estimate will be provided upon submission of a full application.
@@ -544,15 +545,8 @@
     </div> 
     
     <footer>
-        <div class="footer-split">
-            <div class="footer-col">
-                <h4>ROBERTSON HOME MORTGAGE</h4>
-                <p><a href="mailto:dan@robertsonhomemortgage.com" class="footer-email-link">dan@robertsonhomemortgage.com</a><br>
-                19 High Street<br>
-                Goffstown, NH 03045</p>
-            </div>
-        </div>
         <div class="disclaimer">
+            <p>19 High Street, Goffstown, NH 03045 | <a href="mailto:dan@robertsonhomemortgage.com" style="color: rgba(255,255,255,0.7); text-decoration: none;">dan@robertsonhomemortgage.com</a></p>
             <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
             <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
             <p style="margin-top: 10px;"><a href="#" style="color: #889bb0; text-decoration: underline;">Privacy Policy</a></p>
