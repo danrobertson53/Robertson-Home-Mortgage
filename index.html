@@ -317,4 +317,830 @@
             </div>
         </div>
 
- 
+        <div id="services" class="services-section">
+            <div class="services-wrapper">
+                <div class="services-container">
+                    <div class="service-card" onclick="showSection('purchase-bridge')">
+                        <h2>BUY A HOME</h2>
+                        <h4>Purchase Strategy</h4>
+                        <p>Don't just get a pre-approval letter. Execute a plan. We help you optimize your down payment and secure the asset.</p>
+                        <div class="btn-container"><button class="btn">Explore Options</button></div>
+                    </div>
+                    <div class="service-card" onclick="showSection('refi-bridge')">
+                        <h2>REFINANCE</h2>
+                        <h4>Leverage & Rates</h4>
+                        <p>We structure debt that aligns with your financial goals. Learn about rate reductions, cash-out, and debt consolidation.</p>
+                        <div class="btn-container"><button class="btn">Explore Options</button></div>
+                    </div>
+                    <div class="service-card" onclick="showSection('fix-flip-calculator')">
+                        <h2>INVEST & FLIP</h2>
+                        <h4>Rehab Strategy</h4>
+                        <p>Analyze your next project. Use our interactive estimator to see how your ARV and budget impact your maximum leverage.</p>
+                        <div class="btn-container"><button class="btn">Run the Numbers</button></div>
+                    </div>
+                </div>
+
+                <div class="calc-trigger-box">
+                    <span style="opacity: 0.8;">Just browsing numbers?</span> <br class="mobile-break">
+                    <a href="javascript:void(0)" onclick="openCalc()" class="calc-link">Launch Payment Calculator &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="purchase-bridge" class="quote-section" style="display: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none; max-width: 1000px;">
+                <div class="quote-header" style="text-align: center; margin-bottom: 40px;">
+                    <h2>The Purchase Strategy.</h2>
+                    <p>Securing the asset is just step one. Let's look at your whole financial picture.</p>
+                </div>
+                <div class="strategy-container">
+                    <div class="edu-box">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.3rem; margin-top: 0;">Our Approach</h3>
+                        <ul>
+                            <li><strong>Down Payment Optimization:</strong> We analyze whether putting 5%, 10%, or 20% down makes the most sense for your overall liquidity and goals.</li>
+                            <li><strong>Program Matching:</strong> Matching you with the right tool—Conventional, FHA, VA, or specialized First-Time Homebuyer grants.</li>
+                            <li><strong>Payment Comfort:</strong> We focus on your true monthly out-of-pocket, ensuring your new mortgage fits seamlessly alongside your existing life.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.1rem; margin-top: 0; border-bottom: 2px dotted var(--brand-gold); padding-bottom: 10px;">The Whole Picture: Purchasing Power</h3>
+                        
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Gross Annual Income ($)</label>
+                                <input type="number" id="pp-income" placeholder="e.g. 100000">
+                            </div>
+                            <div class="form-group">
+                                <label>Total Monthly Debts ($) <span style="font-size: 0.8em; color: #888;">(Auto, Cards, etc.)</span></label>
+                                <input type="number" id="pp-debts" placeholder="e.g. 500">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Down Payment Target ($)</label>
+                                <input type="number" id="pp-dp" placeholder="e.g. 25000">
+                            </div>
+                            <div class="form-group">
+                                <label>Est. Interest Rate (%)</label>
+                                <input type="number" id="pp-rate" placeholder="e.g. 6.5" step="0.125">
+                            </div>
+                        </div>
+
+                        <button onclick="calcPurchasingPower()" class="btn-submit" style="width: 100%; padding: 10px; font-size: 0.85rem;">Calculate My Whole Picture</button>
+                        
+                        <div id="pp-result" style="display: none; text-align: left; margin-top: 25px; animation: fadeIn 0.4s ease;">
+                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--brand-gold); text-align: center; margin-bottom: 20px;">
+                                <span style="font-size: 0.8rem; color: #666; font-weight: 700; text-transform: uppercase;">Estimated Max Purchase Price</span>
+                                <h3 id="pp-max-price" style="color: var(--mortgage-blue); margin: 0; font-size: 2.2rem;"></h3>
+                            </div>
+
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-loan')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Estimated Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-loan-amt" style="font-weight: 700;"></span>
+                                </div>
+                                <div id="exp-pp-loan" class="ff-exp">Your estimated purchase price minus your target down payment.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-pi')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Estimated Monthly P&I <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-pi-amt"></span>
+                                </div>
+                                <div id="exp-pp-pi" class="ff-exp">Principal and Interest payment based on your inputted interest rate and a 30-year term.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-tax')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Monthly Taxes & Ins <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-tax-amt"></span>
+                                </div>
+                                <div id="exp-pp-tax" class="ff-exp">A standard proxy estimate for property taxes and homeowners insurance (estimated at 1.5% of purchase price annually).</div>
+                            </div>
+                            <div class="ff-result-row" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555;">+ Plus Your Current Debts</strong> <span id="pp-other-debts" style="color: var(--accent-red);"></span>
+                                </div>
+                            </div>
+                            <div class="ff-result-row">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: var(--mortgage-blue); font-size: 1.1rem;">Total Monthly Outflow</strong> <span id="pp-total-outflow" style="font-weight: 800; font-size: 1.1rem;"></span>
+                                </div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-cc')" style="margin-top: 15px; background: #f4f8fb; padding: 10px; border-radius: 6px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999; font-size: 0.85rem;">Est. Closing Costs Needed <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-cc-amt" style="font-weight: 700; font-size: 0.85rem;"></span>
+                                </div>
+                                <div id="exp-pp-cc" class="ff-exp">A proxy estimate for title, taxes, and lender fees (approx. 2.5% of loan amount + $1,500). This is cash you need *in addition* to your down payment.</div>
+                            </div>
+                            <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* This is a mathematical proxy for educational purposes assuming a conservative 45% DTI cap. It does not account for PMI, HOA dues, or specific program guidelines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 5px;">Ready to turn estimates into reality?</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Let's build a concrete plan to get you the keys.</p>
+                    <div class="btn-group">
+                        <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Apply Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="refi-bridge" class="quote-section" style="display: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none; max-width: 1000px;">
+                <div class="quote-header" style="text-align: center; margin-bottom: 40px;">
+                    <h2>The Refinance Strategy.</h2>
+                    <p>Debt is a tool. Let's make sure your mortgage is working for you, not against you.</p>
+                </div>
+                <div class="strategy-container">
+                    <div class="edu-box">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.3rem; margin-top: 0;">Why Refinance?</h3>
+                        <ul>
+                            <li><strong>Debt Consolidation:</strong> Roll high-interest credit card, auto, or personal loan debt into a lower-rate mortgage to immediately slash your monthly cash outflow.</li>
+                            <li><strong>Cash-Out / HELOC:</strong> Unlock the equity trapped in your home to strategically fund renovations, investments, or college tuition.</li>
+                            <li><strong>Rate & Term:</strong> Lower your interest rate or shorten your loan term to save tens of thousands in interest over the life of the loan.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.1rem; margin-top: 0; border-bottom: 2px dotted var(--brand-gold); padding-bottom: 10px;">Debt Consolidation & Equity Analyzer</h3>
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Est. Home Value ($)</label>
+                                <input type="number" id="refi-value" placeholder="e.g. 500000">
+                            </div>
+                            <div class="form-group">
+                                <label>Current Mtg. Balance ($)</label>
+                                <input type="number" id="refi-balance" placeholder="e.g. 300000">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Current Mtg. Payment <span style="font-size:0.75em; color:#888;">(P&I Only)</span></label>
+                                <input type="number" id="refi-current-pmt" placeholder="e.g. 1800">
+                            </div>
+                            <div class="form-group">
+                                <label>Target Refi Rate (%)</label>
+                                <input type="number" id="refi-rate" placeholder="e.g. 6.5" step="0.125">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
+                            <div class="form-group">
+                                <label>Other Debt to Consolidate ($)</label>
+                                <input type="number" id="refi-debt-amt" placeholder="e.g. 40000">
+                            </div>
+                            <div class="form-group">
+                                <label>Current Payment on Debt ($)</label>
+                                <input type="number" id="refi-debt-pmt" placeholder="e.g. 1200">
+                            </div>
+                        </div>
+                        <button onclick="calcConsolidation()" class="btn-submit" style="width: 100%; padding: 10px; font-size: 0.85rem;">Analyze Cash Flow & Equity</button>
+                        
+                        <div id="refi-result" style="display: none; text-align: left; margin-top: 25px; animation: fadeIn 0.4s ease;">
+                            
+                            <div id="refi-savings-box" style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--success-green); text-align: center; margin-bottom: 20px;">
+                                <span style="font-size: 0.8rem; color: #666; font-weight: 700; text-transform: uppercase;">Estimated Monthly Cash Flow Savings</span>
+                                <h3 id="refi-savings" style="color: var(--success-green); margin: 0; font-size: 2.2rem;"></h3>
+                            </div>
+
+                            <div id="refi-error-box" style="display:none; background: #ffebee; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-bottom: 20px; color: var(--accent-red); font-weight: 600;">
+                                Not enough equity to consolidate this amount.
+                            </div>
+
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-refi-max')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Allowable Loan (80% LTV) <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="refi-max-loan" style="font-weight: 700;"></span>
+                                </div>
+                                <div id="exp-refi-max" class="ff-exp">Based on standard guidelines, you can generally borrow up to 80% of your home's value on a Cash-Out Refinance.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-refi-newloan')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. New Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="refi-new-loan" style="font-weight: 700;"></span>
+                                </div>
+                                <div id="exp-refi-newloan" class="ff-exp">This rolls your current balance, the debt you are consolidating, and an estimate of closing costs into one single loan.</div>
+                            </div>
+                            <div class="ff-result-row" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: var(--accent-red);">Old Total Payments (Mtg + Debt)</strong> <span id="refi-old-pmt" style="color: var(--accent-red);"></span>
+                                </div>
+                            </div>
+                            <div class="ff-result-row">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: var(--mortgage-blue); font-size: 1.1rem;">New Consolidated Payment</strong> <span id="refi-new-pmt" style="font-weight: 800; font-size: 1.1rem;"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-refi-cc')" style="margin-top: 15px; background: #f4f8fb; padding: 10px; border-radius: 6px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999; font-size: 0.85rem;">Remaining Usable Equity <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="refi-equity-left" style="font-weight: 700; font-size: 0.85rem;"></span>
+                                </div>
+                                <div id="exp-refi-cc" class="ff-exp">The difference between your Maximum Allowable Loan and your New Loan Amount. You can take this as cash in hand!</div>
+                            </div>
+
+                            <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* This is an educational tool simulating a 30-year fixed Cash-Out Refinance. It assumes a proxy of 1.5% + $1,500 for closing costs rolled into the loan. P&I only; does not include escrowed taxes/insurance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 5px;">Ready to run your actual numbers?</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">We can look at Refinances, HELOCs, and Home Equity Loans.</p>
+                    <div class="btn-group">
+                        <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Apply Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="fix-flip-calculator" class="quote-section" style="display: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none;">
+                <div class="quote-header">
+                    <h2>Fix & Flip Loan Estimator.</h2>
+                    <p>Enter your project numbers below to see real-time estimated loan terms and cash-to-close requirements.</p>
+                </div>
+
+                <div class="contact-form" id="ff-inputs">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Purchase Price ($)</label>
+                            <input type="number" id="ff-purchase" placeholder="e.g. 320000">
+                        </div>
+                        <div class="form-group">
+                            <label>Est. Rehab Budget ($)</label>
+                            <input type="number" id="ff-rehab" placeholder="e.g. 88000">
+                        </div>
+                        <div class="form-group">
+                            <label>Est. After Repair Value ($)</label>
+                            <input type="number" id="ff-arv" placeholder="e.g. 500000">
+                        </div>
+                    </div>
+                    <button onclick="calculateFixFlip()" class="btn-submit" style="background-color: var(--mortgage-blue); color: white; width: 100%;">Calculate My Estimate</button>
+                </div>
+
+                <div id="ff-results" style="display: none; margin-top: 40px; animation: fadeIn 0.5s ease;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.3rem; margin-bottom: 10px;">Behind the Scenes: The Calculations</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;"><em>Lenders mitigate risk by ensuring the loan never exceeds a certain percentage of the project's costs OR its final value. Your maximum loan amount is capped by whichever number is the <strong>lowest</strong>.</em></p>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 3px solid var(--brand-gold); margin-bottom: 25px; font-size: 0.9rem;">
+                        <ul id="ff-breakdown" style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8;">
+                            </ul>
+                    </div>
+
+                    <div class="calc-result" style="text-align: left; padding: 25px;">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Your Estimated Costs</h3>
+                        
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-loan')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-max-loan" style="font-weight: 700;"></span>
+                            </div>
+                            <div id="exp-loan" class="ff-exp">The lowest of the three calculations above. This is the absolute maximum the lender will finance.</div>
+                        </div>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-equity')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-base-equity"></span>
+                            </div>
+                            <div id="exp-equity" class="ff-exp">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount. This is your core "skin in the game" for the property itself.</div>
+                        </div>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-fees')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-loan-fees"></span>
+                            </div>
+                            <div id="exp-fees" class="ff-exp">Includes estimated origination, broker, processing, underwriting, and document preparation fees.</div>
+                        </div>
+                        
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-appraisal')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Appraisal Fee <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-appraisal-fee"></span>
+                            </div>
+                            <div id="exp-appraisal" class="ff-exp">Estimated upfront cost to determine the As-Is and After Repair Value (ARV) of the property.</div>
+                        </div>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-title')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Title Costs, Recording, Transfer Tax <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-title-tax-fees"></span>
+                            </div>
+                            <div id="exp-title" class="ff-exp">An estimate combining state transfer taxes (borrower portion), title insurance premiums, settlement fees, and county recording fees.</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-top: 25px;">
+                            <span style="font-size: 0.9rem; font-weight: 700; color: var(--mortgage-blue); text-transform: uppercase;">Total Est. Cash to Close</span>
+                            <h3 id="ff-cash-to-close" style="color: var(--accent-red); font-size: 2.2rem; margin: 5px 0 0 0; font-weight: 800;"></h3>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--accent-red); text-align: center; margin-top: 10px; font-weight: 600;">* Note: Builder's Risk / Vacant Property Insurance is required but not included in this quote. This will be a separate charge.</p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 5px;">Ready to turn estimates into reality?</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">You'll need a detailed budget, LLC docs, and a complete application.</p>
+                        <div class="btn-group">
+                            <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                            <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Apply Now &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-box">
+                        * This calculator is provided for educational and example purposes only. The figures generated are estimates based on standard program guidelines and do not constitute an offer to lend, a loan approval, or a guarantee of terms.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="quote" class="quote-section">
+            <div class="quote-container">
+                <div class="quote-header">
+                    <h2>Rate Quote.</h2>
+                    <p>Receive a custom rate quote for your exact scenario.</p>
+                </div>
+                <form class="contact-form" id="quoteForm" name="quote-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="form-name" value="quote-form" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction Type</label>
+                            <select id="quoteType" name="transaction_type" onchange="toggleQuoteFields()">
+                                <option value="buy">Buying a Home</option>
+                                <option value="refi">Refinance (Lower Rate)</option>
+                                <option value="cashout">Refinance (Cash Out)</option>
+                                <option value="equity">Home Equity Loan / Line</option>
+                                <option value="invest">Fix & Flip / Investment</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label id="lblQuoteAmount">Purchase Price ($)</label>
+                            <input type="text" name="amount" placeholder="e.g. $450,000">
+                        </div>
+                        <div class="form-group" id="groupQuoteSecondary">
+                            <label id="lblQuoteSecondary">Down Payment ($)</label>
+                            <input type="text" id="inputQuoteSecondary" name="down_payment" placeholder="e.g. $20,000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Estimated FICO Score</label>
+                        <input type="text" name="fico_score" placeholder="e.g. 740">
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="background-color: var(--mortgage-blue); color: white;">Request Quote</button>
+                    <div class="disclaimer-box">
+                        * This is a request for information and does not constitute an offer to lend or a lock of interest rate. An official Loan Estimate will be provided upon submission of a full application.
+                    </div>
+                </form>
+                <div id="quote-success" style="display:none; text-align:center; padding:20px;">
+                    <div class="check-icon">✓</div>
+                    <h3>Request Sent!</h3>
+                    <p>We are running your numbers and will reach out shortly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="general-contact" class="simple-contact-section">
+            <div class="simple-contact-container">
+                <h2>Get in Touch.</h2>
+                <p>Have a quick question? Send us a message.</p>
+                <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="form-name" value="contact-form" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" name="message" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" style="background-color: var(--brand-gold); color: var(--mortgage-blue);">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="about" class="about-section">
+            <div class="about-container">
+                <div class="gold-line"></div>
+                <h2>The Robertson Approach.</h2>
+                <p>Most lenders focus solely on the "approval"—the finish line of a single transaction. At Robertson Home Mortgage, we believe that ignores the bigger picture: your financial trajectory.</p>
+                <p>We view your mortgage as a critical financial tool, not just a pile of paperwork. By treating debt structuring as a strategic asset, we ensure your financing supports your long-term goals, whether you are buying your first home or expanding an investment portfolio.</p>
+
+                <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
+                    <div class="team-header">
+                        <img src="./dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
+                        <div class="team-info">
+                            <h3>Dan Robertson</h3>
+                            <h4>STRATEGIST & FOUNDER</h4>
+                            <span style="font-size:0.8rem; color:#888; display:block; margin-top:5px;">Click to read bio</span>
+                        </div>
+                        <div class="team-toggle-icon">▼</div>
+                    </div>
+                    <div class="team-content">
+                        <div class="team-bio-text">
+                            <p>With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures.</p>
+                            <p>Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies.</p>
+                            <p>Now, as the founder of his own firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div> 
+    
+    <footer>
+        <div class="disclaimer">
+            <p>19 High Street, Goffstown, NH 03045 | <a href="mailto:dan@robertsonhomemortgage.com" style="color: rgba(255,255,255,0.7); text-decoration: none;">dan@robertsonhomemortgage.com</a></p>
+            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
+            <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
+            <p style="margin-top: 10px;"><a href="#" style="color: #889bb0; text-decoration: underline;">Privacy Policy</a></p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <img src="./eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
+            </div>
+        </div>
+    </footer>
+
+    <div id="calcModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-calc" onclick="closeCalc()">&times;</span>
+            <div class="modal-header">
+                <h3>Payment Estimator</h3>
+            </div>
+            <div class="calc-tabs">
+                <div class="calc-tab active" id="tabPurchase" onclick="switchCalcMode('purchase')">Purchase</div>
+                <div class="calc-tab" id="tabRefi" onclick="switchCalcMode('refi')">Refinance</div>
+            </div>
+            <div class="calc-body">
+                <div class="calc-col" style="margin-bottom:10px;">
+                    <label id="lblAmount">Home Price ($)</label>
+                    <input type="number" id="calcPrice" value="450000">
+                </div>
+                <div class="calc-row">
+                    <div class="calc-col">
+                        <label id="lblDown">Down Payment ($)</label>
+                        <input type="number" id="calcDown" value="20000">
+                    </div>
+                    <div class="calc-col">
+                        <label>Int. Rate (%)</label>
+                        <input type="number" id="calcRate" value="6.5" step="0.125">
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-col">
+                        <label>Annual Tax ($)</label>
+                        <input type="number" id="calcTaxes" value="5000">
+                    </div>
+                    <div class="calc-col">
+                        <label>Annual Ins. ($)</label>
+                        <input type="number" id="calcIns" value="1200">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calculatePayment()">Calculate Total Payment</button>
+                <div class="calc-result">
+                    <span style="display:block; margin-bottom:5px;">Est. Monthly Payment</span>
+                    <h3 id="calcResultDisplay">$0</h3>
+                </div>
+                <p class="calc-disclaimer">Includes P&I, Taxes, and Insurance. Does not include PMI or HOA.</p>
+                <button class="calc-btn-outline" onclick="closeCalc(); showSection('quote')">Get Official Rate Quote &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- NAVIGATION & UI ---
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        function smoothScrollTo(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            const nav = document.querySelector('nav');
+            const headerOffset = nav.offsetHeight + 10; 
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+
+        // UNIVERSAL SECTION SHOW/HIDE
+        function showSection(sectionId) {
+            document.getElementById('purchase-bridge').style.display = 'none';
+            document.getElementById('refi-bridge').style.display = 'none';
+            document.getElementById('fix-flip-calculator').style.display = 'none';
+            document.getElementById('quote').style.display = 'none';
+
+            const target = document.getElementById(sectionId);
+            target.style.display = 'block';
+            target.classList.add('fade-in');
+            setTimeout(() => smoothScrollTo(sectionId), 100);
+        }
+
+        // --- BIO ACCORDION TOGGLE ---
+        function toggleBio(cardId) {
+            const card = document.getElementById(cardId);
+            const content = card.querySelector('.team-content');
+            
+            if (card.classList.contains('active')) {
+                card.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                card.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        // --- EXPLANATION TOGGLE ---
+        function toggleFFExp(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        // --- DYNAMIC QUOTE LOGIC ---
+        function toggleQuoteFields() {
+            const type = document.getElementById('quoteType').value;
+            const lblAmount = document.getElementById('lblQuoteAmount');
+            const groupSecondary = document.getElementById('groupQuoteSecondary');
+            const lblSecondary = document.getElementById('lblQuoteSecondary');
+            const inputSecondary = document.getElementById('inputQuoteSecondary');
+
+            if (type === 'buy') {
+                lblAmount.innerText = "Purchase Price ($)";
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Down Payment ($)";
+                inputSecondary.placeholder = "e.g. $20,000";
+                inputSecondary.name = "down_payment";
+            } else if (type === 'refi') {
+                lblAmount.innerText = "Est. Property Value ($)";
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Current Loan Balance ($)";
+                inputSecondary.placeholder = "e.g. $300,000";
+                inputSecondary.name = "current_balance";
+            } else if (type === 'cashout' || type === 'equity' || type === 'invest') {
+                lblAmount.innerText = "Est. Property Value ($)";
+                groupSecondary.style.display = 'flex';
+                lblSecondary.innerText = "Cash Out / Capital Desired ($)";
+                inputSecondary.placeholder = "e.g. $50,000";
+                inputSecondary.name = "cash_out_amount";
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            })
+            .then(() => {
+                if (form.id === 'quoteForm') {
+                    document.getElementById('quoteForm').style.display = 'none';
+                    document.getElementById('quote-success').style.display = 'block';
+                } else if (form.id === 'contactForm') {
+                    alert('Message Sent Successfully!');
+                    form.reset();
+                }
+            })
+            .catch((error) => alert("Submission failed. Please try again."));
+        }
+
+        /* --- MONTHLY PAYMENT CALCULATOR --- */
+        let calcMode = 'purchase';
+        function openCalc() {
+            document.getElementById('calcModal').style.display = 'flex';
+            calculatePayment(); 
+        }
+        function closeCalc() {
+            document.getElementById('calcModal').style.display = 'none';
+        }
+        function switchCalcMode(mode) {
+            calcMode = mode;
+            const tabP = document.getElementById('tabPurchase');
+            const tabR = document.getElementById('tabRefi');
+            const lblAmt = document.getElementById('lblAmount');
+            const lblDown = document.getElementById('lblDown');
+            const inputAmount = document.getElementById('calcPrice');
+            const inputDown = document.getElementById('calcDown');
+            if (mode === 'purchase') {
+                tabP.classList.add('active'); tabR.classList.remove('active');
+                lblAmt.innerText = "Home Price ($)";
+                lblDown.innerText = "Down Payment ($)";
+                inputAmount.value = "450000";
+                inputDown.value = "20000";
+            } else {
+                tabR.classList.add('active'); tabP.classList.remove('active');
+                lblAmt.innerText = "Current Balance ($)";
+                lblDown.innerText = "Cash Out Desired ($)";
+                inputAmount.value = "300000";
+                inputDown.value = "0";
+            }
+            calculatePayment();
+        }
+        function calculatePayment() {
+            const val1 = parseFloat(document.getElementById('calcPrice').value) || 0; 
+            const val2 = parseFloat(document.getElementById('calcDown').value) || 0; 
+            const rate = parseFloat(document.getElementById('calcRate').value) || 0;
+            const tax = parseFloat(document.getElementById('calcTaxes').value) || 0;
+            const ins = parseFloat(document.getElementById('calcIns').value) || 0;
+            
+            let loanAmount = 0;
+            if (calcMode === 'purchase') { loanAmount = val1 - val2; } 
+            else { loanAmount = val1 + val2; }
+            
+            if (loanAmount > 0 && rate > 0) {
+                const monthlyRate = rate / 100 / 12;
+                const termsMonths = 360; 
+                const pi = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termsMonths));
+                const total = pi + (tax / 12) + (ins / 12);
+                document.getElementById('calcResultDisplay').innerText = "$" + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                document.getElementById('calcResultDisplay').innerText = "$0";
+            }
+        }
+
+        /* --- MINI TOOL: PURCHASING POWER (WHOLE PICTURE) --- */
+        function calcPurchasingPower() {
+            const income = parseFloat(document.getElementById('pp-income').value) || 0;
+            const debts = parseFloat(document.getElementById('pp-debts').value) || 0;
+            const dp = parseFloat(document.getElementById('pp-dp').value) || 0;
+            const rateStr = document.getElementById('pp-rate').value;
+            let rate = parseFloat(rateStr);
+            if (isNaN(rate) || rate === 0) rate = 6.5; 
+            
+            if(income === 0) {
+                alert("Please enter a Gross Annual Income to calculate.");
+                return;
+            }
+            
+            const maxTotalPayment = (income / 12) * 0.45;
+            const maxMortgagePayment = maxTotalPayment - debts;
+            
+            const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+            if(maxMortgagePayment <= 0) {
+                document.getElementById('pp-max-price').innerText = "$0";
+                document.getElementById('pp-loan-amt').innerText = "$0";
+                document.getElementById('pp-pi-amt').innerText = "$0";
+                document.getElementById('pp-tax-amt').innerText = "$0";
+                document.getElementById('pp-total-outflow').innerText = formatCurrency(debts);
+            } else {
+                const r = rate / 100 / 12;
+                const n = 360; 
+                const M = (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+                const taxInsRate = 0.015 / 12; 
+
+                const maxPrice = (maxMortgagePayment + (dp * M)) / (M + taxInsRate);
+                const loanAmount = maxPrice - dp;
+                const piAmt = loanAmount * M;
+                const taxInsAmt = maxPrice * taxInsRate;
+                const closingCosts = (loanAmount * 0.025) + 1500;
+
+                document.getElementById('pp-max-price').innerText = formatCurrency(maxPrice);
+                document.getElementById('pp-loan-amt').innerText = formatCurrency(loanAmount);
+                document.getElementById('pp-pi-amt').innerText = formatCurrency(piAmt);
+                document.getElementById('pp-tax-amt').innerText = formatCurrency(taxInsAmt);
+                document.getElementById('pp-other-debts').innerText = formatCurrency(debts);
+                document.getElementById('pp-total-outflow').innerText = formatCurrency(piAmt + taxInsAmt + debts);
+                document.getElementById('pp-cc-amt').innerText = formatCurrency(closingCosts);
+            }
+            document.getElementById('pp-result').style.display = 'block';
+        }
+
+        /* --- MINI TOOL: REFINANCE / DEBT CONSOLIDATION --- */
+        function calcConsolidation() {
+            const value = parseFloat(document.getElementById('refi-value').value) || 0;
+            const balance = parseFloat(document.getElementById('refi-balance').value) || 0;
+            const currentPmt = parseFloat(document.getElementById('refi-current-pmt').value) || 0;
+            const debtAmt = parseFloat(document.getElementById('refi-debt-amt').value) || 0;
+            const debtPmt = parseFloat(document.getElementById('refi-debt-pmt').value) || 0;
+            const rateStr = document.getElementById('refi-rate').value;
+            let rate = parseFloat(rateStr);
+            if (isNaN(rate) || rate === 0) rate = 6.5;
+            
+            if(value === 0 || balance === 0) {
+                alert("Please enter your Estimated Home Value and Current Balance.");
+                return;
+            }
+            
+            const maxLoan = value * 0.80;
+            const closingCostsProxy = (maxLoan * 0.01) + 2500; 
+            const newLoanAmount = balance + debtAmt + closingCostsProxy;
+            
+            const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+            if(newLoanAmount > maxLoan) {
+                document.getElementById('refi-error-box').style.display = 'block';
+                document.getElementById('refi-savings-box').style.display = 'none';
+            } else {
+                document.getElementById('refi-error-box').style.display = 'none';
+                document.getElementById('refi-savings-box').style.display = 'block';
+                
+                const r = rate / 100 / 12;
+                const M = (r * Math.pow(1+r, 360)) / (Math.pow(1+r, 360) - 1);
+                const newPi = newLoanAmount * M;
+
+                const oldTotalPmt = currentPmt + debtPmt;
+                const savings = oldTotalPmt - newPi;
+                const remainingEquity = maxLoan - newLoanAmount;
+
+                document.getElementById('refi-max-loan').innerText = formatCurrency(maxLoan);
+                document.getElementById('refi-new-loan').innerText = formatCurrency(newLoanAmount);
+                document.getElementById('refi-old-pmt').innerText = formatCurrency(oldTotalPmt);
+                document.getElementById('refi-new-pmt').innerText = formatCurrency(newPi);
+                document.getElementById('refi-equity-left').innerText = formatCurrency(remainingEquity);
+                
+                const savingsEl = document.getElementById('refi-savings');
+                if (savings > 0) {
+                    savingsEl.innerText = "+" + formatCurrency(savings);
+                    savingsEl.style.color = "var(--success-green)";
+                    document.getElementById('refi-savings-box').style.borderColor = "var(--success-green)";
+                } else {
+                    savingsEl.innerText = formatCurrency(savings);
+                    savingsEl.style.color = "var(--accent-red)";
+                    document.getElementById('refi-savings-box').style.borderColor = "var(--accent-red)";
+                }
+            }
+            document.getElementById('refi-result').style.display = 'block';
+        }
+
+        /* --- NEW FIX & FLIP CALCULATOR LOGIC --- */
+        function calculateFixFlip() {
+            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
+            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
+            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
+
+            if (pp === 0 || rehab === 0 || arv === 0) {
+                alert("Please enter values for Purchase Price, Rehab Budget, and ARV.");
+                return;
+            }
+
+            const calc1_BlendedLTC = (pp + rehab) * 0.95;
+            const calc2_SplitLTC = (pp * 0.90) + rehab;
+            const calc3_LTARV = arv * 0.75;
+
+            const maxLoan = Math.min(calc1_BlendedLTC, calc2_SplitLTC, calc3_LTARV);
+            const baseEquity = (pp + rehab) - maxLoan;
+
+            const originationFee = maxLoan * 0.0125;
+            const brokerFee = maxLoan * 0.02;
+            const processingFees = 1625; 
+            const totalLoanFees = originationFee + brokerFee + processingFees;
+            
+            const appraisalFee = 650;
+            const transferTax = (pp / 1000) * 15 / 2;
+            const titleProxy = 1200 + ((maxLoan / 1000) * 2.50);
+            
+            const totalTitleTax = transferTax + titleProxy;
+
+            const totalCashToClose = baseEquity + totalLoanFees + totalTitleTax + appraisalFee;
+
+            const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+            const breakdownHTML = `
+                <li style="${maxLoan === calc1_BlendedLTC ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 1 (95% Blended LTC): ${formatCurrency(calc1_BlendedLTC)}
+                </li>
+                <li style="${maxLoan === calc2_SplitLTC ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 2 (90% Purchase + 100% Rehab): ${formatCurrency(calc2_SplitLTC)}
+                </li>
+                <li style="${maxLoan === calc3_LTARV ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 3 (75% LTARV): ${formatCurrency(calc3_LTARV)}
+                </li>
+                <li style="margin-top: 10px; list-style: none; padding-top: 10px; border-top: 1px solid #ddd;">
+                    <em>Your loan is limited to <strong>${formatCurrency(maxLoan)}</strong> because it hit the lowest cap of the three calculations.</em>
+                </li>
+            `;
+            
+            document.getElementById('ff-breakdown').innerHTML = breakdownHTML;
+            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
+            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEquity);
+            document.getElementById('ff-loan-fees').innerText = formatCurrency(totalLoanFees);
+            document.getElementById('ff-appraisal-fee').innerText = formatCurrency(appraisalFee);
+            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(totalTitleTax);
+            document.getElementById('ff-cash-to-close').innerText = formatCurrency(totalCashToClose);
+
+            document.getElementById('ff-results').style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>
