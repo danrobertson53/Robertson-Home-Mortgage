@@ -12,7 +12,7 @@
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --mortgage-blue: #003366;     
+            --mortgage-blue: #003366;      
             --brand-gold: #FFC72C;        
             --white: #ffffff;
             --text-dark: #333333;
@@ -129,15 +129,15 @@
         .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1000px; }
         .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
         
-        .service-card { background: white; flex: 1; min-width: 300px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
+        .service-card { background: white; flex: 1; min-width: 250px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
         
-        .service-card h2 { color: var(--mortgage-blue); margin: 10px 0 5px 0; font-size: 1.8rem; font-weight: 800; }
+        .service-card h2 { color: var(--mortgage-blue); margin: 10px 0 5px 0; font-size: 1.6rem; font-weight: 800; }
         .service-card h4 { margin: 0 0 15px 0; font-weight: 600; color: #889bb0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; }
         .service-card p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
 
         .btn-container { margin-top: auto; display: flex; justify-content: center; }
-        .btn { display: inline-block; padding: 12px 35px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; max-width: 250px; border: none; cursor: pointer;}
+        .btn { display: inline-block; padding: 12px 25px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; max-width: 250px; border: none; cursor: pointer;}
         .btn:hover { background: #002244; transform: scale(1.02); }
 
         .calc-trigger-box { margin-top: 40px; margin-bottom: 30px; text-align: center; font-size: 0.9rem; color: #666; position: relative; z-index: 10; }
@@ -237,7 +237,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            #roadmap, #quote, #about, #general-contact { 
+            #roadmap, #quote, #about, #general-contact, #fix-flip-calculator { 
                 scroll-margin-top: 85px; 
             }
 
@@ -253,7 +253,7 @@
             .hero p { font-size: 1.1rem; line-height: 1.4; max-width: 100%;}
             
             /* DYNAMIC BUTTON CARDS FOR MOBILE */
-            .services-container { margin-top: -40px; flex-direction: row; align-items: stretch; gap: 10px; padding: 0 15px; }
+            .services-container { margin-top: -40px; flex-direction: column; align-items: stretch; gap: 10px; padding: 0 15px; }
             .service-card { 
                 flex: 1;
                 min-width: 0;
@@ -282,13 +282,14 @@
             .team-content { padding: 0 20px; }
             .team-card.active .team-content { padding: 10px 20px 25px 20px; }
 
-            /* ORDERING: Move About directly under Services/Calc */
+            /* ORDERING */
             #home { order: 0; }
             #services { order: 1; }
-            #about { order: 2; margin-top: 10px; margin-bottom: 20px; }
-            #roadmap { order: 3; padding-top: 30px; }
-            #quote { order: 4; }
-            #general-contact { order: 5; }
+            #fix-flip-calculator { order: 2; }
+            #about { order: 3; margin-top: 10px; margin-bottom: 20px; }
+            #roadmap { order: 4; padding-top: 30px; }
+            #quote { order: 5; }
+            #general-contact { order: 6; }
 
             .quote-section, .simple-contact-section, .about-section { padding: 40px 20px; }
             .quote-container { padding: 25px 20px; }
@@ -314,6 +315,7 @@
         
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
+            <a onclick="showFixFlipCalc()">Invest</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
             <a onclick="selectStrategy('purchase')">Strategize</a>
             <a onclick="showQuoteSection()">Get Quote</a>
@@ -330,6 +332,7 @@
 
     <div id="mobileMenu" class="mobile-menu">
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
+        <a onclick="toggleMobileMenu(); showFixFlipCalc()">Invest & Flip</a>
         <a onclick="toggleMobileMenu(); showQuoteSection()">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
@@ -364,11 +367,91 @@
                         <p>We structure debt that aligns with your financial goals. Whether you want to lower your rate, shorten your term, or tap into your equity.</p>
                         <div class="btn-container"><button class="btn">Refinance Options</button></div>
                     </div>
+                    <div class="service-card" onclick="showFixFlipCalc()">
+                        <h2>INVEST & FLIP</h2>
+                        <h4>Rehab Strategy</h4>
+                        <p>Analyze your next project. Use our interactive estimator to see how your ARV and budget impact your maximum leverage and cash-to-close.</p>
+                        <div class="btn-container"><button class="btn">Run the Numbers</button></div>
+                    </div>
                 </div>
 
                 <div class="calc-trigger-box">
                     <span style="opacity: 0.8;">Just browsing numbers?</span> <br class="mobile-break">
                     <a href="javascript:void(0)" onclick="openCalc()" class="calc-link">Launch Payment Calculator &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="fix-flip-calculator" class="quote-section" style="display: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none;">
+                <div class="quote-header">
+                    <h2>Fix & Flip Loan Estimator.</h2>
+                    <p>Enter your project numbers below to see real-time estimated loan terms and cash-to-close requirements.</p>
+                </div>
+
+                <div class="contact-form" id="ff-inputs">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Purchase Price ($)</label>
+                            <input type="number" id="ff-purchase" placeholder="e.g. 320000">
+                        </div>
+                        <div class="form-group">
+                            <label>Est. Rehab Budget ($)</label>
+                            <input type="number" id="ff-rehab" placeholder="e.g. 88000">
+                        </div>
+                        <div class="form-group">
+                            <label>Est. After Repair Value ($)</label>
+                            <input type="number" id="ff-arv" placeholder="e.g. 500000">
+                        </div>
+                    </div>
+                    <button onclick="calculateFixFlip()" class="btn-submit" style="background-color: var(--mortgage-blue); color: white; width: 100%;">Calculate My Estimate</button>
+                </div>
+
+                <div id="ff-results" style="display: none; margin-top: 40px; animation: fadeIn 0.5s ease;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.3rem; margin-bottom: 10px;">Behind the Scenes: The Calculations</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;"><em>Lenders mitigate risk by ensuring the loan never exceeds a certain percentage of the project's costs OR its final value. Your maximum loan amount is capped by whichever number is the <strong>lowest</strong>.</em></p>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 3px solid var(--brand-gold); margin-bottom: 25px; font-size: 0.9rem;">
+                        <ul id="ff-breakdown" style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8;">
+                            </ul>
+                    </div>
+
+                    <div class="calc-result" style="text-align: left; padding: 25px;">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Your Estimated Costs</h3>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <strong style="color: #555;">Max Loan Amount:</strong> <span id="ff-max-loan" style="font-weight: 700;"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <strong style="color: #555;">Base Equity Required:</strong> <span id="ff-base-equity"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <strong style="color: #555;">Est. Loan & Broker Fees:</strong> <span id="ff-loan-fees"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <strong style="color: #555;">NH Transfer Tax (Borrower):</strong> <span id="ff-transfer-tax"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <strong style="color: #555;">Est. Title & Recording:</strong> <span id="ff-title-fees"></span>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center;">
+                            <span style="font-size: 0.9rem; font-weight: 700; color: var(--mortgage-blue); text-transform: uppercase;">Total Est. Cash to Close</span>
+                            <h3 id="ff-cash-to-close" style="color: var(--accent-red); font-size: 2.2rem; margin: 5px 0 0 0; font-weight: 800;"></h3>
+                        </div>
+                    </div>
+
+                    <div class="apply-now-bar" style="margin-top: 30px;">
+                        <div class="apply-text">
+                            <strong>Ready to move forward?</strong><br>
+                            You'll need a detailed budget, LLC docs, and a complete application.
+                        </div>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-apply-small">Apply Now &rarr;</a>
+                    </div>
+
+                    <div class="disclaimer-box">
+                        * This calculator is provided for educational and example purposes only. The figures generated are estimates based on standard program guidelines and do not constitute an offer to lend, a loan approval, or a guarantee of terms.
+                    </div>
                 </div>
             </div>
         </div>
@@ -623,12 +706,18 @@
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
 
-        // Display quote section dynamically and scroll to it
         function showQuoteSection() {
             const quoteSection = document.getElementById('quote');
             quoteSection.style.display = 'block';
             quoteSection.classList.add('fade-in');
             setTimeout(() => smoothScrollTo('quote'), 100);
+        }
+        
+        function showFixFlipCalc() {
+            const calcSection = document.getElementById('fix-flip-calculator');
+            calcSection.style.display = 'block';
+            calcSection.classList.add('fade-in');
+            setTimeout(() => smoothScrollTo('fix-flip-calculator'), 100);
         }
 
         function toggleExplanation() {
@@ -737,7 +826,7 @@
             updateFormFields(); 
         }
 
-        /* --- CALCULATOR --- */
+        /* --- MONTHLY PAYMENT CALCULATOR --- */
         let calcMode = 'purchase';
         function openCalc() {
             document.getElementById('calcModal').style.display = 'flex';
@@ -789,6 +878,62 @@
             } else {
                 document.getElementById('calcResultDisplay').innerText = "$0";
             }
+        }
+
+        /* --- NEW FIX & FLIP CALCULATOR LOGIC --- */
+        function calculateFixFlip() {
+            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
+            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
+            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
+
+            if (pp === 0 || rehab === 0 || arv === 0) {
+                alert("Please enter values for Purchase Price, Rehab Budget, and ARV.");
+                return;
+            }
+
+            const calc1_BlendedLTC = (pp + rehab) * 0.95;
+            const calc2_SplitLTC = (pp * 0.90) + rehab;
+            const calc3_LTARV = arv * 0.75;
+
+            const maxLoan = Math.min(calc1_BlendedLTC, calc2_SplitLTC, calc3_LTARV);
+            const baseEquity = (pp + rehab) - maxLoan;
+
+            const originationFee = maxLoan * 0.0125;
+            const brokerFee = maxLoan * 0.02;
+            const processingFees = 1625; // $1475 Underwriting + $150 Doc Prep
+            const totalLoanFees = originationFee + brokerFee + processingFees;
+            
+            const transferTax = (pp / 1000) * 15 / 2;
+            const titleProxy = 1200 + ((maxLoan / 1000) * 2.50);
+
+            const totalCashToClose = baseEquity + totalLoanFees + transferTax + titleProxy;
+
+            const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+            const breakdownHTML = `
+                <li style="${maxLoan === calc1_BlendedLTC ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 1 (95% Blended LTC): ${formatCurrency(calc1_BlendedLTC)}
+                </li>
+                <li style="${maxLoan === calc2_SplitLTC ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 2 (90% Purchase + 100% Rehab): ${formatCurrency(calc2_SplitLTC)}
+                </li>
+                <li style="${maxLoan === calc3_LTARV ? 'font-weight: 700; color: var(--mortgage-blue);' : ''}">
+                    Calculation 3 (75% LTARV): ${formatCurrency(calc3_LTARV)}
+                </li>
+                <li style="margin-top: 10px; list-style: none; padding-top: 10px; border-top: 1px solid #ddd;">
+                    <em>Your loan is limited to <strong>${formatCurrency(maxLoan)}</strong> because it hit the lowest cap of the three calculations.</em>
+                </li>
+            `;
+            
+            document.getElementById('ff-breakdown').innerHTML = breakdownHTML;
+            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
+            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEquity);
+            document.getElementById('ff-loan-fees').innerText = formatCurrency(totalLoanFees);
+            document.getElementById('ff-transfer-tax').innerText = formatCurrency(transferTax);
+            document.getElementById('ff-title-fees').innerText = formatCurrency(titleProxy) + " (Est.)";
+            document.getElementById('ff-cash-to-close').innerText = formatCurrency(totalCashToClose);
+
+            document.getElementById('ff-results').style.display = 'block';
         }
 
     </script>
