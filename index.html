@@ -205,6 +205,9 @@
         .quote-header p { margin-bottom: 30px; color: #666; }
         .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; }
 
+        /* --- FF RESULT ROW STYLES --- */
+        .ff-result-row { margin-bottom: 15px; }
+
         /* --- GENERAL CONTACT SECTION --- */
         .simple-contact-section { background-color: white; padding: 80px 5%; }
         .simple-contact-container { max-width: 700px; margin: 0 auto; text-align: center; }
@@ -315,7 +318,6 @@
         
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
-            <a onclick="showFixFlipCalc()">Invest</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
             <a onclick="selectStrategy('purchase')">Strategize</a>
             <a onclick="showQuoteSection()">Get Quote</a>
@@ -332,7 +334,6 @@
 
     <div id="mobileMenu" class="mobile-menu">
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
-        <a onclick="toggleMobileMenu(); showFixFlipCalc()">Invest & Flip</a>
         <a onclick="toggleMobileMenu(); showQuoteSection()">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
@@ -419,26 +420,46 @@
                     <div class="calc-result" style="text-align: left; padding: 25px;">
                         <h3 style="color: var(--mortgage-blue); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Your Estimated Costs</h3>
                         
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                            <strong style="color: #555;">Max Loan Amount:</strong> <span id="ff-max-loan" style="font-weight: 700;"></span>
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-loan')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-max-loan" style="font-weight: 700;"></span>
+                            </div>
+                            <div id="exp-loan" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">The lowest of the three calculations above. This is the absolute maximum the lender will finance.</div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                            <strong style="color: #555;">Base Equity Required:</strong> <span id="ff-base-equity"></span>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-equity')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-base-equity"></span>
+                            </div>
+                            <div id="exp-equity" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount. This is your core "skin in the game" for the property itself.</div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                            <strong style="color: #555;">Est. Loan & Broker Fees:</strong> <span id="ff-loan-fees"></span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                            <strong style="color: #555;">NH Transfer Tax (Borrower):</strong> <span id="ff-transfer-tax"></span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                            <strong style="color: #555;">Est. Title & Recording:</strong> <span id="ff-title-fees"></span>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-fees')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-loan-fees"></span>
+                            </div>
+                            <div id="exp-fees" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Includes estimated origination, broker, processing, underwriting, and document preparation fees.</div>
                         </div>
                         
-                        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center;">
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-appraisal')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Appraisal Fee <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-appraisal-fee"></span>
+                            </div>
+                            <div id="exp-appraisal" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Estimated upfront cost to determine the As-Is and After Repair Value (ARV) of the property.</div>
+                        </div>
+
+                        <div class="ff-result-row" onclick="toggleFFExp('exp-title')">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Title Costs, Recording, Transfer Tax <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-title-tax-fees"></span>
+                            </div>
+                            <div id="exp-title" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">An estimate combining state transfer taxes (borrower portion), title insurance premiums, settlement fees, and county recording fees.</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-top: 25px;">
                             <span style="font-size: 0.9rem; font-weight: 700; color: var(--mortgage-blue); text-transform: uppercase;">Total Est. Cash to Close</span>
                             <h3 id="ff-cash-to-close" style="color: var(--accent-red); font-size: 2.2rem; margin: 5px 0 0 0; font-weight: 800;"></h3>
                         </div>
+                        <p style="font-size: 0.8rem; color: var(--accent-red); text-align: center; margin-top: 10px; font-weight: 600;">* Note: Builder's Risk / Vacant Property Insurance is required but not included in this quote. This will be a separate charge.</p>
                     </div>
 
                     <div class="apply-now-bar" style="margin-top: 30px;">
@@ -739,6 +760,16 @@
             }
         }
 
+        // --- FF EXPLANATION TOGGLE ---
+        function toggleFFExp(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
         function selectStrategy(strategyType) {
             const select = document.getElementById('service');
             const roadmapSection = document.getElementById('roadmap');
@@ -903,10 +934,13 @@
             const processingFees = 1625; // $1475 Underwriting + $150 Doc Prep
             const totalLoanFees = originationFee + brokerFee + processingFees;
             
+            const appraisalFee = 650;
             const transferTax = (pp / 1000) * 15 / 2;
             const titleProxy = 1200 + ((maxLoan / 1000) * 2.50);
+            
+            const totalTitleTax = transferTax + titleProxy;
 
-            const totalCashToClose = baseEquity + totalLoanFees + transferTax + titleProxy;
+            const totalCashToClose = baseEquity + totalLoanFees + totalTitleTax + appraisalFee;
 
             const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
 
@@ -929,8 +963,8 @@
             document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
             document.getElementById('ff-base-equity').innerText = formatCurrency(baseEquity);
             document.getElementById('ff-loan-fees').innerText = formatCurrency(totalLoanFees);
-            document.getElementById('ff-transfer-tax').innerText = formatCurrency(transferTax);
-            document.getElementById('ff-title-fees').innerText = formatCurrency(titleProxy) + " (Est.)";
+            document.getElementById('ff-appraisal-fee').innerText = formatCurrency(appraisalFee);
+            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(totalTitleTax);
             document.getElementById('ff-cash-to-close').innerText = formatCurrency(totalCashToClose);
 
             document.getElementById('ff-results').style.display = 'block';
