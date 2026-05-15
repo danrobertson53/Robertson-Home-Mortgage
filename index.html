@@ -191,30 +191,21 @@
         @media (max-width: 768px) { .strategy-container { grid-template-columns: 1fr; gap: 20px;} }
 
         /* --- FORMS & SECTIONS --- */
-        .roadmap-section { background-color: var(--mortgage-blue); padding: 80px 5%; display: flex; justify-content: center; }
-        .roadmap-container { background: white; width: 100%; max-width: 800px; padding: 50px; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .fade-in { animation: fadeIn 0.8s ease forwards; }
-        .roadmap-header { text-align: center; margin-bottom: 30px; }
-        .roadmap-header h2 { color: var(--mortgage-blue); font-weight: 800; font-size: 2rem; margin: 0; }
-        .what-is-this-link { font-size: 0.8rem; color: #889bb0; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 5px; }
-        .what-is-this-content { display: none; background: #f9f9f9; padding: 15px; margin-top: 15px; border-radius: 6px; font-size: 0.9rem; color: #555; text-align: left; border-left: 3px solid var(--brand-gold); }
-
-        .apply-now-bar { background-color: #fff9e6; border: 1px solid var(--brand-gold); border-radius: 8px; padding: 12px 15px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-        .apply-text { font-size: 0.9rem; color: var(--mortgage-blue); line-height: 1.3; }
-        .btn-apply-small { background-color: var(--mortgage-blue); color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 
         .contact-form { display: flex; flex-direction: column; gap: 20px; }
         .form-row { display: flex; gap: 20px; flex-wrap: wrap; }
-        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 240px; text-align: left; }
-        .form-group label { font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: var(--mortgage-blue); }
-        .form-group input, .form-group select, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fdfdfd; width: 100%; box-sizing: border-box; }
+        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 140px; text-align: left; }
+        .form-group label { font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--mortgage-blue); }
+        .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fdfdfd; width: 100%; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
         
-        .btn-submit { background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 15px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
+        .btn-submit { background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 15px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-block; text-align: center; text-decoration: none;}
         .btn-submit:hover { background: #e5b327; }
         .success-box { text-align: center; padding: 20px; animation: fadeIn 0.5s ease; }
         .check-icon { font-size: 4rem; color: var(--brand-gold); margin-bottom: 10px; }
-        .btn-outline-small { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .btn-outline-small { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; text-align: center; text-transform: uppercase; font-size: 0.9rem;}
+        .btn-outline-small:hover { background: #f4f6f8; }
 
         /* --- QUOTE & TOOLS SECTION --- */
         .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; display: none; }
@@ -223,8 +214,9 @@
         .quote-header p { margin-bottom: 30px; color: #666; }
         .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; }
 
-        /* --- FF RESULT ROW STYLES --- */
+        /* --- TOOL RESULT ROW STYLES --- */
         .ff-result-row { margin-bottom: 15px; }
+        .ff-exp { display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold); }
 
         /* --- GENERAL CONTACT SECTION --- */
         .simple-contact-section { background-color: white; padding: 80px 5%; }
@@ -258,7 +250,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            #roadmap, #quote, #about, #general-contact, .quote-section { 
+            #quote, #about, #general-contact, .quote-section { 
                 scroll-margin-top: 85px; 
             }
 
@@ -300,11 +292,8 @@
 
             .quote-section, .simple-contact-section, .about-section { padding: 40px 20px; }
             .quote-container { padding: 25px 20px; }
-            .roadmap-section { padding: 20px 15px 40px 15px; } 
-            .roadmap-container { padding: 25px 20px; } 
             
-            .roadmap-header h2, .quote-header h2, .simple-contact-container h2, .about-container h2 { font-size: 1.5rem; }
-            .roadmap-header { margin-bottom: 20px; }
+            .quote-header h2, .simple-contact-container h2, .about-container h2 { font-size: 1.5rem; }
 
             .form-row { flex-direction: column; gap: 15px; } 
             .form-group { width: 100%; min-width: 0; }
@@ -322,6 +311,7 @@
         
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
+            <a onclick="smoothScrollTo('services')">Services</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
             <a onclick="showSection('quote')">Get Quote</a>
             <a onclick="smoothScrollTo('general-contact')">Contact</a>
@@ -336,6 +326,7 @@
     </nav>
 
     <div id="mobileMenu" class="mobile-menu">
+        <a onclick="toggleMobileMenu(); smoothScrollTo('services')">Our Services</a>
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
         <a onclick="toggleMobileMenu(); showSection('quote')">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
@@ -387,7 +378,7 @@
         </div>
 
         <div id="purchase-bridge" class="quote-section" style="display: none;">
-            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none; max-width: 1000px;">
                 <div class="quote-header" style="text-align: center; margin-bottom: 40px;">
                     <h2>The Purchase Strategy.</h2>
                     <p>Securing the asset is just step one. We optimize your financing for long-term growth.</p>
@@ -396,36 +387,83 @@
                     <div class="edu-box">
                         <h3 style="color: var(--mortgage-blue); font-size: 1.3rem; margin-top: 0;">Our Approach</h3>
                         <ul>
-                            <li><strong>Down Payment Optimization:</strong> We analyze whether putting 5%, 10%, or 20% down makes the most sense for your overall liquidity.</li>
+                            <li><strong>Down Payment Optimization:</strong> We analyze whether putting 5%, 10%, or 20% down makes the most sense for your overall liquidity and goals.</li>
                             <li><strong>Program Matching:</strong> Matching you with the right tool—Conventional, FHA, VA, or specialized First-Time Homebuyer grants.</li>
                             <li><strong>Payment Comfort:</strong> We focus on your true monthly out-of-pocket, not just the maximum amount an underwriter says you qualify for.</li>
                         </ul>
                     </div>
                     <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                         <h3 style="color: var(--mortgage-blue); font-size: 1.1rem; margin-top: 0; border-bottom: 2px dotted var(--brand-gold); padding-bottom: 10px;">Quick Purchasing Power Check</h3>
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label style="font-size: 0.8rem;">Gross Annual Income ($)</label>
-                            <input type="number" id="pp-income" placeholder="e.g. 100000" style="padding: 8px;">
+                        
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Gross Annual Income ($)</label>
+                                <input type="number" id="pp-income" placeholder="e.g. 100000">
+                            </div>
+                            <div class="form-group">
+                                <label>Total Monthly Debts ($) <span style="font-size: 0.8em; color: #888;">(Auto, Cards, etc.)</span></label>
+                                <input type="number" id="pp-debts" placeholder="e.g. 500">
+                            </div>
                         </div>
-                        <div class="form-group" style="margin-bottom: 15px;">
-                            <label style="font-size: 0.8rem;">Total Monthly Debts ($) <span style="font-size: 0.75em; color: #888;">(Auto, Student Loans, Cards)</span></label>
-                            <input type="number" id="pp-debts" placeholder="e.g. 500" style="padding: 8px;">
+                        <div class="form-row" style="margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label>Down Payment Target ($)</label>
+                                <input type="number" id="pp-dp" placeholder="e.g. 25000">
+                            </div>
+                            <div class="form-group">
+                                <label>Est. Interest Rate (%)</label>
+                                <input type="number" id="pp-rate" placeholder="e.g. 6.5" step="0.125">
+                            </div>
                         </div>
-                        <button onclick="calcPurchasingPower()" class="btn-submit" style="width: 100%; padding: 10px; font-size: 0.85rem;">Estimate Max Home Price</button>
-                        <div id="pp-result" style="display: none; text-align: center; margin-top: 15px;">
-                            <span style="font-size: 0.8rem; color: #666;">Estimated Max Purchase Price</span>
-                            <h3 id="pp-max-price" style="color: var(--accent-red); margin: 0; font-size: 1.8rem;"></h3>
+
+                        <button onclick="calcPurchasingPower()" class="btn-submit" style="width: 100%; padding: 10px; font-size: 0.85rem;">Estimate Purchasing Power</button>
+                        
+                        <div id="pp-result" style="display: none; text-align: left; margin-top: 25px; animation: fadeIn 0.4s ease;">
+                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-bottom: 15px;">
+                                <span style="font-size: 0.8rem; color: #666; font-weight: 700; text-transform: uppercase;">Estimated Max Purchase Price</span>
+                                <h3 id="pp-max-price" style="color: var(--accent-red); margin: 0; font-size: 2.2rem;"></h3>
+                            </div>
+
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-loan')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Estimated Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-loan-amt" style="font-weight: 700;"></span>
+                                </div>
+                                <div id="exp-pp-loan" class="ff-exp">Your estimated purchase price minus your target down payment.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-pi')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Estimated Monthly P&I <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-pi-amt"></span>
+                                </div>
+                                <div id="exp-pp-pi" class="ff-exp">Principal and Interest payment based on your inputted interest rate and a 30-year term.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-tax')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Monthly Taxes & Ins <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="pp-tax-amt"></span>
+                                </div>
+                                <div id="exp-pp-tax" class="ff-exp">A standard proxy estimate for property taxes and homeowners insurance (estimated at 1.5% of purchase price annually).</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-pp-dti')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Maximum DTI Cap Used <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span style="font-weight: 600;">45%</span>
+                                </div>
+                                <div id="exp-pp-dti" class="ff-exp">This calculation assumes a conservative Debt-to-Income cap of 45%. Some programs allow higher ratios, giving you even more buying power.</div>
+                            </div>
+                            <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* This is a mathematical proxy for educational purposes. It does not account for PMI, HOA dues, or specific program guidelines.</p>
                         </div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 10px;">
-                    <button onclick="selectStrategy('purchase')" class="btn-submit" style="padding: 15px 40px; background-color: var(--mortgage-blue); color: white;">Build My Custom Purchase Plan &rarr;</button>
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 15px;">Ready to turn estimates into reality?</h3>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="refi-bridge" class="quote-section" style="display: none;">
-            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none;">
+            <div class="quote-container" style="border-top: 5px solid var(--brand-gold); border-left: none; max-width: 1000px;">
                 <div class="quote-header" style="text-align: center; margin-bottom: 40px;">
                     <h2>The Refinance Strategy.</h2>
                     <p>Debt is a tool. Let's make sure your current mortgage is working for you, not against you.</p>
@@ -441,23 +479,44 @@
                     </div>
                     <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                         <h3 style="color: var(--mortgage-blue); font-size: 1.1rem; margin-top: 0; border-bottom: 2px dotted var(--brand-gold); padding-bottom: 10px;">Quick Usable Equity Check</h3>
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label style="font-size: 0.8rem;">Estimated Home Value ($)</label>
-                            <input type="number" id="refi-value" placeholder="e.g. 500000" style="padding: 8px;">
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            <label>Estimated Home Value ($)</label>
+                            <input type="number" id="refi-value" placeholder="e.g. 500000">
                         </div>
                         <div class="form-group" style="margin-bottom: 15px;">
-                            <label style="font-size: 0.8rem;">Current Loan Balance ($)</label>
-                            <input type="number" id="refi-balance" placeholder="e.g. 300000" style="padding: 8px;">
+                            <label>Current Loan Balance ($)</label>
+                            <input type="number" id="refi-balance" placeholder="e.g. 300000">
                         </div>
                         <button onclick="calcEquity()" class="btn-submit" style="width: 100%; padding: 10px; font-size: 0.85rem;">Calculate Usable Equity</button>
-                        <div id="refi-result" style="display: none; text-align: center; margin-top: 15px;">
-                            <span style="font-size: 0.8rem; color: #666;">Est. Usable Equity (Up to 80% LTV)</span>
-                            <h3 id="refi-equity" style="color: var(--accent-red); margin: 0; font-size: 1.8rem;"></h3>
+                        
+                        <div id="refi-result" style="display: none; text-align: left; margin-top: 25px; animation: fadeIn 0.4s ease;">
+                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-bottom: 15px;">
+                                <span style="font-size: 0.8rem; color: #666; font-weight: 700; text-transform: uppercase;">Est. Usable Equity Available</span>
+                                <h3 id="refi-equity" style="color: var(--accent-red); margin: 0; font-size: 2.2rem;"></h3>
+                            </div>
+
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-refi-max')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Allowable Loan <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="refi-max-loan" style="font-weight: 700;"></span>
+                                </div>
+                                <div id="exp-refi-max" class="ff-exp">Based on standard guidelines, you can generally borrow up to 80% of your home's value on a Cash-Out Refinance.</div>
+                            </div>
+                            <div class="ff-result-row" onclick="toggleFFExp('exp-refi-payoff')">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Minus Current Payoff <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="refi-payoff"></span>
+                                </div>
+                                <div id="exp-refi-payoff" class="ff-exp">Your new loan will automatically pay off and close your existing mortgage.</div>
+                            </div>
+                            <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* This is a mathematical proxy for educational purposes. Actual cash-to-close will vary based on final appraisal, credit, and closing costs.</p>
                         </div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 10px;">
-                    <button onclick="selectStrategy('refi')" class="btn-submit" style="padding: 15px 40px; background-color: var(--mortgage-blue); color: white;">Get My Custom Refi Plan &rarr;</button>
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 15px;">Ready to run your actual numbers?</h3>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -503,35 +562,35 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-max-loan" style="font-weight: 700;"></span>
                             </div>
-                            <div id="exp-loan" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">The lowest of the three calculations above. This is the absolute maximum the lender will finance.</div>
+                            <div id="exp-loan" class="ff-exp">The lowest of the three calculations above. This is the absolute maximum the lender will finance.</div>
                         </div>
 
                         <div class="ff-result-row" onclick="toggleFFExp('exp-equity')">
                             <div style="display: flex; justify-content: space-between;">
                                 <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-base-equity"></span>
                             </div>
-                            <div id="exp-equity" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount. This is your core "skin in the game" for the property itself.</div>
+                            <div id="exp-equity" class="ff-exp">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount. This is your core "skin in the game" for the property itself.</div>
                         </div>
 
                         <div class="ff-result-row" onclick="toggleFFExp('exp-fees')">
                             <div style="display: flex; justify-content: space-between;">
                                 <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-loan-fees"></span>
                             </div>
-                            <div id="exp-fees" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Includes estimated origination, broker, processing, underwriting, and document preparation fees.</div>
+                            <div id="exp-fees" class="ff-exp">Includes estimated origination, broker, processing, underwriting, and document preparation fees.</div>
                         </div>
                         
                         <div class="ff-result-row" onclick="toggleFFExp('exp-appraisal')">
                             <div style="display: flex; justify-content: space-between;">
                                 <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Appraisal Fee <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-appraisal-fee"></span>
                             </div>
-                            <div id="exp-appraisal" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">Estimated upfront cost to determine the As-Is and After Repair Value (ARV) of the property.</div>
+                            <div id="exp-appraisal" class="ff-exp">Estimated upfront cost to determine the As-Is and After Repair Value (ARV) of the property.</div>
                         </div>
 
                         <div class="ff-result-row" onclick="toggleFFExp('exp-title')">
                             <div style="display: flex; justify-content: space-between;">
                                 <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Title Costs, Recording, Transfer Tax <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-title-tax-fees"></span>
                             </div>
-                            <div id="exp-title" class="ff-exp" style="display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold);">An estimate combining state transfer taxes (borrower portion), title insurance premiums, settlement fees, and county recording fees.</div>
+                            <div id="exp-title" class="ff-exp">An estimate combining state transfer taxes (borrower portion), title insurance premiums, settlement fees, and county recording fees.</div>
                         </div>
                         
                         <div style="background: white; padding: 15px; border-radius: 8px; border: 2px dashed var(--accent-red); text-align: center; margin-top: 25px;">
@@ -541,70 +600,18 @@
                         <p style="font-size: 0.8rem; color: var(--accent-red); text-align: center; margin-top: 10px; font-weight: 600;">* Note: Builder's Risk / Vacant Property Insurance is required but not included in this quote. This will be a separate charge.</p>
                     </div>
 
-                    <div class="apply-now-bar" style="margin-top: 30px;">
-                        <div class="apply-text">
-                            <strong>Ready to move forward?</strong><br>
-                            You'll need a detailed budget, LLC docs, and a complete application.
+                    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                        <h3 style="color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 15px;">Ready to turn estimates into reality?</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">You'll need a detailed budget, LLC docs, and a complete application.</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button onclick="showSection('quote')" class="btn-outline-small">Get Official Rate Quote</button>
+                            <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
                         </div>
-                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-apply-small">Apply Now &rarr;</a>
                     </div>
 
                     <div class="disclaimer-box">
                         * This calculator is provided for educational and example purposes only. The figures generated are estimates based on standard program guidelines and do not constitute an offer to lend, a loan approval, or a guarantee of terms.
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="roadmap" class="roadmap-section" style="display: none;">
-            <div class="roadmap-container">
-                <div id="success-message" class="success-box" style="display: none;">
-                    <div class="check-icon">✓</div>
-                    <h2>Strategy Request Received.</h2>
-                    <p>Thank you. We are reviewing your scenario and will be in touch shortly.</p>
-                    <button onclick="resetForm()" class="btn-outline-small">Start New Request</button>
-                </div>
-
-                <div id="form-wrapper">
-                    <div class="roadmap-header">
-                        <h2>Get Your Custom Strategy.</h2>
-                        <span class="what-is-this-link" onclick="toggleExplanation()">what is this?</span>
-                        <div id="strategy-explanation" class="what-is-this-content">
-                            By filling this out, you aren't just becoming a lead. You are giving us the data points we need to build a purchasing or refinancing strategy specific to your goals, income, and timeline. Feel free to call directly as well!
-                        </div>
-                    </div>
-                    
-                    <form class="contact-form" id="leadForm" name="strategy-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
-                        <input type="hidden" name="form-name" value="strategy-form" />
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">I am looking to:</label>
-                            <select id="service" name="service" onchange="updateFormFields()">
-                                <option value="purchase">Purchase a Property</option>
-                                <option value="refi">Refinance (Lower Rate / Term)</option>
-                                <option value="heloc">Cash-Out Refi / HELOC</option>
-                            </select>
-                        </div>
-
-                        <div id="dynamic-fields" aria-live="polite"></div>
-
-                        <div class="form-group">
-                            <label for="message">Specific Goals or Challenges:</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your timeline, concerns, or what you are hoping to achieve..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Submit Scenario</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -639,6 +646,7 @@
                                 <option value="refi">Refinance (Lower Rate)</option>
                                 <option value="cashout">Refinance (Cash Out)</option>
                                 <option value="equity">Home Equity Loan / Line</option>
+                                <option value="invest">Fix & Flip / Investment</option>
                             </select>
                         </div>
                     </div>
@@ -786,11 +794,6 @@
     </div>
 
     <script>
-        // --- CONFIG & DATA ---
-        const creditOptions = `<option value="" disabled selected>Select Score Range</option><option>Excellent (740+)</option><option>Very Good (720 - 739)</option><option>Good (700 - 719)</option><option>Average (680 - 699)</option><option>Fair (660 - 679)</option><option>Challenged (620 - 659)</option><option>Needs Work (Below 620)</option><option>Unsure</option>`;
-        const propertyTypeOptions = `<option value="" disabled selected>Property Type</option><option>Single Family Home</option><option>Condo / Townhouse</option><option>Multi-Family (2-4 Units)</option><option>Mobile / Manufactured</option><option>Unsure</option>`;
-        const timelineOptions = `<option>ASAP / Urgent</option><option>Within 3 Months</option><option>3 - 6 Months</option><option>Just browsing / Future Goal</option>`;
-
         // --- NAVIGATION & UI ---
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
@@ -812,7 +815,6 @@
             document.getElementById('purchase-bridge').style.display = 'none';
             document.getElementById('refi-bridge').style.display = 'none';
             document.getElementById('fix-flip-calculator').style.display = 'none';
-            document.getElementById('roadmap').style.display = 'none';
             document.getElementById('quote').style.display = 'none';
 
             // Show target
@@ -820,11 +822,6 @@
             target.style.display = 'block';
             target.classList.add('fade-in');
             setTimeout(() => smoothScrollTo(sectionId), 100);
-        }
-
-        function toggleExplanation() {
-            const exp = document.getElementById('strategy-explanation');
-            exp.style.display = (exp.style.display === 'block') ? 'none' : 'block';
         }
 
         // --- BIO ACCORDION TOGGLE ---
@@ -841,7 +838,7 @@
             }
         }
 
-        // --- FF EXPLANATION TOGGLE ---
+        // --- EXPLANATION TOGGLE ---
         function toggleFFExp(id) {
             const el = document.getElementById(id);
             if (el.style.display === 'none') {
@@ -849,30 +846,6 @@
             } else {
                 el.style.display = 'none';
             }
-        }
-
-        function selectStrategy(strategyType) {
-            const select = document.getElementById('service');
-            select.value = strategyType;
-            updateFormFields();
-            showSection('roadmap'); // Uses the universal function above
-        }
-
-        function updateFormFields() {
-            const serviceType = document.getElementById('service').value;
-            const container = document.getElementById('dynamic-fields');
-            
-            let portalHtml = `<div class="apply-now-bar"><div class="apply-text"><strong>Ready to move fast?</strong><br>Skip the custom strategy form & apply now.</div><a href="https://2453979.my1003app.com/" target="_blank" class="btn-apply-small">Apply Now &rarr;</a></div>`;
-            
-            let fieldsHtml = '';
-            
-            if (serviceType === 'purchase') {
-                fieldsHtml = `<div class="form-row"><div class="form-group"><label>Est. Property Value / Price:</label><input type="text" name="property_value" placeholder="e.g. $450,000"></div><div class="form-group"><label>Down Payment Budget ($):</label><input type="text" name="down_payment_amount" placeholder="e.g. $50,000 available"></div></div><div class="form-row" style="margin-top:20px;"><div class="form-group"><label>Property Type:</label><select name="property_type">${propertyTypeOptions}</select></div><div class="form-group"><label>Military / Veteran?</label><select name="veteran_status"><option value="no">No</option><option value="yes">Yes (Interested in VA Loan)</option></select></div></div><div class="form-row" style="margin-top:20px;"><div class="form-group"><label>Estimated Credit Score:</label><select name="credit">${creditOptions}</select></div><div class="form-group"><label>Timeline:</label><select name="timeline">${timelineOptions}</select></div></div>`;
-            } else {
-                fieldsHtml = `<div class="form-row"><div class="form-group"><label>Est. Property Value:</label><input type="text" name="property_value" placeholder="e.g. $450,000"></div><div class="form-group"><label>Current Loan Balance:</label><input type="text" name="loan_balance" placeholder="e.g. $300,000"></div></div><div class="form-row" style="margin-top:20px;"><div class="form-group"><label>Cash-Out Desired ($):</label><input type="text" name="cash_out_amount" placeholder="e.g. $50,000 (Leave blank if none)"></div><div class="form-group"><label>Property Type:</label><select name="property_type">${propertyTypeOptions}</select></div></div><div class="form-row" style="margin-top:20px;"><div class="form-group"><label>Estimated Credit Score:</label><select name="credit">${creditOptions}</select></div><div class="form-group"><label>Military / Veteran?</label><select name="veteran_status"><option value="no">No</option><option value="yes">Yes (Interested in VA Loan)</option></select></div></div>`;
-            }
-            
-            container.innerHTML = portalHtml + fieldsHtml;
         }
 
         // --- DYNAMIC QUOTE LOGIC ---
@@ -895,10 +868,10 @@
                 lblSecondary.innerText = "Current Loan Balance ($)";
                 inputSecondary.placeholder = "e.g. $300,000";
                 inputSecondary.name = "current_balance";
-            } else if (type === 'cashout' || type === 'equity') {
+            } else if (type === 'cashout' || type === 'equity' || type === 'invest') {
                 lblAmount.innerText = "Est. Property Value ($)";
                 groupSecondary.style.display = 'flex';
-                lblSecondary.innerText = "Cash Out Desired ($)";
+                lblSecondary.innerText = "Cash Out / Capital Desired ($)";
                 inputSecondary.placeholder = "e.g. $50,000";
                 inputSecondary.name = "cash_out_amount";
             }
@@ -920,19 +893,9 @@
                 } else if (form.id === 'contactForm') {
                     alert('Message Sent Successfully!');
                     form.reset();
-                } else {
-                    document.getElementById('form-wrapper').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
                 }
             })
             .catch((error) => alert("Submission failed. Please try again."));
-        }
-
-        function resetForm() {
-            document.getElementById('form-wrapper').style.display = 'block';
-            document.getElementById('success-message').style.display = 'none';
-            document.getElementById('leadForm').reset();
-            updateFormFields(); 
         }
 
         /* --- MONTHLY PAYMENT CALCULATOR --- */
@@ -993,18 +956,44 @@
         function calcPurchasingPower() {
             const income = parseFloat(document.getElementById('pp-income').value) || 0;
             const debts = parseFloat(document.getElementById('pp-debts').value) || 0;
+            const dp = parseFloat(document.getElementById('pp-dp').value) || 0;
+            const rateStr = document.getElementById('pp-rate').value;
+            let rate = parseFloat(rateStr);
+            if (isNaN(rate) || rate === 0) rate = 6.5; // default to 6.5 if left blank
             
-            if(income === 0) return;
+            if(income === 0) {
+                alert("Please enter a Gross Annual Income to calculate.");
+                return;
+            }
             
             // Standard 45% Max DTI assumption
-            const maxPayment = ((income / 12) * 0.45) - debts;
+            const maxTotalPayment = (income / 12) * 0.45;
+            const maxMortgagePayment = maxTotalPayment - debts;
             
-            if(maxPayment <= 0) {
+            if(maxMortgagePayment <= 0) {
                 document.getElementById('pp-max-price').innerText = "$0";
+                document.getElementById('pp-loan-amt').innerText = "$0";
+                document.getElementById('pp-pi-amt').innerText = "$0";
+                document.getElementById('pp-tax-amt').innerText = "$0";
             } else {
-                // Rough proxy: $7.50 per $1000 borrowed to account for rate/taxes/ins
-                const estPrice = maxPayment / 0.0075; 
-                document.getElementById('pp-max-price').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(estPrice);
+                // Reverse Math to find Purchase Price (P)
+                // P = (MaxPayment + DP * M) / (M + taxInsRate)
+                const r = rate / 100 / 12;
+                const n = 360; // 30 yr fixed
+                const M = (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+                const taxInsRate = 0.015 / 12; // 1.5% annually for tax/ins proxy
+
+                const maxPrice = (maxMortgagePayment + (dp * M)) / (M + taxInsRate);
+                const loanAmount = maxPrice - dp;
+                const piAmt = loanAmount * M;
+                const taxInsAmt = maxPrice * taxInsRate;
+
+                const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+                document.getElementById('pp-max-price').innerText = formatCurrency(maxPrice);
+                document.getElementById('pp-loan-amt').innerText = formatCurrency(loanAmount);
+                document.getElementById('pp-pi-amt').innerText = formatCurrency(piAmt);
+                document.getElementById('pp-tax-amt').innerText = formatCurrency(taxInsAmt);
             }
             document.getElementById('pp-result').style.display = 'block';
         }
@@ -1014,16 +1003,24 @@
             const value = parseFloat(document.getElementById('refi-value').value) || 0;
             const balance = parseFloat(document.getElementById('refi-balance').value) || 0;
             
-            if(value === 0) return;
+            if(value === 0) {
+                alert("Please enter an Estimated Home Value.");
+                return;
+            }
             
             // Standard 80% Max LTV for Cash Out
             const maxLoan = value * 0.80;
             const usableEquity = maxLoan - balance;
             
+            const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+            document.getElementById('refi-max-loan').innerText = formatCurrency(maxLoan);
+            document.getElementById('refi-payoff').innerText = formatCurrency(balance);
+
             if(usableEquity <= 0) {
                 document.getElementById('refi-equity').innerText = "$0";
             } else {
-                document.getElementById('refi-equity').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(usableEquity);
+                document.getElementById('refi-equity').innerText = formatCurrency(usableEquity);
             }
             document.getElementById('refi-result').style.display = 'block';
         }
