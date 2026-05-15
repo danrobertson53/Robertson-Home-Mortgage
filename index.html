@@ -31,56 +31,162 @@
         .content-wrapper { display: flex; flex-direction: column; }
 
         /* --- NAVIGATION --- */
-        nav { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--brand-gold); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { 
+            background: white; 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 3px solid var(--brand-gold); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
         .nav-logo-container { display: flex; align-items: center; }
         .nav-img { height: 50px; width: auto; object-fit: contain; display: block; }
+        
         .nav-links { display: flex; align-items: center; gap: 20px; }
         .nav-links a { text-decoration: none; color: var(--mortgage-blue); font-weight: 600; font-size: 0.9rem; transition: color 0.3s; cursor: pointer; }
         .nav-links a:hover { color: var(--brand-gold); }
-        .nav-btn-portal { background-color: var(--mortgage-blue); color: white !important; padding: 10px 20px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; letter-spacing: 0.5px; }
+
+        .nav-btn-portal {
+            background-color: var(--mortgage-blue);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
         .nav-btn-portal:hover { background-color: var(--brand-gold); color: var(--text-dark) !important; }
+
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .bar { width: 25px; height: 3px; background-color: var(--mortgage-blue); transition: 0.3s; }
         
-        .mobile-menu { position: fixed; top: 75px; right: 0; width: 220px; background: white; padding: 10px 0; box-shadow: -5px 10px 20px rgba(0,0,0,0.1); display: none; flex-direction: column; align-items: flex-end; gap: 0; z-index: 999; border-bottom: 4px solid var(--brand-gold); border-bottom-left-radius: 15px; }
+        /* MOBILE MENU (Floating Right Card) */
+        .mobile-menu {
+            position: fixed;
+            top: 75px; 
+            right: 0;  
+            left: auto; 
+            width: 220px; 
+            background: white;
+            padding: 10px 0;
+            box-shadow: -5px 10px 20px rgba(0,0,0,0.1); 
+            display: none; 
+            flex-direction: column;
+            align-items: flex-end; 
+            gap: 0;
+            z-index: 999;
+            border-bottom: 4px solid var(--brand-gold);
+            border-bottom-left-radius: 15px; 
+        }
         .mobile-menu.active { display: flex; }
-        .mobile-menu a { text-decoration: none; color: var(--mortgage-blue); font-weight: 600; font-size: 0.95rem; padding: 12px 25px; border-bottom: 1px solid #f9f9f9; width: 100%; text-align: right; display: block; cursor: pointer; }
+        .mobile-menu a { 
+            text-decoration: none; 
+            color: var(--mortgage-blue); 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            padding: 12px 25px; 
+            border-bottom: 1px solid #f9f9f9; 
+            width: 100%; 
+            text-align: right; 
+            display: block;
+            cursor: pointer;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
 
         /* --- HERO SECTION --- */
         .hero { position: relative; height: 55vh; min-height: 500px; background-image: url('town-hero.png'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.4)); }
         .hero-content { position: relative; z-index: 1; padding: 0 20px; width: 100%; max-width: 800px; transform: translateY(-40px); }
+        
         .hero h1 { font-size: 3.5rem; margin-bottom: 5px; font-weight: 800; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.25rem; font-weight: 600; margin: 0 auto; opacity: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); max-width: 580px; line-height: 1.2; text-wrap: balance; }
 
-        .hero-apply-btn { display: inline-block; margin-top: 25px; padding: 12px 30px; border: 2px solid var(--brand-gold); color: var(--brand-gold); text-decoration: none; text-transform: uppercase; font-weight: 700; border-radius: 50px; font-size: 1rem; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.3); }
+        .hero-apply-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border: 2px solid var(--brand-gold);
+            color: var(--brand-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.3);
+        }
         .hero-apply-btn:hover { background: var(--brand-gold); color: var(--mortgage-blue); }
 
         /* --- SERVICES SECTION --- */
         .services-section { background-color: var(--bg-light); padding: 0px 5% 40px 5%; display: flex; justify-content: center; }
         .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1000px; }
         .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
-        .service-card { background: white; flex: 1; min-width: 250px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
+        
+        .service-card { background: white; flex: 1; min-width: 250px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        
         .service-card h2 { color: var(--mortgage-blue); margin: 10px 0 5px 0; font-size: 1.6rem; font-weight: 800; }
         .service-card h4 { margin: 0 0 15px 0; font-weight: 600; color: #889bb0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; }
         .service-card p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
+
         .btn-container { margin-top: auto; display: flex; justify-content: center; }
-        .btn { display: inline-block; padding: 12px 25px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; border: none; cursor: pointer;}
+        .btn { display: inline-block; padding: 12px 25px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; max-width: 250px; border: none; cursor: pointer;}
         .btn:hover { background: #002244; transform: scale(1.02); }
 
-        /* --- FORMS & SECTIONS --- */
-        .fade-in { animation: fadeIn 0.8s ease forwards; }
-        .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; display: none; }
-        .quote-container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
-        .quote-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
-        .quote-header p { margin-bottom: 30px; color: #666; }
+        .calc-trigger-box { margin-top: 40px; margin-bottom: 30px; text-align: center; font-size: 0.9rem; color: #666; position: relative; z-index: 10; }
+        .calc-link { color: var(--mortgage-blue); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--brand-gold); transition: all 0.3s; cursor: pointer; }
+        .calc-link:hover { color: var(--accent-red); border-bottom-style: solid; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section { background-color: white; padding: 40px 5% 60px 5%; text-align: left; }
+        .about-container { max-width: 900px; margin: 0 auto; }
+        .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
+        .about-container p, .team-bio-text p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 400; }
         
-        .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
-        .form-group label { font-weight: 600; font-size: 0.8rem; margin-bottom: 5px; color: var(--mortgage-blue); }
-        .form-group input, .form-group select { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fdfdfd; width: 100%; }
-        .form-group input:focus, .form-group select:focus { border-color: var(--brand-gold); outline: none; }
+        .team-card {
+            background-color: #f8f9fa; border-radius: 15px; margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold);
+            overflow: hidden; transition: all 0.3s ease; cursor: pointer;
+        }
+        .team-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .team-header { display: flex; align-items: center; gap: 30px; padding: 30px; position: relative; }
+        .team-photo { width: 120px; height: 120px; border-radius: 15px; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--brand-gold); flex-shrink: 0; }
+        .team-info { flex: 1; }
+        .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; }
+        .team-info h4 { color: #889bb0; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin: 0; font-weight: 700; }
+        .team-toggle-icon { font-size: 1.5rem; color: var(--brand-gold); transition: transform 0.3s ease; margin-left: 10px; }
+        .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 30px; background: #fff; }
+        .team-card.active .team-content { padding: 20px 30px 30px 30px; border-top: 1px solid #eee; }
+        .team-card.active .team-toggle-icon { transform: rotate(180deg); }
+
+        .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
+
+        /* --- STRATEGY BRIDGES (Educational Grids) --- */
+        .strategy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 20px; align-items: start; }
+        .edu-box ul { list-style: none; padding-left: 0; }
+        .edu-box li { margin-bottom: 15px; position: relative; padding-left: 25px; font-size: 0.95rem; color: #555; line-height: 1.5;}
+        .edu-box li::before { content: '✓'; color: var(--brand-gold); position: absolute; left: 0; font-weight: bold; font-size: 1.2rem; }
+        @media (max-width: 768px) { .strategy-container { grid-template-columns: 1fr; gap: 20px;} }
+
+        /* --- FORMS & BUTTONS --- */
+        .fade-in { animation: fadeIn 0.8s ease forwards; }
+
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .form-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 140px; text-align: left; }
+        .form-group label { font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--mortgage-blue); }
+        .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fdfdfd; width: 100%; box-sizing: border-box; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
         
         .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
         .btn-submit { background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 12px 25px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-block; text-align: center; text-decoration: none;}
@@ -88,45 +194,81 @@
         .btn-outline-small { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; text-align: center; text-transform: uppercase; font-size: 0.9rem;}
         .btn-outline-small:hover { background: #f4f6f8; }
 
+        /* --- QUOTE & TOOLS SECTION --- */
+        .quote-section { background-color: #f4f8fb; padding: 80px 5%; border-top: 1px solid #eee; display: none; }
+        .quote-container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
+        .quote-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
+        .quote-header p { margin-bottom: 30px; color: #666; }
         .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; text-align: left; }
 
-        /* --- DYNAMIC RESULT CARDS --- */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .product-card { background: white; border: 1px solid #eee; border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-top: 4px solid var(--mortgage-blue); }
-        .product-card.fha { border-top-color: #27ae60; }
-        .product-card.va { border-top-color: #C8102E; }
-        .product-card.dscr { border-top-color: #8e44ad; }
-        .product-card h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--mortgage-blue); border-bottom: 1px dotted #ccc; padding-bottom: 5px; }
-        .p-row { display: flex; justify-content: space-between; font-size: 0.85rem; color: #555; margin-bottom: 5px; }
-        .p-total { font-weight: 800; font-size: 1.2rem; color: var(--mortgage-blue); margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; display: flex; justify-content: space-between;}
-        .p-error { color: var(--accent-red); font-size: 0.9rem; font-weight: 600; text-align: center; padding: 20px 0; }
+        /* --- TOOL RESULT ROW STYLES --- */
+        .ff-result-row { margin-bottom: 12px; }
+        .ff-exp { display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold); line-height: 1.4; }
 
-        /* --- ABOUT & FOOTER --- */
-        .about-section { background-color: white; padding: 40px 5% 60px 5%; text-align: left; }
-        .about-container { max-width: 900px; margin: 0 auto; }
-        .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
-        .about-container p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; }
-        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
-        .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
-        
+        /* --- GENERAL CONTACT SECTION --- */
+        .simple-contact-section { background-color: white; padding: 80px 5%; }
+        .simple-contact-container { max-width: 700px; margin: 0 auto; text-align: center; }
+        .simple-contact-container h2 { color: var(--mortgage-blue); font-weight: 800; font-size: 2rem; margin-bottom: 10px; }
+        .simple-contact-container p { color: #666; margin-bottom: 30px; }
+
+        /* --- MODALS --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.85); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-top: 5px solid var(--brand-gold); animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto;}
+        .close-calc { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; cursor: pointer; color: #999; }
+        .calc-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 15px; }
+        .calc-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-weight: 600; color: #888; font-size: 0.9rem; }
+        .calc-tab.active { color: var(--mortgage-blue); border-bottom: 3px solid var(--mortgage-blue); }
+        .calc-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .calc-col { flex: 1; }
+        .calc-col label { font-size: 0.75rem; font-weight: 700; color: #666; display: block; margin-bottom: 5px; }
+        .calc-col input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; }
+        .calc-btn { width: 100%; background: var(--mortgage-blue); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 15px; }
+        .calc-result { background: #f4f8fb; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border: 1px solid #dae1e7; }
+        .calc-result h3 { color: var(--accent-red); font-size: 1.8rem; margin: 0; font-weight: 800; line-height: 1.1; }
+        .calc-disclaimer { font-size: 0.65rem; color: #999; text-align: center; margin-top: 10px; line-height: 1.3; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MOBILE --- */
+        /* --- FOOTER --- */
+        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
+        .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
+        .disclaimer a { color: rgba(255,255,255,0.7); transition: color 0.3s; }
+
+        /* --- MOBILE RESPONSIVENESS & FIXES --- */
         @media (max-width: 768px) {
-            .quote-section, #about { scroll-margin-top: 85px; }
+            #quote, #about, #general-contact, .quote-section { scroll-margin-top: 85px; }
             nav { padding: 10px 15px; }
+            .nav-logo-container { width: auto; } 
             .nav-links { display: none; } 
+            .nav-img { height: 40px; } 
             .hamburger { display: flex; } 
-            .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; }
-            .hero h1 { font-size: 2.2rem; }
-            .services-container { margin-top: -40px; flex-direction: column; padding: 0 15px; }
-            .service-card { padding: 15px 10px; border-top: 3px solid var(--brand-gold); }
-            .service-card h2 { font-size: 1.1rem; }
-            .service-card p, .service-card .btn-container { display: none; } 
+            .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; align-items: center; }
+            .hero-content { transform: translateY(0); margin-top: 0; padding: 0 15px 40px 15px; }
+            .hero h1 { font-size: 2.2rem; margin-bottom: 5px; }
+            .hero p { font-size: 1.1rem; line-height: 1.3; max-width: 100%;}
+            .services-container { margin-top: -40px; flex-direction: column; align-items: stretch; gap: 10px; padding: 0 15px; }
+            .service-card { padding: 15px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 3px solid var(--brand-gold); }
+            .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
+            .service-card h4 { font-size: 0.7rem; margin: 5px 0 0 0; text-align: center; }
+            .service-card p { display: none; } 
+            .service-card .btn-container { display: none; } 
+            .calc-trigger-box { margin-top: 25px; margin-bottom: 5px; }
+            .team-header { padding: 20px; gap: 20px; }
+            .team-photo { width: 80px; height: 80px; } 
+            .team-info h3 { font-size: 1.3rem; }
+            .team-content { padding: 0 20px; }
+            .team-card.active .team-content { padding: 10px 20px 25px 20px; }
+            .quote-section, .simple-contact-section, .about-section { padding: 40px 20px; }
             .quote-container { padding: 25px 20px; }
+            .quote-header h2, .simple-contact-container h2, .about-container h2 { font-size: 1.5rem; }
             .form-row { flex-direction: column; gap: 15px; } 
-            .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+            .form-group { width: 100%; min-width: 0; }
+            
+            /* Crucial Mobile Button Fix */
+            .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
             .btn-outline-small, .btn-submit { width: 100%; margin: 0; }
+            
+            footer { padding: 40px 15px; }
         }
     </style>
 </head>
@@ -136,12 +278,16 @@
         <div class="nav-logo-container">
             <a href="#"><img src="./robertson-logo-new.png" alt="Robertson Home Mortgage" class="nav-img"></a>
         </div>
+        
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
             <a onclick="smoothScrollTo('services')">Services</a>
+            <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
             <a onclick="showSection('quote')">Get Quote</a>
+            <a onclick="smoothScrollTo('general-contact')">Contact</a>
             <a href="https://2453979.my1003app.com/" class="nav-btn-portal" target="_blank">Apply Now</a>
         </div>
+
         <div class="hamburger" onclick="toggleMobileMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -151,12 +297,15 @@
 
     <div id="mobileMenu" class="mobile-menu">
         <a onclick="toggleMobileMenu(); smoothScrollTo('services')">Our Services</a>
+        <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
         <a onclick="toggleMobileMenu(); showSection('quote')">Rate Quote</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Get in Touch</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
         <a href="https://2453979.my1003app.com/" target="_blank" style="color:var(--brand-gold);">Apply Now</a>
     </div>
 
     <div class="content-wrapper">
+
         <div id="home" class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -168,517 +317,4 @@
             </div>
         </div>
 
-        <div id="services" class="services-section">
-            <div class="services-wrapper">
-                <div class="services-container">
-                    <div class="service-card" onclick="showSection('purchase-analyzer')">
-                        <h2>BUY A HOME</h2>
-                        <h4>Purchase Strategy</h4>
-                        <p>Don't just get a pre-approval letter. Compare Conventional, FHA, and VA options dynamically.</p>
-                        <div class="btn-container"><button class="btn">Explore Options</button></div>
-                    </div>
-                    <div class="service-card" onclick="showSection('refi-analyzer')">
-                        <h2>REFINANCE</h2>
-                        <h4>Leverage & Rates</h4>
-                        <p>Analyze Rate/Term reductions, Debt Consolidation, and Cash-Out limits based on actual guidelines.</p>
-                        <div class="btn-container"><button class="btn">Explore Options</button></div>
-                    </div>
-                    <div class="service-card" onclick="showSection('fix-flip-calculator')">
-                        <h2>INVEST & FLIP</h2>
-                        <h4>Rehab Strategy</h4>
-                        <p>Analyze your next project. See how ARV and budget impact your maximum leverage and cash-to-close.</p>
-                        <div class="btn-container"><button class="btn">Run the Numbers</button></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="purchase-analyzer" class="quote-section" style="display: none;">
-            <div class="quote-container">
-                <div class="quote-header" style="text-align: center;">
-                    <h2>Purchase Scenario Explorer.</h2>
-                    <p>Input your scenario to view real-time program eligibility and estimated payment structures.</p>
-                </div>
-                
-                <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Purchase Price ($)</label>
-                            <input type="number" id="pur-price" placeholder="e.g. 450000">
-                        </div>
-                        <div class="form-group">
-                            <label>Down Payment ($)</label>
-                            <input type="number" id="pur-dp" placeholder="e.g. 25000">
-                        </div>
-                        <div class="form-group">
-                            <label>Est. Interest Rate (%)</label>
-                            <input type="number" id="pur-rate" value="6.5" step="0.125">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Property Use</label>
-                            <select id="pur-use">
-                                <option value="primary">Primary Residence</option>
-                                <option value="second">Second Home</option>
-                                <option value="investment">Investment Property</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Property Type</label>
-                            <select id="pur-type">
-                                <option value="sfr">Single Family / Condo</option>
-                                <option value="multi">2-4 Unit Multi-Family</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Are you a Veteran?</label>
-                            <select id="pur-vet">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Desired Term</label>
-                            <select id="pur-term">
-                                <option value="360">30 Year Fixed</option>
-                                <option value="240">20 Year Fixed</option>
-                                <option value="180">15 Year Fixed</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="analyzePurchase()" class="btn-submit" style="width: 100%;">Analyze Loan Options</button>
-                    
-                    <div id="pur-results-container" style="display: none; margin-top: 30px;">
-                        <h3 style="color: var(--mortgage-blue); border-bottom: 2px dotted var(--brand-gold); padding-bottom: 5px;">Eligible Loan Programs</h3>
-                        <div id="pur-product-grid" class="product-grid">
-                            </div>
-                        <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* Proxies: PMI estimated at 0.5% annually. FHA MIP at 0.55% + 1.75% UFMIP. VA Funding Fee proxy at 2.15%. Taxes/Ins estimated at 1.5% of price.</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
-                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem;">Ready for an official quote?</h3>
-                    <div class="btn-group">
-                        <button onclick="showSection('quote')" class="btn-outline-small">Request Official Quote</button>
-                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="refi-analyzer" class="quote-section" style="display: none;">
-            <div class="quote-container">
-                <div class="quote-header" style="text-align: center;">
-                    <h2>Refinance & Equity Explorer.</h2>
-                    <p>Select your goal to see maximum limits and estimated payment structures.</p>
-                </div>
-                
-                <div style="background: #fdfdfd; padding: 25px; border-radius: 12px; border: 1px solid #ddd;">
-                    <div class="form-row">
-                        <div class="form-group" style="flex: 2;">
-                            <label>Primary Goal</label>
-                            <select id="refi-goal" onchange="toggleRefiGoal()">
-                                <option value="rt">Rate/Term (Lower payment/term)</option>
-                                <option value="co">Cash-Out / Debt Consolidation</option>
-                                <option value="heloc">HELOC / 2nd Mortgage</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Est. Home Value ($)</label>
-                            <input type="number" id="refi-value" placeholder="e.g. 500000">
-                        </div>
-                        <div class="form-group">
-                            <label>Current Mtg Balance ($)</label>
-                            <input type="number" id="refi-bal" placeholder="e.g. 300000">
-                        </div>
-                        <div class="form-group" id="refi-cash-group" style="display:none;">
-                            <label>Desired Cash/Consolidation ($)</label>
-                            <input type="number" id="refi-cash" placeholder="e.g. 40000">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Property Use</label>
-                            <select id="refi-use">
-                                <option value="primary">Primary Residence</option>
-                                <option value="second">Second Home</option>
-                                <option value="investment">Investment Property</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Property Type</label>
-                            <select id="refi-type">
-                                <option value="sfr">Single Family / Condo</option>
-                                <option value="multi">2-4 Unit Multi-Family</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Are you a Veteran?</label>
-                            <select id="refi-vet">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Target Interest Rate (%)</label>
-                            <input type="number" id="refi-rate" value="6.0" step="0.125">
-                        </div>
-                        <div class="form-group">
-                            <label>Desired Term</label>
-                            <select id="refi-term">
-                                <option value="360">30 Year</option>
-                                <option value="180">15 Year</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="analyzeRefi()" class="btn-submit" style="width: 100%;">Analyze Refi Options</button>
-                    
-                    <div id="refi-results-container" style="display: none; margin-top: 30px;">
-                        <h3 style="color: var(--mortgage-blue); border-bottom: 2px dotted var(--brand-gold); padding-bottom: 5px;">Eligible Refinance Programs</h3>
-                        <div id="refi-product-grid" class="product-grid">
-                            </div>
-                        <p class="calc-disclaimer" style="text-align: left; margin-top: 15px;">* Proxies: Closing costs estimated at 1.5% + $1,500 rolled into loan. Does not include escrowed taxes/insurance in the P&I. Exact LTV limits subject to FICO and current agency guidelines.</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
-                    <div class="btn-group">
-                        <button onclick="showSection('quote')" class="btn-outline-small">Request Official Quote</button>
-                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="fix-flip-calculator" class="quote-section" style="display: none;">
-            <div class="quote-container">
-                <div class="quote-header" style="text-align: center;">
-                    <h2>Fix & Flip Loan Estimator.</h2>
-                    <p>Enter your project numbers below to see real-time estimated loan terms and cash-to-close requirements.</p>
-                </div>
-                <div class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group"><label>Purchase Price ($)</label><input type="number" id="ff-purchase" placeholder="e.g. 320000"></div>
-                        <div class="form-group"><label>Est. Rehab Budget ($)</label><input type="number" id="ff-rehab" placeholder="e.g. 88000"></div>
-                        <div class="form-group"><label>Est. ARV ($)</label><input type="number" id="ff-arv" placeholder="e.g. 500000"></div>
-                    </div>
-                    <button onclick="calculateFixFlip()" class="btn-submit" style="width: 100%;">Calculate Estimate</button>
-                </div>
-                <div id="ff-results" style="display: none; margin-top: 30px;">
-                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 3px solid var(--brand-gold); margin-bottom: 25px;">
-                        <ul id="ff-breakdown" style="margin: 0; padding-left: 20px; color: #555;"></ul>
-                    </div>
-                    <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><strong>Max Loan Amount</strong><span id="ff-max-loan"></span></div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><strong>Base Equity Required</strong><span id="ff-base-equity"></span></div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><strong>Est. Loan & Broker Fees</strong><span id="ff-loan-fees"></span></div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><strong>Est. Appraisal Fee</strong><span id="ff-appraisal-fee"></span></div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:20px;"><strong>Title, Recording, Transfer Tax</strong><span id="ff-title-tax-fees"></span></div>
-                        <div style="background:#fff9e6; padding:15px; border-radius:8px; border:2px dashed var(--accent-red); text-align:center;">
-                            <span style="font-size:0.9rem; font-weight:700; color:var(--mortgage-blue);">Total Est. Cash to Close</span>
-                            <h3 id="ff-cash-to-close" style="color:var(--accent-red); font-size:2rem; margin:0;"></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="quote" class="quote-section">
-            <div class="quote-container">
-                <div class="quote-header"><h2>Request Rate Quote</h2></div>
-                <form class="contact-form" id="quoteForm" name="quote-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
-                    <input type="hidden" name="form-name" value="quote-form" />
-                    <div class="form-row">
-                        <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
-                        <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone"></div>
-                        <div class="form-group">
-                            <label>Transaction Type</label>
-                            <select name="transaction_type">
-                                <option value="buy">Buying a Home</option>
-                                <option value="refi">Refinance (Rate/Term)</option>
-                                <option value="cashout">Refinance (Cash Out)</option>
-                                <option value="invest">Fix & Flip / DSCR</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group"><label>Additional Details</label><textarea rows="3" name="details"></textarea></div>
-                    <button type="submit" class="btn-submit">Submit Request</button>
-                </form>
-            </div>
-        </div>
-
-        <div id="about" class="about-section">
-            <div class="about-container">
-                <div class="gold-line"></div>
-                <h2>The Robertson Approach.</h2>
-                <p>We view your mortgage as a critical financial tool, not just a pile of paperwork. By treating debt structuring as a strategic asset, we ensure your financing supports your long-term goals.</p>
-                <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
-                    <div class="team-header">
-                        <img src="./dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
-                        <div class="team-info">
-                            <h3>Dan Robertson</h3>
-                            <h4>STRATEGIST & FOUNDER</h4>
-                        </div>
-                        <div class="team-toggle-icon">▼</div>
-                    </div>
-                    <div class="team-content">
-                        <p>With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Now, as the founder of his own firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> 
-    
-    <footer>
-        <div class="disclaimer">
-            <p>19 High Street, Goffstown, NH 03045 | dan@robertsonhomemortgage.com</p>
-            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. www.nmlsconsumeraccess.org</p>
-            <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
-        </div>
-    </footer>
-
-    <script>
-        // --- NAVIGATION ---
-        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-        function smoothScrollTo(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-            window.scrollTo({ top: y, behavior: "smooth" });
-        }
-        function showSection(id) {
-            ['purchase-analyzer', 'refi-analyzer', 'fix-flip-calculator', 'quote'].forEach(s => document.getElementById(s).style.display = 'none');
-            const target = document.getElementById(id);
-            target.style.display = 'block';
-            target.classList.add('fade-in');
-            setTimeout(() => smoothScrollTo(id), 100);
-        }
-        function toggleBio(id) {
-            const card = document.getElementById(id);
-            const content = card.querySelector('.team-content');
-            card.classList.toggle('active');
-            content.style.maxHeight = card.classList.contains('active') ? content.scrollHeight + "px" : null;
-        }
-
-        const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
-
-        // --- MATH HELPERS ---
-        function calcPI(loanAmount, ratePercent, months) {
-            if(loanAmount <= 0 || ratePercent <= 0) return 0;
-            const r = ratePercent / 100 / 12;
-            return (loanAmount * r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
-        }
-
-        // --- ADVANCED PURCHASE LOGIC ---
-        function analyzePurchase() {
-            const price = parseFloat(document.getElementById('pur-price').value) || 0;
-            const dp = parseFloat(document.getElementById('pur-dp').value) || 0;
-            const rate = parseFloat(document.getElementById('pur-rate').value) || 6.5;
-            const use = document.getElementById('pur-use').value;
-            const type = document.getElementById('pur-type').value;
-            const isVet = document.getElementById('pur-vet').value === 'yes';
-            const term = parseInt(document.getElementById('pur-term').value);
-
-            if(price <= 0) return alert("Enter a valid purchase price.");
-            
-            const ltv = ((price - dp) / price) * 100;
-            const baseLoan = price - dp;
-            const taxIns = price * 0.015 / 12; // 1.5% proxy
-            
-            let gridHtml = '';
-
-            // 1. CONVENTIONAL LOGIC
-            let convMaxLtv = 97;
-            if(use === 'second') convMaxLtv = 90;
-            if(use === 'investment') convMaxLtv = 85;
-            if(type === 'multi' && use === 'primary') convMaxLtv = 95;
-            if(type === 'multi' && use === 'investment') convMaxLtv = 75;
-
-            if(ltv <= convMaxLtv) {
-                let pmi = 0;
-                if(ltv > 80) pmi = (baseLoan * 0.005) / 12; // 0.5% proxy
-                const pi = calcPI(baseLoan, rate, term);
-                gridHtml += buildCard('Conventional', baseLoan, pi, pmi, taxIns, ltv, '');
-            } else {
-                gridHtml += buildErrorCard('Conventional', `Requires at least ${100 - convMaxLtv}% down for this property type.`);
-            }
-
-            // 2. FHA LOGIC (Primary Only)
-            if(use === 'primary') {
-                if(ltv <= 96.5) {
-                    const ufmip = baseLoan * 0.0175;
-                    const fhaLoan = baseLoan + ufmip;
-                    const fhaPi = calcPI(fhaLoan, rate - 0.25, term); // proxy rate slightly lower
-                    const fhaMip = (baseLoan * 0.0055) / 12;
-                    gridHtml += buildCard('FHA', fhaLoan, fhaPi, fhaMip, taxIns, ltv, 'Includes 1.75% Upfront MIP rolled into loan.');
-                } else {
-                    gridHtml += buildErrorCard('FHA', 'Requires 3.5% minimum down payment.');
-                }
-            }
-
-            // 3. VA LOGIC
-            if(use === 'primary' && isVet) {
-                if(ltv <= 100) {
-                    const vaFee = baseLoan * 0.0215; // standard first use proxy
-                    const vaLoan = baseLoan + vaFee;
-                    const vaPi = calcPI(vaLoan, rate - 0.25, term);
-                    gridHtml += buildCard('VA Loan', vaLoan, vaPi, 0, taxIns, ltv, 'Includes 2.15% Funding Fee proxy rolled in. No Monthly PMI.');
-                }
-            }
-
-            // 4. DSCR LOGIC (Investment Only)
-            if(use === 'investment') {
-                if(ltv <= 80) {
-                    const dscrPi = calcPI(baseLoan, rate + 1.0, term); // Proxy rate higher
-                    gridHtml += buildCard('DSCR (Investor)', baseLoan, dscrPi, 0, taxIns, ltv, 'Qualify using property rental income, not personal income.');
-                } else {
-                    gridHtml += buildErrorCard('DSCR (Investor)', 'Requires at least 20% down payment.');
-                }
-            }
-
-            document.getElementById('pur-product-grid').innerHTML = gridHtml;
-            document.getElementById('pur-results-container').style.display = 'block';
-        }
-
-        // --- ADVANCED REFI LOGIC ---
-        function toggleRefiGoal() {
-            const goal = document.getElementById('refi-goal').value;
-            document.getElementById('refi-cash-group').style.display = (goal === 'co') ? 'block' : 'none';
-        }
-
-        function analyzeRefi() {
-            const goal = document.getElementById('refi-goal').value;
-            const value = parseFloat(document.getElementById('refi-value').value) || 0;
-            const bal = parseFloat(document.getElementById('refi-bal').value) || 0;
-            const cashOut = parseFloat(document.getElementById('refi-cash').value) || 0;
-            const rate = parseFloat(document.getElementById('refi-rate').value) || 6.0;
-            const term = parseInt(document.getElementById('refi-term').value);
-            const use = document.getElementById('refi-use').value;
-            const type = document.getElementById('refi-type').value;
-            const isVet = document.getElementById('refi-vet').value === 'yes';
-
-            if(value <= 0 || bal <= 0) return alert("Enter valid Home Value and Balance.");
-
-            let gridHtml = '';
-            const ccProxy = (bal * 0.015) + 1500;
-            const newLoan = (goal === 'co') ? bal + cashOut + ccProxy : bal + ccProxy;
-            const ltv = (newLoan / value) * 100;
-
-            if(goal === 'heloc') {
-                // HELOC logic (Standalone 2nd)
-                const cltv = ((bal + cashOut) / value) * 100;
-                if(use === 'primary' && cltv <= 85) {
-                    const helocPmt = cashOut * (rate + 2.0) / 100 / 12; // Interest only proxy
-                    gridHtml += buildCard('HELOC / 2nd', cashOut, helocPmt, 0, 0, cltv, 'Interest-Only estimated payment. Keeps current first mortgage intact.');
-                } else {
-                    gridHtml += buildErrorCard('HELOC', 'Max CLTV is generally 85% for primary residences.');
-                }
-            } else {
-                // 1. CONVENTIONAL REFI
-                let convMaxLtv = (goal === 'rt') ? 97 : 80;
-                if(use === 'investment') convMaxLtv = (goal === 'rt') ? 75 : 70;
-                if(type === 'multi' && use === 'primary') convMaxLtv = (goal === 'rt') ? 95 : 75;
-
-                if(ltv <= convMaxLtv) {
-                    let pmi = (ltv > 80) ? (newLoan * 0.005) / 12 : 0;
-                    gridHtml += buildCard('Conventional Refi', newLoan, calcPI(newLoan, rate, term), pmi, 0, ltv, 'Taxes/Ins not shown in P&I.');
-                } else {
-                    gridHtml += buildErrorCard('Conventional', `Max LTV is ${convMaxLtv}% for this scenario.`);
-                }
-
-                // 2. FHA REFI (Primary)
-                if(use === 'primary') {
-                    let fhaMaxLtv = (goal === 'rt') ? 97.75 : 80;
-                    if(ltv <= fhaMaxLtv) {
-                        const ufmip = newLoan * 0.0175;
-                        const fhaLoan = newLoan + ufmip;
-                        const fhaMip = (newLoan * 0.005) / 12;
-                        gridHtml += buildCard('FHA Refi', fhaLoan, calcPI(fhaLoan, rate - 0.25, term), fhaMip, 0, ltv, 'Includes 1.75% Upfront MIP.');
-                    } else {
-                        gridHtml += buildErrorCard('FHA', `Max LTV is ${fhaMaxLtv}% for this FHA scenario.`);
-                    }
-                }
-
-                // 3. VA REFI (Primary/Vet)
-                if(use === 'primary' && isVet) {
-                    let vaMaxLtv = (goal === 'rt') ? 100 : 90; // Using 90% proxy for cash out
-                    if(ltv <= vaMaxLtv) {
-                        const vaFee = newLoan * 0.033; // subsequent use cash out proxy
-                        const vaLoan = (goal === 'co') ? newLoan + vaFee : newLoan; // IRRRL is 0.5% but simplifying
-                        gridHtml += buildCard('VA Refi', vaLoan, calcPI(vaLoan, rate - 0.25, term), 0, 0, ltv, 'No Monthly PMI.');
-                    } else {
-                        gridHtml += buildErrorCard('VA', `Max LTV is generally ${vaMaxLtv}% for this VA scenario.`);
-                    }
-                }
-            }
-
-            document.getElementById('refi-product-grid').innerHTML = gridHtml;
-            document.getElementById('refi-results-container').style.display = 'block';
-        }
-
-        // --- HTML CARD BUILDERS ---
-        function buildCard(title, loan, pi, pmi, tax, ltv, note) {
-            const total = pi + pmi + tax;
-            return `
-            <div class="product-card ${title.split(' ')[0].toLowerCase()}">
-                <h3>${title}</h3>
-                <div class="p-row"><span>Est. Loan Amount</span><strong>${formatCurrency(loan)}</strong></div>
-                <div class="p-row"><span>Scenario LTV</span><strong>${ltv.toFixed(1)}%</strong></div>
-                <div class="p-row" style="margin-top:10px;"><span>P&I Payment</span><strong>${formatCurrency(pi)}</strong></div>
-                ${pmi > 0 ? `<div class="p-row" style="color:var(--accent-red);"><span>Est. Monthly MI</span><strong>${formatCurrency(pmi)}</strong></div>` : ''}
-                ${tax > 0 ? `<div class="p-row"><span>Taxes & Ins (Est.)</span><strong>${formatCurrency(tax)}</strong></div>` : ''}
-                <div class="p-total"><span>Total Est. Payment</span><span>${formatCurrency(total)}</span></div>
-                ${note ? `<div style="font-size:0.75rem; color:#888; margin-top:10px; font-style:italic;">* ${note}</div>` : ''}
-            </div>`;
-        }
-        function buildErrorCard(title, reason) {
-            return `
-            <div class="product-card" style="border-top-color:#ccc; opacity:0.7;">
-                <h3 style="color:#888;">${title}</h3>
-                <div class="p-error">${reason}</div>
-            </div>`;
-        }
-
-        // --- FIX & FLIP TOOL ---
-        function calculateFixFlip() {
-            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
-            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
-            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
-
-            if (pp === 0 || rehab === 0 || arv === 0) return alert("Please enter all values.");
-
-            const maxLoan = Math.min((pp + rehab) * 0.95, (pp * 0.90) + rehab, arv * 0.75);
-            const baseEq = (pp + rehab) - maxLoan;
-            const fees = (maxLoan * 0.0325) + 1625; 
-            const titleTax = ((pp / 1000) * 7.5) + (1200 + (maxLoan * 0.0025));
-
-            document.getElementById('ff-breakdown').innerHTML = `
-                <li>Calculation 1 (95% LTC): ${formatCurrency((pp+rehab)*0.95)}</li>
-                <li>Calculation 2 (90% Purch + 100% Rehab): ${formatCurrency((pp*.9)+rehab)}</li>
-                <li>Calculation 3 (75% ARV): ${formatCurrency(arv*0.75)}</li>
-            `;
-            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
-            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEq);
-            document.getElementById('ff-loan-fees').innerText = formatCurrency(fees);
-            document.getElementById('ff-appraisal-fee').innerText = "$650";
-            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(titleTax);
-            document.getElementById('ff-cash-to-close').innerText = formatCurrency(baseEq + fees + titleTax + 650);
-            document.getElementById('ff-results').style.display = 'block';
-        }
-
-    </script>
-</body>
-</html>
+ 
