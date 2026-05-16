@@ -114,7 +114,7 @@
         .r-cash { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff9e6; border: 2px dashed var(--accent-red); border-radius: 8px; margin-top: 20px;}
         .r-cash strong { color: var(--mortgage-blue); font-size: 1rem; text-transform: uppercase; }
         .r-cash span { color: var(--accent-red); font-size: 1.8rem; font-weight: 800; }
-        .r-error { background: #ffebee; border: 2px dashed var(--accent-red); color: var(--accent-red); padding: 20px; border-radius: 8px; font-weight: 500; margin-top: 20px;}
+        .r-error { background: #ffebee; border: 2px dashed var(--accent-red); color: var(--accent-red); padding: 15px; text-align: center; border-radius: 8px; font-weight: 600; margin-top: 20px;}
         
         .cash-flow-box { background: #eaf1f8; border: 2px solid var(--mortgage-blue); border-radius: 8px; padding: 15px; margin-top: 20px; text-align: center; }
         .cash-flow-box h4 { margin: 0 0 10px 0; color: var(--mortgage-blue); font-size: 1.1rem; }
@@ -172,6 +172,7 @@
             .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; }
             .hero h1 { font-size: 2.2rem; }
             
+            /* FIXED MOBILE CARDS (SIDE BY SIDE) */
             .services-container { margin-top: -40px; flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 0 15px; }
             .service-card { padding: 20px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 3px solid var(--brand-gold); flex: 1; min-width: 0; }
             .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
@@ -289,13 +290,13 @@
                 </div>
                 <div class="path-grid">
                     <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence')">
-                        <h3>Conventional</h3><p>Standard financing. As little as 3% down for first-time buyers on single-family homes.</p>
+                        <h3>Conventional</h3><p>Standard financing. As little as 3% down for first-time buyers on single-family homes, or 5% down for multi-unit properties.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('fha', 'Primary Residence')">
-                        <h3>FHA & House Hacking</h3><p>3.5% down. Can be used to buy a 1-4 unit multi-family and rent the remaining units!</p>
+                        <h3>FHA</h3><p>3.5% down. Can be used to buy a 1-4 unit multi-family property and rent the remaining units.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('va', 'Primary Residence')">
-                        <h3>VA Loan</h3><p>0% down option for eligible active military and veterans. No monthly PMI.</p>
+                        <h3>VA Loan</h3><p>0% down for eligible military/veterans. Can be used to buy a 1-4 unit property with no PMI.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence')">
                         <h3>USDA (Rural)</h3><p>0% down option for properties located in designated rural areas.</p>
@@ -803,9 +804,9 @@
 
         // --- PURCHASE WIZARD LOGIC ---
         const purEduText = {
-            'conv': { title: "Conventional Loan", text: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route. First-time homebuyers can put as little as 3% down on a 1-unit property." },
-            'fha': { title: "FHA & House Hacking", text: "FHA loans require just 3.5% down and are incredibly forgiving on credit. <strong>House Hacking Secret:</strong> You can use an FHA loan to buy a 2, 3, or 4-unit multi-family property with only 3.5% down, as long as you live in one of the units! You can even use the projected rental income from the other units to help you qualify." },
-            'va': { title: "VA Loan", text: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance (PMI)." },
+            'conv': { title: "Conventional Loan", text: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route. First-time homebuyers can put as little as 3% down on a 1-unit property, or 5% down on a 2-4 unit property." },
+            'fha': { title: "FHA", text: "FHA loans require just 3.5% down and are incredibly forgiving on credit. You can use an FHA loan to buy a 2, 3, or 4-unit multi-family property with only 3.5% down, as long as you live in one of the units! You can even use the projected rental income from the other units to help you qualify." },
+            'va': { title: "VA Loan", text: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance (PMI). You can use your VA loan to purchase a 2, 3, or 4-unit property with $0 down, as long as you live in one of the units!" },
             'usda': { title: "USDA (Rural Development)", text: "A 0% down program for low-to-moderate income buyers purchasing in designated rural or suburban areas. Excellent for saving cash." },
             'conv-sec': { title: "Second Home Financing", text: "Requires a minimum 10% down payment. The property must be located a reasonable distance from your primary residence and you must occupy it for a portion of the year. Multi-unit properties are not allowed." },
             'dscr': { title: "DSCR (Debt Service)", text: "<strong>For Non-Owner Occupied Properties Only.</strong> DSCR loans are purely for investors. You do not need personal tax returns or pay stubs. You qualify based entirely on the property's estimated monthly rental income compared to the mortgage payment." },
@@ -877,7 +878,7 @@
 
             // Evaluate Guidelines
             if(prog === 'conv') { 
-                maxLtv = (units === 1) ? 97 : 95; // New FNMA 5% down multi-family rule
+                maxLtv = (units === 1) ? 97 : 95; 
                 dpReq = price * ((100 - maxLtv) / 100); 
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.005)/12; pmiNote = "(Drops off at 20% equity)"; } 
             }
@@ -932,7 +933,7 @@
                 }
             }
 
-            // --- THE HOUSE HACK PIVOT (Failing Forward) ---
+            // --- STRATEGY PIVOT ---
             if(ltv > maxLtv) {
                 errBox.style.display = 'block';
                 let errorHtml = `This program requires at least <strong>${100 - maxLtv}% down</strong> for a ${units}-unit property.<br>Based on a $${price} price, your minimum down payment is <strong>${formatCurrency(dpReq)}</strong>.`;
@@ -942,8 +943,8 @@
                     errorHtml += `
                     <div class="pivot-box">
                         <strong style="color:var(--mortgage-blue); font-size:1.1rem;">💡 Not quite enough cash to close?</strong>
-                        <p style="color:#555; font-size:0.9rem; margin:5px 0 15px 0; font-weight:400;">Have you considered owner-occupying one of the units? "House Hacking" allows you to buy a multi-family property with as little as <strong>3.5% to 5% down</strong> while collecting rent from the other units to pay the mortgage.</p>
-                        <button onclick="showWizard('wizard-pur-primary')" class="btn-submit" style="font-size:0.8rem; padding: 10px 20px;">Explore House Hacking &rarr;</button>
+                        <p style="color:#555; font-size:0.9rem; margin:5px 0 15px 0; font-weight:400;">Have you considered owner-occupying one of the units? Owner-occupying a multi-family property allows you to buy with as little as <strong>3.5% to 5% down</strong> while collecting rent from the other units to pay the mortgage.</p>
+                        <button onclick="showWizard('wizard-pur-primary')" class="btn-submit" style="font-size:0.8rem; padding: 10px 20px;">Explore Owner-Occupied Options &rarr;</button>
                     </div>`;
                 }
                 
