@@ -22,6 +22,7 @@
             --footer-bg: #002855;
             --accent-red: #C8102E; 
             --success-green: #27ae60;
+            --warning-orange: #f39c12;
         }
 
         html { scroll-behavior: auto; } 
@@ -55,7 +56,7 @@
         .hero-apply-btn { display: inline-block; margin-top: 25px; padding: 12px 30px; border: 2px solid var(--brand-gold); color: var(--brand-gold); text-decoration: none; text-transform: uppercase; font-weight: 700; border-radius: 50px; font-size: 1rem; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.3); }
         .hero-apply-btn:hover { background: var(--brand-gold); color: var(--mortgage-blue); }
 
-        /* --- SERVICES SECTION (Top Level Cards) --- */
+        /* --- SERVICES SECTION --- */
         .services-section { background-color: var(--bg-light); padding: 0px 5% 40px 5%; display: flex; justify-content: center; }
         .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; }
         .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
@@ -85,9 +86,19 @@
         .path-card h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; }
         .path-card p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4;}
         
-        .edu-banner { background: #eaf1f8; border-left: 4px solid var(--mortgage-blue); padding: 20px; border-radius: 0 8px 8px 0; margin-bottom: 25px; }
-        .edu-banner h3 { margin: 0 0 10px 0; color: var(--mortgage-blue); font-size: 1.2rem; }
-        .edu-banner p { margin: 0; font-size: 0.9rem; color: #444; line-height: 1.6; }
+        /* NEW STRATEGY BRIEF STYLES */
+        .strategy-brief { background: white; border: 1px solid var(--mortgage-blue); border-left: 6px solid var(--mortgage-blue); padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .strategy-brief h3 { color: var(--mortgage-blue); margin-top: 0; border-bottom: 1px dotted #ccc; padding-bottom: 10px; }
+        .strategy-brief h4 { color: var(--text-dark); margin: 15px 0 5px 0; font-size: 0.95rem; }
+        .strategy-brief p { margin: 0 0 10px 0; font-size: 0.9rem; color: #555; }
+        .strategy-brief ul { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
+        .strategy-brief li { margin-bottom: 5px; }
+
+        /* TOOLTIPS */
+        .tooltip { position: relative; display: inline-block; cursor: pointer; color: var(--brand-gold); margin-left: 5px; font-weight: bold; }
+        .tooltip .tooltiptext { visibility: hidden; width: 220px; background-color: var(--footer-bg); color: #fff; text-align: center; border-radius: 6px; padding: 10px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -110px; opacity: 0; transition: opacity 0.3s; font-size: 0.75rem; font-weight: normal; line-height: 1.4; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .tooltip .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--footer-bg) transparent transparent transparent; }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 
         .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
@@ -114,11 +125,14 @@
         .r-cash { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff9e6; border: 2px dashed var(--accent-red); border-radius: 8px; margin-top: 20px;}
         .r-cash strong { color: var(--mortgage-blue); font-size: 1rem; text-transform: uppercase; }
         .r-cash span { color: var(--accent-red); font-size: 1.8rem; font-weight: 800; }
-        .r-error { background: #ffebee; border: 2px dashed var(--accent-red); color: var(--accent-red); padding: 15px; text-align: center; border-radius: 8px; font-weight: 600; margin-top: 20px;}
         
-        .cash-flow-box { background: #eaf1f8; border: 2px solid var(--mortgage-blue); border-radius: 8px; padding: 15px; margin-top: 20px; text-align: center; }
+        /* DYNAMIC REALITY CHECKS */
+        .r-error { background: #ffebee; border: 2px dashed var(--accent-red); color: var(--accent-red); padding: 15px; text-align: left; border-radius: 8px; font-weight: 500; margin-top: 20px; font-size: 0.9rem;}
+        .r-warning { background: #fff8e1; border: 2px solid var(--warning-orange); color: #8a6d3b; padding: 15px; text-align: left; border-radius: 8px; font-weight: 500; margin-bottom: 20px; font-size: 0.9rem; display: none;}
+        .r-strategy { background: #eaf1f8; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 15px; text-align: left; border-radius: 8px; font-weight: 500; margin-bottom: 20px; font-size: 0.9rem; display: none;}
+        
+        .cash-flow-box { background: #fdfdfd; border: 2px solid #ddd; border-radius: 8px; padding: 15px; margin-top: 20px; text-align: center; }
         .cash-flow-box h4 { margin: 0 0 10px 0; color: var(--mortgage-blue); font-size: 1.1rem; }
-        .pivot-box { background: white; border: 1px solid var(--mortgage-blue); border-radius: 8px; padding: 15px; margin-top: 15px; text-align: left; }
 
         /* --- ABOUT & FOOTER --- */
         .about-section { background-color: white; padding: 40px 5% 60px 5%; text-align: left; }
@@ -159,10 +173,6 @@
         .calc-result h3 { color: var(--accent-red); font-size: 1.8rem; margin: 0; font-weight: 800; line-height: 1.1; }
         .calc-disclaimer { font-size: 0.65rem; color: #999; text-align: center; margin-top: 10px; line-height: 1.3; }
 
-        /* --- INTERACTIVE DROPDOWNS --- */
-        .ff-result-row { margin-bottom: 12px; }
-        .ff-exp { display:none; font-size: 0.8rem; color: #777; margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--brand-gold); line-height: 1.4; }
-
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .wizard-section, .quote-section, #about { scroll-margin-top: 85px; }
@@ -172,7 +182,6 @@
             .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; }
             .hero h1 { font-size: 2.2rem; }
             
-            /* FIXED MOBILE CARDS (SIDE BY SIDE) */
             .services-container { margin-top: -40px; flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 0 15px; }
             .service-card { padding: 20px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 3px solid var(--brand-gold); flex: 1; min-width: 0; }
             .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
@@ -183,12 +192,6 @@
             .form-row { flex-direction: column; gap: 15px; } 
             .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
             .btn-outline-small, .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
-            
-            .team-header { padding: 15px; gap: 15px; }
-            .team-photo { width: 70px; height: 70px; } 
-            .team-info h3 { font-size: 1.2rem; }
-            .team-content { padding: 0 15px; }
-            .team-card.active .team-content { padding: 10px 15px 20px 15px; }
             .r-cash { flex-direction: column; text-align: center; gap: 10px; }
         }
     </style>
@@ -294,22 +297,22 @@
                 </div>
                 <div class="path-grid">
                     <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence')">
-                        <h3>Conventional</h3><p>Standard financing. As little as 3% down for first-time buyers on single-family homes, or 5% down for multi-unit properties.</p>
+                        <h3>Conventional</h3><p>Standard financing. Low down payment options for first-time buyers on single-family homes.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('fha', 'Primary Residence')">
-                        <h3>FHA</h3><p>3.5% down. Can be used to buy a 1-4 unit multi-family property and rent the remaining units.</p>
+                        <h3>FHA</h3><p>Low down payment FHA options. Can be used to buy a 1-4 unit multi-family property and rent the remaining units.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('va', 'Primary Residence')">
-                        <h3>VA Loan</h3><p>0% down for eligible military/veterans. Can be used to buy a 1-4 unit property with no PMI.</p>
+                        <h3>VA Loan</h3><p>Zero-down options for eligible military/veterans. Buy a 1-4 unit property with no PMI.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence')">
-                        <h3>USDA (Rural)</h3><p>0% down option for properties located in designated rural areas.</p>
+                        <h3>USDA (Rural)</h3><p>Zero-down options for properties located in designated rural areas.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence')">
                         <h3>FHA 100% Combo</h3><p>Zero down payment! Combines standard FHA with a 3.5% second lien.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence')">
-                        <h3>Fannie Mae HomeReady</h3><p>As little as 3% down with reduced MI and a potential $2,500 credit.</p>
+                        <h3>Fannie Mae HomeReady</h3><p>Low down payment options with reduced MI and a potential $2,500 credit.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('fha-203k', 'Primary Residence')">
                         <h3>FHA 203(k) Rehab</h3><p>Roll the cost of home renovations directly into your purchase mortgage.</p>
@@ -333,7 +336,7 @@
                 </div>
                 <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 600px; margin: 0 auto;">
                     <div class="path-card" onclick="openPurCalc('conv-sec', 'Second Home')">
-                        <h3>Conventional Second Home</h3><p>Typically requires a 10% minimum down payment. Must be a 1-unit property occupied by owner part of the year.</p>
+                        <h3>Conventional Second Home</h3><p>Requires a down payment. Must be a 1-unit property occupied by owner part of the year.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('alt-doc', 'Second Home')">
                         <h3>Self-Employed (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
@@ -373,13 +376,20 @@
             <div class="wizard-container fade-in">
                 <button id="pur-back-btn" onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
                 
-                <h2 id="pur-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
-                <div id="pur-calc-edu" class="edu-banner"></div>
+                <div id="pur-calc-edu" class="strategy-brief"></div>
 
                 <div class="form-row">
                     <div class="form-group"><label>Purchase Price ($)</label><input type="number" id="pur-price" placeholder="e.g. 450000"></div>
                     <div class="form-group"><label>Down Payment ($)</label><input type="number" id="pur-dp" placeholder="e.g. 20000"></div>
                 </div>
+                
+                <div class="form-row" id="rehab-group" style="display:none;">
+                    <div class="form-group">
+                        <label>Est. Rehab Budget ($) <span class="tooltip">ⓘ<span class="tooltiptext">Must be at least $5,000 for FHA 203(k). A 10-20% contingency will be added later.</span></span></label>
+                        <input type="number" id="pur-rehab" placeholder="e.g. 25000">
+                    </div>
+                </div>
+
                 <div class="form-row">
                     <div class="form-group">
                         <label>Number of Units</label>
@@ -395,7 +405,10 @@
                             <option value="9">9 Units</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Est. Interest Rate (%)</label><input type="number" id="pur-rate" value="6.5" step="0.125"></div>
+                    <div class="form-group">
+                        <label>Est. Interest Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label>
+                        <input type="number" id="pur-rate" value="6.5" step="0.125">
+                    </div>
                     <div class="form-group">
                         <label>Desired Term</label>
                         <select id="pur-term">
@@ -403,7 +416,6 @@
                             <option value="300">25 Year Fixed</option>
                             <option value="240">20 Year Fixed</option>
                             <option value="180">15 Year Fixed</option>
-                            <option value="120">10 Year Fixed</option>
                         </select>
                     </div>
                 </div>
@@ -417,10 +429,21 @@
 
                 <div id="pur-result-box" class="result-box">
                     <div class="r-header" id="pur-res-title">Estimated Results</div>
+                    
+                    <div id="pur-warning" class="r-warning"></div>
+                    <div id="pur-strategy" class="r-strategy"></div>
                     <div id="pur-error" class="r-error" style="display:none;"></div>
                     
                     <div id="pur-success" style="display:none;">
-                        <div class="r-row"><strong>Est. Loan Amount</strong><span id="pur-res-loan"></span></div>
+                        
+                        <div id="pur-fha100-view" style="display:none; background:#f4f8fb; border:1px solid var(--mortgage-blue); padding:15px; border-radius:8px; margin-bottom:20px;">
+                            <h4 style="margin:0 0 10px 0; color:var(--mortgage-blue);">FHA 100% Lien Structure</h4>
+                            <div class="r-row"><strong>1st Lien Amount (96.5%)</strong><span id="fha100-1st"></span></div>
+                            <div class="r-row"><strong>2nd Lien Amount (3.5%)</strong><span id="fha100-2nd"></span></div>
+                            <div class="r-row" style="margin-top:10px; font-size:0.8rem; color:#666;"><em>*2nd Lien estimated at 2% higher interest rate on a 10-year term.</em></div>
+                        </div>
+
+                        <div class="r-row"><strong>Est. Total Loan Amount</strong><span id="pur-res-loan"></span></div>
                         <div class="r-row"><strong>Scenario LTV</strong><span id="pur-res-ltv"></span></div>
                         <div class="r-row" style="margin-top: 15px;"><strong>Principal & Interest</strong><span id="pur-res-pi"></span></div>
                         <div class="r-row" id="row-mi" style="display:none;"><strong style="color:var(--accent-red);">Est. Monthly MI <span class="r-sub" id="pur-res-mi-note"></span></strong><span id="pur-res-mi" style="color:var(--accent-red);"></span></div>
@@ -436,7 +459,7 @@
                         </div>
 
                         <div class="r-row" style="margin-top:20px; border-top: 2px dashed #ddd; padding-top: 20px;">
-                            <strong>Down Payment</strong><span id="pur-res-dp"></span>
+                            <strong>Required Down Payment</strong><span id="pur-res-dp"></span>
                         </div>
                         <div class="r-row">
                             <strong>Est. Closing Costs & Prepaids <span class="r-sub">Proxy: 2.5% of Loan + $1,500</span></strong><span id="pur-res-cc"></span>
@@ -447,7 +470,7 @@
                         </div>
                         
                         <div class="disclaimer-box">
-                            <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Available programs, rates, and LTV limits change daily and are subject to borrower credit approval, property appraisal, and official underwriting. Please apply to receive a verified, official quote.
+                            <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. The Interest Rate you input does not reflect your Annual Percentage Rate (APR). Your actual APR will be higher once official fees and mortgage insurance are included.
                         </div>
                     </div>
                 </div>
@@ -466,9 +489,10 @@
             <div class="wizard-container fade-in">
                 <button onclick="showWizard('wizard-pur-invest')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Investment Options</button>
                 <h2 style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;">Fix & Flip Financing</h2>
-                <div class="edu-banner">
-                    <h3>How it Works</h3>
-                    <p>Fix & Flip loans are short-term (bridge) debt. Instead of qualifying based on your DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property. Lenders cap the loan using three calculations. Your max loan is the lowest of the three caps.</p>
+                <div class="strategy-brief">
+                    <h3>The Scoop</h3>
+                    <p>Fix & Flip loans are short-term (bridge) debt. Instead of qualifying based on your DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property.</p>
+                    <p><strong>On Your Radar:</strong> Lenders cap the loan using three calculations. Your maximum loan is strictly the lowest of the three caps.</p>
                 </div>
                 
                 <div class="form-row">
@@ -485,21 +509,18 @@
 
                     <div class="ff-result-row" onclick="toggleFFExp('exp-loan')">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-max-loan" style="font-weight: 700; color:var(--mortgage-blue); font-size:1.1rem;"></span>
+                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span class="tooltip">ⓘ<span class="tooltiptext">The lowest of the three calculations. This is the absolute maximum the lender will finance.</span></span></strong> <span id="ff-max-loan" style="font-weight: 700; color:var(--mortgage-blue); font-size:1.1rem;"></span>
                         </div>
-                        <div id="exp-loan" class="ff-exp">The lowest of the three calculations above. This is the absolute maximum the lender will finance.</div>
                     </div>
                     <div class="ff-result-row" onclick="toggleFFExp('exp-eq')">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-base-equity"></span>
+                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span class="tooltip">ⓘ<span class="tooltiptext">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount.</span></span></strong> <span id="ff-base-equity"></span>
                         </div>
-                        <div id="exp-eq" class="ff-exp">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount. Your "skin in the game".</div>
                     </div>
                     <div class="ff-result-row" onclick="toggleFFExp('exp-fee')">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span style="font-size: 0.8em; color: var(--brand-gold);">ⓘ</span></strong> <span id="ff-loan-fees"></span>
+                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span class="tooltip">ⓘ<span class="tooltiptext">Includes estimated origination, broker, processing, and underwriting fees.</span></span></strong> <span id="ff-loan-fees"></span>
                         </div>
-                        <div id="exp-fee" class="ff-exp">Includes estimated origination, broker, processing, and underwriting fees.</div>
                     </div>
                     <div class="r-row"><strong>Est. Appraisal Fee</strong><span>$650</span></div>
                     <div class="r-row"><strong>Est. Title, Recording, Transfer Tax</strong><span id="ff-title-tax-fees"></span></div>
@@ -555,8 +576,7 @@
             <div class="wizard-container fade-in">
                 <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Goals</button>
                 
-                <h2 id="refi-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
-                <div id="refi-calc-edu" class="edu-banner"></div>
+                <div id="refi-calc-edu" class="strategy-brief"></div>
 
                 <div class="form-row" id="he-type-group" style="display:none; margin-bottom: 20px;">
                     <div class="form-group" style="flex:2;">
@@ -578,7 +598,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group"><label>Est. Target Rate (%)</label><input type="number" id="refi-rate" value="6.5" step="0.125"></div>
+                    <div class="form-group"><label>Est. Target Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label><input type="number" id="refi-rate" value="6.5" step="0.125"></div>
                     <div class="form-group" id="refi-term-group">
                         <label>Desired Term</label>
                         <select id="refi-term">
@@ -597,6 +617,7 @@
 
                 <div id="refi-result-box" class="result-box">
                     <div class="r-header" id="refi-res-title">Results</div>
+                    <div id="refi-warning" class="r-warning"></div>
                     <div id="refi-error" class="r-error" style="display:none;"></div>
                     
                     <div id="refi-success" style="display:none;">
@@ -607,18 +628,18 @@
                             <div class="r-total"><span>Total Est. New P&I</span><span id="r1-total"></span></div>
                             
                             <div class="disclaimer-box">
-                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Assumes closing costs are rolled into the loan. Does not include escrowed taxes/insurance in this figure.
+                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Assumes closing costs are rolled into the loan. The Interest Rate you input does not reflect your Annual Percentage Rate (APR).
                             </div>
                         </div>
 
                         <div id="refi-2nd-view" style="display:none;">
                             <div class="r-row"><strong>Approved 2nd Amount</strong><span id="r2-loan"></span></div>
-                            <div class="r-row"><strong>Combined LTV (1st + 2nd) <span class="r-sub">Max allowed is typically 85%</span></strong><span id="r2-cltv"></span></div>
+                            <div class="r-row"><strong>Combined LTV (1st + 2nd) <span class="r-sub">Max allowed is typically 80-85%</span></strong><span id="r2-cltv"></span></div>
                             <div class="r-row" style="margin-top: 15px;"><strong>Payment Type</strong><span id="r2-type"></span></div>
                             <div class="r-total"><span>Est. 2nd Lien Payment</span><span id="r2-pmt"></span></div>
                             
                             <div class="disclaimer-box">
-                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. HELOC payments are estimated based on fully drawing the line. HELOANs are fixed. Closing costs for 2nds are typically paid out of pocket. Does not constitute an offer to lend or Loan Estimate.
+                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. HELOC payments are estimated based on fully drawing the line. HELOANs are fixed. Closing costs for 2nds are typically paid out of pocket. The Interest Rate you input does not reflect your Annual Percentage Rate (APR).
                             </div>
                         </div>
                     </div>
@@ -811,24 +832,22 @@
             const prog = document.getElementById('pur-active-prog').value;
             const container = document.getElementById('multi-unit-rents');
             
-            container.innerHTML = ''; // clear out old
+            container.innerHTML = ''; 
             
             if (units > 1) {
-                let html = '<p style="font-size:0.85rem; color:var(--mortgage-blue); font-weight:600; margin-bottom:5px;">Estimated Rental Income (Per Unit)</p><div class="form-row">';
+                let html = `<p style="font-size:0.85rem; color:var(--mortgage-blue); font-weight:600; margin-bottom:5px;">Estimated Rental Income (Per Unit) <span class="tooltip">ⓘ<span class="tooltiptext">For vacant units, lenders will only use 75% of the market rent determined by the appraiser to calculate your cash flow.</span></span></p><div class="form-row">`;
                 
-                // If it is a Primary residence, they live in Unit 1. Start collecting rent at Unit 2.
                 let startUnit = (occ === 'Primary Residence') ? 2 : 1;
                 
                 for(let i = startUnit; i <= units; i++) {
                     html += `<div class="form-group"><label>Unit ${i} Rent ($)</label><input type="number" class="unit-rent-input" placeholder="e.g. 1500"></div>`;
                 }
-                html += '</div><p style="font-size:0.75rem; color:#888; margin-top:5px; margin-bottom:0;">Enter the expected monthly rent for the units you will not be occupying.</p>';
+                html += '</div>';
                 container.innerHTML = html;
                 container.style.display = 'block';
             } else {
-                // Single family logic
                 if (occ === 'Investment' || prog === 'dscr') {
-                    container.innerHTML = '<div class="form-row"><div class="form-group"><label>Est. Monthly Rent ($)</label><input type="number" class="unit-rent-input" placeholder="e.g. 2500"></div></div>';
+                    container.innerHTML = `<div class="form-row"><div class="form-group"><label>Est. Monthly Rent ($) <span class="tooltip">ⓘ<span class="tooltiptext">For vacant units, lenders will only use 75% of the market rent determined by the appraiser.</span></span></label><input type="number" class="unit-rent-input" placeholder="e.g. 2500"></div></div>`;
                     container.style.display = 'block';
                 } else {
                     container.style.display = 'none';
@@ -836,42 +855,153 @@
             }
         }
 
-        // --- PURCHASE WIZARD LOGIC ---
+        // --- EDUCATION ENGINE (PHASE 2) ---
         const purEduText = {
-            'conv': { title: "Conventional Loan", text: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route. First-time homebuyers can put as little as 3% down on a 1-unit property, or 5% down on a 2-4 unit property." },
-            'homeready': { title: "Fannie Mae HomeReady", text: "Designed for low-to-moderate-income buyers. It allows for just 3% down, offers reduced mortgage insurance costs, and currently includes a $2,500 credit for eligible first-time homebuyers!" },
-            'fha': { title: "FHA", text: "FHA loans require just 3.5% down and are incredibly forgiving on credit. You can use an FHA loan to buy a 2, 3, or 4-unit multi-family property with only 3.5% down, as long as you live in one of the units!" },
-            'fha-100': { title: "FHA 100% CLTV Combo", text: "Removes the biggest barrier to homeownership: the down payment. It pairs a standard 96.5% FHA first mortgage with a 3.5% second mortgage to cover your down payment. You just need a 600+ credit score." },
-            'fha-203k': { title: "FHA 203(k) Renovation", text: "Found a fixer-upper? This program allows you to finance both the purchase of the home and the cost of renovations into a single loan with just 3.5% down." },
-            'va': { title: "VA Loan", text: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance (PMI)." },
-            'usda': { title: "USDA (Rural Development)", text: "A 0% down program for low-to-moderate income buyers purchasing in designated rural or suburban areas. Excellent for saving cash." },
-            'jumbo': { title: "Jumbo AUS 1", text: "Need to borrow more than the county limits? This program allows loan amounts up to $3,000,000 with a minimum 20% down payment and a 660 credit score." },
-            'alt-doc': { title: "Self-Employed (Alt-Doc)", text: "Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns." },
-            'conv-sec': { title: "Second Home Financing", text: "Requires a minimum 10% down payment. The property must be located a reasonable distance from your primary residence and you must occupy it for a portion of the year. Multi-unit properties are not allowed." },
-            'dscr': { title: "DSCR (Debt Service)", text: "<strong>For Non-Owner Occupied Properties Only.</strong> No personal income required! Qualify based entirely on the property's estimated monthly rental income. We offer tiers that even allow the property to cash flow negatively (down to a 0.75 ratio) with 25% down." },
-            'dscr-5-9': { title: "Multi-Family (5-9 Units)", text: "Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow." },
-            'conv-inv': { title: "Conventional Investment", text: "Standard full-documentation loan for non-owner occupied properties. Down payments typically range from 15% to 25% depending on how many units the property has." }
+            'conv': { 
+                title: "Conventional Loan", 
+                concept: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route.",
+                fit: "Buyers with good-to-excellent credit. First-time homebuyers can put as little as 3% down on a 1-unit property, or 5% down on a multi-unit property.",
+                radar: ["Requires Private Mortgage Insurance (PMI) if you put less than 20% down.", "PMI automatically drops off once you reach 20% equity."]
+            },
+            'homeready': { 
+                title: "Fannie Mae HomeReady", 
+                concept: "A conventional loan designed for creditworthy, low-to-moderate-income buyers, allowing for just a 3% down payment.",
+                fit: "Buyers earning 80% or less of their area's median income looking for cheaper Mortgage Insurance than FHA offers.",
+                radar: ["If you are a first-time buyer making 50% or less of the Median Income, you might score a $2,500 lender credit toward closing costs!", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
+            },
+            'fha': { 
+                title: "FHA", 
+                concept: "A government-backed loan requiring just 3.5% down that is incredibly forgiving on credit history and debt ratios.",
+                fit: "Buyers with less-than-perfect credit or higher debt loads. You can use an FHA loan to buy a 2, 3, or 4-unit property with only 3.5% down, as long as you live in one of the units!",
+                radar: ["FHA charges an Upfront Mortgage Insurance Premium (1.75% of the loan amount) which is rolled into your loan.", "FHA monthly mortgage insurance typically remains for the life of the loan."]
+            },
+            'fha-100': { 
+                title: "FHA 100% CLTV Combo", 
+                concept: "This program removes the biggest barrier to homeownership: the down payment. It pairs a standard 96.5% FHA first mortgage with a 3.5% second mortgage to completely cover your required down payment.",
+                fit: "Cash-strapped buyers wanting to own now rather than wait. There are no income caps, and you do not need to be a first-time homebuyer to qualify.",
+                radar: ["The 3.5% second mortgage is a 10-year fixed, fully amortized loan (meaning you will have a monthly payment on it).", "The interest rate on the second mortgage is set 2.0% higher than your first mortgage.", "If you sell or refinance the first mortgage later, the second mortgage must be paid off simultaneously."]
+            },
+            'fha-203k': { 
+                title: "FHA 203(k) Renovation", 
+                concept: "Found a fixer-upper? Don't let it slip away. This program allows you to finance both the purchase of the home and the cost of renovations into a single loan with just 3.5% down.",
+                fit: "Visionaries willing to build sweat equity by updating a home (while hiring the pros to do the actual work!).",
+                radar: ["You must be doing at least $5,000 in eligible repairs.", "A 10-20% 'contingency fund' will be added to your loan to cover unexpected cost overruns during construction.", "All work must be completed by licensed contractors."]
+            },
+            'va': { 
+                title: "VA Loan", 
+                concept: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance.",
+                fit: "Active duty military, veterans, and eligible surviving spouses.",
+                radar: ["You can use your VA loan to purchase up to a 4-unit property with $0 down, as long as you live in one of the units.", "The VA charges a one-time Funding Fee (which can be rolled into the loan), unless you receive VA disability compensation."]
+            },
+            'usda': { 
+                title: "USDA (Rural Development)", 
+                concept: "A 0% down program for low-to-moderate income buyers purchasing in designated rural or suburban areas.",
+                fit: "Buyers looking for property outside of major city limits who want to preserve their savings.",
+                radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify.", "Only available for 1-unit Single Family properties."]
+            },
+            'jumbo': { 
+                title: "Jumbo Financing", 
+                concept: "When your dream home exceeds standard county loan limits, this program steps in, offering up to $3,000,000 in premium financing.",
+                fit: "High-net-worth buyers looking at luxury, high-value, or expansive properties.",
+                radar: ["Requires a minimum 20% down payment for a primary residence.", "You will generally need to show heavier cash reserves (up to 6 months of mortgage payments in the bank after closing).", "Loan amounts over $2,000,000 require two full, independent appraisals."]
+            },
+            'alt-doc': { 
+                title: "Self-Employed (Alt-Doc)", 
+                concept: "Skip the tax returns! Qualify based on the actual cash flowing through your business using 12 months of personal or business bank statements, a 1-Year P&L, or 1099 forms.",
+                fit: "Business owners, freelancers, and entrepreneurs whose tax write-offs hide their true purchasing power.",
+                radar: ["You must have been self-employed—and your business active—for at least two full years.", "If using bank statements, large or unusual deposits will require a written explanation.", "Alternative documentation loans typically require larger down payments (10-20%) compared to standard conventional loans."]
+            },
+            'conv-sec': { 
+                title: "Second Home Financing", 
+                concept: "Standard conventional financing for a vacation or part-time home.",
+                fit: "Buyers looking for a getaway property they intend to occupy for a portion of the year.",
+                radar: ["Requires a minimum 10% down payment.", "The property must be located a reasonable distance from your primary residence.", "Multi-unit properties are not allowed as second homes."]
+            },
+            'dscr': { 
+                title: "DSCR (Debt Service) 1-4 Unit", 
+                concept: "For Non-Owner Occupied Properties. No personal income required! Qualify based entirely on the property's estimated monthly rental income compared to the mortgage payment.",
+                fit: "Real estate investors who want to scale their portfolio without providing personal tax returns or pay stubs.",
+                radar: ["We offer tiers that even allow the property to cash flow negatively (down to a 0.75 ratio) with 25% down.", "Requires a minimum 20% down payment if the rent covers the mortgage 1-to-1.", "You must show you have cash reserves in the bank after closing."]
+            },
+            'dscr-5-9': { 
+                title: "Multi-Family (5-9 Units) DSCR", 
+                concept: "Commercial-style financing for larger residential buildings. We qualify the loan based entirely on the property's rental cash flow, meaning no personal income docs are required!",
+                fit: "Experienced real estate investors looking to scale their portfolios into larger multi-family buildings.",
+                radar: ["You cannot be a first-time investor.", "The property's rent must be at least 15% higher than the mortgage payment (a 1.15 DSCR).", "You'll need 6 months of payments in reserve, and no more than 2 units can be vacant at the time of purchase."]
+            },
+            'conv-inv': { 
+                title: "Conventional Investment", 
+                concept: "Standard full-documentation loan for non-owner occupied properties.",
+                fit: "Investors with strong personal income profiles (W-2 or tax returns) who want the most competitive interest rates.",
+                radar: ["Down payments typically range from 15% to 25% depending on how many units the property has.", "Personal debt-to-income (DTI) ratios apply."]
+            }
+        };
+
+        const refiEduText = {
+            'rt': { 
+                title: "Rate & Term Refinance", 
+                concept: "Designed to drop your interest rate or change your loan term (like moving from a 30-year to a 15-year).",
+                fit: "Homeowners looking to lower their monthly payment or pay off their mortgage faster.",
+                radar: ["Closing costs can be rolled into the new loan so you bring no cash to the table.", "You must have a 'Net Tangible Benefit' (meaning the refinance must clearly save you money or improve your loan terms)."]
+            },
+            'co': { 
+                title: "Cash-Out & Consolidation", 
+                concept: "Tap into the equity of your home to pull out a lump sum of cash.",
+                fit: "Homeowners wanting to pay off high-interest credit cards, fund major renovations, or buy an investment property.",
+                radar: ["You can generally only pull cash out up to 80% of your home's appraised value.", "You must have owned the property for at least 6 to 12 months to be eligible for cash-out."]
+            },
+            'he': { 
+                title: "Home Equity (HELOC / HELOAN)", 
+                concept: "Keep your low 1st mortgage exactly as it is and take out a secondary lien to access your equity.",
+                fit: "Homeowners with a sub-4% interest rate on their primary mortgage who need cash.",
+                radar: ["You can choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN).", "Combined Loan-to-Value (CLTV) limits apply, usually capping your total debt at 85% of your home's value."]
+            },
+            'equity-adv': { 
+                title: "Standalone 2nd Lien (Alt-Doc)", 
+                concept: "A fixed-rate, closed-end second mortgage that lets you tap into your home's equity without touching your primary mortgage. And you can use alternative income docs to qualify!",
+                fit: "Self-employed homeowners who want cash out but refuse to lose their 3% interest rate on their 1st mortgage.",
+                radar: ["Unlike traditional bank HELOCs, you can use Bank Statements or a P&L to qualify.", "The maximum combined Loan-to-Value (CLTV) for your 1st and 2nd mortgage together is capped at 80%."]
+            }
         };
 
         function openPurCalc(progId, occType) {
             document.getElementById('pur-active-prog').value = progId;
             document.getElementById('pur-active-occ').value = occType;
             
-            // Set Education Text
-            document.getElementById('pur-calc-title').innerText = purEduText[progId].title;
-            document.getElementById('pur-calc-edu').innerHTML = `<h3>Why use this?</h3><p>${purEduText[progId].text}</p>`;
+            // Build Strategy Brief
+            const data = purEduText[progId];
+            document.getElementById('pur-calc-title').innerText = data.title;
             
-            // Reset Units to 1 and trigger rent field logic
+            let eduHtml = `
+                <h3>The Scoop</h3>
+                <p>${data.concept}</p>
+                <h4>Perfect For:</h4>
+                <p>${data.fit}</p>
+                <h4>On Your Radar:</h4>
+                <ul>
+                    ${data.radar.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+            document.getElementById('pur-calc-edu').innerHTML = eduHtml;
+            
+            // Show/Hide specific form fields
+            if(progId === 'fha-203k') {
+                document.getElementById('rehab-group').style.display = 'flex';
+            } else {
+                document.getElementById('rehab-group').style.display = 'none';
+            }
+
             document.getElementById('pur-units').value = "1";
             updateRentFields();
 
-            // Reset Results
             document.getElementById('pur-result-box').style.display = 'none';
             document.getElementById('pur-success').style.display = 'none';
             document.getElementById('pur-error').style.display = 'none';
+            document.getElementById('pur-warning').style.display = 'none';
+            document.getElementById('pur-strategy').style.display = 'none';
             document.getElementById('pur-cashflow-box').style.display = 'none';
+            document.getElementById('pur-fha100-view').style.display = 'none';
 
-            // Change back button route
             const backBtn = document.getElementById('pur-back-btn');
             if(occType === 'Primary Residence') backBtn.setAttribute('onclick', "showWizard('wizard-pur-primary')");
             if(occType === 'Second Home') backBtn.setAttribute('onclick', "showWizard('wizard-pur-second')");
@@ -880,16 +1010,17 @@
             showWizard('wizard-pur-calc');
         }
 
+        // --- MATH ENGINE (PHASE 4) ---
         function runPurMath() {
             const prog = document.getElementById('pur-active-prog').value;
             const occ = document.getElementById('pur-active-occ').value;
             const price = parseFloat(document.getElementById('pur-price').value) || 0;
-            const dp = parseFloat(document.getElementById('pur-dp').value) || 0;
+            let dp = parseFloat(document.getElementById('pur-dp').value) || 0;
             const rate = parseFloat(document.getElementById('pur-rate').value) || 6.5;
             const term = parseInt(document.getElementById('pur-term').value) || 360;
             const units = parseInt(document.getElementById('pur-units').value) || 1;
+            const rehab = parseFloat(document.getElementById('pur-rehab').value) || 0;
             
-            // Sum up all dynamic rent fields
             let totalRent = 0;
             const rentInputs = document.querySelectorAll('.unit-rent-input');
             rentInputs.forEach(input => {
@@ -900,6 +1031,9 @@
             const errBox = document.getElementById('pur-error');
             const succBox = document.getElementById('pur-success');
             const cfBox = document.getElementById('pur-cashflow-box');
+            const warnBox = document.getElementById('pur-warning');
+            const stratBox = document.getElementById('pur-strategy');
+            const fha100Box = document.getElementById('pur-fha100-view');
             
             if(price <= 0) return alert("Please enter a purchase price.");
 
@@ -907,19 +1041,24 @@
             errBox.style.display = 'none';
             succBox.style.display = 'none';
             cfBox.style.display = 'none';
+            warnBox.style.display = 'none';
+            stratBox.style.display = 'none';
+            fha100Box.style.display = 'none';
 
-            const ltv = +(((price - dp) / price) * 100).toFixed(3);
-            let baseLoan = price - dp;
+            let basePrice = price + rehab; // Only changes for 203k
+            let ltv = +(((basePrice - dp) / basePrice) * 100).toFixed(3);
+            
+            let baseLoan = basePrice - dp;
             let finalLoan = baseLoan;
             let pmiAmt = 0;
             let pmiNote = "";
             let maxLtv = 100;
             let dpReq = 0;
 
-            // Evaluate Guidelines
+            // REALITY CHECKS & GUIDELINE EVALUATION
             if(prog === 'conv') { 
                 maxLtv = (units === 1) ? 97 : 95; 
-                dpReq = price * ((100 - maxLtv) / 100); 
+                dpReq = basePrice * ((100 - maxLtv) / 100); 
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.005)/12; pmiNote = "(Drops off at 20% equity)"; } 
             }
             if(prog === 'conv-sec') { 
@@ -928,53 +1067,113 @@
                     errBox.innerHTML = `Second homes must be 1-unit properties. You cannot purchase a multi-family property as a second home.`;
                     return;
                 }
-                maxLtv = 90; dpReq = price * 0.10; 
+                maxLtv = 90; dpReq = basePrice * 0.10; 
                 if(ltv > 80) pmiAmt = (baseLoan * 0.005)/12; 
             }
             if(prog === 'conv-inv') { 
                 maxLtv = (units === 1) ? 85 : 75; 
-                dpReq = price * ((100 - maxLtv) / 100); 
+                dpReq = basePrice * ((100 - maxLtv) / 100); 
             }
             if(prog === 'dscr') { 
-                maxLtv = 80; dpReq = price * 0.20; 
+                maxLtv = 80; dpReq = basePrice * 0.20; 
             }
             if(prog === 'fha') { 
                 maxLtv = 96.5; 
-                dpReq = price * 0.035; 
+                dpReq = basePrice * 0.035; 
                 if(ltv <= maxLtv) {
-                    finalLoan = baseLoan + (baseLoan * 0.0175); // UFMIP
-                    pmiAmt = (baseLoan * 0.005) / 12; // Monthly MIP
-                    pmiNote = "(FHA MIP is required)";
+                    finalLoan = baseLoan + (baseLoan * 0.0175);
+                    pmiAmt = (baseLoan * 0.005) / 12; 
+                    pmiNote = "(FHA Monthly MIP)";
                 }
             }
             if(prog === 'fha-100') {
                 maxLtv = 100; dpReq = 0;
+                dp = 0; // Force DP to zero
                 if(ltv <= maxLtv) {
-                    finalLoan = baseLoan + (baseLoan * 0.0175);
-                    pmiAmt = (baseLoan * 0.005) / 12;
-                    pmiNote = "(FHA MIP is required)";
+                    let lien1 = basePrice * 0.965;
+                    let lien2 = basePrice * 0.035;
+                    finalLoan = lien1 + (lien1 * 0.0175); // UFMIP on first only
+                    pmiAmt = (lien1 * 0.005) / 12;
+                    pmiNote = "(FHA Monthly MIP on 1st Lien)";
+                    
+                    stratBox.style.display = 'block';
+                    stratBox.innerHTML = `🎯 <strong>Strategy Note:</strong> We have adjusted your down payment to $0. This program pairs a 96.5% FHA 1st mortgage with a 3.5% 2nd mortgage.`;
+                    
+                    fha100Box.style.display = 'block';
+                    document.getElementById('fha100-1st').innerText = formatCurrency(finalLoan) + ' (Fees Rolled In)';
+                    document.getElementById('fha100-2nd').innerText = formatCurrency(lien2);
+                    
+                    // Special Math for FHA 100
+                    const pi1 = calcPI(finalLoan, rate, term);
+                    const pi2 = calcPI(lien2, rate + 2.0, 120); // 10 year term, rate + 2%
+                    
+                    document.getElementById('pur-res-loan').innerText = formatCurrency(finalLoan + lien2);
+                    document.getElementById('pur-res-ltv').innerText = "100%";
+                    document.getElementById('pur-res-pi').innerHTML = `${formatCurrency(pi1)} <em>(1st)</em> + ${formatCurrency(pi2)} <em>(2nd)</em>`;
+                    
+                    const taxIns = (basePrice * 0.015) / 12;
+                    const total = pi1 + pi2 + pmiAmt + taxIns;
+                    
+                    document.getElementById('pur-res-tax').innerText = formatCurrency(taxIns);
+                    document.getElementById('row-mi').style.display = 'flex';
+                    document.getElementById('pur-res-mi').innerText = formatCurrency(pmiAmt);
+                    document.getElementById('pur-res-mi-note').innerText = pmiNote;
+                    document.getElementById('pur-res-total-pmt').innerText = formatCurrency(total);
+                    document.getElementById('pur-res-dp').innerText = "$0";
+                    
+                    const ccProxy = (finalLoan * 0.025) + 1500;
+                    document.getElementById('pur-res-cc').innerText = formatCurrency(ccProxy);
+                    document.getElementById('pur-res-cash').innerText = formatCurrency(ccProxy);
+                    
+                    succBox.style.display = 'block';
+                    return; // EXIT EARLY FOR FHA 100
                 }
             }
             if(prog === 'homeready') {
-                maxLtv = 97; dpReq = price * 0.03;
+                maxLtv = 97; dpReq = basePrice * 0.03;
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.0035)/12; pmiNote = "(Reduced MI rates apply)"; }
             }
             if(prog === 'fha-203k') {
-                maxLtv = 96.5; dpReq = price * 0.035;
+                if(rehab < 5000) {
+                    errBox.style.display = 'block';
+                    errBox.innerHTML = `FHA 203(k) requires a minimum of $5,000 in eligible repairs. Please adjust your rehab budget.`;
+                    return;
+                }
+                maxLtv = 96.5; dpReq = basePrice * 0.035;
                 if(ltv <= maxLtv) {
                     finalLoan = baseLoan + (baseLoan * 0.0175);
                     pmiAmt = (baseLoan * 0.005) / 12;
-                    pmiNote = "(FHA MIP is required)";
+                    pmiNote = "(FHA Monthly MIP)";
                 }
             }
             if(prog === 'jumbo') {
-                maxLtv = 80; dpReq = price * 0.20;
+                maxLtv = 80; dpReq = basePrice * 0.20;
+                if(baseLoan < 766550) { // Approx conforming limit warning
+                    warnBox.style.display = 'block';
+                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Your loan amount fits within standard conventional limits. You may get better rates by switching to a Conventional strategy.`;
+                }
             }
             if(prog === 'alt-doc') {
-                maxLtv = 80; dpReq = price * 0.20;
+                maxLtv = 80; dpReq = basePrice * 0.20;
+                if(ltv > 80) {
+                    warnBox.style.display = 'block';
+                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Alternative income loans (like bank statement loans) typically require a minimum of 20% down. We've adjusted your scenario to reflect 80% LTV.`;
+                    dp = dpReq;
+                    baseLoan = basePrice - dp;
+                    finalLoan = baseLoan;
+                    ltv = 80;
+                }
             }
             if(prog === 'dscr-5-9') {
-                maxLtv = 75; dpReq = price * 0.25;
+                maxLtv = 75; dpReq = basePrice * 0.25;
+                if(ltv > 75) {
+                    warnBox.style.display = 'block';
+                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Commercial 5-9 unit DSCR loans cap at 75% LTV. We've adjusted your down payment to reflect the 25% minimum.`;
+                    dp = dpReq;
+                    baseLoan = basePrice - dp;
+                    finalLoan = baseLoan;
+                    ltv = 75;
+                }
             }
             if(prog === 'va') {
                 if(units > 4) {
@@ -1002,11 +1201,10 @@
             }
 
             // --- STRATEGY PIVOT ---
-            if(ltv > maxLtv) {
+            if(ltv > maxLtv && prog !== 'alt-doc' && prog !== 'dscr-5-9') {
                 errBox.style.display = 'block';
-                let errorHtml = `This program requires at least <strong>${100 - maxLtv}% down</strong> for a ${units}-unit property.<br>Based on a $${price} price, your minimum down payment is <strong>${formatCurrency(dpReq)}</strong>.`;
+                let errorHtml = `This program requires at least <strong>${100 - maxLtv}% down</strong> for a ${units}-unit property.<br>Based on a $${basePrice} price, your minimum down payment is <strong>${formatCurrency(dpReq)}</strong>.`;
                 
-                // If they failed an investment loan because they didn't have enough cash, pivot to primary.
                 if(occ === 'Investment') {
                     errorHtml += `
                     <div class="pivot-box">
@@ -1020,9 +1218,9 @@
                 return;
             }
 
-            // Success Math
+            // Standard Success Math
             const pi = calcPI(finalLoan, rate, term);
-            const taxIns = (price * 0.015) / 12; // 1.5% proxy
+            const taxIns = (basePrice * 0.015) / 12; // 1.5% proxy
             const total = pi + pmiAmt + taxIns;
             const ccProxy = (baseLoan * 0.025) + 1500;
 
@@ -1074,51 +1272,24 @@
             succBox.style.display = 'block';
         }
 
-        // --- FIX & FLIP TOOL ---
-        function openFixFlip() { showWizard('wizard-fix-flip'); }
-
-        function runFixFlipMath() {
-            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
-            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
-            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
-
-            if (pp === 0 || rehab === 0 || arv === 0) return alert("Please enter all values.");
-
-            const calc1 = (pp + rehab) * 0.95;
-            const calc2 = (pp * 0.90) + rehab;
-            const calc3 = arv * 0.75;
-            
-            const maxLoan = Math.min(calc1, calc2, calc3);
-            const baseEq = (pp + rehab) - maxLoan;
-            const fees = (maxLoan * 0.0325) + 1625; 
-            const titleTax = ((pp / 1000) * 7.5) + (1200 + (maxLoan * 0.0025));
-
-            document.getElementById('ff-breakdown').innerHTML = `
-                <li style="${maxLoan === calc1 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 1 (95% Blended LTC): ${formatCurrency(calc1)}</li>
-                <li style="${maxLoan === calc2 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 2 (90% Purch + 100% Rehab): ${formatCurrency(calc2)}</li>
-                <li style="${maxLoan === calc3 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 3 (75% ARV): ${formatCurrency(calc3)}</li>
-            `;
-            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
-            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEq);
-            document.getElementById('ff-loan-fees').innerText = formatCurrency(fees);
-            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(titleTax);
-            document.getElementById('ff-cash-to-close').innerText = formatCurrency(baseEq + fees + titleTax + 650);
-            
-            document.getElementById('ff-result-box').style.display = 'block';
-        }
-
         // --- REFINANCE WIZARD LOGIC ---
-        const refiEduText = {
-            'rt': { title: "Rate & Term Refinance", text: "Designed to drop your interest rate or change your loan term (like moving from a 30-year to a 15-year). Closing costs can be rolled into the new loan so you bring no cash to the table." },
-            'co': { title: "Cash-Out & Consolidation", text: "Tap into the equity of your home to pull out a lump sum of cash. This is the most powerful tool for paying off high-interest credit cards, funding renovations, or buying an investment property." },
-            'he': { title: "Home Equity (HELOC / HELOAN)", text: "If you have a 3% or 4% rate on your first mortgage, DO NOT touch it! Instead, leave it exactly as it is and take out a secondary lien to access your equity. Choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN)." },
-            'equity-adv': { title: "Standalone 2nd Lien", text: "Keep the low rate on your 1st mortgage and tap your equity with a fixed-rate 2nd mortgage. Alt-doc income (like bank statements) is allowed!" }
-        };
-
         function openRefiCalc(goalId) {
             document.getElementById('refi-active-goal').value = goalId;
-            document.getElementById('refi-calc-title').innerText = refiEduText[goalId].title;
-            document.getElementById('refi-calc-edu').innerHTML = `<h3>Why use this?</h3><p>${refiEduText[goalId].text}</p>`;
+            
+            const data = refiEduText[goalId];
+            document.getElementById('refi-calc-title').innerText = data.title;
+            
+            let eduHtml = `
+                <h3>The Scoop</h3>
+                <p>${data.concept}</p>
+                <h4>Perfect For:</h4>
+                <p>${data.fit}</p>
+                <h4>On Your Radar:</h4>
+                <ul>
+                    ${data.radar.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+            document.getElementById('refi-calc-edu').innerHTML = eduHtml;
             
             document.getElementById('refi-cash-group').style.display = (goalId === 'co' || goalId === 'he' || goalId === 'equity-adv') ? 'flex' : 'none';
             document.getElementById('he-type-group').style.display = (goalId === 'he') ? 'flex' : 'none';
@@ -1127,6 +1298,7 @@
             document.getElementById('refi-result-box').style.display = 'none';
             document.getElementById('refi-success').style.display = 'none';
             document.getElementById('refi-error').style.display = 'none';
+            document.getElementById('refi-warning').style.display = 'none';
 
             showWizard('wizard-refi-calc');
         }
@@ -1135,31 +1307,42 @@
             const goal = document.getElementById('refi-active-goal').value;
             const value = parseFloat(document.getElementById('refi-value').value) || 0;
             const bal = parseFloat(document.getElementById('refi-bal').value) || 0;
-            const cash = parseFloat(document.getElementById('refi-cash').value) || 0;
+            let cash = parseFloat(document.getElementById('refi-cash').value) || 0;
             const rate = parseFloat(document.getElementById('refi-rate').value) || 6.5;
             const term = parseInt(document.getElementById('refi-term').value) || 360;
             
             const resBox = document.getElementById('refi-result-box');
             const errBox = document.getElementById('refi-error');
             const succBox = document.getElementById('refi-success');
+            const warnBox = document.getElementById('refi-warning');
 
             if(value <= 0 || bal <= 0) return alert("Enter home value and current balance.");
 
             resBox.style.display = 'block';
             errBox.style.display = 'none';
             succBox.style.display = 'none';
+            warnBox.style.display = 'none';
 
             if(goal === 'he' || goal === 'equity-adv') {
                 document.getElementById('refi-1st-view').style.display = 'none';
                 const heType = (goal === 'equity-adv') ? 'heloan' : document.getElementById('he-type').value;
-                const cltv = +(((bal + cash) / value) * 100).toFixed(3);
+                let cltv = +(((bal + cash) / value) * 100).toFixed(3);
                 
                 let maxAllowedLTV = (goal === 'equity-adv') ? 80 : 85;
 
                 if(cltv > maxAllowedLTV) {
-                    errBox.style.display = 'block';
                     const maxAllowed = (value * (maxAllowedLTV / 100)) - bal;
-                    errBox.innerHTML = `Combined LTV exceeds ${maxAllowedLTV}%.<br>Based on a $${value} value, your maximum cash available is roughly <strong>${formatCurrency(maxAllowed > 0 ? maxAllowed : 0)}</strong>.`;
+                    
+                    warnBox.style.display = 'block';
+                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> This secondary lien program caps your Combined LTV at ${maxAllowedLTV}%. We have adjusted your available cash to the maximum allowed.`;
+                    
+                    cash = maxAllowed > 0 ? maxAllowed : 0;
+                    cltv = +(((bal + cash) / value) * 100).toFixed(3);
+                }
+
+                if(cash <= 0) {
+                    errBox.style.display = 'block';
+                    errBox.innerHTML = `You do not have enough equity to take out a second lien under this program's LTV limits.`;
                     return;
                 }
 
