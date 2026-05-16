@@ -277,6 +277,10 @@
                         <h3>Investment Property</h3>
                         <p>A property I intend to rent out or fix and flip for profit.</p>
                     </div>
+                    <div class="path-card" onclick="showWizard('wizard-pur-primary')">
+                        <h3>ITIN / Foreign National</h3>
+                        <p>Options for borrowers without a standard SSN, including alternative income verification.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -301,6 +305,21 @@
                     <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence')">
                         <h3>USDA (Rural)</h3><p>0% down option for properties located in designated rural areas.</p>
                     </div>
+                    <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence')">
+                        <h3>FHA 100% Combo</h3><p>Zero down payment! Combines standard FHA with a 3.5% second lien.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence')">
+                        <h3>Fannie Mae HomeReady</h3><p>As little as 3% down with reduced MI and a potential $2,500 credit.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('fha-203k', 'Primary Residence')">
+                        <h3>FHA 203(k) Rehab</h3><p>Roll the cost of home renovations directly into your purchase mortgage.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('jumbo', 'Primary Residence')">
+                        <h3>Jumbo Financing</h3><p>For luxury properties exceeding standard loan limits. Up to $3M.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('alt-doc', 'Primary Residence')">
+                        <h3>Self-Employed (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,9 +331,12 @@
                     <h2>Second Home Options</h2>
                     <p>Financing options for your vacation or part-time home.</p>
                 </div>
-                <div class="path-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 0 auto;">
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 600px; margin: 0 auto;">
                     <div class="path-card" onclick="openPurCalc('conv-sec', 'Second Home')">
                         <h3>Conventional Second Home</h3><p>Typically requires a 10% minimum down payment. Must be a 1-unit property occupied by owner part of the year.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('alt-doc', 'Second Home')">
+                        <h3>Self-Employed (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
                     </div>
                 </div>
             </div>
@@ -340,6 +362,9 @@
                     <div class="path-card" onclick="openPurCalc('conv-inv', 'Investment')">
                         <h3>Conventional Investment</h3><p>Standard full-doc investor loans. Down payment requirements change based on the number of units.</p>
                     </div>
+                    <div class="path-card" onclick="openPurCalc('dscr-5-9', 'Investment')">
+                        <h3>Multi-Family (5-9 Units)</h3><p>Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -363,6 +388,11 @@
                             <option value="2">2 Units</option>
                             <option value="3">3 Units</option>
                             <option value="4">4 Units</option>
+                            <option value="5">5 Units</option>
+                            <option value="6">6 Units</option>
+                            <option value="7">7 Units</option>
+                            <option value="8">8 Units</option>
+                            <option value="9">9 Units</option>
                         </select>
                     </div>
                     <div class="form-group"><label>Est. Interest Rate (%)</label><input type="number" id="pur-rate" value="6.5" step="0.125"></div>
@@ -513,6 +543,10 @@
                         <h3>Home Equity (Line/Loan)</h3>
                         <p>Keep your low 1st mortgage and take out a secondary lien.</p>
                     </div>
+                    <div class="path-card" onclick="openRefiCalc('equity-adv')">
+                        <h3>Standalone 2nd Lien</h3>
+                        <p>Keep the low rate on your 1st mortgage and tap your equity with a fixed-rate 2nd mortgage. Alt-doc income allowed!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -655,7 +689,7 @@
                         <div class="team-toggle-icon">▼</div>
                     </div>
                     <div class="team-content">
-                        <p style="color:#555; font-size:0.95rem; line-height:1.6;">With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies. Now, as the founder of his own firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
+                        <p style="color:#555; font-size:0.95rem; line-height:1.6;">With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies. Now, as the founder of his firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
                     </div>
                 </div>
             </div>
@@ -805,11 +839,17 @@
         // --- PURCHASE WIZARD LOGIC ---
         const purEduText = {
             'conv': { title: "Conventional Loan", text: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route. First-time homebuyers can put as little as 3% down on a 1-unit property, or 5% down on a 2-4 unit property." },
-            'fha': { title: "FHA", text: "FHA loans require just 3.5% down and are incredibly forgiving on credit. You can use an FHA loan to buy a 2, 3, or 4-unit multi-family property with only 3.5% down, as long as you live in one of the units! You can even use the projected rental income from the other units to help you qualify." },
-            'va': { title: "VA Loan", text: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance (PMI). You can use your VA loan to purchase a 2, 3, or 4-unit property with $0 down, as long as you live in one of the units!" },
+            'homeready': { title: "Fannie Mae HomeReady", text: "Designed for low-to-moderate-income buyers. It allows for just 3% down, offers reduced mortgage insurance costs, and currently includes a $2,500 credit for eligible first-time homebuyers!" },
+            'fha': { title: "FHA", text: "FHA loans require just 3.5% down and are incredibly forgiving on credit. You can use an FHA loan to buy a 2, 3, or 4-unit multi-family property with only 3.5% down, as long as you live in one of the units!" },
+            'fha-100': { title: "FHA 100% CLTV Combo", text: "Removes the biggest barrier to homeownership: the down payment. It pairs a standard 96.5% FHA first mortgage with a 3.5% second mortgage to cover your down payment. You just need a 600+ credit score." },
+            'fha-203k': { title: "FHA 203(k) Renovation", text: "Found a fixer-upper? This program allows you to finance both the purchase of the home and the cost of renovations into a single loan with just 3.5% down." },
+            'va': { title: "VA Loan", text: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance (PMI)." },
             'usda': { title: "USDA (Rural Development)", text: "A 0% down program for low-to-moderate income buyers purchasing in designated rural or suburban areas. Excellent for saving cash." },
+            'jumbo': { title: "Jumbo AUS 1", text: "Need to borrow more than the county limits? This program allows loan amounts up to $3,000,000 with a minimum 20% down payment and a 660 credit score." },
+            'alt-doc': { title: "Self-Employed (Alt-Doc)", text: "Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns." },
             'conv-sec': { title: "Second Home Financing", text: "Requires a minimum 10% down payment. The property must be located a reasonable distance from your primary residence and you must occupy it for a portion of the year. Multi-unit properties are not allowed." },
-            'dscr': { title: "DSCR (Debt Service)", text: "<strong>For Non-Owner Occupied Properties Only.</strong> DSCR loans are purely for investors. You do not need personal tax returns or pay stubs. You qualify based entirely on the property's estimated monthly rental income compared to the mortgage payment." },
+            'dscr': { title: "DSCR (Debt Service)", text: "<strong>For Non-Owner Occupied Properties Only.</strong> No personal income required! Qualify based entirely on the property's estimated monthly rental income. We offer tiers that even allow the property to cash flow negatively (down to a 0.75 ratio) with 25% down." },
+            'dscr-5-9': { title: "Multi-Family (5-9 Units)", text: "Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow." },
             'conv-inv': { title: "Conventional Investment", text: "Standard full-documentation loan for non-owner occupied properties. Down payments typically range from 15% to 25% depending on how many units the property has." }
         };
 
@@ -898,7 +938,6 @@
             if(prog === 'dscr') { 
                 maxLtv = 80; dpReq = price * 0.20; 
             }
-            
             if(prog === 'fha') { 
                 maxLtv = 96.5; 
                 dpReq = price * 0.035; 
@@ -907,6 +946,35 @@
                     pmiAmt = (baseLoan * 0.005) / 12; // Monthly MIP
                     pmiNote = "(FHA MIP is required)";
                 }
+            }
+            if(prog === 'fha-100') {
+                maxLtv = 100; dpReq = 0;
+                if(ltv <= maxLtv) {
+                    finalLoan = baseLoan + (baseLoan * 0.0175);
+                    pmiAmt = (baseLoan * 0.005) / 12;
+                    pmiNote = "(FHA MIP is required)";
+                }
+            }
+            if(prog === 'homeready') {
+                maxLtv = 97; dpReq = price * 0.03;
+                if(ltv > 80) { pmiAmt = (baseLoan * 0.0035)/12; pmiNote = "(Reduced MI rates apply)"; }
+            }
+            if(prog === 'fha-203k') {
+                maxLtv = 96.5; dpReq = price * 0.035;
+                if(ltv <= maxLtv) {
+                    finalLoan = baseLoan + (baseLoan * 0.0175);
+                    pmiAmt = (baseLoan * 0.005) / 12;
+                    pmiNote = "(FHA MIP is required)";
+                }
+            }
+            if(prog === 'jumbo') {
+                maxLtv = 80; dpReq = price * 0.20;
+            }
+            if(prog === 'alt-doc') {
+                maxLtv = 80; dpReq = price * 0.20;
+            }
+            if(prog === 'dscr-5-9') {
+                maxLtv = 75; dpReq = price * 0.25;
             }
             if(prog === 'va') {
                 if(units > 4) {
@@ -989,10 +1057,15 @@
                 netEl.style.color = net >= 0 ? 'var(--success-green)' : 'var(--accent-red)';
 
                 const dscrNote = document.getElementById('pur-cf-dscr-note');
-                if(prog === 'dscr') {
+                if(prog === 'dscr' || prog === 'dscr-5-9') {
                     const dscrRatio = totalRent / total;
                     dscrNote.style.display = 'block';
-                    dscrNote.innerHTML = `<strong>Your Est. DSCR Ratio is: ${dscrRatio.toFixed(2)}x</strong><br>A ratio of 1.0 means the rent exactly covers the mortgage. Lenders typically prefer 1.20x+ for the best rates, but ratios of 1.0 or lower are permitted with higher down payments.`;
+                    
+                    if (prog === 'dscr-5-9' && dscrRatio < 1.15) {
+                        dscrNote.innerHTML = `<strong style="color:var(--accent-red);">Your Est. DSCR Ratio is: ${dscrRatio.toFixed(2)}x. This is below the 1.15x minimum required for 5-9 unit properties.</strong><br>You will need to increase your down payment to lower the mortgage payment.`;
+                    } else {
+                        dscrNote.innerHTML = `<strong>Your Est. DSCR Ratio is: ${dscrRatio.toFixed(2)}x</strong><br>A ratio of 1.0 means the rent exactly covers the mortgage. Lenders typically prefer 1.20x+ for the best rates.`;
+                    }
                 } else {
                     dscrNote.style.display = 'none';
                 }
@@ -1038,7 +1111,8 @@
         const refiEduText = {
             'rt': { title: "Rate & Term Refinance", text: "Designed to drop your interest rate or change your loan term (like moving from a 30-year to a 15-year). Closing costs can be rolled into the new loan so you bring no cash to the table." },
             'co': { title: "Cash-Out & Consolidation", text: "Tap into the equity of your home to pull out a lump sum of cash. This is the most powerful tool for paying off high-interest credit cards, funding renovations, or buying an investment property." },
-            'he': { title: "Home Equity (HELOC / HELOAN)", text: "If you have a 3% or 4% rate on your first mortgage, DO NOT touch it! Instead, leave it exactly as it is and take out a secondary lien to access your equity. Choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN)." }
+            'he': { title: "Home Equity (HELOC / HELOAN)", text: "If you have a 3% or 4% rate on your first mortgage, DO NOT touch it! Instead, leave it exactly as it is and take out a secondary lien to access your equity. Choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN)." },
+            'equity-adv': { title: "Standalone 2nd Lien", text: "Keep the low rate on your 1st mortgage and tap your equity with a fixed-rate 2nd mortgage. Alt-doc income (like bank statements) is allowed!" }
         };
 
         function openRefiCalc(goalId) {
@@ -1046,7 +1120,7 @@
             document.getElementById('refi-calc-title').innerText = refiEduText[goalId].title;
             document.getElementById('refi-calc-edu').innerHTML = `<h3>Why use this?</h3><p>${refiEduText[goalId].text}</p>`;
             
-            document.getElementById('refi-cash-group').style.display = (goalId === 'co' || goalId === 'he') ? 'flex' : 'none';
+            document.getElementById('refi-cash-group').style.display = (goalId === 'co' || goalId === 'he' || goalId === 'equity-adv') ? 'flex' : 'none';
             document.getElementById('he-type-group').style.display = (goalId === 'he') ? 'flex' : 'none';
             document.getElementById('refi-term-group').style.display = (goalId === 'he') ? 'none' : 'flex';
 
@@ -1075,15 +1149,17 @@
             errBox.style.display = 'none';
             succBox.style.display = 'none';
 
-            if(goal === 'he') {
+            if(goal === 'he' || goal === 'equity-adv') {
                 document.getElementById('refi-1st-view').style.display = 'none';
-                const heType = document.getElementById('he-type').value;
+                const heType = (goal === 'equity-adv') ? 'heloan' : document.getElementById('he-type').value;
                 const cltv = +(((bal + cash) / value) * 100).toFixed(3);
                 
-                if(cltv > 85) {
+                let maxAllowedLTV = (goal === 'equity-adv') ? 80 : 85;
+
+                if(cltv > maxAllowedLTV) {
                     errBox.style.display = 'block';
-                    const maxAllowed = (value * 0.85) - bal;
-                    errBox.innerHTML = `Combined LTV exceeds 85%.<br>Based on a $${value} value, your maximum cash available is roughly <strong>${formatCurrency(maxAllowed > 0 ? maxAllowed : 0)}</strong>.`;
+                    const maxAllowed = (value * (maxAllowedLTV / 100)) - bal;
+                    errBox.innerHTML = `Combined LTV exceeds ${maxAllowedLTV}%.<br>Based on a $${value} value, your maximum cash available is roughly <strong>${formatCurrency(maxAllowed > 0 ? maxAllowed : 0)}</strong>.`;
                     return;
                 }
 
