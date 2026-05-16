@@ -79,14 +79,12 @@
         .wizard-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
         .wizard-header p { margin-bottom: 20px; color: #666; font-size: 1.05rem;}
         
-        /* Grid Options for Paths */
         .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .path-card { background: #fdfdfd; border: 2px solid #eee; border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; justify-content: center;}
         .path-card:hover { border-color: var(--brand-gold); background: #fffcf2; transform: translateY(-3px); }
         .path-card h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; }
         .path-card p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4;}
         
-        /* Education Box */
         .edu-banner { background: #eaf1f8; border-left: 4px solid var(--mortgage-blue); padding: 20px; border-radius: 0 8px 8px 0; margin-bottom: 25px; }
         .edu-banner h3 { margin: 0 0 10px 0; color: var(--mortgage-blue); font-size: 1.2rem; }
         .edu-banner p { margin: 0; font-size: 0.9rem; color: #444; line-height: 1.6; }
@@ -123,16 +121,18 @@
         .about-container { max-width: 900px; margin: 0 auto; }
         .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
         .about-container p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; }
-        .team-card { background-color: #f8f9fa; border-radius: 15px; margin-top: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); overflow: hidden; transition: all 0.3s ease; cursor: pointer; }
-        .team-header { display: flex; align-items: center; gap: 30px; padding: 30px; position: relative; }
-        .team-photo { width: 120px; height: 120px; border-radius: 15px; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--brand-gold); flex-shrink: 0; }
+        
+        .team-card { background-color: #f8f9fa; border-radius: 12px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); overflow: hidden; transition: all 0.3s ease; cursor: pointer; max-width: 800px; margin-left: auto; margin-right: auto;}
+        .team-header { display: flex; align-items: center; gap: 20px; padding: 20px; position: relative; }
+        .team-photo { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--brand-gold); flex-shrink: 0; }
         .team-info { flex: 1; }
-        .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.6rem; font-weight: 800; }
+        .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.4rem; font-weight: 800; }
         .team-info h4 { color: #889bb0; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin: 0; font-weight: 700; }
         .team-toggle-icon { font-size: 1.5rem; color: var(--brand-gold); transition: transform 0.3s ease; margin-left: 10px; }
-        .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 30px; background: #fff; }
-        .team-card.active .team-content { padding: 20px 30px 30px 30px; border-top: 1px solid #eee; }
+        .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 20px; background: #fff; }
+        .team-card.active .team-content { padding: 15px 20px 25px 20px; border-top: 1px solid #eee; }
         .team-card.active .team-toggle-icon { transform: rotate(180deg); }
+        
         .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
         footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
         .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
@@ -163,17 +163,24 @@
             .hamburger { display: flex; } 
             .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; }
             .hero h1 { font-size: 2.2rem; }
-            .services-container { margin-top: -40px; flex-direction: column; padding: 0 15px; }
-            .service-card { padding: 25px 15px; border-top: 3px solid var(--brand-gold); min-width: 0; }
-            .service-card h2 { font-size: 1.4rem; }
+            
+            /* FIXED MOBILE CARDS (SIDE BY SIDE) */
+            .services-container { margin-top: -40px; flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 0 15px; }
+            .service-card { padding: 20px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 3px solid var(--brand-gold); flex: 1; min-width: 0; }
+            .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
+            .service-card h4 { font-size: 0.7rem; margin: 5px 0 0 0; text-align: center; }
+            .service-card p, .service-card .btn-container { display: none; } 
+
             .wizard-container, .quote-container { padding: 25px 20px; }
             .form-row { flex-direction: column; gap: 15px; } 
             .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
             .btn-outline-small, .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
-            .team-header { padding: 20px; gap: 20px; }
-            .team-photo { width: 80px; height: 80px; } 
-            .team-info h3 { font-size: 1.3rem; }
-            .team-content { padding: 0 20px; }
+            
+            .team-header { padding: 15px; gap: 15px; }
+            .team-photo { width: 70px; height: 70px; } 
+            .team-info h3 { font-size: 1.2rem; }
+            .team-content { padding: 0 15px; }
+            .team-card.active .team-content { padding: 10px 15px 20px 15px; }
             .r-cash { flex-direction: column; text-align: center; gap: 10px; }
         }
     </style>
@@ -757,7 +764,6 @@
             let pmiNote = "";
             let maxLtv = 100;
             let dpReq = 0;
-            let errorMsg = "";
 
             // Evaluate Guidelines
             if(prog === 'conv') { maxLtv = 97; dpReq = price * 0.03; if(ltv > 80) { pmiAmt = (baseLoan * 0.005)/12; pmiNote = "(Drops off at 20% equity)"; } }
