@@ -491,6 +491,7 @@
             <div class="wizard-container fade-in">
                 <button onclick="showWizard('wizard-pur-invest')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Investment Options</button>
                 <h2 style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;">Fix & Flip Financing</h2>
+                
                 <div class="strategy-brief">
                     <h3>The Scoop</h3>
                     <p>Fix & Flip loans are short-term (bridge) debt. Instead of qualifying based on your DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property.</p>
@@ -509,19 +510,19 @@
                     <p style="font-size: 0.85rem; color:#666; margin-bottom: 15px;">Your loan is limited by the lowest of these three caps:</p>
                     <ul id="ff-breakdown" style="font-size:0.85rem; color:#555; padding-left:20px; line-height:1.6; margin-bottom:20px;"></ul>
 
-                    <div class="ff-result-row" onclick="toggleFFExp('exp-loan')">
+                    <div class="ff-result-row">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Max Loan Amount <span class="tooltip">ⓘ<span class="tooltiptext">The lowest of the three calculations. This is the absolute maximum the lender will finance.</span></span></strong> <span id="ff-max-loan" style="font-weight: 700; color:var(--mortgage-blue); font-size:1.1rem;"></span>
+                            <strong style="color: #555; border-bottom: 1px dotted #999;">Max Loan Amount <span class="tooltip">ⓘ<span class="tooltiptext">The lowest of the three calculations. This is the absolute maximum the lender will finance.</span></span></strong> <span id="ff-max-loan" style="font-weight: 700; color:var(--mortgage-blue); font-size:1.1rem;"></span>
                         </div>
                     </div>
-                    <div class="ff-result-row" onclick="toggleFFExp('exp-eq')">
+                    <div class="ff-result-row">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Base Equity Required <span class="tooltip">ⓘ<span class="tooltiptext">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount.</span></span></strong> <span id="ff-base-equity"></span>
+                            <strong style="color: #555; border-bottom: 1px dotted #999;">Base Equity Required <span class="tooltip">ⓘ<span class="tooltiptext">Total Project Cost (Purchase + Rehab) minus the Max Loan Amount.</span></span></strong> <span id="ff-base-equity"></span>
                         </div>
                     </div>
-                    <div class="ff-result-row" onclick="toggleFFExp('exp-fee')">
+                    <div class="ff-result-row">
                         <div style="display: flex; justify-content: space-between;">
-                            <strong style="color: #555; cursor: pointer; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span class="tooltip">ⓘ<span class="tooltiptext">Includes estimated origination, broker, processing, and underwriting fees.</span></span></strong> <span id="ff-loan-fees"></span>
+                            <strong style="color: #555; border-bottom: 1px dotted #999;">Est. Loan & Broker Fees <span class="tooltip">ⓘ<span class="tooltiptext">Includes estimated origination, broker, processing, and underwriting fees.</span></span></strong> <span id="ff-loan-fees"></span>
                         </div>
                     </div>
                     <div class="r-row"><strong>Est. Appraisal Fee</strong><span>$650</span></div>
@@ -545,7 +546,6 @@
                 </div>
             </div>
         </div>
-
 
         <div id="wizard-refi-goal" class="wizard-section">
             <div class="wizard-container fade-in">
@@ -814,11 +814,6 @@
             const content = card.querySelector('.team-content');
             card.classList.toggle('active');
             content.style.maxHeight = card.classList.contains('active') ? content.scrollHeight + "px" : null;
-        }
-
-        function toggleFFExp(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'none') ? 'block' : 'none';
         }
 
         const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
@@ -1273,6 +1268,39 @@
             }
 
             succBox.style.display = 'block';
+        }
+
+        // --- FIX & FLIP TOOL ---
+        function openFixFlip() { showWizard('wizard-fix-flip'); }
+
+        function runFixFlipMath() {
+            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
+            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
+            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
+
+            if (pp === 0 || rehab === 0 || arv === 0) return alert("Please enter all values.");
+
+            const calc1 = (pp + rehab) * 0.95;
+            const calc2 = (pp * 0.90) + rehab;
+            const calc3 = arv * 0.75;
+            
+            const maxLoan = Math.min(calc1, calc2, calc3);
+            const baseEq = (pp + rehab) - maxLoan;
+            const fees = (maxLoan * 0.0325) + 1625; 
+            const titleTax = ((pp / 1000) * 7.5) + (1200 + (maxLoan * 0.0025));
+
+            document.getElementById('ff-breakdown').innerHTML = `
+                <li style="${maxLoan === calc1 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 1 (95% Blended LTC): ${formatCurrency(calc1)}</li>
+                <li style="${maxLoan === calc2 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 2 (90% Purch + 100% Rehab): ${formatCurrency(calc2)}</li>
+                <li style="${maxLoan === calc3 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 3 (75% ARV): ${formatCurrency(calc3)}</li>
+            `;
+            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
+            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEq);
+            document.getElementById('ff-loan-fees').innerText = formatCurrency(fees);
+            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(titleTax);
+            document.getElementById('ff-cash-to-close').innerText = formatCurrency(baseEq + fees + titleTax + 650);
+            
+            document.getElementById('ff-result-box').style.display = 'block';
         }
 
         // --- REFINANCE WIZARD LOGIC ---
