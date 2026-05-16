@@ -376,6 +376,8 @@
             <div class="wizard-container fade-in">
                 <button id="pur-back-btn" onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
                 
+                <h2 id="pur-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
+                
                 <div id="pur-calc-edu" class="strategy-brief"></div>
 
                 <div class="form-row">
@@ -575,6 +577,8 @@
         <div id="wizard-refi-calc" class="wizard-section">
             <div class="wizard-container fade-in">
                 <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Goals</button>
+                
+                <h2 id="refi-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
                 
                 <div id="refi-calc-edu" class="strategy-brief"></div>
 
@@ -1088,11 +1092,11 @@
             }
             if(prog === 'fha-100') {
                 maxLtv = 100; dpReq = 0;
-                dp = 0; // Force DP to zero
+                dp = 0; 
                 if(ltv <= maxLtv) {
                     let lien1 = basePrice * 0.965;
                     let lien2 = basePrice * 0.035;
-                    finalLoan = lien1 + (lien1 * 0.0175); // UFMIP on first only
+                    finalLoan = lien1 + (lien1 * 0.0175); 
                     pmiAmt = (lien1 * 0.005) / 12;
                     pmiNote = "(FHA Monthly MIP on 1st Lien)";
                     
@@ -1103,9 +1107,8 @@
                     document.getElementById('fha100-1st').innerText = formatCurrency(finalLoan) + ' (Fees Rolled In)';
                     document.getElementById('fha100-2nd').innerText = formatCurrency(lien2);
                     
-                    // Special Math for FHA 100
                     const pi1 = calcPI(finalLoan, rate, term);
-                    const pi2 = calcPI(lien2, rate + 2.0, 120); // 10 year term, rate + 2%
+                    const pi2 = calcPI(lien2, rate + 2.0, 120); 
                     
                     document.getElementById('pur-res-loan').innerText = formatCurrency(finalLoan + lien2);
                     document.getElementById('pur-res-ltv').innerText = "100%";
@@ -1126,7 +1129,7 @@
                     document.getElementById('pur-res-cash').innerText = formatCurrency(ccProxy);
                     
                     succBox.style.display = 'block';
-                    return; // EXIT EARLY FOR FHA 100
+                    return; 
                 }
             }
             if(prog === 'homeready') {
@@ -1148,7 +1151,7 @@
             }
             if(prog === 'jumbo') {
                 maxLtv = 80; dpReq = basePrice * 0.20;
-                if(baseLoan < 766550) { // Approx conforming limit warning
+                if(baseLoan < 766550) { 
                     warnBox.style.display = 'block';
                     warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Your loan amount fits within standard conventional limits. You may get better rates by switching to a Conventional strategy.`;
                 }
