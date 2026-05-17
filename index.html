@@ -219,7 +219,7 @@
         </div>
         <div class="nav-links">
             <a onclick="smoothScrollTo('about')">About</a>
-            <a onclick="showWizard('wizard-pur-occupancy')">Purchase</a>
+            <a onclick="showWizard('wizard-pur-education')">Purchase</a>
             <a onclick="showWizard('wizard-refi-education')">Refinance</a>
             <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
             <a onclick="showWizard('quote-form-section')">Get Quote</a>
@@ -233,7 +233,7 @@
     </nav>
 
     <div id="mobileMenu" class="mobile-menu">
-        <a onclick="toggleMobileMenu(); showWizard('wizard-pur-occupancy')">Purchase Strategy</a>
+        <a onclick="toggleMobileMenu(); showWizard('wizard-pur-education')">Purchase Strategy</a>
         <a onclick="toggleMobileMenu(); showWizard('wizard-refi-education')">Refinance Strategy</a>
         <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
         <a onclick="toggleMobileMenu(); showWizard('quote-form-section')">Rate Quote</a>
@@ -256,7 +256,7 @@
         <div id="services" class="services-section">
             <div class="services-wrapper">
                 <div class="services-container">
-                    <div class="service-card" onclick="showWizard('wizard-pur-occupancy')">
+                    <div class="service-card" onclick="showWizard('wizard-pur-education')">
                         <h2>BUY A HOME</h2>
                         <h4>Purchase Strategy</h4>
                         <p>Explore Primary, Second Home, and Investment options including Fix & Flip and DSCR.</p>
@@ -276,10 +276,96 @@
             </div>
         </div>
 
-        <div id="wizard-pur-occupancy" class="wizard-section">
+        <div id="wizard-pur-education" class="wizard-section">
             <div class="wizard-container fade-in">
                 <div class="wizard-header">
                     <h2>Purchase Strategy</h2>
+                    <p>How would you like to explore your homebuying options?</p>
+                </div>
+                
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="path-card" onclick="showWizard('wizard-pur-occupancy')">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">📚</div>
+                        <h3>Browse Loan Products</h3>
+                        <p>Read about specific loan types (Conventional, FHA, VA, DSCR) and run your own scenarios.</p>
+                    </div>
+                    <div class="path-card" onclick="showWizard('wizard-pur-intake')">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">⚙️</div>
+                        <h3>Purchase Analyzer</h3>
+                        <p>Enter your target price, down payment, and details to let our engine match you with the best loan strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-intake" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-education')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Purchase Analyzer</h2>
+                    <p>Tell us about your homebuying goals.</p>
+                </div>
+
+                <div style="background: #fff8e1; border: 1px solid var(--brand-gold); padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 0.85rem; color: #555;">
+                    <strong>Notice:</strong> This analyzer is an interactive tool strictly designed to help you explore potential strategies. For an official Loan Estimate or a legally binding custom rate quote, please <a href="javascript:void(0)" onclick="showWizard('quote-form-section')" style="color: var(--mortgage-blue); font-weight: 600;">request a custom quote</a> or <a href="https://2453979.my1003app.com/" target="_blank" style="color: var(--mortgage-blue); font-weight: 600;">apply online</a>.
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label>Est. Purchase Price ($)</label><input type="number" id="pur-analyzer-price" placeholder="e.g. 450000"></div>
+                    <div class="form-group"><label>Available Down Payment ($)</label><input type="number" id="pur-analyzer-dp" placeholder="e.g. 20000"></div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Intended Property Use</label>
+                        <select id="pur-analyzer-occ">
+                            <option value="Primary Residence">Primary Residence</option>
+                            <option value="Second Home">Second Home / Vacation</option>
+                            <option value="Investment">Investment Property</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Eligible Military / Veteran?</label>
+                        <select id="pur-analyzer-va">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Est. Credit Score</label>
+                        <select id="pur-analyzer-credit">
+                            <option value="excellent">Excellent (740+)</option>
+                            <option value="good">Good (680 - 739)</option>
+                            <option value="fair">Fair / Rebuilding (Below 680)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="analyzePurOptions()" class="btn-submit" style="width: 100%; margin-top: 10px;">Analyze My Options &rarr;</button>
+                <div class="disclaimer-box" style="text-align: center;">This tool estimates eligibility based on standard LTV limits. Not a commitment to lend.</div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-options" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-intake')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Edit Inputs</button>
+                <div class="wizard-header">
+                    <h2>Recommended Strategies</h2>
+                    <p id="pur-dynamic-subtext">Based on your inputs, here are the paths available to you.</p>
+                </div>
+                
+                <div id="dynamic-pur-cards" class="path-grid"></div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-occupancy" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-education')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Purchase Categories</h2>
                     <p>What is the primary intent for this property?</p>
                 </div>
                 <div class="path-grid">
@@ -1037,12 +1123,18 @@
 
         function showWizard(id) {
             const sections = [
+                // Purchase Path
+                'wizard-pur-education', 'wizard-pur-intake', 'wizard-pur-options',
                 'wizard-pur-occupancy', 'wizard-pur-condition', 'wizard-pur-primary-categories',
                 'wizard-pur-conv-options', 'wizard-pur-gov-options', 'wizard-pur-nonqm-options',
                 'wizard-pur-rehab', 'wizard-pur-second', 'wizard-pur-invest', 
+                
+                // Refinance Path
                 'wizard-refi-education', 'wizard-refi-categories', 'wizard-refi-rateterm-options',
                 'wizard-refi-cashout-options', 'wizard-refi-heloc-options',
                 'wizard-refi-intake', 'wizard-refi-options',
+                
+                // Shared & Misc
                 'wizard-fix-flip', 'wizard-product-hub', 'quote-form-section'
             ];
             sections.forEach(s => {
@@ -1306,6 +1398,12 @@
                 
                 document.getElementById('pur-calc-form').style.display = 'block';
                 document.getElementById('refi-calc-form').style.display = 'none';
+
+                // PRE-FILL CALCULATOR IF ANALYZER WAS USED
+                const analyzerPrice = document.getElementById('pur-analyzer-price').value;
+                const analyzerDp = document.getElementById('pur-analyzer-dp').value;
+                if(analyzerPrice) document.getElementById('pur-price').value = analyzerPrice;
+                if(analyzerDp) document.getElementById('pur-dp').value = analyzerDp;
                 
                 if(progId === 'fha-203k' || progId === 'homestyle' || progId === 'va-reno' || progId === 'usda-reno') {
                     document.getElementById('rehab-group').style.display = 'flex';
@@ -1333,7 +1431,7 @@
                 document.getElementById('pur-calc-form').style.display = 'none';
                 document.getElementById('refi-calc-form').style.display = 'block';
                 
-                // Move dynamic inputs into the refi calc form for consistency
+                // PRE-FILL CALCULATOR IF ANALYZER WAS USED
                 document.getElementById('refi-value').value = document.getElementById('analyzer-value').value || '';
                 document.getElementById('refi-bal').value = document.getElementById('analyzer-bal').value || '';
                 document.getElementById('refi-cash').value = document.getElementById('analyzer-cash').value || '0';
@@ -1369,6 +1467,92 @@
             backBtn.setAttribute('onclick', `showWizard('${backTarget}')`);
 
             showWizard('wizard-product-hub');
+        }
+
+        // --- PURCHASE ANALYZER ENGINE ---
+        function analyzePurOptions() {
+            const price = parseFloat(document.getElementById('pur-analyzer-price').value) || 0;
+            const dp = parseFloat(document.getElementById('pur-analyzer-dp').value) || 0;
+            const occ = document.getElementById('pur-analyzer-occ').value;
+            const isVA = document.getElementById('pur-analyzer-va').value === 'yes';
+            const credit = document.getElementById('pur-analyzer-credit').value;
+
+            if (price <= 0) return alert("Please enter a valid Est. Purchase Price.");
+
+            const ltv = +(((price - dp) / price) * 100).toFixed(2);
+            let eligiblePrograms = [];
+
+            if (occ === 'Primary Residence') {
+                if (isVA) eligiblePrograms.push('va');
+                
+                if (ltv <= 97) {
+                    if (credit !== 'fair') eligiblePrograms.push('conv');
+                    if (credit !== 'fair' && ltv > 80) {
+                        eligiblePrograms.push('homeready');
+                        eligiblePrograms.push('homepossible');
+                    }
+                    eligiblePrograms.push('fha');
+                } else if (ltv > 97 && ltv <= 100) {
+                     if (!isVA) {
+                         eligiblePrograms.push('fha-100');
+                         eligiblePrograms.push('usda'); 
+                     }
+                }
+
+                if (credit !== 'fair' && ltv <= 80 && price > 766550) eligiblePrograms.push('jumbo');
+                if (ltv <= 80) eligiblePrograms.push('bank-statement'); 
+                
+            } else if (occ === 'Second Home') {
+                if (ltv <= 90) eligiblePrograms.push('conv-sec');
+                if (ltv <= 80) eligiblePrograms.push('nonqm-sec');
+                
+            } else if (occ === 'Investment') {
+                if (ltv <= 85) eligiblePrograms.push('conv-inv');
+                if (ltv <= 80) {
+                    eligiblePrograms.push('dscr');
+                    eligiblePrograms.push('dscr-5-9');
+                }
+                if (ltv <= 85) eligiblePrograms.push('fix-flip'); 
+            }
+
+            eligiblePrograms = [...new Set(eligiblePrograms)];
+
+            const container = document.getElementById('dynamic-pur-cards');
+            const subtext = document.getElementById('pur-dynamic-subtext');
+
+            if (container) {
+                container.innerHTML = '';
+                if (eligiblePrograms.length === 0) {
+                    container.innerHTML = `<div class="r-error" style="text-align:center; width:100%;">Based on the estimated price and down payment provided, you currently do not meet the minimum equity or down payment requirements for these standard programs. Please increase your down payment or contact us directly to discuss unique alternatives.</div>`;
+                    subtext.style.display = 'none';
+                } else {
+                    subtext.style.display = 'block';
+                    eligiblePrograms.forEach(prog => {
+                        if (prog === 'fix-flip') {
+                            const card = document.createElement('div');
+                            card.className = 'path-card';
+                            card.setAttribute('onclick', `openFixFlip()`);
+                            card.innerHTML = `<h3>Fix & Flip</h3><p>Short-term bridge debt to acquire and rehab a property. Based on After Repair Value (ARV).</p>`;
+                            container.appendChild(card);
+                        } else {
+                            const progData = purEduText[prog] || {title: "Custom Strategy", fit: "Great for your specific scenario."};
+                            const card = document.createElement('div');
+                            card.className = 'path-card';
+                            
+                            // Highlight VA if applicable to draw attention
+                            if (prog === 'va' && isVA) {
+                                card.style.borderColor = "var(--mortgage-blue)";
+                                card.style.background = "#f4f8fb";
+                            }
+                            
+                            card.setAttribute('onclick', `openProductHub('${prog}', '${occ}', 'wizard-pur-options', 'purchase')`);
+                            card.innerHTML = `<h3>${progData.title}</h3><p>${progData.fit}</p>`;
+                            container.appendChild(card);
+                        }
+                    });
+                }
+            }
+            showWizard('wizard-pur-options');
         }
 
         // --- MATH ENGINE (PURCHASE) ---
@@ -1562,7 +1746,7 @@
                     <div class="pivot-box">
                         <strong style="color:var(--mortgage-blue); font-size:1.1rem;">💡 Not quite enough cash to close?</strong>
                         <p style="color:#555; font-size:0.9rem; margin:5px 0 15px 0; font-weight:400;">Have you considered owner-occupying one of the units? Owner-occupying a multi-family property allows you to buy with as little as <strong>3.5% to 5% down</strong> while collecting rent from the other units to pay the mortgage.</p>
-                        <button onclick="showWizard('wizard-pur-primary')" class="btn-submit" style="font-size:0.8rem; padding: 10px 20px;">Explore Owner-Occupied Options &rarr;</button>
+                        <button onclick="showWizard('wizard-pur-occupancy')" class="btn-submit" style="font-size:0.8rem; padding: 10px 20px;">Explore Owner-Occupied Options &rarr;</button>
                     </div>`;
                 }
                 
