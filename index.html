@@ -86,9 +86,8 @@
         .path-card h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; }
         .path-card p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4;}
         
-        /* NEW STRATEGY BRIEF STYLES */
+        /* STRATEGY BRIEF STYLES */
         .strategy-brief { background: white; border: 1px solid var(--mortgage-blue); border-left: 6px solid var(--mortgage-blue); padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .strategy-brief h3 { color: var(--mortgage-blue); margin-top: 0; border-bottom: 1px dotted #ccc; padding-bottom: 10px; }
         .strategy-brief h4 { color: var(--text-dark); margin: 15px 0 5px 0; font-size: 0.95rem; }
         .strategy-brief p { margin: 0 0 10px 0; font-size: 0.9rem; color: #555; }
         .strategy-brief ul { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
@@ -268,7 +267,7 @@
                     <p>What is the primary intent for this property?</p>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="showWizard('wizard-pur-primary')">
+                    <div class="path-card" onclick="showWizard('wizard-pur-condition')">
                         <h3>Primary Residence</h3>
                         <p>I intend to live in this home for the majority of the year.</p>
                     </div>
@@ -280,48 +279,136 @@
                         <h3>Investment Property</h3>
                         <p>A property I intend to rent out or fix and flip for profit.</p>
                     </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-primary')">
-                        <h3>ITIN / Foreign National</h3>
-                        <p>Options for borrowers without a standard SSN, including alternative income verification.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-condition" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Property Condition</h2>
+                    <p>What type of home are you looking for?</p>
+                </div>
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
+                    <div class="path-card" onclick="showWizard('wizard-pur-primary-categories')">
+                        <h3>Turn-Key (Move-in Ready)</h3>
+                        <p>I want a home that requires little to no work before moving in.</p>
+                    </div>
+                    <div class="path-card" onclick="showWizard('wizard-pur-rehab')">
+                        <h3>Fixer-Upper</h3>
+                        <p>I want to buy a home that needs some TLC or major renovations.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="wizard-pur-primary" class="wizard-section">
+        <div id="wizard-pur-primary-categories" class="wizard-section">
             <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <button onclick="showWizard('wizard-pur-condition')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
                 <div class="wizard-header">
                     <h2>Primary Residence Options</h2>
-                    <p>Select a program to view its benefits and calculate your numbers.</p>
+                    <p>How would you like to qualify for your mortgage?</p>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence')">
-                        <h3>Conventional</h3><p>Standard financing. Low down payment options for first-time buyers on single-family homes.</p>
+                    <div class="path-card" onclick="showWizard('wizard-pur-conv-options')">
+                        <h3>Conventional</h3>
+                        <p>Standard financing for borrowers with good-to-excellent credit.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('fha', 'Primary Residence')">
-                        <h3>FHA</h3><p>Low down payment FHA options. Can be used to buy a 1-4 unit multi-family property and rent the remaining units.</p>
+                    <div class="path-card" onclick="showWizard('wizard-pur-gov-options')">
+                        <h3>FHA / Gov / VA</h3>
+                        <p>Government-backed loans with flexible credit and zero-down options.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('va', 'Primary Residence')">
-                        <h3>VA Loan</h3><p>Zero-down options for eligible military/veterans. Buy a 1-4 unit property with no PMI.</p>
+                    <div class="path-card" onclick="showWizard('wizard-pur-nonqm-options')">
+                        <h3>Non-QM (Alt-Doc)</h3>
+                        <p>Skip the tax returns. Options for self-employed and ITIN borrowers.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence')">
-                        <h3>USDA (Rural)</h3><p>Zero-down options for properties located in designated rural areas.</p>
+                    <div class="path-card" onclick="openPurCalc('jumbo', 'Primary Residence', 'wizard-pur-primary-categories')">
+                        <h3>Jumbo Financing</h3>
+                        <p>For luxury properties exceeding standard county loan limits.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence')">
-                        <h3>FHA 100% Combo</h3><p>Zero down payment! Combines standard FHA with a 3.5% second lien.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-conv-options" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Conventional Programs</h2>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence', 'wizard-pur-conv-options')">
+                        <h3>Standard Conventional</h3><p>The standard route. Low down payment options for first-time buyers on single-family homes.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence')">
+                    <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence', 'wizard-pur-conv-options')">
                         <h3>Fannie Mae HomeReady</h3><p>Low down payment options with reduced MI and a potential $2,500 credit.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('fha-203k', 'Primary Residence')">
-                        <h3>FHA 203(k) Rehab</h3><p>Roll the cost of home renovations directly into your purchase mortgage.</p>
+                    <div class="path-card" onclick="openPurCalc('homepossible', 'Primary Residence', 'wizard-pur-conv-options')">
+                        <h3>Freddie Mac Home Possible</h3><p>A fantastic conventional alternative allowing for just a 3% down payment.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('jumbo', 'Primary Residence')">
-                        <h3>Jumbo Financing</h3><p>For luxury properties exceeding standard loan limits. Up to $3M.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-gov-options" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Government-Backed Programs</h2>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="openPurCalc('fha', 'Primary Residence', 'wizard-pur-gov-options')">
+                        <h3>Standard FHA</h3><p>Low down payment FHA options. Flexible credit requirements.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('alt-doc', 'Primary Residence')">
-                        <h3>Self-Employed (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
+                    <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence', 'wizard-pur-gov-options')">
+                        <h3>FHA 100% Combo</h3><p>Zero down payment! Combines standard FHA with a 3.5% second lien.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('va', 'Primary Residence', 'wizard-pur-gov-options')">
+                        <h3>VA Loan</h3><p>Zero-down options for eligible military/veterans with no PMI.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence', 'wizard-pur-gov-options')">
+                        <h3>USDA (Rural)</h3><p>Zero-down options for properties located in designated rural areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-nonqm-options" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Non-QM & Alternative Income</h2>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="openPurCalc('bank-statement', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                        <h3>Bank Statements</h3><p>Qualify using 12 to 24 months of personal or business bank deposits.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('pnl', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                        <h3>1-Year P&L</h3><p>Use a Profit & Loss statement prepared by a tax professional.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('1099', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                        <h3>1099 Income</h3><p>Qualify using your 1099 earnings instead of a full tax return.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('itin', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                        <h3>ITIN / Foreign National</h3><p>Options for borrowers without a standard SSN living in the US.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-pur-rehab" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-pur-condition')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Fixer-Upper Programs</h2>
+                </div>
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
+                    <div class="path-card" onclick="openPurCalc('fha-203k', 'Primary Residence', 'wizard-pur-rehab')">
+                        <h3>FHA 203(k) Rehab</h3><p>Roll the cost of home renovations directly into your FHA purchase mortgage.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('homestyle', 'Primary Residence', 'wizard-pur-rehab')">
+                        <h3>Fannie Mae HomeStyle</h3><p>Finance renovations into a conventional loan. Great for buyers with strong credit.</p>
                     </div>
                 </div>
             </div>
@@ -335,11 +422,11 @@
                     <p>Financing options for your vacation or part-time home.</p>
                 </div>
                 <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 600px; margin: 0 auto;">
-                    <div class="path-card" onclick="openPurCalc('conv-sec', 'Second Home')">
+                    <div class="path-card" onclick="openPurCalc('conv-sec', 'Second Home', 'wizard-pur-second')">
                         <h3>Conventional Second Home</h3><p>Requires a down payment. Must be a 1-unit property occupied by owner part of the year.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('alt-doc', 'Second Home')">
-                        <h3>Self-Employed (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
+                    <div class="path-card" onclick="openPurCalc('nonqm-sec', 'Second Home', 'wizard-pur-second')">
+                        <h3>Non-QM (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
                     </div>
                 </div>
             </div>
@@ -353,20 +440,17 @@
                     <p>Select your investment strategy.</p>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('dscr', 'Investment')">
-                        <h3>DSCR (Debt Service)</h3><p>Long-term financing. Qualify based entirely on the property's rental cash flow, not your personal income.</p>
+                    <div class="path-card" onclick="openPurCalc('dscr', 'Investment', 'wizard-pur-invest')">
+                        <h3>DSCR (Debt Service) 1-4 Unit</h3><p>Long-term financing. Qualify based entirely on the property's rental cash flow.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('dscr-5-9', 'Investment', 'wizard-pur-invest')">
+                        <h3>Multi-Family (5-9 Units)</h3><p>Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow.</p>
+                    </div>
+                    <div class="path-card" onclick="openPurCalc('conv-inv', 'Investment', 'wizard-pur-invest')">
+                        <h3>Conventional Investment</h3><p>Standard full-doc investor loans. Down payment requirements vary.</p>
                     </div>
                     <div class="path-card" onclick="openFixFlip()">
                         <h3>Fix & Flip</h3><p>Short-term bridge debt to acquire and rehab a property. Based on After Repair Value (ARV).</p>
-                    </div>
-                    <div class="path-card" onclick="alert('Fix to Rent calculator is currently under construction! Please contact us directly to map out your BRRRR strategy.');">
-                        <h3>Fix to Rent</h3><p><em>Coming soon...</em></p>
-                    </div>
-                    <div class="path-card" onclick="openPurCalc('conv-inv', 'Investment')">
-                        <h3>Conventional Investment</h3><p>Standard full-doc investor loans. Down payment requirements change based on the number of units.</p>
-                    </div>
-                    <div class="path-card" onclick="openPurCalc('dscr-5-9', 'Investment')">
-                        <h3>Multi-Family (5-9 Units)</h3><p>Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow.</p>
                     </div>
                 </div>
             </div>
@@ -374,7 +458,7 @@
 
         <div id="wizard-pur-calc" class="wizard-section">
             <div class="wizard-container fade-in">
-                <button id="pur-back-btn" onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
+                <button id="pur-back-btn" onclick="" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
                 
                 <h2 id="pur-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
                 
@@ -387,7 +471,7 @@
                 
                 <div class="form-row" id="rehab-group" style="display:none;">
                     <div class="form-group">
-                        <label>Est. Rehab Budget ($) <span class="tooltip">ⓘ<span class="tooltiptext">Must be at least $5,000 for FHA 203(k). A 10-20% contingency will be added later.</span></span></label>
+                        <label>Est. Rehab Budget ($) <span class="tooltip">ⓘ<span class="tooltiptext">An additional contingency reserve will be added to your final loan amount per guidelines.</span></span></label>
                         <input type="number" id="pur-rehab" placeholder="e.g. 25000">
                     </div>
                 </div>
@@ -493,7 +577,7 @@
                 <h2 style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;">Fix & Flip Financing</h2>
                 
                 <div class="strategy-brief">
-                    <h3>The Scoop</h3>
+                    <h3>Fix & Flip</h3>
                     <p>Fix & Flip loans are short-term (bridge) debt. Instead of qualifying based on your DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property.</p>
                     <p><strong>On Your Radar:</strong> Lenders cap the loan using three calculations. Your maximum loan is strictly the lowest of the three caps.</p>
                 </div>
@@ -793,7 +877,9 @@
         
         function showWizard(id) {
             const sections = [
-                'wizard-pur-occupancy', 'wizard-pur-primary', 'wizard-pur-second', 'wizard-pur-invest', 'wizard-pur-calc',
+                'wizard-pur-occupancy', 'wizard-pur-condition', 'wizard-pur-primary-categories',
+                'wizard-pur-conv-options', 'wizard-pur-gov-options', 'wizard-pur-nonqm-options',
+                'wizard-pur-rehab', 'wizard-pur-second', 'wizard-pur-invest', 'wizard-pur-calc',
                 'wizard-fix-flip', 'wizard-refi-goal', 'wizard-refi-calc', 'quote-form-section'
             ];
             sections.forEach(s => {
@@ -814,6 +900,11 @@
             const content = card.querySelector('.team-content');
             card.classList.toggle('active');
             content.style.maxHeight = card.classList.contains('active') ? content.scrollHeight + "px" : null;
+        }
+
+        function toggleFFExp(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none') ? 'block' : 'none';
         }
 
         const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
@@ -854,7 +945,7 @@
             }
         }
 
-        // --- EDUCATION ENGINE (PHASE 2) ---
+        // --- EDUCATION ENGINE ---
         const purEduText = {
             'conv': { 
                 title: "Conventional Loan", 
@@ -867,6 +958,12 @@
                 concept: "A conventional loan designed for creditworthy, low-to-moderate-income buyers, allowing for just a 3% down payment.",
                 fit: "Buyers earning 80% or less of their area's median income looking for cheaper Mortgage Insurance than FHA offers.",
                 radar: ["If you are a first-time buyer making 50% or less of the Median Income, you might score a $2,500 lender credit toward closing costs!", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
+            },
+            'homepossible': { 
+                title: "Freddie Mac Home Possible", 
+                concept: "A conventional loan option through Freddie Mac allowing for just a 3% down payment.",
+                fit: "Low-to-moderate-income buyers looking for reduced mortgage insurance.",
+                radar: ["Income limits apply based on property location.", "Boarder income can be used to qualify."]
             },
             'fha': { 
                 title: "FHA", 
@@ -886,6 +983,12 @@
                 fit: "Visionaries willing to build sweat equity by updating a home (while hiring the pros to do the actual work!).",
                 radar: ["You must be doing at least $5,000 in eligible repairs.", "A 10-20% 'contingency fund' will be added to your loan to cover unexpected cost overruns during construction.", "All work must be completed by licensed contractors."]
             },
+            'homestyle': { 
+                title: "Fannie Mae HomeStyle Renovation", 
+                concept: "Finance both the purchase and renovations into a single conventional loan.",
+                fit: "Buyers who want to remodel a home and have good credit.",
+                radar: ["Minimum 3% down for first-time buyers.", "Renovations can be up to 75% of the 'as-completed' value."]
+            },
             'va': { 
                 title: "VA Loan", 
                 concept: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance.",
@@ -899,22 +1002,46 @@
                 radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify.", "Only available for 1-unit Single Family properties."]
             },
             'jumbo': { 
-                title: "Jumbo Financing", 
+                title: "Jumbo AUS 1 Financing", 
                 concept: "When your dream home exceeds standard county loan limits, this program steps in, offering up to $3,000,000 in premium financing.",
                 fit: "High-net-worth buyers looking at luxury, high-value, or expansive properties.",
                 radar: ["Requires a minimum 20% down payment for a primary residence.", "You will generally need to show heavier cash reserves (up to 6 months of mortgage payments in the bank after closing).", "Loan amounts over $2,000,000 require two full, independent appraisals."]
             },
-            'alt-doc': { 
-                title: "Self-Employed (Alt-Doc)", 
-                concept: "Skip the tax returns! Qualify based on the actual cash flowing through your business using 12 months of personal or business bank statements, a 1-Year P&L, or 1099 forms.",
-                fit: "Business owners, freelancers, and entrepreneurs whose tax write-offs hide their true purchasing power.",
-                radar: ["You must have been self-employed—and your business active—for at least two full years.", "If using bank statements, large or unusual deposits will require a written explanation.", "Alternative documentation loans typically require larger down payments (10-20%) compared to standard conventional loans."]
+            'bank-statement': { 
+                title: "Bank Statement Income", 
+                concept: "Qualify based on the actual cash flowing into your personal or business bank accounts over 12 to 24 months.",
+                fit: "Self-employed buyers whose tax returns don't reflect their true purchasing power.",
+                radar: ["You must be self-employed for at least two years.", "Typically requires a 10-20% down payment."]
+            },
+            'pnl': { 
+                title: "1-Year P&L Statement", 
+                concept: "Use a 1-Year Profit & Loss statement prepared by a tax professional to prove your business income.",
+                fit: "Business owners with healthy profit margins who want to avoid providing full tax returns.",
+                radar: ["P&L must be prepared by an independent CPA or tax preparer.", "Requires a minimum 20% down payment."]
+            },
+            '1099': { 
+                title: "1099 Income", 
+                concept: "Qualify using your 1099 earnings instead of a W-2 or full tax return.",
+                fit: "Freelancers, contractors, and gig-workers.",
+                radar: ["You must have a 2-year history with the same 1099 provider.", "Typically requires a 20% down payment."]
+            },
+            'itin': { 
+                title: "ITIN / Foreign National", 
+                concept: "Options for borrowers without a standard SSN to purchase a home.",
+                fit: "Non-US citizens living and working in the United States.",
+                radar: ["You will need a valid ITIN and an unexpired government photo ID.", "Typically requires 20% down and 3-6 months of cash reserves."]
             },
             'conv-sec': { 
-                title: "Second Home Financing", 
+                title: "Conventional Second Home", 
                 concept: "Standard conventional financing for a vacation or part-time home.",
                 fit: "Buyers looking for a getaway property they intend to occupy for a portion of the year.",
                 radar: ["Requires a minimum 10% down payment.", "The property must be located a reasonable distance from your primary residence.", "Multi-unit properties are not allowed as second homes."]
+            },
+            'nonqm-sec': { 
+                title: "Second Home (Alt-Doc)", 
+                concept: "Skip the tax returns! Qualify for your vacation home using 12 months of bank statements, 1099s, or a P&L.",
+                fit: "Self-employed buyers wanting a getaway property.",
+                radar: ["Requires a minimum 20% down payment.", "You must have been self-employed—and your business active—for at least two full years."]
             },
             'dscr': { 
                 title: "DSCR (Debt Service) 1-4 Unit", 
@@ -963,7 +1090,7 @@
             }
         };
 
-        function openPurCalc(progId, occType) {
+        function openPurCalc(progId, occType, backTarget) {
             document.getElementById('pur-active-prog').value = progId;
             document.getElementById('pur-active-occ').value = occType;
             
@@ -972,7 +1099,6 @@
             document.getElementById('pur-calc-title').innerText = data.title;
             
             let eduHtml = `
-                <h3>The Scoop</h3>
                 <p>${data.concept}</p>
                 <h4>Perfect For:</h4>
                 <p>${data.fit}</p>
@@ -984,7 +1110,7 @@
             document.getElementById('pur-calc-edu').innerHTML = eduHtml;
             
             // Show/Hide specific form fields
-            if(progId === 'fha-203k') {
+            if(progId === 'fha-203k' || progId === 'homestyle') {
                 document.getElementById('rehab-group').style.display = 'flex';
             } else {
                 document.getElementById('rehab-group').style.display = 'none';
@@ -1001,15 +1127,14 @@
             document.getElementById('pur-cashflow-box').style.display = 'none';
             document.getElementById('pur-fha100-view').style.display = 'none';
 
+            // Change back button route dynamically
             const backBtn = document.getElementById('pur-back-btn');
-            if(occType === 'Primary Residence') backBtn.setAttribute('onclick', "showWizard('wizard-pur-primary')");
-            if(occType === 'Second Home') backBtn.setAttribute('onclick', "showWizard('wizard-pur-second')");
-            if(occType === 'Investment') backBtn.setAttribute('onclick', "showWizard('wizard-pur-invest')");
+            backBtn.setAttribute('onclick', `showWizard('${backTarget}')`);
 
             showWizard('wizard-pur-calc');
         }
 
-        // --- MATH ENGINE (PHASE 4) ---
+        // --- MATH ENGINE ---
         function runPurMath() {
             const prog = document.getElementById('pur-active-prog').value;
             const occ = document.getElementById('pur-active-occ').value;
@@ -1044,7 +1169,7 @@
             stratBox.style.display = 'none';
             fha100Box.style.display = 'none';
 
-            let basePrice = price + rehab; // Only changes for 203k
+            let basePrice = price + rehab; // Changes for 203k and HomeStyle
             let ltv = +(((basePrice - dp) / basePrice) * 100).toFixed(3);
             
             let baseLoan = basePrice - dp;
@@ -1055,7 +1180,7 @@
             let dpReq = 0;
 
             // REALITY CHECKS & GUIDELINE EVALUATION
-            if(prog === 'conv') { 
+            if(prog === 'conv' || prog === 'homestyle') { 
                 maxLtv = (units === 1) ? 97 : 95; 
                 dpReq = basePrice * ((100 - maxLtv) / 100); 
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.005)/12; pmiNote = "(Drops off at 20% equity)"; } 
@@ -1127,7 +1252,7 @@
                     return; 
                 }
             }
-            if(prog === 'homeready') {
+            if(prog === 'homeready' || prog === 'homepossible') {
                 maxLtv = 97; dpReq = basePrice * 0.03;
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.0035)/12; pmiNote = "(Reduced MI rates apply)"; }
             }
@@ -1151,11 +1276,11 @@
                     warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Your loan amount fits within standard conventional limits. You may get better rates by switching to a Conventional strategy.`;
                 }
             }
-            if(prog === 'alt-doc') {
+            if(prog === 'bank-statement' || prog === 'pnl' || prog === '1099' || prog === 'itin' || prog === 'nonqm-sec') {
                 maxLtv = 80; dpReq = basePrice * 0.20;
                 if(ltv > 80) {
                     warnBox.style.display = 'block';
-                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Alternative income loans (like bank statement loans) typically require a minimum of 20% down. We've adjusted your scenario to reflect 80% LTV.`;
+                    warnBox.innerHTML = `⚠️ <strong>Guideline Alert:</strong> Alternative income loans typically require a minimum of 20% down. We've adjusted your scenario to reflect 80% LTV.`;
                     dp = dpReq;
                     baseLoan = basePrice - dp;
                     finalLoan = baseLoan;
@@ -1199,7 +1324,7 @@
             }
 
             // --- STRATEGY PIVOT ---
-            if(ltv > maxLtv && prog !== 'alt-doc' && prog !== 'dscr-5-9') {
+            if(ltv > maxLtv && prog !== 'bank-statement' && prog !== 'pnl' && prog !== '1099' && prog !== 'itin' && prog !== 'nonqm-sec' && prog !== 'dscr-5-9') {
                 errBox.style.display = 'block';
                 let errorHtml = `This program requires at least <strong>${100 - maxLtv}% down</strong> for a ${units}-unit property.<br>Based on a $${basePrice} price, your minimum down payment is <strong>${formatCurrency(dpReq)}</strong>.`;
                 
@@ -1311,7 +1436,6 @@
             document.getElementById('refi-calc-title').innerText = data.title;
             
             let eduHtml = `
-                <h3>The Scoop</h3>
                 <p>${data.concept}</p>
                 <h4>Perfect For:</h4>
                 <p>${data.fit}</p>
