@@ -73,7 +73,7 @@
         .calc-link:hover { color: var(--accent-red); border-bottom-style: solid; }
 
         /* --- WIZARD SECTIONS & FORMS --- */
-        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        .fade-in { animation: fadeIn 0.4s ease forwards; }
         .wizard-section { background-color: #f4f8fb; padding: 60px 5%; border-top: 1px solid #eee; display: none; }
         .wizard-container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
         .wizard-header { text-align: center; margin-bottom: 30px; }
@@ -86,12 +86,25 @@
         .path-card h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; }
         .path-card p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4;}
         
-        /* STRATEGY BRIEF STYLES */
-        .strategy-brief { background: white; border: 1px solid var(--mortgage-blue); border-left: 6px solid var(--mortgage-blue); padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .strategy-brief h4 { color: var(--text-dark); margin: 15px 0 5px 0; font-size: 0.95rem; }
-        .strategy-brief p { margin: 0 0 10px 0; font-size: 0.9rem; color: #555; }
+        /* NEW STRATEGY BRIEF & PRODUCT HUB STYLES */
+        .strategy-brief { background: white; border: 1px solid #dae1e7; border-left: 6px solid var(--mortgage-blue); padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .strategy-brief h4 { color: var(--text-dark); margin: 15px 0 5px 0; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+        .strategy-brief p { margin: 0 0 10px 0; font-size: 0.95rem; color: #555; }
         .strategy-brief ul { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
-        .strategy-brief li { margin-bottom: 5px; }
+        .strategy-brief li { margin-bottom: 8px; }
+
+        .conversion-box { text-align: center; padding: 30px; background: #fdfdfd; border-radius: 12px; border: 2px dashed var(--brand-gold); margin-bottom: 30px; }
+        .conversion-box h3 { color: var(--mortgage-blue); font-size: 1.4rem; margin-top: 0; }
+        .btn-large { display: inline-block; padding: 15px 35px; font-size: 1.1rem; border-radius: 8px; font-weight: 800; text-transform: uppercase; transition: all 0.3s; cursor: pointer; text-decoration: none; border: none; }
+        .btn-primary { background: var(--brand-gold); color: var(--mortgage-blue); }
+        .btn-primary:hover { background: #e5b327; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); }
+        .btn-secondary:hover { background: var(--mortgage-blue); color: white; transform: translateY(-2px); }
+        .btn-group-large { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+
+        .calc-toggle { display: block; text-align: center; color: #888; font-size: 0.9rem; font-weight: 600; cursor: pointer; padding: 15px; border-top: 1px solid #eee; transition: color 0.3s; }
+        .calc-toggle:hover { color: var(--mortgage-blue); }
+        .interactive-calc-area { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
 
         /* TOOLTIPS */
         .tooltip { position: relative; display: inline-block; cursor: pointer; color: var(--brand-gold); margin-left: 5px; font-weight: bold; }
@@ -106,10 +119,8 @@
         .form-group input:focus, .form-group select:focus { border-color: var(--brand-gold); outline: none; }
         
         .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-        .btn-submit { background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
-        .btn-submit:hover { background: #e5b327; }
-        .btn-outline-small { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-flex; justify-content: center; text-transform: uppercase; font-size: 0.9rem;}
-        .btn-outline-small:hover { background: #f4f6f8; }
+        .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
+        .btn-submit:hover { background: #002244; }
         
         .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; text-align: left; line-height: 1.4;}
 
@@ -191,7 +202,7 @@
             .wizard-container, .quote-container { padding: 25px 20px; }
             .form-row { flex-direction: column; gap: 15px; } 
             .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
-            .btn-outline-small, .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
+            .btn-outline-small, .btn-submit, .btn-primary, .btn-secondary { width: 100%; margin: 0; box-sizing: border-box; }
             .r-cash { flex-direction: column; text-align: center; gap: 10px; }
         }
     </style>
@@ -297,7 +308,7 @@
                         <p>I want a home that requires little to no work before moving in.</p>
                     </div>
                     <div class="path-card" onclick="showWizard('wizard-pur-rehab')">
-                        <h3>Fixer-Upper</h3>
+                        <h3>Fixer-Upper (Rehab)</h3>
                         <p>I want to buy a home that needs some TLC or major renovations.</p>
                     </div>
                 </div>
@@ -324,7 +335,7 @@
                         <h3>Non-QM (Alt-Doc)</h3>
                         <p>Skip the tax returns. Options for self-employed and ITIN borrowers.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('jumbo', 'Primary Residence', 'wizard-pur-primary-categories')">
+                    <div class="path-card" onclick="openProductHub('jumbo', 'Primary Residence', 'wizard-pur-primary-categories', 'purchase')">
                         <h3>Jumbo Financing</h3>
                         <p>For luxury properties exceeding standard county loan limits.</p>
                     </div>
@@ -339,13 +350,13 @@
                     <h2>Conventional Programs</h2>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence', 'wizard-pur-conv-options')">
+                    <div class="path-card" onclick="openProductHub('conv', 'Primary Residence', 'wizard-pur-conv-options', 'purchase')">
                         <h3>Standard Conventional</h3><p>The standard route. Low down payment options for eligible buyers on single-family homes.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3>Fannie Mae HomeReady</h3><p>Low down payment options with reduced MI for eligible borrowers.</p>
+                    <div class="path-card" onclick="openProductHub('homeready', 'Primary Residence', 'wizard-pur-conv-options', 'purchase')">
+                        <h3>Fannie Mae HomeReady</h3><p>Low down payment options with potentially reduced MI for eligible borrowers.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('homepossible', 'Primary Residence', 'wizard-pur-conv-options')">
+                    <div class="path-card" onclick="openProductHub('homepossible', 'Primary Residence', 'wizard-pur-conv-options', 'purchase')">
                         <h3>Freddie Mac Home Possible</h3><p>A fantastic conventional alternative allowing for just a 3% down payment.</p>
                     </div>
                 </div>
@@ -359,16 +370,16 @@
                     <h2>Government-Backed Programs</h2>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('fha', 'Primary Residence', 'wizard-pur-gov-options')">
+                    <div class="path-card" onclick="openProductHub('fha', 'Primary Residence', 'wizard-pur-gov-options', 'purchase')">
                         <h3>Standard FHA</h3><p>Low down payment FHA options. Flexible credit requirements.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence', 'wizard-pur-gov-options')">
+                    <div class="path-card" onclick="openProductHub('fha-100', 'Primary Residence', 'wizard-pur-gov-options', 'purchase')">
                         <h3>FHA 100% Combo</h3><p>Low cash-to-close option! Combines standard FHA with a 3.5% second lien.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('va', 'Primary Residence', 'wizard-pur-gov-options')">
+                    <div class="path-card" onclick="openProductHub('va', 'Primary Residence', 'wizard-pur-gov-options', 'purchase')">
                         <h3>VA Loan</h3><p>Zero-down options for eligible military/veterans with no PMI.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('usda', 'Primary Residence', 'wizard-pur-gov-options')">
+                    <div class="path-card" onclick="openProductHub('usda', 'Primary Residence', 'wizard-pur-gov-options', 'purchase')">
                         <h3>USDA (Rural)</h3><p>Zero-down options for properties located in designated rural areas.</p>
                     </div>
                 </div>
@@ -382,16 +393,16 @@
                     <h2>Non-QM & Alternative Income</h2>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('bank-statement', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                    <div class="path-card" onclick="openProductHub('bank-statement', 'Primary Residence', 'wizard-pur-nonqm-options', 'purchase')">
                         <h3>Bank Statements</h3><p>Qualify using 12 to 24 months of personal or business bank deposits.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('pnl', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                    <div class="path-card" onclick="openProductHub('pnl', 'Primary Residence', 'wizard-pur-nonqm-options', 'purchase')">
                         <h3>1-Year P&L</h3><p>Use a Profit & Loss statement prepared by a tax professional.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('1099', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                    <div class="path-card" onclick="openProductHub('1099', 'Primary Residence', 'wizard-pur-nonqm-options', 'purchase')">
                         <h3>1099 Income</h3><p>Qualify using your 1099 earnings instead of a full tax return.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('itin', 'Primary Residence', 'wizard-pur-nonqm-options')">
+                    <div class="path-card" onclick="openProductHub('itin', 'Primary Residence', 'wizard-pur-nonqm-options', 'purchase')">
                         <h3>ITIN / Foreign National</h3><p>Options for borrowers without a standard SSN living in the US.</p>
                     </div>
                 </div>
@@ -404,12 +415,18 @@
                 <div class="wizard-header">
                     <h2>Fixer-Upper Programs</h2>
                 </div>
-                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
-                    <div class="path-card" onclick="openPurCalc('fha-203k', 'Primary Residence', 'wizard-pur-rehab')">
+                <div class="path-grid">
+                    <div class="path-card" onclick="openProductHub('fha-203k', 'Primary Residence', 'wizard-pur-rehab', 'purchase')">
                         <h3>FHA 203(k) Rehab</h3><p>Roll the cost of home renovations directly into your FHA purchase mortgage.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('homestyle', 'Primary Residence', 'wizard-pur-rehab')">
+                    <div class="path-card" onclick="openProductHub('va-reno', 'Primary Residence', 'wizard-pur-rehab', 'purchase')">
+                        <h3>VA Renovation</h3><p>Zero-down rehab option for eligible military/veterans. Max $50k rehab.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('homestyle', 'Primary Residence', 'wizard-pur-rehab', 'purchase')">
                         <h3>Fannie Mae HomeStyle</h3><p>Finance renovations into a conventional loan. Great for buyers with strong credit.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('usda-reno', 'Primary Residence', 'wizard-pur-rehab', 'purchase')">
+                        <h3>USDA Renovation</h3><p>Zero-down rehab option for properties located in designated rural areas.</p>
                     </div>
                 </div>
             </div>
@@ -423,10 +440,10 @@
                     <p>Financing options for your vacation or part-time home.</p>
                 </div>
                 <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 600px; margin: 0 auto;">
-                    <div class="path-card" onclick="openPurCalc('conv-sec', 'Second Home', 'wizard-pur-second')">
+                    <div class="path-card" onclick="openProductHub('conv-sec', 'Second Home', 'wizard-pur-second', 'purchase')">
                         <h3>Conventional Second Home</h3><p>Requires a down payment. Must be a 1-unit property occupied by owner part of the year.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('nonqm-sec', 'Second Home', 'wizard-pur-second')">
+                    <div class="path-card" onclick="openProductHub('nonqm-sec', 'Second Home', 'wizard-pur-second', 'purchase')">
                         <h3>Non-QM (Alt-Doc)</h3><p>Qualify using 12-months of Bank Statements, 1099s, or a 1-Year P&L instead of standard tax returns.</p>
                     </div>
                 </div>
@@ -441,13 +458,13 @@
                     <p>Select your investment strategy.</p>
                 </div>
                 <div class="path-grid">
-                    <div class="path-card" onclick="openPurCalc('dscr', 'Investment', 'wizard-pur-invest')">
+                    <div class="path-card" onclick="openProductHub('dscr', 'Investment', 'wizard-pur-invest', 'purchase')">
                         <h3>DSCR (Debt Service) 1-4 Unit</h3><p>Long-term financing. Qualify based entirely on the property's rental cash flow.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('dscr-5-9', 'Investment', 'wizard-pur-invest')">
+                    <div class="path-card" onclick="openProductHub('dscr-5-9', 'Investment', 'wizard-pur-invest', 'purchase')">
                         <h3>Multi-Family (5-9 Units)</h3><p>Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow.</p>
                     </div>
-                    <div class="path-card" onclick="openPurCalc('conv-inv', 'Investment', 'wizard-pur-invest')">
+                    <div class="path-card" onclick="openProductHub('conv-inv', 'Investment', 'wizard-pur-invest', 'purchase')">
                         <h3>Conventional Investment</h3><p>Standard full-doc investor loans. Down payment requirements vary.</p>
                     </div>
                     <div class="path-card" onclick="openFixFlip()">
@@ -457,107 +474,316 @@
             </div>
         </div>
 
-        <div id="wizard-pur-calc" class="wizard-section">
+
+        <div id="wizard-refi-goal" class="wizard-section">
             <div class="wizard-container fade-in">
-                <button id="pur-back-btn" onclick="" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
-                
-                <h2 id="pur-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
-                
-                <div id="pur-calc-edu" class="strategy-brief"></div>
-
-                <div class="form-row">
-                    <div class="form-group"><label>Purchase Price ($)</label><input type="number" id="pur-price" placeholder="e.g. 450000"></div>
-                    <div class="form-group"><label>Down Payment ($)</label><input type="number" id="pur-dp" placeholder="e.g. 20000"></div>
+                <div class="wizard-header">
+                    <h2>Refinance Strategy</h2>
+                    <p>What are you trying to accomplish?</p>
                 </div>
-                
-                <div class="form-row" id="rehab-group" style="display:none;">
-                    <div class="form-group">
-                        <label>Est. Rehab Budget ($) <span class="tooltip">ⓘ<span class="tooltiptext">An additional contingency reserve will be added to your final loan amount per guidelines.</span></span></label>
-                        <input type="number" id="pur-rehab" placeholder="e.g. 25000">
+                <div class="path-grid">
+                    <div class="path-card" onclick="showWizard('wizard-refi-rt-current')">
+                        <h3>Rate & Term (Lower Payment)</h3>
+                        <p>Lower your interest rate or shorten your loan term to save money.</p>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Number of Units</label>
-                        <select id="pur-units" onchange="updateRentFields()">
-                            </select>
+                    <div class="path-card" onclick="showWizard('wizard-refi-co-current')">
+                        <h3>Cash-Out / Consolidate</h3>
+                        <p>Unlock equity to fund projects or consolidate high-interest debt.</p>
                     </div>
-                    <div class="form-group">
-                        <label>Est. Interest Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label>
-                        <input type="number" id="pur-rate" value="6.5" step="0.125">
-                    </div>
-                    <div class="form-group">
-                        <label>Desired Term</label>
-                        <select id="pur-term">
-                            <option value="360">30 Year Fixed</option>
-                            <option value="300">25 Year Fixed</option>
-                            <option value="240">20 Year Fixed</option>
-                            <option value="180">15 Year Fixed</option>
-                        </select>
+                    <div class="path-card" onclick="showWizard('wizard-refi-he')">
+                        <h3>Tap Equity (Keep 1st Mortgage)</h3>
+                        <p>Keep your low 1st mortgage and take out a secondary lien.</p>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div id="multi-unit-rents" style="display:none; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; margin-bottom: 15px;"></div>
+        <div id="wizard-refi-rt-current" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Current Loan Type</h2>
+                    <p>What type of loan do you currently have? (This unlocks specific streamlined programs)</p>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="showWizard('wizard-refi-rt-fha')">
+                        <h3>I have an FHA Loan</h3>
+                    </div>
+                    <div class="path-card" onclick="showWizard('wizard-refi-rt-va')">
+                        <h3>I have a VA Loan</h3>
+                    </div>
+                    <div class="path-card" onclick="showWizard('wizard-refi-rt-conv')">
+                        <h3>I have a Conventional Loan</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('usda-streamline', 'Primary Residence', 'wizard-refi-rt-current', 'refi')">
+                        <h3>I have a USDA Loan</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('rt-nonqm', 'Primary Residence', 'wizard-refi-rt-current', 'refi')">
+                        <h3>I need Non-QM (Alt-Doc)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-refi-rt-fha" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-rt-current')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>FHA Refinance Options</h2>
+                </div>
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
+                    <div class="path-card" onclick="openProductHub('fha-streamline', 'Primary Residence', 'wizard-refi-rt-fha', 'refi')">
+                        <h3>FHA Streamline</h3><p>Lower your rate with no appraisal and no income verification required.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('rt-fha', 'Primary Residence', 'wizard-refi-rt-fha', 'refi')">
+                        <h3>Standard FHA Rate/Term</h3><p>Standard refinance requiring an appraisal and full income documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-refi-rt-va" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-rt-current')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>VA Refinance Options</h2>
+                </div>
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
+                    <div class="path-card" onclick="openProductHub('va-irrrl', 'Primary Residence', 'wizard-refi-rt-va', 'refi')">
+                        <h3>VA IRRRL (Streamline)</h3><p>Lower your rate with no appraisal and no income verification required.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('rt-va', 'Primary Residence', 'wizard-refi-rt-va', 'refi')">
+                        <h3>Standard VA Rate/Term</h3><p>Standard refinance requiring an appraisal and full income documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-refi-rt-conv" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-rt-current')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Conventional Refinance Options</h2>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="openProductHub('refinow', 'Primary Residence', 'wizard-refi-rt-conv', 'refi')">
+                        <h3>Fannie Mae RefiNow</h3><p>Expanded eligibility and a $500 appraisal credit for borrowers ≤ 100% AMI.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('refipossible', 'Primary Residence', 'wizard-refi-rt-conv', 'refi')">
+                        <h3>Freddie Mac Refi Possible</h3><p>Expanded eligibility and a $500 appraisal credit for borrowers ≤ 100% AMI.</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('rt-conv', 'Primary Residence', 'wizard-refi-rt-conv', 'refi')">
+                        <h3>Standard Conventional</h3><p>Standard rate and term refinance for borrowers with strong credit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-refi-co-current" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Cash-Out Options</h2>
+                    <p>Select a qualification path for your cash-out refinance.</p>
+                </div>
+                <div class="path-grid">
+                    <div class="path-card" onclick="openProductHub('co-conv', 'Primary Residence', 'wizard-refi-co-current', 'refi')">
+                        <h3>Conventional Cash-Out</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('co-fha', 'Primary Residence', 'wizard-refi-co-current', 'refi')">
+                        <h3>FHA Cash-Out</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('co-va', 'Primary Residence', 'wizard-refi-co-current', 'refi')">
+                        <h3>VA Cash-Out</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('co-nonqm', 'Primary Residence', 'wizard-refi-co-current', 'refi')">
+                        <h3>Non-QM (Alt-Doc) Cash-Out</h3>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('co-jumbo', 'Primary Residence', 'wizard-refi-co-current', 'refi')">
+                        <h3>Jumbo Cash-Out</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wizard-refi-he" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
+                <div class="wizard-header">
+                    <h2>Home Equity Options</h2>
+                    <p>Tap your equity while preserving your 1st mortgage rate.</p>
+                </div>
+                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
+                    <div class="path-card" onclick="openProductHub('equity-adv', 'Primary Residence', 'wizard-refi-he', 'refi')">
+                        <h3>Standalone 2nd Lien (Alt-Doc)</h3><p>Fixed-rate 2nd mortgage. Alternative income (like bank statements) is allowed!</p>
+                    </div>
+                    <div class="path-card" onclick="openProductHub('he', 'Primary Residence', 'wizard-refi-he', 'refi')">
+                        <h3>Standard HELOC / HELOAN</h3><p>Choose between a revolving Line of Credit or a fixed lump sum (Full Doc).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="wizard-product-hub" class="wizard-section">
+            <div class="wizard-container fade-in">
+                <button id="hub-back-btn" onclick="" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
                 
-                <input type="hidden" id="pur-active-prog">
-                <input type="hidden" id="pur-active-occ">
+                <h2 id="hub-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 15px 0; font-size: 2rem;"></h2>
+                
+                <div id="hub-edu" class="strategy-brief"></div>
 
-                <button onclick="runPurMath()" class="btn-submit" style="width: 100%; margin-top: 10px;">Calculate Scenario</button>
+                <div class="conversion-box">
+                    <h3>Ready to take the next step?</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Get a custom quote or start your pre-approval application today.</p>
+                    <div class="btn-group-large">
+                        <button onclick="showWizard('quote-form-section')" class="btn-large btn-secondary">Request Custom Quote</button>
+                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-large btn-primary">Apply Now &rarr;</a>
+                    </div>
+                </div>
 
-                <div id="pur-result-box" class="result-box">
-                    <div class="r-header" id="pur-res-title">Estimated Results</div>
+                <div class="calc-toggle" onclick="toggleCalculator()">
+                    Want to run the numbers yourself? Open Calculator ▼
+                </div>
+
+                <div id="interactive-calc-area" class="interactive-calc-area">
                     
-                    <div id="pur-warning" class="r-warning"></div>
-                    <div id="pur-strategy" class="r-strategy"></div>
-                    <div id="pur-error" class="r-error" style="display:none;"></div>
-                    
-                    <div id="pur-success" style="display:none;">
-                        
-                        <div id="pur-fha100-view" style="display:none; background:#f4f8fb; border:1px solid var(--mortgage-blue); padding:15px; border-radius:8px; margin-bottom:20px;">
-                            <h4 style="margin:0 0 10px 0; color:var(--mortgage-blue);">FHA 100% Lien Structure</h4>
-                            <div class="r-row"><strong>1st Lien Amount (96.5%)</strong><span id="fha100-1st"></span></div>
-                            <div class="r-row"><strong>2nd Lien Amount (3.5%)</strong><span id="fha100-2nd"></span></div>
-                            <div class="r-row" style="margin-top:10px; font-size:0.8rem; color:#666;"><em>*2nd Lien estimated at 2% higher interest rate on a 10-year term.</em></div>
-                        </div>
-
-                        <div class="r-row"><strong>Est. Total Loan Amount</strong><span id="pur-res-loan"></span></div>
-                        <div class="r-row"><strong>Scenario LTV</strong><span id="pur-res-ltv"></span></div>
-                        <div class="r-row" style="margin-top: 15px;"><strong>Principal & Interest</strong><span id="pur-res-pi"></span></div>
-                        <div class="r-row" id="row-mi" style="display:none;"><strong style="color:var(--accent-red);">Est. Monthly MI <span class="r-sub" id="pur-res-mi-note"></span></strong><span id="pur-res-mi" style="color:var(--accent-red);"></span></div>
-                        <div class="r-row"><strong>Taxes & Ins (Est. Proxy) <span class="r-sub">Calculated at 1.5% of price annually</span></strong><span id="pur-res-tax"></span></div>
-                        <div class="r-total"><span>Total Est. Monthly Payment</span><span id="pur-res-total-pmt"></span></div>
-
-                        <div id="pur-cashflow-box" class="cash-flow-box" style="display:none;">
-                            <h4>Rental Cash Flow Analysis</h4>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9rem;"><span>Est. Rental Income:</span> <strong id="pur-cf-rent" style="color:var(--success-green);"></strong></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.9rem; border-bottom:1px solid #ccc; padding-bottom:5px;"><span>Minus Total Mortgage:</span> <strong id="pur-cf-mtg" style="color:var(--accent-red);"></strong></div>
-                            <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:700;"><span>Net Cash Flow:</span> <span id="pur-cf-net"></span></div>
-                            <div id="pur-cf-dscr-note" style="margin-top:10px; font-size:0.8rem; color:#555; text-align:left; border-top:1px dashed #ccc; padding-top:10px; display:none;"></div>
-                        </div>
-
-                        <div class="r-row" style="margin-top:20px; border-top: 2px dashed #ddd; padding-top: 20px;">
-                            <strong>Required Down Payment</strong><span id="pur-res-dp"></span>
-                        </div>
-                        <div class="r-row">
-                            <strong>Est. Closing Costs & Prepaids <span class="r-sub">Proxy: 2.5% of Loan + $1,500</span></strong><span id="pur-res-cc"></span>
-                        </div>
-                        <div class="r-cash">
-                            <strong>Total Est. Cash to Close</strong>
-                            <span id="pur-res-cash"></span>
+                    <div id="pur-calc-form" style="display:none;">
+                        <div class="form-row">
+                            <div class="form-group"><label>Purchase Price ($)</label><input type="number" id="pur-price" placeholder="e.g. 450000"></div>
+                            <div class="form-group"><label>Down Payment ($)</label><input type="number" id="pur-dp" placeholder="e.g. 20000"></div>
                         </div>
                         
+                        <div class="form-row" id="rehab-group" style="display:none;">
+                            <div class="form-group">
+                                <label>Est. Rehab Budget ($) <span class="tooltip">ⓘ<span class="tooltiptext">An additional contingency reserve will be added to your final loan amount per guidelines.</span></span></label>
+                                <input type="number" id="pur-rehab" placeholder="e.g. 25000">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Units</label>
+                                <select id="pur-units" onchange="updateRentFields()">
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Est. Interest Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label>
+                                <input type="number" id="pur-rate" value="6.5" step="0.125">
+                            </div>
+                            <div class="form-group">
+                                <label>Desired Term</label>
+                                <select id="pur-term">
+                                    <option value="360">30 Year Fixed</option>
+                                    <option value="300">25 Year Fixed</option>
+                                    <option value="240">20 Year Fixed</option>
+                                    <option value="180">15 Year Fixed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="multi-unit-rents" style="display:none; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; margin-bottom: 15px;"></div>
+                        
+                        <input type="hidden" id="pur-active-prog">
+                        <input type="hidden" id="pur-active-occ">
+                        <button onclick="runPurMath()" class="btn-submit" style="width: 100%; margin-top: 10px;">Calculate Scenario</button>
+                    </div>
+
+                    <div id="refi-calc-form" style="display:none;">
+                        <div class="form-row" id="he-type-group" style="display:none; margin-bottom: 20px;">
+                            <div class="form-group" style="flex:2;">
+                                <label>Select 2nd Mortgage Type</label>
+                                <select id="he-type" style="border: 2px solid var(--mortgage-blue);">
+                                    <option value="heloc">HELOC (Revolving Line, Interest-Only)</option>
+                                    <option value="heloan">HELOAN (Fixed Lump Sum, Amortized)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group"><label>Est. Home Value ($)</label><input type="number" id="refi-value" placeholder="e.g. 500000"></div>
+                            <div class="form-group"><label>Current 1st Mtg Balance ($)</label><input type="number" id="refi-bal" placeholder="e.g. 300000"></div>
+                        </div>
+                        
+                        <div class="form-row" id="refi-cash-group" style="display:none;">
+                            <div class="form-group"><label>Desired Cash / Credit Limit ($)</label><input type="number" id="refi-cash" placeholder="e.g. 40000"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group"><label>Est. Target Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label><input type="number" id="refi-rate" value="6.5" step="0.125"></div>
+                            <div class="form-group" id="refi-term-group">
+                                <label>Desired Term</label>
+                                <select id="refi-term">
+                                    <option value="360">30 Year</option>
+                                    <option value="300">25 Year</option>
+                                    <option value="240">20 Year</option>
+                                    <option value="180">15 Year</option>
+                                    <option value="120">10 Year</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="refi-active-goal">
+                        <button onclick="runRefiMath()" class="btn-submit" style="width: 100%; margin-top: 10px;">Analyze Equity & Payment</button>
+                    </div>
+
+                    <div id="unified-result-box" class="result-box">
+                        <div class="r-header">Estimated Results</div>
+                        <div id="unified-warning" class="r-warning"></div>
+                        <div id="unified-strategy" class="r-strategy"></div>
+                        <div id="unified-error" class="r-error" style="display:none;"></div>
+                        
+                        <div id="pur-success" style="display:none;">
+                            <div id="pur-fha100-view" style="display:none; background:#f4f8fb; border:1px solid var(--mortgage-blue); padding:15px; border-radius:8px; margin-bottom:20px;">
+                                <h4 style="margin:0 0 10px 0; color:var(--mortgage-blue);">FHA 100% Lien Structure</h4>
+                                <div class="r-row"><strong>1st Lien Amount (96.5%)</strong><span id="fha100-1st"></span></div>
+                                <div class="r-row"><strong>2nd Lien Amount (3.5%)</strong><span id="fha100-2nd"></span></div>
+                                <div class="r-row" style="margin-top:10px; font-size:0.8rem; color:#666;"><em>*2nd Lien estimated at 2% higher interest rate on a 10-year term.</em></div>
+                            </div>
+                            <div class="r-row"><strong>Est. Total Loan Amount</strong><span id="pur-res-loan"></span></div>
+                            <div class="r-row"><strong>Scenario LTV</strong><span id="pur-res-ltv"></span></div>
+                            <div class="r-row" style="margin-top: 15px;"><strong>Principal & Interest</strong><span id="pur-res-pi"></span></div>
+                            <div class="r-row" id="row-mi" style="display:none;"><strong style="color:var(--accent-red);">Est. Monthly MI <span class="r-sub" id="pur-res-mi-note"></span></strong><span id="pur-res-mi" style="color:var(--accent-red);"></span></div>
+                            <div class="r-row"><strong>Taxes & Ins (Est. Proxy) <span class="r-sub">Calculated at 1.5% of price annually</span></strong><span id="pur-res-tax"></span></div>
+                            <div class="r-total"><span>Total Est. Monthly Payment</span><span id="pur-res-total-pmt"></span></div>
+
+                            <div id="pur-cashflow-box" class="cash-flow-box" style="display:none;">
+                                <h4>Rental Cash Flow Analysis</h4>
+                                <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9rem;"><span>Est. Rental Income:</span> <strong id="pur-cf-rent" style="color:var(--success-green);"></strong></div>
+                                <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.9rem; border-bottom:1px solid #ccc; padding-bottom:5px;"><span>Minus Total Mortgage:</span> <strong id="pur-cf-mtg" style="color:var(--accent-red);"></strong></div>
+                                <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:700;"><span>Net Cash Flow:</span> <span id="pur-cf-net"></span></div>
+                                <div id="pur-cf-dscr-note" style="margin-top:10px; font-size:0.8rem; color:#555; text-align:left; border-top:1px dashed #ccc; padding-top:10px; display:none;"></div>
+                            </div>
+                            <div class="r-row" style="margin-top:20px; border-top: 2px dashed #ddd; padding-top: 20px;">
+                                <strong>Required Down Payment</strong><span id="pur-res-dp"></span>
+                            </div>
+                            <div class="r-row">
+                                <strong>Est. Closing Costs & Prepaids <span class="r-sub">Proxy: 2.5% of Loan + $1,500</span></strong><span id="pur-res-cc"></span>
+                            </div>
+                            <div class="r-cash">
+                                <strong>Total Est. Cash to Close</strong>
+                                <span id="pur-res-cash"></span>
+                            </div>
+                        </div>
+
+                        <div id="refi-success" style="display:none;">
+                            <div id="refi-1st-view">
+                                <div class="r-row"><strong>New Total Loan Amount <span class="r-sub">Rolls in CC Proxy (1.5% + $1,500)</span></strong><span id="r1-loan"></span></div>
+                                <div class="r-row"><strong>Scenario LTV</strong><span id="r1-ltv"></span></div>
+                                <div class="r-row" style="margin-top: 15px;"><strong>Est. Principal & Interest</strong><span id="r1-pi"></span></div>
+                                <div class="r-total"><span>Total Est. New P&I</span><span id="r1-total"></span></div>
+                            </div>
+                            <div id="refi-2nd-view" style="display:none;">
+                                <div class="r-row"><strong>Approved 2nd Amount</strong><span id="r2-loan"></span></div>
+                                <div class="r-row"><strong>Combined LTV (1st + 2nd)</strong><span id="r2-cltv"></span></div>
+                                <div class="r-row" style="margin-top: 15px;"><strong>Payment Type</strong><span id="r2-type"></span></div>
+                                <div class="r-total"><span>Est. 2nd Lien Payment</span><span id="r2-pmt"></span></div>
+                            </div>
+                        </div>
+
                         <div class="disclaimer-box">
-                            <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. The Interest Rate you input does not reflect your Annual Percentage Rate (APR). Your actual APR will be higher once official fees and mortgage insurance are included.
+                            <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. The Interest Rate you input does not reflect your Annual Percentage Rate (APR).
                         </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
-                    <h3 style="color: var(--mortgage-blue); font-size: 1.2rem;">Ready for an official quote?</h3>
-                    <div class="btn-group">
-                        <button onclick="showWizard('quote-form-section')" class="btn-outline-small">Request Official Quote</button>
-                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -569,9 +795,13 @@
                 <h2 style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;">Fix & Flip Financing</h2>
                 
                 <div class="strategy-brief">
-                    <h3>Fix & Flip</h3>
-                    <p>Fix & Flip loans are short-term (bridge) debt. Instead of qualifying based on your DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property.</p>
-                    <p><strong>On Your Radar:</strong> Lenders cap the loan using three calculations. Your maximum loan is strictly the lowest of the three caps.</p>
+                    <h4>Perfect For:</h4>
+                    <p>Real estate investors seeking short-term (bridge) debt to acquire and rehab a property.</p>
+                    <h4>On Your Radar:</h4>
+                    <ul>
+                        <li>Instead of qualifying based on DTI, lenders look at the <strong>After Repair Value (ARV)</strong> of the property.</li>
+                        <li>Lenders cap the loan using three calculations. Your maximum loan is strictly the lowest of the three caps.</li>
+                    </ul>
                 </div>
                 
                 <div class="form-row">
@@ -611,117 +841,6 @@
                     
                     <div class="disclaimer-box">
                         <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Does not include required Builder's Risk/Vacant property insurance. Rehab funds are held in escrow and reimbursed via draws.
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
-                    <div class="btn-group">
-                        <button onclick="showWizard('quote-form-section')" class="btn-outline-small">Request Official Quote</button>
-                        <a href="https://2453979.my1003app.com/" target="_blank" class="btn-submit">Apply Now &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-goal" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <div class="wizard-header">
-                    <h2>Refinance Strategy</h2>
-                    <p>What are you trying to accomplish?</p>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openRefiCalc('rt')">
-                        <h3>Rate & Term</h3>
-                        <p>Lower your interest rate or shorten your loan term to save money.</p>
-                    </div>
-                    <div class="path-card" onclick="openRefiCalc('co')">
-                        <h3>Cash-Out / Consolidate</h3>
-                        <p>Unlock equity to fund projects or consolidate high-interest debt.</p>
-                    </div>
-                    <div class="path-card" onclick="openRefiCalc('he')">
-                        <h3>Home Equity (Line/Loan)</h3>
-                        <p>Keep your low 1st mortgage and take out a secondary lien.</p>
-                    </div>
-                    <div class="path-card" onclick="openRefiCalc('equity-adv')">
-                        <h3>Standalone 2nd Lien</h3>
-                        <p>Keep the low rate on your 1st mortgage and tap your equity with a fixed-rate 2nd mortgage. Alt-doc income allowed!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-calc" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-refi-goal')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Goals</button>
-                
-                <h2 id="refi-calc-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 10px 0; font-size: 1.8rem;"></h2>
-                
-                <div id="refi-calc-edu" class="strategy-brief"></div>
-
-                <div class="form-row" id="he-type-group" style="display:none; margin-bottom: 20px;">
-                    <div class="form-group" style="flex:2;">
-                        <label>Select 2nd Mortgage Type</label>
-                        <select id="he-type" style="border: 2px solid var(--mortgage-blue);">
-                            <option value="heloc">HELOC (Revolving Line, Interest-Only)</option>
-                            <option value="heloan">HELOAN (Fixed Lump Sum, Amortized)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group"><label>Est. Home Value ($)</label><input type="number" id="refi-value" placeholder="e.g. 500000"></div>
-                    <div class="form-group"><label>Current 1st Mtg Balance ($)</label><input type="number" id="refi-bal" placeholder="e.g. 300000"></div>
-                </div>
-                
-                <div class="form-row" id="refi-cash-group" style="display:none;">
-                    <div class="form-group"><label>Desired Cash / Credit Limit ($)</label><input type="number" id="refi-cash" placeholder="e.g. 40000"></div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group"><label>Est. Target Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label><input type="number" id="refi-rate" value="6.5" step="0.125"></div>
-                    <div class="form-group" id="refi-term-group">
-                        <label>Desired Term</label>
-                        <select id="refi-term">
-                            <option value="360">30 Year</option>
-                            <option value="300">25 Year</option>
-                            <option value="240">20 Year</option>
-                            <option value="180">15 Year</option>
-                            <option value="120">10 Year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <input type="hidden" id="refi-active-goal">
-
-                <button onclick="runRefiMath()" class="btn-submit" style="width: 100%; margin-top: 10px;">Analyze Equity & Payment</button>
-
-                <div id="refi-result-box" class="result-box">
-                    <div class="r-header" id="refi-res-title">Results</div>
-                    <div id="refi-warning" class="r-warning"></div>
-                    <div id="refi-error" class="r-error" style="display:none;"></div>
-                    
-                    <div id="refi-success" style="display:none;">
-                        <div id="refi-1st-view">
-                            <div class="r-row"><strong>New Total Loan Amount <span class="r-sub">Rolls in CC Proxy (1.5% + $1,500)</span></strong><span id="r1-loan"></span></div>
-                            <div class="r-row"><strong>Scenario LTV</strong><span id="r1-ltv"></span></div>
-                            <div class="r-row" style="margin-top: 15px;"><strong>Est. Principal & Interest</strong><span id="r1-pi"></span></div>
-                            <div class="r-total"><span>Total Est. New P&I</span><span id="r1-total"></span></div>
-                            
-                            <div class="disclaimer-box">
-                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. The information, calculations, and rate estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Assumes closing costs are rolled into the loan. The Interest Rate you input does not reflect your Annual Percentage Rate (APR).
-                            </div>
-                        </div>
-
-                        <div id="refi-2nd-view" style="display:none;">
-                            <div class="r-row"><strong>Approved 2nd Amount</strong><span id="r2-loan"></span></div>
-                            <div class="r-row"><strong>Combined LTV (1st + 2nd) <span class="r-sub">Max allowed is typically 80-85%</span></strong><span id="r2-cltv"></span></div>
-                            <div class="r-row" style="margin-top: 15px;"><strong>Payment Type</strong><span id="r2-type"></span></div>
-                            <div class="r-total"><span>Est. 2nd Lien Payment</span><span id="r2-pmt"></span></div>
-                            
-                            <div class="disclaimer-box">
-                                <strong>LEGAL DISCLAIMER:</strong> This calculator is provided strictly for educational and illustrative purposes. HELOC payments are estimated based on fully drawing the line. HELOANs are fixed. Closing costs for 2nds are typically paid out of pocket. The Interest Rate you input does not reflect your Annual Percentage Rate (APR).
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -871,8 +990,10 @@
             const sections = [
                 'wizard-pur-occupancy', 'wizard-pur-condition', 'wizard-pur-primary-categories',
                 'wizard-pur-conv-options', 'wizard-pur-gov-options', 'wizard-pur-nonqm-options',
-                'wizard-pur-rehab', 'wizard-pur-second', 'wizard-pur-invest', 'wizard-pur-calc',
-                'wizard-fix-flip', 'wizard-refi-goal', 'wizard-refi-calc', 'quote-form-section'
+                'wizard-pur-rehab', 'wizard-pur-second', 'wizard-pur-invest', 
+                'wizard-refi-goal', 'wizard-refi-rt-current', 'wizard-refi-rt-fha', 'wizard-refi-rt-va',
+                'wizard-refi-rt-conv', 'wizard-refi-co-current', 'wizard-refi-he',
+                'wizard-fix-flip', 'wizard-product-hub', 'quote-form-section'
             ];
             sections.forEach(s => {
                 const el = document.getElementById(s);
@@ -897,6 +1018,17 @@
         function toggleFFExp(id) {
             const el = document.getElementById(id);
             el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+        }
+
+        function toggleCalculator() {
+            const el = document.getElementById('interactive-calc-area');
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+            if(el.style.display === 'block') {
+                setTimeout(() => {
+                    const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                }, 50);
+            }
         }
 
         const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
@@ -937,161 +1069,261 @@
             }
         }
 
-        // --- EDUCATION ENGINE ---
+        // --- EDUCATION ENGINE (PURCHASE) ---
         const purEduText = {
             'conv': { 
-                title: "Conventional Loan", 
-                concept: "The standard in mortgage financing. If you have strong credit, this is often the cheapest route.",
+                title: "Standard Conventional", 
                 fit: "Buyers with good-to-excellent credit. First-time homebuyers can put as little as 3% down on a 1-unit property, or 5% down on a multi-unit property.",
                 radar: ["Requires Private Mortgage Insurance (PMI) if you put less than 20% down.", "PMI automatically drops off once you reach 20% equity."]
             },
             'homeready': { 
                 title: "Fannie Mae HomeReady", 
-                concept: "A conventional loan designed for creditworthy, low-to-moderate-income buyers, allowing for just a 3% down payment.",
                 fit: "Buyers earning 80% or less of their area's median income looking for cheaper Mortgage Insurance than FHA offers.",
                 radar: ["Income limits apply based on the property's location.", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
             },
             'homepossible': { 
                 title: "Freddie Mac Home Possible", 
-                concept: "A conventional loan option through Freddie Mac allowing for just a 3% down payment.",
                 fit: "Low-to-moderate-income buyers looking for reduced mortgage insurance.",
                 radar: ["Income limits apply based on property location.", "Boarder income can be used to qualify."]
             },
             'fha': { 
-                title: "FHA", 
-                concept: "A government-backed loan requiring just 3.5% down that is incredibly forgiving on credit history and debt ratios.",
+                title: "Standard FHA", 
                 fit: "Buyers with less-than-perfect credit or higher debt loads. You can use an FHA loan to buy a 2, 3, or 4-unit property with only 3.5% down, as long as you live in one of the units!",
                 radar: ["FHA charges an Upfront Mortgage Insurance Premium (1.75% of the loan amount) which is rolled into your loan.", "FHA monthly mortgage insurance typically remains for the life of the loan."]
             },
             'fha-100': { 
                 title: "FHA 100% CLTV Combo", 
-                concept: "This program removes the biggest barrier to homeownership: the down payment. It pairs a standard 96.5% FHA first mortgage with a 3.5% second mortgage to completely cover your required down payment.",
                 fit: "Cash-strapped buyers wanting to own now rather than wait. There are no income caps, and you do not need to be a first-time homebuyer to qualify.",
                 radar: ["The 3.5% second mortgage is a 10-year fixed, fully amortized loan (meaning you will have a monthly payment on it).", "The interest rate on the second mortgage is set 2.0% higher than your first mortgage.", "If you sell or refinance the first mortgage later, the second mortgage must be paid off simultaneously."]
             },
             'fha-203k': { 
                 title: "FHA 203(k) Renovation", 
-                concept: "Found a fixer-upper? Don't let it slip away. This program allows you to finance both the purchase of the home and the cost of renovations into a single loan with just 3.5% down.",
                 fit: "Visionaries willing to build sweat equity by updating a home (while hiring the pros to do the actual work!).",
                 radar: ["You must be doing at least $5,000 in eligible repairs.", "A 10-20% 'contingency fund' will be added to your loan to cover unexpected cost overruns during construction.", "All work must be completed by licensed contractors."]
             },
+            'va-reno': { 
+                title: "VA Renovation", 
+                fit: "Eligible military and veterans wanting to roll the cost of home renovations directly into a zero-down purchase mortgage.",
+                radar: ["Maximum renovation amount is $50,000 including fees and contingency.", "Work must be non-structural and completed within 120 days.", "Self-help (doing the work yourself) is not allowed."]
+            },
             'homestyle': { 
-                title: "Fannie Mae HomeStyle Renovation", 
-                concept: "Finance both the purchase and renovations into a single conventional loan.",
+                title: "Fannie Mae HomeStyle", 
                 fit: "Buyers who want to remodel a home and have good credit.",
                 radar: ["Minimum 3% down for first-time buyers.", "Renovations can be up to 75% of the 'as-completed' value."]
             },
+            'usda-reno': {
+                title: "USDA Renovation",
+                fit: "Buyers looking for a zero-down option to rehab a property outside of major city limits.",
+                radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify."]
+            },
             'va': { 
                 title: "VA Loan", 
-                concept: "An elite benefit for eligible military and veterans. Allows for 0% down payment and charges absolutely no monthly Mortgage Insurance.",
                 fit: "Active duty military, veterans, and eligible surviving spouses.",
                 radar: ["You can use your VA loan to purchase up to a 4-unit property with $0 down, as long as you live in one of the units.", "The VA charges a one-time Funding Fee (which can be rolled into the loan), unless you receive VA disability compensation."]
             },
             'usda': { 
                 title: "USDA (Rural Development)", 
-                concept: "A 0% down program for low-to-moderate income buyers purchasing in designated rural or suburban areas.",
                 fit: "Buyers looking for property outside of major city limits who want to preserve their savings.",
                 radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify.", "Only available for 1-unit Single Family properties."]
             },
             'jumbo': { 
-                title: "Jumbo AUS 1 Financing", 
-                concept: "When your dream home exceeds standard county loan limits, this program steps in, offering up to $3,000,000 in premium financing.",
+                title: "Jumbo Financing", 
                 fit: "High-net-worth buyers looking at luxury, high-value, or expansive properties.",
                 radar: ["Requires a minimum 20% down payment for a primary residence.", "You will generally need to show heavier cash reserves (up to 6 months of mortgage payments in the bank after closing).", "Loan amounts over $2,000,000 require two full, independent appraisals."]
             },
             'bank-statement': { 
                 title: "Bank Statement Income", 
-                concept: "Qualify based on the actual cash flowing into your personal or business bank accounts over 12 to 24 months.",
                 fit: "Self-employed buyers whose tax returns don't reflect their true purchasing power.",
                 radar: ["You must be self-employed for at least two years.", "Typically requires a 10-20% down payment."]
             },
             'pnl': { 
                 title: "1-Year P&L Statement", 
-                concept: "Use a 1-Year Profit & Loss statement prepared by a tax professional to prove your business income.",
                 fit: "Business owners with healthy profit margins who want to avoid providing full tax returns.",
                 radar: ["P&L must be prepared by an independent CPA or tax preparer.", "Requires a minimum 20% down payment."]
             },
             '1099': { 
                 title: "1099 Income", 
-                concept: "Qualify using your 1099 earnings instead of a W-2 or full tax return.",
                 fit: "Freelancers, contractors, and gig-workers.",
                 radar: ["You must have a 2-year history with the same 1099 provider.", "Typically requires a 20% down payment."]
             },
             'itin': { 
                 title: "ITIN / Foreign National", 
-                concept: "Options for borrowers without a standard SSN to purchase a home.",
                 fit: "Non-US citizens living and working in the United States.",
                 radar: ["You will need a valid ITIN and an unexpired government photo ID.", "Typically requires 20% down and 3-6 months of cash reserves."]
             },
             'conv-sec': { 
                 title: "Conventional Second Home", 
-                concept: "Standard conventional financing for a vacation or part-time home.",
                 fit: "Buyers looking for a getaway property they intend to occupy for a portion of the year.",
                 radar: ["Requires a minimum 10% down payment.", "The property must be located a reasonable distance from your primary residence.", "Multi-unit properties are not allowed as second homes."]
             },
             'nonqm-sec': { 
                 title: "Second Home (Alt-Doc)", 
-                concept: "Skip the tax returns! Qualify for your vacation home using 12 months of bank statements, 1099s, or a P&L.",
                 fit: "Self-employed buyers wanting a getaway property.",
                 radar: ["Requires a minimum 20% down payment.", "You must have been self-employed—and your business active—for at least two full years."]
             },
             'dscr': { 
                 title: "DSCR (Debt Service) 1-4 Unit", 
-                concept: "For Non-Owner Occupied Properties. No personal income required! Qualify based entirely on the property's estimated monthly rental income compared to the mortgage payment.",
                 fit: "Real estate investors who want to scale their portfolio without providing personal tax returns or pay stubs.",
                 radar: ["We offer tiers that even allow the property to cash flow negatively (down to a 0.75 ratio) with 25% down.", "Requires a minimum 20% down payment if the rent covers the mortgage 1-to-1.", "You must show you have cash reserves in the bank after closing."]
             },
             'dscr-5-9': { 
                 title: "Multi-Family (5-9 Units) DSCR", 
-                concept: "Commercial-style financing for larger residential buildings. We qualify the loan based entirely on the property's rental cash flow, meaning no personal income docs are required!",
                 fit: "Experienced real estate investors looking to scale their portfolios into larger multi-family buildings.",
                 radar: ["You cannot be a first-time investor.", "The property's rent must be at least 15% higher than the mortgage payment (a 1.15 DSCR).", "You'll need 6 months of payments in reserve, and no more than 2 units can be vacant at the time of purchase."]
             },
             'conv-inv': { 
                 title: "Conventional Investment", 
-                concept: "Standard full-documentation loan for non-owner occupied properties.",
                 fit: "Investors with strong personal income profiles (W-2 or tax returns) who want the most competitive interest rates.",
                 radar: ["Down payments typically range from 15% to 25% depending on how many units the property has.", "Personal debt-to-income (DTI) ratios apply."]
             }
         };
 
+        // --- EDUCATION ENGINE (REFINANCE) ---
         const refiEduText = {
-            'rt': { 
-                title: "Rate & Term Refinance", 
-                concept: "Designed to drop your interest rate or change your loan term (like moving from a 30-year to a 15-year).",
-                fit: "Homeowners looking to lower their monthly payment or pay off their mortgage faster.",
-                radar: ["Closing costs can be rolled into the new loan so you bring no cash to the table.", "You must have a 'Net Tangible Benefit' (meaning the refinance must clearly save you money or improve your loan terms)."]
+            'rt-conv': { 
+                title: "Standard Conventional Refinance", 
+                fit: "Homeowners with strong credit looking to lower their rate or change their loan term.",
+                radar: ["Closing costs can be rolled into the new loan so you bring no cash to the table."]
             },
-            'co': { 
-                title: "Cash-Out & Consolidation", 
-                concept: "Tap into the equity of your home to pull out a lump sum of cash.",
+            'refinow': { 
+                title: "Fannie Mae RefiNow", 
+                fit: "Homeowners with an existing Fannie Mae loan who earn at or below 100% of the Area Median Income (AMI).",
+                radar: ["Provides a $500 credit for an appraisal if one is required.", "Must result in a reduction in your monthly principal, interest, and MI payment.", "Interest rate must be reduced by at least 0.50%."]
+            },
+            'refipossible': { 
+                title: "Freddie Mac Refi Possible", 
+                fit: "Homeowners with an existing Freddie Mac loan who earn at or below 100% of the Area Median Income (AMI).",
+                radar: ["Provides a $500 credit for an appraisal if one is required.", "Must result in a reduction in your monthly principal, interest, and MI payment.", "Interest rate must be reduced by at least 0.50%."]
+            },
+            'rt-fha': { 
+                title: "Standard FHA Rate/Term", 
+                fit: "Homeowners with an existing FHA loan looking to consolidate a 2nd mortgage or utilizing an appraisal to remove FHA MI (requires converting to Conventional).",
+                radar: ["Full income documentation and an appraisal are required."]
+            },
+            'fha-streamline': { 
+                title: "FHA Streamline", 
+                fit: "Homeowners with an existing FHA loan who want a lower rate with minimal paperwork.",
+                radar: ["No appraisal required.", "No income or employment verification required.", "Cannot roll closing costs into the loan balance; they must be paid out of pocket or covered by the lender via premium pricing."]
+            },
+            'rt-va': { 
+                title: "Standard VA Rate/Term", 
+                fit: "Veterans looking to refinance a non-VA loan into a VA loan, or veterans looking to change the term of their loan.",
+                radar: ["Requires a full appraisal and income documentation.", "Must pass a Net Tangible Benefit test."]
+            },
+            'va-irrrl': { 
+                title: "VA IRRRL (Streamline)", 
+                fit: "Veterans with an existing VA loan looking to lower their rate with minimal paperwork.",
+                radar: ["No appraisal required.", "No income or employment verification required.", "Closing costs can be rolled into the new loan."]
+            },
+            'usda-streamline': { 
+                title: "USDA Streamlined-Assist", 
+                fit: "Homeowners with an existing USDA loan who want a lower rate with minimal paperwork.",
+                radar: ["No appraisal required.", "Strict household income limits still apply."]
+            },
+            'rt-nonqm': { 
+                title: "Non-QM (Alt-Doc) Rate/Term", 
+                fit: "Self-employed homeowners wanting to refinance using Bank Statements, a P&L, or 1099s.",
+                radar: ["Requires 12 to 24 months of alternative income documentation.", "Must have a minimum of 20% equity in the home."]
+            },
+            'co-conv': { 
+                title: "Conventional Cash-Out", 
                 fit: "Homeowners wanting to pay off high-interest credit cards, fund major renovations, or buy an investment property.",
-                radar: ["You can generally only pull cash out up to 80% of your home's appraised value.", "You must have owned the property for at least 6 to 12 months to be eligible for cash-out."]
+                radar: ["You can generally only pull cash out up to 80% of your home's appraised value.", "You must have owned the property for at least 6 months."]
+            },
+            'co-fha': { 
+                title: "FHA Cash-Out", 
+                fit: "Homeowners wanting to tap equity who may have less-than-perfect credit.",
+                radar: ["You can pull cash out up to 80% of your home's appraised value.", "Requires payment of FHA Upfront Mortgage Insurance."]
+            },
+            'co-va': { 
+                title: "VA Cash-Out", 
+                fit: "Veterans wanting to tap equity. VA allows for the highest cash-out limits in the industry.",
+                radar: ["You can pull cash out up to 90% or even 100% of your home's value depending on the lender.", "Must pass a Net Tangible Benefit test."]
+            },
+            'co-nonqm': { 
+                title: "Non-QM Cash-Out", 
+                fit: "Self-employed homeowners wanting to tap equity using Bank Statements or a P&L.",
+                radar: ["Maximum cash-out LTV limits are generally lower (typically 70-75%) than standard full-doc loans."]
+            },
+            'co-jumbo': { 
+                title: "Jumbo Cash-Out", 
+                fit: "Homeowners with high-value properties wanting to extract significant equity.",
+                radar: ["Strict cash-out limits apply (e.g. maximum $500k cash in hand).", "Requires heavy reserves (up to 6 months of payments left in the bank)."]
             },
             'he': { 
                 title: "Home Equity (HELOC / HELOAN)", 
-                concept: "Keep your low 1st mortgage exactly as it is and take out a secondary lien to access your equity.",
                 fit: "Homeowners with a sub-4% interest rate on their primary mortgage who need cash.",
                 radar: ["You can choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN).", "Combined Loan-to-Value (CLTV) limits apply, usually capping your total debt at 85% of your home's value."]
             },
             'equity-adv': { 
                 title: "Standalone 2nd Lien (Alt-Doc)", 
-                concept: "A fixed-rate, closed-end second mortgage that lets you tap into your home's equity without touching your primary mortgage. And you can use alternative income docs to qualify!",
                 fit: "Self-employed homeowners who want cash out but refuse to lose their 3% interest rate on their 1st mortgage.",
                 radar: ["Unlike traditional bank HELOCs, you can use Bank Statements or a P&L to qualify.", "The maximum combined Loan-to-Value (CLTV) for your 1st and 2nd mortgage together is capped at 80%."]
             }
         };
 
-        function openPurCalc(progId, occType, backTarget) {
-            document.getElementById('pur-active-prog').value = progId;
-            document.getElementById('pur-active-occ').value = occType;
+        // --- PRODUCT HUB CONTROLLER ---
+        function openProductHub(progId, occType, backTarget, funnelType) {
+            
+            let data;
+            if(funnelType === 'purchase') {
+                document.getElementById('pur-active-prog').value = progId;
+                document.getElementById('pur-active-occ').value = occType;
+                data = purEduText[progId];
+                
+                // Hide Refi Calc, Show Pur Calc
+                document.getElementById('pur-calc-form').style.display = 'block';
+                document.getElementById('refi-calc-form').style.display = 'none';
+                
+                // Show/Hide specific Purchase form fields
+                if(progId === 'fha-203k' || progId === 'homestyle' || progId === 'va-reno' || progId === 'usda-reno') {
+                    document.getElementById('rehab-group').style.display = 'flex';
+                } else {
+                    document.getElementById('rehab-group').style.display = 'none';
+                }
+
+                // Dynamically construct Unit Options
+                const unitSelect = document.getElementById('pur-units');
+                let optionsHtml = '';
+                if (progId === 'dscr-5-9') {
+                    optionsHtml = `
+                        <option value="5">5 Units</option>
+                        <option value="6">6 Units</option>
+                        <option value="7">7 Units</option>
+                        <option value="8">8 Units</option>
+                        <option value="9">9 Units</option>
+                    `;
+                } else if (['conv', 'fha', 'va', 'conv-inv', 'dscr', 'fha-203k', 'homestyle'].includes(progId)) {
+                    optionsHtml = `
+                        <option value="1">1 Unit (Single Family / Condo)</option>
+                        <option value="2">2 Units</option>
+                        <option value="3">3 Units</option>
+                        <option value="4">4 Units</option>
+                    `;
+                } else {
+                    optionsHtml = `<option value="1">1 Unit (Single Family / Condo)</option>`;
+                }
+                unitSelect.innerHTML = optionsHtml;
+                unitSelect.value = (progId === 'dscr-5-9') ? "5" : "1";
+                updateRentFields();
+                
+            } else {
+                document.getElementById('refi-active-goal').value = progId;
+                data = refiEduText[progId];
+                
+                // Hide Pur Calc, Show Refi Calc
+                document.getElementById('pur-calc-form').style.display = 'none';
+                document.getElementById('refi-calc-form').style.display = 'block';
+                
+                // Show/Hide specific Refi form fields
+                document.getElementById('refi-cash-group').style.display = (progId.includes('co-') || progId === 'he' || progId === 'equity-adv') ? 'flex' : 'none';
+                document.getElementById('he-type-group').style.display = (progId === 'he') ? 'flex' : 'none';
+                document.getElementById('refi-term-group').style.display = (progId === 'he') ? 'none' : 'flex';
+            }
             
             // Build Strategy Brief
-            const data = purEduText[progId];
-            document.getElementById('pur-calc-title').innerText = data.title;
-            
+            document.getElementById('hub-title').innerText = data.title;
             let eduHtml = `
-                <p>${data.concept}</p>
                 <h4>Perfect For:</h4>
                 <p>${data.fit}</p>
                 <h4>On Your Radar:</h4>
@@ -1099,61 +1331,26 @@
                     ${data.radar.map(item => `<li>${item}</li>`).join('')}
                 </ul>
             `;
-            document.getElementById('pur-calc-edu').innerHTML = eduHtml;
-            
-            // Show/Hide specific form fields
-            if(progId === 'fha-203k' || progId === 'homestyle') {
-                document.getElementById('rehab-group').style.display = 'flex';
-            } else {
-                document.getElementById('rehab-group').style.display = 'none';
-            }
+            document.getElementById('hub-edu').innerHTML = eduHtml;
 
-            // Dynamically construct Unit Options
-            const unitSelect = document.getElementById('pur-units');
-            let optionsHtml = '';
-            
-            if (progId === 'dscr-5-9') {
-                optionsHtml = `
-                    <option value="5">5 Units</option>
-                    <option value="6">6 Units</option>
-                    <option value="7">7 Units</option>
-                    <option value="8">8 Units</option>
-                    <option value="9">9 Units</option>
-                `;
-            } else if (['conv', 'fha', 'va', 'conv-inv', 'dscr', 'fha-203k', 'homestyle'].includes(progId)) {
-                optionsHtml = `
-                    <option value="1">1 Unit (Single Family / Condo)</option>
-                    <option value="2">2 Units</option>
-                    <option value="3">3 Units</option>
-                    <option value="4">4 Units</option>
-                `;
-            } else {
-                // Strict 1-unit limitation for USDA, Jumbo, Alt-Doc etc.
-                optionsHtml = `
-                    <option value="1">1 Unit (Single Family / Condo)</option>
-                `;
-            }
-            unitSelect.innerHTML = optionsHtml;
-            unitSelect.value = (progId === 'dscr-5-9') ? "5" : "1";
-            
-            updateRentFields();
-
-            document.getElementById('pur-result-box').style.display = 'none';
+            // Reset UI states
+            document.getElementById('interactive-calc-area').style.display = 'none';
+            document.getElementById('unified-result-box').style.display = 'none';
             document.getElementById('pur-success').style.display = 'none';
-            document.getElementById('pur-error').style.display = 'none';
-            document.getElementById('pur-warning').style.display = 'none';
-            document.getElementById('pur-strategy').style.display = 'none';
-            document.getElementById('pur-cashflow-box').style.display = 'none';
+            document.getElementById('refi-success').style.display = 'none';
+            document.getElementById('unified-error').style.display = 'none';
+            document.getElementById('unified-warning').style.display = 'none';
+            document.getElementById('unified-strategy').style.display = 'none';
             document.getElementById('pur-fha100-view').style.display = 'none';
 
             // Change back button route dynamically
-            const backBtn = document.getElementById('pur-back-btn');
+            const backBtn = document.getElementById('hub-back-btn');
             backBtn.setAttribute('onclick', `showWizard('${backTarget}')`);
 
-            showWizard('wizard-pur-calc');
+            showWizard('wizard-product-hub');
         }
 
-        // --- MATH ENGINE ---
+        // --- MATH ENGINE (PURCHASE) ---
         function runPurMath() {
             const prog = document.getElementById('pur-active-prog').value;
             const occ = document.getElementById('pur-active-occ').value;
@@ -1170,12 +1367,12 @@
                 totalRent += parseFloat(input.value) || 0;
             });
 
-            const resBox = document.getElementById('pur-result-box');
-            const errBox = document.getElementById('pur-error');
+            const resBox = document.getElementById('unified-result-box');
+            const errBox = document.getElementById('unified-error');
             const succBox = document.getElementById('pur-success');
             const cfBox = document.getElementById('pur-cashflow-box');
-            const warnBox = document.getElementById('pur-warning');
-            const stratBox = document.getElementById('pur-strategy');
+            const warnBox = document.getElementById('unified-warning');
+            const stratBox = document.getElementById('unified-strategy');
             const fha100Box = document.getElementById('pur-fha100-view');
             
             if(price <= 0) return alert("Please enter a purchase price.");
@@ -1183,6 +1380,7 @@
             resBox.style.display = 'block';
             errBox.style.display = 'none';
             succBox.style.display = 'none';
+            document.getElementById('refi-success').style.display = 'none';
             cfBox.style.display = 'none';
             warnBox.style.display = 'none';
             stratBox.style.display = 'none';
@@ -1220,7 +1418,12 @@
             if(prog === 'dscr') { 
                 maxLtv = 80; dpReq = basePrice * 0.20; 
             }
-            if(prog === 'fha') { 
+            if(prog === 'fha' || prog === 'fha-203k') { 
+                if(prog === 'fha-203k' && rehab < 5000) {
+                    errBox.style.display = 'block';
+                    errBox.innerHTML = `FHA 203(k) requires a minimum of $5,000 in eligible repairs. Please adjust your rehab budget.`;
+                    return;
+                }
                 maxLtv = 96.5; 
                 dpReq = basePrice * 0.035; 
                 if(ltv <= maxLtv) {
@@ -1275,19 +1478,6 @@
                 maxLtv = 97; dpReq = basePrice * 0.03;
                 if(ltv > 80) { pmiAmt = (baseLoan * 0.0035)/12; pmiNote = "(Reduced MI rates apply)"; }
             }
-            if(prog === 'fha-203k') {
-                if(rehab < 5000) {
-                    errBox.style.display = 'block';
-                    errBox.innerHTML = `FHA 203(k) requires a minimum of $5,000 in eligible repairs. Please adjust your rehab budget.`;
-                    return;
-                }
-                maxLtv = 96.5; dpReq = basePrice * 0.035;
-                if(ltv <= maxLtv) {
-                    finalLoan = baseLoan + (baseLoan * 0.0175);
-                    pmiAmt = (baseLoan * 0.005) / 12;
-                    pmiNote = "(FHA Monthly MIP)";
-                }
-            }
             if(prog === 'jumbo') {
                 maxLtv = 80; dpReq = basePrice * 0.20;
                 if(baseLoan < 766550) { 
@@ -1317,7 +1507,7 @@
                     ltv = 75;
                 }
             }
-            if(prog === 'va') {
+            if(prog === 'va' || prog === 'va-reno') {
                 if(units > 4) {
                     errBox.style.display = 'block';
                     errBox.innerHTML = `VA loans are capped at 4 units.`;
@@ -1327,10 +1517,10 @@
                 dpReq = 0;
                 if(ltv <= maxLtv) finalLoan = baseLoan + (baseLoan * 0.0215); 
             }
-            if(prog === 'usda') {
+            if(prog === 'usda' || prog === 'usda-reno') {
                 if(units > 1) {
                     errBox.style.display = 'block';
-                    errBox.innerHTML = `USDA loans are only available for 1-unit Single Family properties.`;
+                    errBox.innerHTML = `USDA loans are only available for 1-unit properties.`;
                     return;
                 }
                 maxLtv = 100;
@@ -1397,7 +1587,7 @@
                 netEl.style.color = net >= 0 ? 'var(--success-green)' : 'var(--accent-red)';
 
                 const dscrNote = document.getElementById('pur-cf-dscr-note');
-                if(prog === 'dscr' || prog === 'dscr-5-9') {
+                if(prog.includes('dscr')) {
                     const dscrRatio = totalRent / total;
                     dscrNote.style.display = 'block';
                     
@@ -1414,69 +1604,7 @@
             succBox.style.display = 'block';
         }
 
-        // --- FIX & FLIP TOOL ---
-        function openFixFlip() { showWizard('wizard-fix-flip'); }
-
-        function runFixFlipMath() {
-            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
-            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
-            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
-
-            if (pp === 0 || rehab === 0 || arv === 0) return alert("Please enter all values.");
-
-            const calc1 = (pp + rehab) * 0.95;
-            const calc2 = (pp * 0.90) + rehab;
-            const calc3 = arv * 0.75;
-            
-            const maxLoan = Math.min(calc1, calc2, calc3);
-            const baseEq = (pp + rehab) - maxLoan;
-            const fees = (maxLoan * 0.0325) + 1625; 
-            const titleTax = ((pp / 1000) * 7.5) + (1200 + (maxLoan * 0.0025));
-
-            document.getElementById('ff-breakdown').innerHTML = `
-                <li style="${maxLoan === calc1 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 1 (95% Blended LTC): ${formatCurrency(calc1)}</li>
-                <li style="${maxLoan === calc2 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 2 (90% Purch + 100% Rehab): ${formatCurrency(calc2)}</li>
-                <li style="${maxLoan === calc3 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 3 (75% ARV): ${formatCurrency(calc3)}</li>
-            `;
-            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
-            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEq);
-            document.getElementById('ff-loan-fees').innerText = formatCurrency(fees);
-            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(titleTax);
-            document.getElementById('ff-cash-to-close').innerText = formatCurrency(baseEq + fees + titleTax + 650);
-            
-            document.getElementById('ff-result-box').style.display = 'block';
-        }
-
-        // --- REFINANCE WIZARD LOGIC ---
-        function openRefiCalc(goalId) {
-            document.getElementById('refi-active-goal').value = goalId;
-            
-            const data = refiEduText[goalId];
-            document.getElementById('refi-calc-title').innerText = data.title;
-            
-            let eduHtml = `
-                <p>${data.concept}</p>
-                <h4>Perfect For:</h4>
-                <p>${data.fit}</p>
-                <h4>On Your Radar:</h4>
-                <ul>
-                    ${data.radar.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-            `;
-            document.getElementById('refi-calc-edu').innerHTML = eduHtml;
-            
-            document.getElementById('refi-cash-group').style.display = (goalId === 'co' || goalId === 'he' || goalId === 'equity-adv') ? 'flex' : 'none';
-            document.getElementById('he-type-group').style.display = (goalId === 'he') ? 'flex' : 'none';
-            document.getElementById('refi-term-group').style.display = (goalId === 'he') ? 'none' : 'flex';
-
-            document.getElementById('refi-result-box').style.display = 'none';
-            document.getElementById('refi-success').style.display = 'none';
-            document.getElementById('refi-error').style.display = 'none';
-            document.getElementById('refi-warning').style.display = 'none';
-
-            showWizard('wizard-refi-calc');
-        }
-
+        // --- MATH ENGINE (REFINANCE) ---
         function runRefiMath() {
             const goal = document.getElementById('refi-active-goal').value;
             const value = parseFloat(document.getElementById('refi-value').value) || 0;
@@ -1485,16 +1613,17 @@
             const rate = parseFloat(document.getElementById('refi-rate').value) || 6.5;
             const term = parseInt(document.getElementById('refi-term').value) || 360;
             
-            const resBox = document.getElementById('refi-result-box');
-            const errBox = document.getElementById('refi-error');
+            const resBox = document.getElementById('unified-result-box');
+            const errBox = document.getElementById('unified-error');
             const succBox = document.getElementById('refi-success');
-            const warnBox = document.getElementById('refi-warning');
+            const warnBox = document.getElementById('unified-warning');
 
             if(value <= 0 || bal <= 0) return alert("Enter home value and current balance.");
 
             resBox.style.display = 'block';
             errBox.style.display = 'none';
             succBox.style.display = 'none';
+            document.getElementById('pur-success').style.display = 'none';
             warnBox.style.display = 'none';
 
             if(goal === 'he' || goal === 'equity-adv') {
@@ -1540,15 +1669,22 @@
             } else {
                 document.getElementById('refi-2nd-view').style.display = 'none';
                 
-                let baseTarget = (goal === 'co') ? bal + cash : bal;
+                let baseTarget = (goal.includes('co-')) ? bal + cash : bal;
                 const ccProxy = (baseTarget * 0.015) + 1500;
                 const newLoan = baseTarget + ccProxy;
                 const ltv = +((newLoan / value) * 100).toFixed(3);
                 
-                let maxLtv = (goal === 'rt') ? 97 : 80; 
+                let maxLtv = 80;
+                if(goal.includes('rt-') || goal.includes('streamline') || goal.includes('refinow') || goal.includes('refipossible') || goal.includes('irrrl')) {
+                    maxLtv = 97;
+                }
+                if(goal === 'co-va') maxLtv = 90;
+                if(goal === 'co-jumbo') maxLtv = 80;
+                if(goal === 'co-nonqm') maxLtv = 75;
+
                 if(ltv > maxLtv) {
                     errBox.style.display = 'block';
-                    errBox.innerHTML = `LTV exceeds ${maxLtv}% limit.<br>You need more equity to complete this ${goal === 'rt' ? 'Rate/Term' : 'Cash-Out'} refinance.`;
+                    errBox.innerHTML = `LTV exceeds ${maxLtv}% limit.<br>You need more equity to complete this refinance.`;
                     return;
                 }
 
@@ -1561,6 +1697,39 @@
                 document.getElementById('refi-1st-view').style.display = 'block';
                 succBox.style.display = 'block';
             }
+        }
+
+        // --- FIX & FLIP TOOL ---
+        function openFixFlip() { showWizard('wizard-fix-flip'); }
+
+        function runFixFlipMath() {
+            const pp = parseFloat(document.getElementById('ff-purchase').value) || 0;
+            const rehab = parseFloat(document.getElementById('ff-rehab').value) || 0;
+            const arv = parseFloat(document.getElementById('ff-arv').value) || 0;
+
+            if (pp === 0 || rehab === 0 || arv === 0) return alert("Please enter all values.");
+
+            const calc1 = (pp + rehab) * 0.95;
+            const calc2 = (pp * 0.90) + rehab;
+            const calc3 = arv * 0.75;
+            
+            const maxLoan = Math.min(calc1, calc2, calc3);
+            const baseEq = (pp + rehab) - maxLoan;
+            const fees = (maxLoan * 0.0325) + 1625; 
+            const titleTax = ((pp / 1000) * 7.5) + (1200 + (maxLoan * 0.0025));
+
+            document.getElementById('ff-breakdown').innerHTML = `
+                <li style="${maxLoan === calc1 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 1 (95% Blended LTC): ${formatCurrency(calc1)}</li>
+                <li style="${maxLoan === calc2 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 2 (90% Purch + 100% Rehab): ${formatCurrency(calc2)}</li>
+                <li style="${maxLoan === calc3 ? 'font-weight:700; color:var(--mortgage-blue);' : ''}">Calculation 3 (75% ARV): ${formatCurrency(calc3)}</li>
+            `;
+            document.getElementById('ff-max-loan').innerText = formatCurrency(maxLoan);
+            document.getElementById('ff-base-equity').innerText = formatCurrency(baseEq);
+            document.getElementById('ff-loan-fees').innerText = formatCurrency(fees);
+            document.getElementById('ff-title-tax-fees').innerText = formatCurrency(titleTax);
+            document.getElementById('ff-cash-to-close').innerText = formatCurrency(baseEq + fees + titleTax + 650);
+            
+            document.getElementById('ff-result-box').style.display = 'block';
         }
 
         // --- SIMPLE PAYMENT CALC ---
