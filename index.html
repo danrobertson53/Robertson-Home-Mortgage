@@ -149,6 +149,7 @@
         .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 20px; background: #fff; }
         .team-card.active .team-content { padding: 15px 20px 25px 20px; border-top: 1px solid #eee; }
         .team-card.active .team-toggle-icon { transform: rotate(180deg); }
+        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.95rem; line-height: 1.6; font-weight: 400; margin-top: 10px; }
         
         .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
         footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
@@ -317,7 +318,7 @@
                     </div>
                     <div class="path-card" onclick="showWizard('wizard-pur-gov-options')">
                         <h3>FHA / Gov / VA</h3>
-                        <p>Government-backed loans with flexible credit and zero-down options.</p>
+                        <p>Government-backed loans with flexible credit and low down payment options.</p>
                     </div>
                     <div class="path-card" onclick="showWizard('wizard-pur-nonqm-options')">
                         <h3>Non-QM (Alt-Doc)</h3>
@@ -339,10 +340,10 @@
                 </div>
                 <div class="path-grid">
                     <div class="path-card" onclick="openPurCalc('conv', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3>Standard Conventional</h3><p>The standard route. Low down payment options for first-time buyers on single-family homes.</p>
+                        <h3>Standard Conventional</h3><p>The standard route. Low down payment options for eligible buyers on single-family homes.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('homeready', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3>Fannie Mae HomeReady</h3><p>Low down payment options with reduced MI and a potential $2,500 credit.</p>
+                        <h3>Fannie Mae HomeReady</h3><p>Low down payment options with reduced MI for eligible borrowers.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('homepossible', 'Primary Residence', 'wizard-pur-conv-options')">
                         <h3>Freddie Mac Home Possible</h3><p>A fantastic conventional alternative allowing for just a 3% down payment.</p>
@@ -362,7 +363,7 @@
                         <h3>Standard FHA</h3><p>Low down payment FHA options. Flexible credit requirements.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('fha-100', 'Primary Residence', 'wizard-pur-gov-options')">
-                        <h3>FHA 100% Combo</h3><p>Zero down payment! Combines standard FHA with a 3.5% second lien.</p>
+                        <h3>FHA 100% Combo</h3><p>Low cash-to-close option! Combines standard FHA with a 3.5% second lien.</p>
                     </div>
                     <div class="path-card" onclick="openPurCalc('va', 'Primary Residence', 'wizard-pur-gov-options')">
                         <h3>VA Loan</h3><p>Zero-down options for eligible military/veterans with no PMI.</p>
@@ -480,16 +481,7 @@
                     <div class="form-group">
                         <label>Number of Units</label>
                         <select id="pur-units" onchange="updateRentFields()">
-                            <option value="1">1 Unit (Single Family / Condo)</option>
-                            <option value="2">2 Units</option>
-                            <option value="3">3 Units</option>
-                            <option value="4">4 Units</option>
-                            <option value="5">5 Units</option>
-                            <option value="6">6 Units</option>
-                            <option value="7">7 Units</option>
-                            <option value="8">8 Units</option>
-                            <option value="9">9 Units</option>
-                        </select>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label>Est. Interest Rate (%) <span class="tooltip">ⓘ<span class="tooltiptext">This is the note rate. Your actual APR will be higher once fees and MI are included.</span></span></label>
@@ -783,9 +775,9 @@
         <div id="about" class="about-section">
             <div class="about-container">
                 <div class="gold-line"></div>
-                <h2>The Robertson Approach.</h2>
-                <p>Most lenders focus solely on the "approval"—the finish line of a single transaction. At Robertson Home Mortgage, we believe that ignores the bigger picture: your financial trajectory.</p>
-                <p>We view your mortgage as a critical financial tool, not just a pile of paperwork. By treating debt structuring as a strategic asset, we ensure your financing supports your long-term goals, whether you are buying your first home or expanding an investment portfolio.</p>
+                <h2>Strategic Financing. Endless Options.</h2>
+                <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
+                <p>A mortgage is a critical financial tool, not just a pile of paperwork. By partnering with a vast network of wholesale lenders and investors, Robertson Home Mortgage unlocks access to an incredibly diverse range of loan products. This extensive partnership network ensures that debt structuring becomes a strategic asset—creating more flexibility, more tailored solutions, and ultimately, more pathways to <strong>YES</strong>.</p>
 
                 <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
                     <div class="team-header">
@@ -798,7 +790,7 @@
                         <div class="team-toggle-icon">▼</div>
                     </div>
                     <div class="team-content">
-                        <p style="color:#555; font-size:0.95rem; line-height:1.6;">With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies. Now, as the founder of his firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
+                        <p class="bio-text">With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies. Now, as the founder of his firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
                     </div>
                 </div>
             </div>
@@ -957,7 +949,7 @@
                 title: "Fannie Mae HomeReady", 
                 concept: "A conventional loan designed for creditworthy, low-to-moderate-income buyers, allowing for just a 3% down payment.",
                 fit: "Buyers earning 80% or less of their area's median income looking for cheaper Mortgage Insurance than FHA offers.",
-                radar: ["If you are a first-time buyer making 50% or less of the Median Income, you might score a $2,500 lender credit toward closing costs!", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
+                radar: ["Income limits apply based on the property's location.", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
             },
             'homepossible': { 
                 title: "Freddie Mac Home Possible", 
@@ -1116,7 +1108,34 @@
                 document.getElementById('rehab-group').style.display = 'none';
             }
 
-            document.getElementById('pur-units').value = "1";
+            // Dynamically construct Unit Options
+            const unitSelect = document.getElementById('pur-units');
+            let optionsHtml = '';
+            
+            if (progId === 'dscr-5-9') {
+                optionsHtml = `
+                    <option value="5">5 Units</option>
+                    <option value="6">6 Units</option>
+                    <option value="7">7 Units</option>
+                    <option value="8">8 Units</option>
+                    <option value="9">9 Units</option>
+                `;
+            } else if (['conv', 'fha', 'va', 'conv-inv', 'dscr', 'fha-203k', 'homestyle'].includes(progId)) {
+                optionsHtml = `
+                    <option value="1">1 Unit (Single Family / Condo)</option>
+                    <option value="2">2 Units</option>
+                    <option value="3">3 Units</option>
+                    <option value="4">4 Units</option>
+                `;
+            } else {
+                // Strict 1-unit limitation for USDA, Jumbo, Alt-Doc etc.
+                optionsHtml = `
+                    <option value="1">1 Unit (Single Family / Condo)</option>
+                `;
+            }
+            unitSelect.innerHTML = optionsHtml;
+            unitSelect.value = (progId === 'dscr-5-9') ? "5" : "1";
+            
             updateRentFields();
 
             document.getElementById('pur-result-box').style.display = 'none';
@@ -1169,7 +1188,7 @@
             stratBox.style.display = 'none';
             fha100Box.style.display = 'none';
 
-            let basePrice = price + rehab; // Changes for 203k and HomeStyle
+            let basePrice = price + rehab; 
             let ltv = +(((basePrice - dp) / basePrice) * 100).toFixed(3);
             
             let baseLoan = basePrice - dp;
