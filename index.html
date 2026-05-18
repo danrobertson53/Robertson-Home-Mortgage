@@ -93,20 +93,15 @@
         .strategy-brief ul { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
         .strategy-brief li { margin-bottom: 8px; }
 
-        .conversion-box { text-align: center; padding: 30px; background: #fdfdfd; border-radius: 12px; border: 2px dashed var(--brand-gold); margin-bottom: 30px; }
-        .conversion-box h3 { color: var(--mortgage-blue); font-size: 1.4rem; margin-top: 0; }
-        .btn-large { display: inline-block; padding: 15px 35px; font-size: 1.1rem; border-radius: 8px; font-weight: 800; text-transform: uppercase; transition: all 0.3s; cursor: pointer; text-decoration: none; border: none; }
+        .conversion-box { text-align: center; padding: 20px; background: #fdfdfd; border-radius: 12px; border: 2px dashed var(--brand-gold); margin-bottom: 20px; }
+        .conversion-box h3 { color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 5px; }
+        .conversion-box p { font-size: 0.9rem; margin-bottom: 15px; color: #666;}
+        .btn-large { display: inline-block; padding: 10px 25px; font-size: 0.95rem; border-radius: 8px; font-weight: 800; text-transform: uppercase; transition: all 0.3s; cursor: pointer; text-decoration: none; border: none; }
         .btn-primary { background: var(--brand-gold); color: var(--mortgage-blue); }
         .btn-primary:hover { background: #e5b327; transform: translateY(-2px); }
         .btn-secondary { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); }
         .btn-secondary:hover { background: var(--mortgage-blue); color: white; transform: translateY(-2px); }
-        .btn-group-large { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-
-        /* TOOLTIPS */
-        .tooltip { position: relative; display: inline-block; cursor: pointer; color: var(--brand-gold); margin-left: 5px; font-weight: bold; }
-        .tooltip .tooltiptext { visibility: hidden; width: 220px; background-color: var(--footer-bg); color: #fff; text-align: center; border-radius: 6px; padding: 10px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -110px; opacity: 0; transition: opacity 0.3s; font-size: 0.75rem; font-weight: normal; line-height: 1.4; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .tooltip .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--footer-bg) transparent transparent transparent; }
-        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+        .btn-group-large { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
 
         .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
@@ -114,6 +109,11 @@
         .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fff; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);}
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
         
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; margin-bottom: 15px; text-align: left; }
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; cursor: pointer; }
+        .checkbox-group label { font-size: 0.7rem; color: #666; font-weight: normal; line-height: 1.4; }
+        .checkbox-group a { color: var(--mortgage-blue); text-decoration: underline; }
+
         .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
         .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
         .btn-submit:hover { background: #002244; }
@@ -136,7 +136,7 @@
         .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 20px; background: #fff; }
         .team-card.active .team-content { padding: 15px 20px 25px 20px; border-top: 1px solid #eee; }
         .team-card.active .team-toggle-icon { transform: rotate(180deg); }
-        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.95rem; line-height: 1.6; font-weight: 400; margin-top: 10px; }
+        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.9rem; line-height: 1.7; font-weight: 400; margin-top: 10px; }
         
         .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
         footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
@@ -144,10 +144,12 @@
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MODAL FOR SIMPLE PAYMENT CALC --- */
+        /* --- MODALS --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.85); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
         .modal-content { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-top: 5px solid var(--brand-gold); animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto;}
         .close-calc { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; cursor: pointer; color: #999; }
+        
+        /* Payment Calc Specifics */
         .calc-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 15px; }
         .calc-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-weight: 600; color: #888; font-size: 0.9rem; }
         .calc-tab.active { color: var(--mortgage-blue); border-bottom: 3px solid var(--mortgage-blue); }
@@ -178,7 +180,13 @@
             .wizard-container { padding: 25px 20px; }
             .form-row { flex-direction: column; gap: 15px; } 
             .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
-            .btn-submit, .btn-primary, .btn-secondary { width: 100%; margin: 0; box-sizing: border-box; }
+            .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
+            
+            .team-content { padding: 0 15px; }
+            .bio-text { font-size: 0.85rem; }
+            .conversion-box { padding: 15px 10px; }
+            .btn-large { width: 100%; box-sizing: border-box; text-align: center; }
+            .btn-group-large { gap: 10px; }
         }
     </style>
 </head>
@@ -545,7 +553,7 @@
 
                 <div class="conversion-box">
                     <h3>Ready to take the next step?</h3>
-                    <p style="color: #666; margin-bottom: 20px;">Get a custom quote or start your pre-approval application today.</p>
+                    <p>Get a custom quote or start your pre-approval application today.</p>
                     <div class="btn-group-large">
                         <button onclick="showWizard('quote-form-section')" class="btn-large btn-secondary">Request Custom Quote</button>
                         <a href="https://2453979.my1003app.com/" target="_blank" class="btn-large btn-primary">Apply Now &rarr;</a>
@@ -596,6 +604,11 @@
                     
                     <div class="form-group"><label>Additional Details</label><textarea rows="3" name="details" placeholder="Anything else we should know?"></textarea></div>
                     
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">By checking this box, you agree to our <a href="./terms-and-conditions.pdf" target="_blank">Terms of Use</a> and <a href="./privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                    </div>
+
                     <button type="submit" class="btn-submit" style="width:100%; max-width: 300px; margin: 15px auto;">Submit Request</button>
                     <div class="disclaimer-box" style="text-align: center;">* This is a request for information and does not constitute an offer to lend or a lock of interest rate.</div>
                 </form>
@@ -624,7 +637,7 @@
                         <div class="team-toggle-icon">▼</div>
                     </div>
                     <div class="team-content">
-                        <p class="bio-text">With over a decade of experience spanning credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan he structures. Dan’s career has been defined by his role as a builder. Most recently, he helped launch and scale the lending operations for a pioneering fintech startup—serving as the Qualifying Individual responsible for the firm’s lending architecture and investor-focused lien strategies. Now, as the founder of his firm, Dan applies that "from-the-ground-up" knowledge to his clients' portfolios. His background allows him to see beyond the paperwork, ensuring that your mortgage is structured as a precise tool that aligns with your specific financial goals.</p>
+                        <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Robertson Home Mortgage, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
                     </div>
                 </div>
             </div>
@@ -651,7 +664,11 @@
     <footer>
         <div class="disclaimer">
             <p>19 High Street, Goffstown, NH 03045 | <a href="mailto:dan@robertsonhomemortgage.com" style="color: rgba(255,255,255,0.7); text-decoration: none;">dan@robertsonhomemortgage.com</a></p>
-            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank">www.nmlsconsumeraccess.org</a></p>
+            <p style="margin: 10px 0;">
+                <a href="./privacy.pdf" target="_blank" style="color: var(--brand-gold); text-decoration: none;">Privacy Policy</a> | 
+                <a href="./terms-and-conditions.pdf" target="_blank" style="color: var(--brand-gold); text-decoration: none;">Terms of Service</a>
+            </p>
+            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank" style="color: rgba(255,255,255,0.7);">www.nmlsconsumeraccess.org</a></p>
             <p>Robertson Home Mortgage is an Equal Housing Lender. Licensed by the NH Department of Banking.</p>
             <p style="margin-top: 15px;"><strong>LEGAL DISCLAIMER:</strong> All tools and educational content on this website are provided strictly for informational purposes. The information and educational estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Available programs, rates, and limits change daily and are subject to borrower credit approval, property appraisal, and official underwriting.</p>
             <div style="display: flex; justify-content: center; margin-top: 15px;">
@@ -687,6 +704,43 @@
                     <h3 id="calcResultDisplay">$0</h3>
                 </div>
                 <p class="calc-disclaimer">Includes Principal, Interest, Taxes, and Insurance. Does not include Private Mortgage Insurance (PMI) or HOA fees. This tool is strictly for educational purposes and is not a commitment to lend. Rates and terms are examples only.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="flipModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-calc" onclick="closeFlipCalc()">&times;</span>
+            <h3 style="color:var(--mortgage-blue); margin-top:0; font-size: 1.4rem;">Fix & Flip Estimator</h3>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">See estimated leverage based on your project costs.</p>
+            
+            <div class="calc-body">
+                <div class="calc-col" style="margin-bottom:10px;">
+                    <label>Purchase Price ($)</label>
+                    <input type="number" id="flipPP" value="200000">
+                </div>
+                <div class="calc-col" style="margin-bottom:10px;">
+                    <label>Estimated Rehab Budget ($)</label>
+                    <input type="number" id="flipRehab" value="50000">
+                </div>
+                <div class="calc-col" style="margin-bottom:10px;">
+                    <label>After Repair Value (ARV) ($)</label>
+                    <input type="number" id="flipARV" value="350000">
+                </div>
+                
+                <button class="calc-btn" onclick="calculateFlip()">Calculate Leverage</button>
+                
+                <div class="calc-result" style="text-align: left;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 5px;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color:#555;">Max Loan Amount:</span>
+                        <span id="flipLoanDisplay" style="font-weight: 800; color: var(--mortgage-blue);">$0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color:#555;">Est. Cash Needed:</span>
+                        <span id="flipCashDisplay" style="font-weight: 800; color: var(--accent-red);">$0</span>
+                    </div>
+                </div>
+                <p class="calc-disclaimer">Assumes the lowest of: 95% Blended LTC, 90% PP + 100% Rehab, or 75% ARV. Estimated cash needed reflects down payment only and <strong>does not include</strong> closing costs, lender points, interest reserves, or fees. Strictly for educational purposes.</p>
             </div>
         </div>
     </div>
@@ -744,7 +798,6 @@
         }
 
         // --- EDUCATION ENGINE (PURCHASE) ---
-        // Scrubbed for Reg Z / TILA Triggering Terms
         const purEduText = {
             'conv': { 
                 title: "Standard Conventional", 
@@ -854,12 +907,15 @@
             'fix-flip': {
                 title: "Fix & Flip",
                 fit: "Real estate investors seeking short-term bridge debt to acquire and rehab a property.",
-                radar: ["Based on After Repair Value (ARV) rather than personal DTI.", "Rehab funds are held in escrow and reimbursed via draws."]
+                radar: [
+                    "Based on After Repair Value (ARV) rather than personal DTI.", 
+                    "Rehab funds are held in escrow and reimbursed via draws.",
+                    "<button onclick='openFlipCalc()' style='margin-top: 10px; background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 6px 12px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 0.8rem;'>Launch Fix & Flip Calculator</button>"
+                ]
             }
         };
 
         // --- EDUCATION ENGINE (REFINANCE) ---
-        // Scrubbed for Reg Z / TILA Triggering Terms
         const refiEduText = {
             'rt-conv': { 
                 title: "Standard Conventional Refinance", 
@@ -950,7 +1006,7 @@
             const val1 = parseFloat(document.getElementById('calcPrice').value) || 0; 
             const val2 = parseFloat(document.getElementById('calcDown').value) || 0; 
             const rateInput = document.getElementById('calcRate').value;
-            const rate = parseFloat(rateInput) || 6.5; // Fallback to placeholder if left blank!
+            const rate = parseFloat(rateInput) || 6.5; 
             const tax = parseFloat(document.getElementById('calcTaxes').value) || 0;
             const ins = parseFloat(document.getElementById('calcIns').value) || 0;
             
@@ -960,6 +1016,42 @@
                 document.getElementById('calcResultDisplay').innerText = formatCurrency(total);
             } else {
                 document.getElementById('calcResultDisplay').innerText = "$0";
+            }
+        }
+
+        // --- FIX & FLIP CALCULATOR ---
+        function openFlipCalc() { 
+            document.getElementById('flipModal').style.display = 'flex'; 
+            calculateFlip(); 
+        }
+        
+        function closeFlipCalc() { 
+            document.getElementById('flipModal').style.display = 'none'; 
+        }
+
+        function calculateFlip() {
+            const pp = parseFloat(document.getElementById('flipPP').value) || 0;
+            const rehab = parseFloat(document.getElementById('flipRehab').value) || 0;
+            const arv = parseFloat(document.getElementById('flipARV').value) || 0;
+
+            if (pp > 0 || rehab > 0 || arv > 0) {
+                const calc1 = 0.95 * (pp + rehab);          // 95% Blended LTC
+                const calc2 = (0.90 * pp) + (1.00 * rehab); // 90% PP + 100% Budget
+                const calc3 = 0.75 * arv;                   // 75% LTARV
+
+                const maxLoan = Math.min(calc1, calc2, calc3);
+                
+                const totalCost = pp + rehab;
+                const cashToClose = totalCost - maxLoan;
+
+                const finalCash = cashToClose > 0 ? cashToClose : 0;
+                const finalLoan = maxLoan > 0 ? maxLoan : 0;
+
+                document.getElementById('flipLoanDisplay').innerText = formatCurrency(finalLoan);
+                document.getElementById('flipCashDisplay').innerText = formatCurrency(finalCash);
+            } else {
+                document.getElementById('flipLoanDisplay').innerText = "$0";
+                document.getElementById('flipCashDisplay').innerText = "$0";
             }
         }
 
