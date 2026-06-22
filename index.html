@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robertson Home Mortgage | Strategy & Finance</title>
+    <title>Robertson Home Mortgage | Dan Robertson</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,9 @@
             --text-dark: #333333;
             --bg-light: #f4f6f8;
             --footer-bg: #002855;
-            --accent-red: #C8102E; 
-            --success-green: #27ae60;
-            --warning-orange: #f39c12;
         }
 
-        html { scroll-behavior: auto; } 
+        html { scroll-behavior: smooth; } 
         body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; background-color: var(--white); }
 
         /* --- LAYOUT CONTROL --- */
@@ -50,143 +47,50 @@
         /* --- HERO SECTION --- */
         .hero { position: relative; height: 55vh; min-height: 500px; background-image: url('town-hero.png'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.4)); }
-        .hero-content { position: relative; z-index: 1; padding: 0 20px; width: 100%; max-width: 800px; transform: translateY(-40px); }
+        .hero-content { position: relative; z-index: 1; padding: 0 20px; width: 100%; max-width: 800px; transform: translateY(-20px); }
         .hero h1 { font-size: 3.5rem; margin-bottom: 5px; font-weight: 800; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.25rem; font-weight: 600; margin: 0 auto; opacity: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); max-width: 580px; line-height: 1.2; text-wrap: balance; }
         .hero-apply-btn { display: inline-block; margin-top: 25px; padding: 12px 30px; border: 2px solid var(--brand-gold); color: var(--brand-gold); text-decoration: none; text-transform: uppercase; font-weight: 700; border-radius: 50px; font-size: 1rem; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.3); }
         .hero-apply-btn:hover { background: var(--brand-gold); color: var(--mortgage-blue); }
 
-        /* --- SERVICES SECTION --- */
-        .services-section { background-color: var(--bg-light); padding: 0px 5% 40px 5%; display: flex; justify-content: center; }
-        .services-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; }
-        .services-container { display: flex; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap; position: relative; margin-top: -80px; z-index: 10; }
-        .service-card { background: white; flex: 1; min-width: 280px; padding: 40px 30px; border-radius: 15px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease; border-top: 6px solid var(--brand-gold); display: flex; flex-direction: column; cursor: pointer; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
-        .service-card h2 { color: var(--mortgage-blue); margin: 10px 0 5px 0; font-size: 1.6rem; font-weight: 800; }
-        .service-card h4 { margin: 0 0 15px 0; font-weight: 600; color: #889bb0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; }
-        .service-card p { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
-        .btn-container { margin-top: auto; display: flex; justify-content: center; }
-        .btn { display: inline-block; padding: 12px 25px; color: white; background: var(--mortgage-blue); font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: background 0.2s, transform 0.2s; width: 100%; border: none; cursor: pointer;}
-        .btn:hover { background: #002244; transform: scale(1.02); }
-        .calc-trigger-box { margin-top: 40px; margin-bottom: 30px; text-align: center; font-size: 0.9rem; color: #666; position: relative; z-index: 10; }
-        .calc-link { color: var(--mortgage-blue); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--brand-gold); transition: all 0.3s; cursor: pointer; }
-        .calc-link:hover { color: var(--accent-red); border-bottom-style: solid; }
-
-        /* --- WIZARD SECTIONS & FORMS --- */
-        .fade-in { animation: fadeIn 0.4s ease forwards; }
-        .wizard-section { background-color: #f4f8fb; padding: 60px 5%; border-top: 1px solid #eee; display: none; }
-        .wizard-container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
-        .wizard-header { text-align: center; margin-bottom: 30px; }
-        .wizard-header h2 { color: var(--mortgage-blue); font-size: 2rem; font-weight: 800; margin: 0 0 10px 0; }
-        .wizard-header p { margin-bottom: 20px; color: #666; font-size: 1.05rem;}
-        
-        .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .path-card { background: #fdfdfd; border: 2px solid #eee; border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; justify-content: flex-start;}
-        .path-card:hover { border-color: var(--brand-gold); background: #fffcf2; transform: translateY(-3px); }
-        .path-card h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; }
-        .path-card p { font-size: 0.8rem; color: #666; margin: 0 0 10px 0; line-height: 1.4;}
-
-        /* STRATEGY BRIEF & PRODUCT HUB STYLES */
-        .strategy-brief { background: white; border: 1px solid #dae1e7; border-left: 6px solid var(--mortgage-blue); padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .strategy-brief h4 { color: var(--text-dark); margin: 15px 0 5px 0; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
-        .strategy-brief p { margin: 0 0 10px 0; font-size: 0.95rem; color: #555; }
-        .strategy-brief ul { margin: 0; padding-left: 20px; font-size: 0.9rem; color: #555; }
-        .strategy-brief li { margin-bottom: 8px; }
-
-        .conversion-box { text-align: center; padding: 20px; background: #fdfdfd; border-radius: 12px; border: 2px dashed var(--brand-gold); margin-bottom: 20px; }
-        .conversion-box h3 { color: var(--mortgage-blue); font-size: 1.2rem; margin-bottom: 5px; }
-        .conversion-box p { font-size: 0.9rem; margin-bottom: 15px; color: #666;}
-        .btn-large { display: inline-block; padding: 10px 25px; font-size: 0.95rem; border-radius: 8px; font-weight: 800; text-transform: uppercase; transition: all 0.3s; cursor: pointer; text-decoration: none; border: none; }
-        .btn-primary { background: var(--brand-gold); color: var(--mortgage-blue); }
-        .btn-primary:hover { background: #e5b327; transform: translateY(-2px); }
-        .btn-secondary { background: transparent; border: 2px solid var(--mortgage-blue); color: var(--mortgage-blue); }
-        .btn-secondary:hover { background: var(--mortgage-blue); color: white; transform: translateY(-2px); }
-        .btn-group-large { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-
-        .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
-        .form-group label { font-weight: 600; font-size: 0.8rem; margin-bottom: 5px; color: var(--mortgage-blue); }
-        .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fff; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);}
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
-        
-        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; margin-bottom: 15px; text-align: left; }
-        .checkbox-group input[type="checkbox"] { margin-top: 3px; cursor: pointer; }
-        .checkbox-group label { font-size: 0.7rem; color: #666; font-weight: normal; line-height: 1.4; }
-        .checkbox-group a { color: var(--mortgage-blue); text-decoration: underline; }
-
-        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-        .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
-        .btn-submit:hover { background: #002244; }
-        
-        .disclaimer-box { font-size: 0.75rem; color: #888; margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; text-align: left; line-height: 1.4;}
-
-        /* --- ABOUT & FOOTER --- */
-        .about-section { background-color: white; padding: 40px 5% 60px 5%; text-align: left; }
+        /* --- ABOUT SECTION --- */
+        .about-section { background-color: white; padding: 80px 5%; text-align: left; }
         .about-container { max-width: 900px; margin: 0 auto; }
         .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
         .about-container p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; }
         
-        .team-card { background-color: #f8f9fa; border-radius: 12px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); overflow: hidden; transition: all 0.3s ease; cursor: pointer; max-width: 800px; margin-left: auto; margin-right: auto;}
+        .team-card { background-color: #f8f9fa; border-radius: 12px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); overflow: hidden; transition: all 0.3s ease; max-width: 800px; margin-left: auto; margin-right: auto;}
         .team-header { display: flex; align-items: center; gap: 20px; padding: 20px; position: relative; }
         .team-photo { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--brand-gold); flex-shrink: 0; }
         .team-info { flex: 1; }
         .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.4rem; font-weight: 800; }
         .team-info h4 { color: #889bb0; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin: 0; font-weight: 700; }
-        .team-toggle-icon { font-size: 1.5rem; color: var(--brand-gold); transition: transform 0.3s ease; margin-left: 10px; }
-        .team-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.3s ease; padding: 0 20px; background: #fff; }
-        .team-card.active .team-content { padding: 15px 20px 25px 20px; border-top: 1px solid #eee; }
-        .team-card.active .team-toggle-icon { transform: rotate(180deg); }
-        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.9rem; line-height: 1.7; font-weight: 400; margin-top: 10px; }
-        
+        .team-content { padding: 0 20px 25px 20px; background: #f8f9fa; }
+        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.95rem; line-height: 1.7; font-weight: 400; margin-top: 10px; }
         .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
+
+        /* --- CONTACT FORMS --- */
+        .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
+        .form-group input, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fff; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);}
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
+        .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
+        .btn-submit:hover { background: #002244; }
+
+        /* --- FOOTER --- */
         footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
         .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- MODALS --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.85); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
-        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-top: 5px solid var(--brand-gold); animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto;}
-        .close-calc { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; cursor: pointer; color: #999; }
-        
-        /* Payment Calc Specifics */
-        .calc-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 15px; }
-        .calc-tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-weight: 600; color: #888; font-size: 0.9rem; }
-        .calc-tab.active { color: var(--mortgage-blue); border-bottom: 3px solid var(--mortgage-blue); }
-        .calc-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .calc-col { flex: 1; }
-        .calc-col label { font-size: 0.75rem; font-weight: 700; color: #666; display: block; margin-bottom: 5px; }
-        .calc-col input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; box-sizing: border-box;}
-        .calc-btn { width: 100%; background: var(--mortgage-blue); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 15px; }
-        .calc-result { background: #f4f8fb; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border: 1px solid #dae1e7; }
-        .calc-result h3 { color: var(--accent-red); font-size: 1.8rem; margin: 0; font-weight: 800; line-height: 1.1; }
-        .calc-disclaimer { font-size: 0.65rem; color: #999; text-align: center; margin-top: 10px; line-height: 1.3; }
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .wizard-section, #quote-form-section, #about { scroll-margin-top: 85px; }
+            #about, #general-contact { scroll-margin-top: 85px; }
             nav { padding: 10px 15px; }
             .nav-links { display: none; } 
             .hamburger { display: flex; } 
-            .hero { height: auto; min-height: 0; padding: 40px 0 60px 0; }
+            .hero { height: auto; min-height: 0; padding: 60px 0 80px 0; }
             .hero h1 { font-size: 2.2rem; }
-            
-            .services-container { margin-top: -40px; flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 0 15px; }
-            .service-card { padding: 20px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 3px solid var(--brand-gold); flex: 1; min-width: 0; }
-            .service-card h2 { font-size: 1.1rem; margin: 0; text-align: center; line-height: 1.2; }
-            .service-card h4 { font-size: 0.7rem; margin: 5px 0 0 0; text-align: center; }
-            .service-card p, .service-card .btn-container { display: none; } 
-
-            .wizard-container { padding: 25px 20px; }
             .form-row { flex-direction: column; gap: 15px; } 
-            .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 15px; }
             .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
-            
-            .team-content { padding: 0 15px; }
-            .bio-text { font-size: 0.85rem; }
-            .conversion-box { padding: 15px 10px; }
-            .btn-large { width: 100%; box-sizing: border-box; text-align: center; }
-            .btn-group-large { gap: 10px; }
         }
     </style>
 </head>
@@ -197,11 +101,8 @@
             <a href="#"><img src="./robertson-logo-new.png" alt="Robertson Home Mortgage" class="nav-img"></a>
         </div>
         <div class="nav-links">
-            <a onclick="smoothScrollTo('about')">About</a>
-            <a onclick="showWizard('wizard-pur-occupancy')">Purchase</a>
-            <a onclick="showWizard('wizard-refi-categories')">Refinance</a>
-            <a href="javascript:void(0)" onclick="openCalc()">Payment Calc</a>
-            <a onclick="showWizard('quote-form-section')">Get Quote</a>
+            <a onclick="smoothScrollTo('about')">About Us</a>
+            <a onclick="smoothScrollTo('general-contact')">Contact</a>
             <a href="https://2453979.my1003app.com/register" class="nav-btn-portal" target="_blank">Apply Now</a>
         </div>
         <div class="hamburger" onclick="toggleMobileMenu()">
@@ -212,11 +113,8 @@
     </nav>
 
     <div id="mobileMenu" class="mobile-menu">
-        <a onclick="toggleMobileMenu(); showWizard('wizard-pur-occupancy')">Purchase Strategy</a>
-        <a onclick="toggleMobileMenu(); showWizard('wizard-refi-categories')">Refinance Strategy</a>
-        <a onclick="toggleMobileMenu(); openCalc()">Payment Calculator</a>
-        <a onclick="toggleMobileMenu(); showWizard('quote-form-section')">Rate Quote</a>
         <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
+        <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Contact</a>
         <a href="https://2453979.my1003app.com/register" target="_blank" style="color:var(--brand-gold);">Apply Now</a>
     </div>
 
@@ -226,395 +124,8 @@
             <div class="hero-content">
                 <div class="main-text">
                     <h1>Ready, Set, Own.</h1>
-                    <p>Personalized mortgage solutions and expert guidance — finding more pathways to <strong>YES</strong>.</p>
+                    <p>Expert mortgage guidance and personalized solutions.</p>
                     <a href="https://2453979.my1003app.com/register" target="_blank" class="hero-apply-btn">Start Pre-Approval</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="services" class="services-section">
-            <div class="services-wrapper">
-                <div class="services-container">
-                    <div class="service-card" onclick="showWizard('wizard-pur-occupancy')">
-                        <h2>BUY A HOME</h2>
-                        <h4>Purchase Strategy</h4>
-                        <p>Explore Primary, Second Home, and Investment options including Fix & Flip and DSCR.</p>
-                        <div class="btn-container"><button class="btn">Explore Buying</button></div>
-                    </div>
-                    <div class="service-card" onclick="showWizard('wizard-refi-categories')">
-                        <h2>REFINANCE</h2>
-                        <h4>Leverage & Rates</h4>
-                        <p>Analyze Rate/Term reductions, Debt Consolidation, and Home Equity Lines/Loans.</p>
-                        <div class="btn-container"><button class="btn">Explore Refinancing</button></div>
-                    </div>
-                </div>
-                <div class="calc-trigger-box">
-                    <span style="opacity: 0.8;">Just browsing numbers?</span> <br class="mobile-break">
-                    <a href="javascript:void(0)" onclick="openCalc()" class="calc-link">Launch Simple Payment Calculator &rarr;</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-occupancy" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <div class="wizard-header">
-                    <h2>Purchase Categories</h2>
-                    <p>What is the primary intent for this property?</p>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="showWizard('wizard-pur-condition')">
-                        <h3 style="text-align: center;">Primary Residence</h3>
-                        <p style="text-align: center;">I intend to live in this home for the majority of the year.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-second')">
-                        <h3 style="text-align: center;">Second Home / Vacation</h3>
-                        <p style="text-align: center;">A vacation home or property I will live in part-time.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-invest')">
-                        <h3 style="text-align: center;">Investment Property</h3>
-                        <p style="text-align: center;">A property I intend to rent out or fix and flip for profit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-condition" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Property Condition</h2>
-                    <p>What type of home are you looking for?</p>
-                </div>
-                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 700px; margin: 0 auto;">
-                    <div class="path-card" onclick="showWizard('wizard-pur-primary-categories')">
-                        <h3 style="text-align: center;">Turn-Key (Move-in Ready)</h3>
-                        <p style="text-align: center;">I want a home that requires little to no work before moving in.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-rehab')">
-                        <h3 style="text-align: center;">Fixer-Upper (Rehab)</h3>
-                        <p style="text-align: center;">I want to buy a home that needs some TLC or major renovations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-primary-categories" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-condition')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Primary Residence Options</h2>
-                    <p>How would you like to qualify for your mortgage?</p>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="showWizard('wizard-pur-conv-options')">
-                        <h3 style="text-align: center;">Conventional</h3>
-                        <p style="text-align: center;">Standard financing for borrowers with good-to-excellent credit.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-gov-options')">
-                        <h3 style="text-align: center;">FHA / Gov / VA</h3>
-                        <p style="text-align: center;">Government-backed loans with flexible credit and favorable down payment options.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-pur-nonqm-options')">
-                        <h3 style="text-align: center;">Non-QM (Alt-Doc)</h3>
-                        <p style="text-align: center;">Skip the tax returns. Options for self-employed and ITIN borrowers.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('jumbo', 'Primary Residence', 'wizard-pur-primary-categories')">
-                        <h3 style="text-align: center;">Jumbo Financing</h3>
-                        <p style="text-align: center;">For luxury properties exceeding standard county loan limits.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-conv-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Conventional Programs</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('conv', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3 style="text-align: center;">Standard Conventional</h3><p style="text-align: center;">The standard route. Flexible down payment options for eligible buyers on single-family homes.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('homeready', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3 style="text-align: center;">Fannie Mae HomeReady</h3><p style="text-align: center;">Accessible down payment options with potentially reduced MI for eligible borrowers.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('homepossible', 'Primary Residence', 'wizard-pur-conv-options')">
-                        <h3 style="text-align: center;">Freddie Mac Home Possible</h3><p style="text-align: center;">A fantastic conventional alternative built for lower-to-moderate income borrowers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-gov-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Government-Backed Programs</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('fha', 'Primary Residence', 'wizard-pur-gov-options')">
-                        <h3 style="text-align: center;">Standard FHA</h3><p style="text-align: center;">Accessible down payment options with highly flexible credit requirements.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('fha-100', 'Primary Residence', 'wizard-pur-gov-options')">
-                        <h3 style="text-align: center;">FHA Combo Options</h3><p style="text-align: center;">Keep your cash in the bank! Combines standard FHA with a secondary lien to help cover your required investment.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('va', 'Primary Residence', 'wizard-pur-gov-options')">
-                        <h3 style="text-align: center;">VA Loan</h3><p style="text-align: center;">Options that allow eligible military and veterans to purchase with no required down payment and no PMI.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('usda', 'Primary Residence', 'wizard-pur-gov-options')">
-                        <h3 style="text-align: center;">USDA (Rural)</h3><p style="text-align: center;">Options that allow eligible buyers to purchase with no required down payment in designated rural areas.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-nonqm-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-primary-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Non-QM & Alternative Income</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('bank-statement', 'Primary Residence', 'wizard-pur-nonqm-options')">
-                        <h3 style="text-align: center;">Bank Statements</h3><p style="text-align: center;">Qualify using 12 to 24 months of personal or business bank deposits.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('pnl', 'Primary Residence', 'wizard-pur-nonqm-options')">
-                        <h3 style="text-align: center;">1-Year P&L</h3><p style="text-align: center;">Use a Profit & Loss statement prepared by a tax professional.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('1099', 'Primary Residence', 'wizard-pur-nonqm-options')">
-                        <h3 style="text-align: center;">1099 Income</h3><p style="text-align: center;">Qualify using your 1099 earnings instead of a full tax return.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('itin', 'Primary Residence', 'wizard-pur-nonqm-options')">
-                        <h3 style="text-align: center;">ITIN / Foreign National</h3><p style="text-align: center;">Options for borrowers without a standard SSN living in the US.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-rehab" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-condition')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Fixer-Upper Programs</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('fha-203k', 'Primary Residence', 'wizard-pur-rehab')">
-                        <h3 style="text-align: center;">FHA 203(k) Rehab</h3><p style="text-align: center;">Roll the cost of home renovations directly into your FHA purchase mortgage.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('va-reno', 'Primary Residence', 'wizard-pur-rehab')">
-                        <h3 style="text-align: center;">VA Renovation</h3><p style="text-align: center;">Rehab option for eligible military/veterans subject to max loan limits.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('homestyle', 'Primary Residence', 'wizard-pur-rehab')">
-                        <h3 style="text-align: center;">Fannie Mae HomeStyle</h3><p style="text-align: center;">Finance renovations into a conventional loan. Great for buyers with strong credit.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('usda-reno', 'Primary Residence', 'wizard-pur-rehab')">
-                        <h3 style="text-align: center;">USDA Renovation</h3><p style="text-align: center;">Rehab option for properties located in designated rural areas.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-second" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Second Home Options</h2>
-                    <p>Financing options for your vacation or part-time home.</p>
-                </div>
-                <div class="path-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 600px; margin: 0 auto;">
-                    <div class="path-card" onclick="openProductHub('conv-sec', 'Second Home', 'wizard-pur-second')">
-                        <h3 style="text-align: center;">Conventional Second Home</h3><p style="text-align: center;">Requires a down payment. Must be a 1-unit property occupied by owner part of the year.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('nonqm-sec', 'Second Home', 'wizard-pur-second')">
-                        <h3 style="text-align: center;">Non-QM (Alt-Doc)</h3><p style="text-align: center;">Qualify using alternative documentation methods like Bank Statements or 1099s instead of standard tax returns.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-pur-invest" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-pur-occupancy')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Investment Options</h2>
-                    <p>Select your investment strategy.</p>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('dscr', 'Investment', 'wizard-pur-invest')">
-                        <h3 style="text-align: center;">DSCR (Debt Service) 1-4 Unit</h3><p style="text-align: center;">Long-term financing. Qualify based entirely on the property's rental cash flow.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('dscr-5-9', 'Investment', 'wizard-pur-invest')">
-                        <h3 style="text-align: center;">Multi-Family (5-9 Units)</h3><p style="text-align: center;">Commercial DSCR financing for 5 to 9 unit properties based entirely on property cash flow.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('conv-inv', 'Investment', 'wizard-pur-invest')">
-                        <h3 style="text-align: center;">Conventional Investment</h3><p style="text-align: center;">Standard full-doc investor loans. Down payment requirements vary.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('fix-flip', 'Investment', 'wizard-pur-invest')">
-                        <h3 style="text-align: center;">Fix & Flip</h3><p style="text-align: center;">Short-term bridge debt to acquire and rehab a property. Based on After Repair Value (ARV).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-categories" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <div class="wizard-header">
-                    <h2>Refinance Products</h2>
-                    <p>Select a goal to view available loan programs.</p>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="showWizard('wizard-refi-rateterm-options')">
-                        <h3 style="text-align: center;">Lower Rate / Change Term</h3>
-                        <p style="text-align: center;">Drop your interest rate, remove mortgage insurance, or switch to a shorter term.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-refi-cashout-options')">
-                        <h3 style="text-align: center;">Cash-Out Refinance</h3>
-                        <p style="text-align: center;">Replace your current mortgage with a larger one to tap into your home's equity.</p>
-                    </div>
-                    <div class="path-card" onclick="showWizard('wizard-refi-heloc-options')">
-                        <h3 style="text-align: center;">Home Equity (2nd Liens)</h3>
-                        <p style="text-align: center;">Access cash without touching the interest rate on your primary mortgage.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-rateterm-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-refi-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Rate & Term Refinance</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('rt-conv', 'Primary Residence', 'wizard-refi-rateterm-options')">
-                        <h3 style="text-align: center;">Conventional Refinance</h3><p style="text-align: center;">Standard refinance for homeowners with good equity and strong credit.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('fha-streamline', 'Primary Residence', 'wizard-refi-rateterm-options')">
-                        <h3 style="text-align: center;">FHA Streamline</h3><p style="text-align: center;">Lower your FHA rate with minimal paperwork. No appraisal required.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('va-irrrl', 'Primary Residence', 'wizard-refi-rateterm-options')">
-                        <h3 style="text-align: center;">VA IRRRL</h3><p style="text-align: center;">Lower your VA rate quickly. No appraisal or income docs required.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('rt-nonqm', 'Primary Residence', 'wizard-refi-rateterm-options')">
-                        <h3 style="text-align: center;">Non-QM (Alt-Doc)</h3><p style="text-align: center;">Refinance using Bank Statements or 1099s instead of tax returns.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-cashout-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-refi-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Cash-Out Refinance</h2>
-                </div>
-                <div class="path-grid">
-                    <div class="path-card" onclick="openProductHub('co-conv', 'Primary Residence', 'wizard-refi-cashout-options')">
-                        <h3 style="text-align: center;">Conventional Cash-Out</h3><p style="text-align: center;">Tap into your home's equity. Great for debt consolidation.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('co-fha', 'Primary Residence', 'wizard-refi-cashout-options')">
-                        <h3 style="text-align: center;">FHA Cash-Out</h3><p style="text-align: center;">Tap into your equity with flexible credit requirements.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('co-va', 'Primary Residence', 'wizard-refi-cashout-options')">
-                        <h3 style="text-align: center;">VA Cash-Out</h3><p style="text-align: center;">Tap into your equity with some of the highest equity limits in the industry.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('co-jumbo', 'Primary Residence', 'wizard-refi-cashout-options')">
-                        <h3 style="text-align: center;">Jumbo Cash-Out</h3><p style="text-align: center;">Extract significant equity from high-value luxury properties.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-refi-heloc-options" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button onclick="showWizard('wizard-refi-categories')" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back</button>
-                <div class="wizard-header">
-                    <h2>Home Equity & 2nd Liens</h2>
-                </div>
-                <div class="path-grid" style="max-width: 600px; margin: 0 auto;">
-                    <div class="path-card" onclick="openProductHub('he', 'Primary Residence', 'wizard-refi-heloc-options')">
-                        <h3 style="text-align: center;">Standard HELOC / HELOAN</h3><p style="text-align: center;">Access your home's equity without touching your 1st mortgage rate.</p>
-                    </div>
-                    <div class="path-card" onclick="openProductHub('equity-adv', 'Primary Residence', 'wizard-refi-heloc-options')">
-                        <h3 style="text-align: center;">Alt-Doc 2nd Lien</h3><p style="text-align: center;">Self-employed? Access equity using bank statements instead of tax returns.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="wizard-product-hub" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <button id="hub-back-btn" onclick="" style="background:none; border:none; color:var(--mortgage-blue); cursor:pointer; font-weight:600; margin-bottom:15px; padding:0;">&larr; Back to Options</button>
-                
-                <h2 id="hub-title" style="color: var(--mortgage-blue); font-weight: 800; margin: 0 0 15px 0; font-size: 2rem;"></h2>
-                
-                <div id="hub-edu" class="strategy-brief"></div>
-
-                <div class="conversion-box">
-                    <h3>Ready to take the next step?</h3>
-                    <p>Get a custom quote or start your pre-approval application today.</p>
-                    <div class="btn-group-large">
-                        <button onclick="showWizard('quote-form-section')" class="btn-large btn-secondary">Request Custom Quote</button>
-                        <a href="https://2453979.my1003app.com/register" target="_blank" class="btn-large btn-primary">Apply Now &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="quote-form-section" class="wizard-section">
-            <div class="wizard-container fade-in">
-                <div class="wizard-header"><h2>Request Rate Quote</h2><p>Receive a custom rate quote for your exact scenario.</p></div>
-                <form class="contact-form" id="quoteForm" name="quote-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
-                    <input type="hidden" name="form-name" value="quote-form" />
-                    <div class="form-row">
-                        <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
-                        <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone"></div>
-                        <div class="form-group">
-                            <label>Transaction Type</label>
-                            <select name="transaction_type">
-                                <option value="buy">Buying a Home</option>
-                                <option value="refi-rt">Refinance (Lower Rate / Drop MI)</option>
-                                <option value="refi-co">Refinance (Cash Out / Consolidate Debt)</option>
-                                <option value="invest">Fix & Flip / DSCR</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Current Loan Type (If Refinancing)</label>
-                            <select name="current_loan_type">
-                                <option value="na">N/A (Purchasing)</option>
-                                <option value="conv">Conventional</option>
-                                <option value="fha">FHA</option>
-                                <option value="va">VA</option>
-                                <option value="usda">USDA</option>
-                                <option value="other">Other / Not Sure</option>
-                            </select>
-                        </div>
-                        <div class="form-group"><label>Estimated FICO Score</label><input type="number" name="fico_score" placeholder="e.g. 740"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Est. Property Value / Price ($)</label><input type="number" name="amount" placeholder="e.g. 450000"></div>
-                        <div class="form-group"><label>Down Payment / Cash Out ($)</label><input type="number" name="secondary_amount" placeholder="e.g. 20000"></div>
-                    </div>
-                    
-                    <div class="form-group"><label>Additional Details</label><textarea rows="3" name="details" placeholder="Anything else we should know?"></textarea></div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">By checking this box, you agree to our <a href="./terms-and-conditions.pdf" target="_blank">Terms of Use</a> and <a href="./privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
-                    </div>
-
-                    <button type="submit" class="btn-submit" style="width:100%; max-width: 300px; margin: 15px auto;">Submit Request</button>
-                    <div class="disclaimer-box" style="text-align: center;">* This is a request for information and does not constitute an offer to lend or a lock of interest rate.</div>
-                </form>
-                <div id="quote-success" style="display:none; text-align:center; padding:20px;">
-                    <div style="font-size: 4rem; color: var(--success-green); margin-bottom: 10px;">✓</div>
-                    <h3>Request Sent!</h3><p>We are running your numbers and will reach out shortly.</p>
                 </div>
             </div>
         </div>
@@ -622,19 +133,17 @@
         <div id="about" class="about-section">
             <div class="about-container">
                 <div class="gold-line"></div>
-                <h2>About</h2>
+                <h2>About Robertson Home Mortgage</h2>
                 <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
-                <p>A mortgage is a critical financial tool, not just a pile of paperwork. By partnering with a vast network of wholesale lenders and investors, Robertson Home Mortgage unlocks access to an incredibly diverse range of loan products. This extensive partnership network ensures that debt structuring becomes a strategic asset—creating more flexibility, more tailored solutions, and ultimately, more pathways to <strong>YES</strong>.</p>
+                <p>A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Robertson Home Mortgage unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
 
-                <div class="team-card" id="dan-bio-card" onclick="toggleBio('dan-bio-card')">
+                <div class="team-card">
                     <div class="team-header">
                         <img src="./dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
                         <div class="team-info">
                             <h3>Dan Robertson</h3>
                             <h4>BROKER OWNER</h4>
-                            <span style="font-size:0.8rem; color:#888; display:block; margin-top:5px;">Click to read bio</span>
                         </div>
-                        <div class="team-toggle-icon">▼</div>
                     </div>
                     <div class="team-content">
                         <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Robertson Home Mortgage, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
@@ -646,19 +155,25 @@
         <div id="general-contact" class="about-section" style="background: var(--bg-light); text-align: center;">
             <div class="about-container">
                 <h2 style="margin-bottom: 10px;">Get in Touch.</h2>
-                <p style="margin-bottom: 30px;">Have a quick question? Send us a message.</p>
+                <p style="margin-bottom: 30px;">Ready to discuss your scenario? Send us a message.</p>
                 <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)" style="max-width: 600px; margin: 0 auto;">
                     <input type="hidden" name="form-name" value="contact-form" />
                     <div class="form-row">
                         <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
                         <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
                     </div>
+                    <div class="form-group" style="margin-bottom: 15px;"><input type="tel" name="phone" placeholder="Phone Number" required></div>
                     <div class="form-group"><textarea rows="4" name="message" placeholder="How can we help?" required></textarea></div>
+                    
+                    <div style="text-align: left; margin-top: 15px; margin-bottom: 20px; font-size: 0.75rem; color: #666;">
+                        <input type="checkbox" id="consent" name="consent" required style="margin-right: 5px;">
+                        <label for="consent">By checking this box, you agree to our <a href="./terms-and-conditions.pdf" target="_blank" style="color: var(--mortgage-blue);">Terms of Use</a> and <a href="./privacy.pdf" target="_blank" style="color: var(--mortgage-blue);">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                    </div>
+
                     <button type="submit" class="btn-submit" style="margin: 0 auto; min-width: 200px;">Send Message</button>
                 </form>
             </div>
         </div>
-
     </div> 
     
     <footer>
@@ -670,84 +185,17 @@
             </p>
             <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank" style="color: rgba(255,255,255,0.7);">www.nmlsconsumeraccess.org</a></p>
             <p>Robertson Home Mortgage LLC is an Equal Housing Opportunity Mortgage Broker. Licensed by the NH Department of Banking.</p>
-            <p style="margin-top: 15px;"><strong>LEGAL DISCLAIMER:</strong> All tools and educational content on this website are provided strictly for informational purposes. The information and educational estimates are based on general industry guidelines to the best of our knowledge and do not constitute a Loan Estimate, an offer to lend, or a guarantee of specific terms. Available programs, rates, and limits change daily and are subject to borrower credit approval, property appraisal, and official underwriting.</p>
             <div style="display: flex; justify-content: center; margin-top: 15px;">
                 <img src="./eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
             </div>
         </div>
     </footer>
 
-    <div id="calcModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-calc" onclick="closeCalc()">&times;</span>
-            <h3 style="color:var(--mortgage-blue); margin-top:0;">Payment Estimator</h3>
-            <div class="calc-tabs">
-                <div class="calc-tab active" id="tabPurchase" onclick="switchCalcMode('purchase')">Purchase</div>
-                <div class="calc-tab" id="tabRefi" onclick="switchCalcMode('refi')">Refinance</div>
-            </div>
-            <div class="calc-body">
-                <div class="calc-col" style="margin-bottom:10px;">
-                    <label id="lblAmount">Home Price ($)</label>
-                    <input type="number" id="calcPrice" value="450000">
-                </div>
-                <div class="calc-row">
-                    <div class="calc-col"><label id="lblDown">Down Payment ($)</label><input type="number" id="calcDown" value="20000"></div>
-                    <div class="calc-col"><label>Example Int. Rate (%)</label><input type="number" id="calcRate" placeholder="6.5" step="0.125"></div>
-                </div>
-                <div class="calc-row">
-                    <div class="calc-col"><label>Annual Tax ($)</label><input type="number" id="calcTaxes" value="5000"></div>
-                    <div class="calc-col"><label>Annual Ins. ($)</label><input type="number" id="calcIns" value="1200"></div>
-                </div>
-                <button class="calc-btn" onclick="calculatePayment()">Calculate Total Payment</button>
-                <div class="calc-result">
-                    <span style="display:block; margin-bottom:5px; font-size: 0.8rem; color:#666;">Est. Monthly Payment</span>
-                    <h3 id="calcResultDisplay">$0</h3>
-                </div>
-                <p class="calc-disclaimer">Includes Principal, Interest, Taxes, and Insurance. Does not include Private Mortgage Insurance (PMI) or HOA fees. This tool is strictly for educational purposes and is not a commitment to lend. Rates and terms are examples only.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="flipModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-calc" onclick="closeFlipCalc()">&times;</span>
-            <h3 style="color:var(--mortgage-blue); margin-top:0; font-size: 1.4rem;">Fix & Flip Estimator</h3>
-            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">See estimated leverage based on your project costs.</p>
-            
-            <div class="calc-body">
-                <div class="calc-col" style="margin-bottom:10px;">
-                    <label>Purchase Price ($)</label>
-                    <input type="number" id="flipPP" value="200000">
-                </div>
-                <div class="calc-col" style="margin-bottom:10px;">
-                    <label>Estimated Rehab Budget ($)</label>
-                    <input type="number" id="flipRehab" value="50000">
-                </div>
-                <div class="calc-col" style="margin-bottom:10px;">
-                    <label>After Repair Value (ARV) ($)</label>
-                    <input type="number" id="flipARV" value="350000">
-                </div>
-                
-                <button class="calc-btn" onclick="calculateFlip()">Calculate Leverage</button>
-                
-                <div class="calc-result" style="text-align: left;">
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 5px;">
-                        <span style="font-size: 0.85rem; font-weight: 600; color:#555;">Max Loan Amount:</span>
-                        <span id="flipLoanDisplay" style="font-weight: 800; color: var(--mortgage-blue);">$0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="font-size: 0.85rem; font-weight: 600; color:#555;">Est. Cash Needed:</span>
-                        <span id="flipCashDisplay" style="font-weight: 800; color: var(--accent-red);">$0</span>
-                    </div>
-                </div>
-                <p class="calc-disclaimer">Assumes the lowest of: 95% Blended LTC, 90% PP + 100% Rehab, or 75% ARV. Estimated cash needed reflects down payment only and <strong>does not include</strong> closing costs, lender points, interest reserves, or fees. Strictly for educational purposes.</p>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // --- NAVIGATION & UI HELPERS ---
-        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+        function toggleMobileMenu() { 
+            document.getElementById('mobileMenu').classList.toggle('active'); 
+        }
+        
         function smoothScrollTo(id) {
             const el = document.getElementById(id);
             if (!el) return;
@@ -755,320 +203,18 @@
             window.scrollTo({ top: y, behavior: "smooth" });
         }
 
-        function showWizard(id) {
-            const sections = [
-                // Purchase Path
-                'wizard-pur-occupancy', 'wizard-pur-condition', 'wizard-pur-primary-categories',
-                'wizard-pur-conv-options', 'wizard-pur-gov-options', 'wizard-pur-nonqm-options',
-                'wizard-pur-rehab', 'wizard-pur-second', 'wizard-pur-invest', 
-                
-                // Refinance Path
-                'wizard-refi-categories', 'wizard-refi-rateterm-options',
-                'wizard-refi-cashout-options', 'wizard-refi-heloc-options',
-                
-                // Shared & Misc
-                'wizard-product-hub', 'quote-form-section'
-            ];
-            sections.forEach(s => {
-                const el = document.getElementById(s);
-                if(el) el.style.display = 'none';
-            });
-            
-            const target = document.getElementById(id);
-            if(target) {
-                target.style.display = 'block';
-                target.classList.add('fade-in');
-                setTimeout(() => smoothScrollTo(id), 50);
-            }
-        }
-
-        function toggleBio(id) {
-            const card = document.getElementById(id);
-            const content = card.querySelector('.team-content');
-            card.classList.toggle('active');
-            content.style.maxHeight = card.classList.contains('active') ? content.scrollHeight + "px" : null;
-        }
-
-        const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
-
-        function calcPI(loanAmount, ratePercent, months) {
-            if(loanAmount <= 0 || ratePercent <= 0) return 0;
-            const r = ratePercent / 100 / 12;
-            return (loanAmount * r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
-        }
-
-        // --- EDUCATION ENGINE (PURCHASE) ---
-        const purEduText = {
-            'conv': { 
-                title: "Standard Conventional", 
-                fit: "Buyers with good-to-excellent credit. First-time homebuyers can qualify with low minimum down payments on a 1-unit property, or alternative options on a multi-unit property.",
-                radar: ["Requires Private Mortgage Insurance (PMI) if you provide a lower down payment.", "PMI automatically drops off once you reach sufficient equity."]
-            },
-            'homeready': { 
-                title: "Fannie Mae HomeReady", 
-                fit: "Buyers earning 80% or less of their area's median income looking for accessible down payment options.",
-                radar: ["Income limits apply based on the property's location.", "You can use 'Boarder Income' (rent from someone who has lived with you for the past 12 months) to help you qualify."]
-            },
-            'homepossible': { 
-                title: "Freddie Mac Home Possible", 
-                fit: "Low-to-moderate-income buyers looking for reduced mortgage insurance and accessible down payment requirements.",
-                radar: ["Income limits apply based on property location.", "Boarder income can be used to qualify."]
-            },
-            'fha': { 
-                title: "Standard FHA", 
-                fit: "Buyers with less-than-perfect credit or higher debt loads. You can use an FHA loan to buy a 2, 3, or 4-unit property with a low minimum down payment, as long as you live in one of the units!",
-                radar: ["FHA charges an Upfront Mortgage Insurance Premium (1.75% of the loan amount) which is rolled into your loan.", "FHA monthly mortgage insurance typically remains for the life of the loan."]
-            },
-            'fha-100': { 
-                title: "FHA Combo Options", 
-                fit: "Cash-strapped buyers wanting to own now rather than wait. There are no income caps, and you do not need to be a first-time homebuyer to qualify.",
-                radar: ["The second mortgage is a fixed-term, fully amortized loan (meaning you will have a monthly payment on it).", "The interest rate on the second mortgage is typically set at a higher rate than your first mortgage.", "If you sell or refinance the first mortgage later, the second mortgage must be paid off simultaneously."]
-            },
-            'fha-203k': { 
-                title: "FHA 203(k) Renovation", 
-                fit: "Visionaries willing to build equity by updating a home (while hiring the pros to do the actual work!).",
-                radar: ["You must be doing at least $5,000 in eligible repairs.", "A contingency fund will be added to your loan to cover unexpected cost overruns during construction.", "All work must be completed by licensed contractors."]
-            },
-            'va-reno': { 
-                title: "VA Renovation", 
-                fit: "Eligible military and veterans wanting to roll the cost of home renovations directly into a purchase mortgage.",
-                radar: ["Maximum renovation limits apply including fees and contingency.", "Work must be non-structural and completed within 120 days.", "Self-help (doing the work yourself) is not allowed."]
-            },
-            'homestyle': { 
-                title: "Fannie Mae HomeStyle", 
-                fit: "Buyers with qualifying credit who want to remodel a home.",
-                radar: ["Low down payment options available for first-time buyers.", "Renovations can be financed based on the 'as-completed' value of the property."]
-            },
-            'usda-reno': {
-                title: "USDA Renovation",
-                fit: "Buyers looking to preserve their savings while rehabbing a property outside of major city limits.",
-                radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify."]
-            },
-            'va': { 
-                title: "VA Loan", 
-                fit: "Active duty military, veterans, and eligible surviving spouses.",
-                radar: ["You can use your VA loan to purchase up to a 4-unit property with highly favorable down payment terms, as long as you live in one of the units.", "The VA charges a one-time Funding Fee (which can be rolled into the loan), unless you receive VA disability compensation."]
-            },
-            'usda': { 
-                title: "USDA (Rural Development)", 
-                fit: "Buyers looking for property outside of major city limits who want to preserve their savings.",
-                radar: ["The property must be located in a USDA-eligible area.", "There are strict household income limits to qualify.", "Only available for 1-unit Single Family properties."]
-            },
-            'jumbo': { 
-                title: "Jumbo Financing", 
-                fit: "High-net-worth buyers looking at luxury, high-value, or expansive properties.",
-                radar: ["Requires a standard minimum down payment for a primary residence.", "You will generally need to show heavier cash reserves in the bank after closing.", "Higher loan amounts require two full, independent appraisals."]
-            },
-            'bank-statement': { 
-                title: "Bank Statement Income", 
-                fit: "Self-employed buyers whose tax returns don't reflect their true purchasing power.",
-                radar: ["You must be self-employed for an extended period.", "Typically requires a standard down payment."]
-            },
-            'pnl': { 
-                title: "1-Year P&L Statement", 
-                fit: "Business owners with healthy profit margins who want to avoid providing full tax returns.",
-                radar: ["P&L must be prepared by an independent CPA or tax preparer.", "Requires a standard down payment."]
-            },
-            '1099': { 
-                title: "1099 Income", 
-                fit: "Freelancers, contractors, and gig-workers.",
-                radar: ["You must have an established history with the same 1099 provider.", "Typically requires a standard down payment."]
-            },
-            'itin': { 
-                title: "ITIN / Foreign National", 
-                fit: "Non-US citizens living and working in the United States.",
-                radar: ["You will need a valid ITIN and an unexpired government photo ID.", "Requires cash reserves and a standard down payment."]
-            },
-            'conv-sec': { 
-                title: "Conventional Second Home", 
-                fit: "Buyers looking for a getaway property they intend to occupy for a portion of the year.",
-                radar: ["Requires a down payment.", "The property must be located a reasonable distance from your primary residence.", "Multi-unit properties are not allowed as second homes."]
-            },
-            'nonqm-sec': { 
-                title: "Second Home (Alt-Doc)", 
-                fit: "Self-employed buyers wanting a getaway property.",
-                radar: ["Requires a standard down payment.", "You must have been self-employed—and your business active—for an extended period."]
-            },
-            'dscr': { 
-                title: "DSCR (Debt Service) 1-4 Unit", 
-                fit: "Real estate investors who want to scale their portfolio without providing personal tax returns or pay stubs.",
-                radar: ["We offer tiers that allow for flexible cash flow ratio requirements.", "Requires a standard investor down payment.", "You must show you have cash reserves in the bank after closing."]
-            },
-            'dscr-5-9': { 
-                title: "Multi-Family (5-9 Units) DSCR", 
-                fit: "Experienced real estate investors looking to scale their portfolios into larger multi-family buildings.",
-                radar: ["You cannot be a first-time investor.", "The property's rent must meet a required ratio higher than the mortgage payment.", "You'll need cash reserves, and strict vacancy limits apply at the time of purchase."]
-            },
-            'conv-inv': { 
-                title: "Conventional Investment", 
-                fit: "Investors with strong personal income profiles (W-2 or tax returns) who want the most competitive interest rates.",
-                radar: ["Varying down payment requirements apply depending on how many units the property has.", "Personal debt-to-income (DTI) ratios apply."]
-            },
-            'fix-flip': {
-                title: "Fix & Flip",
-                fit: "Real estate investors seeking short-term bridge debt to acquire and rehab a property.",
-                radar: [
-                    "Based on After Repair Value (ARV) rather than personal DTI.", 
-                    "Rehab funds are held in escrow and reimbursed via draws.",
-                    "<button onclick='openFlipCalc()' style='margin-top: 10px; background: var(--brand-gold); color: var(--mortgage-blue); border: none; padding: 6px 12px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 0.8rem;'>Launch Fix & Flip Calculator</button>"
-                ]
-            }
-        };
-
-        // --- EDUCATION ENGINE (REFINANCE) ---
-        const refiEduText = {
-            'rt-conv': { 
-                title: "Standard Conventional Refinance", 
-                fit: "Homeowners with strong credit looking to lower their rate or change their loan term.",
-                radar: ["Closing costs can be rolled into the new loan so you bring no cash to the table."]
-            },
-            'fha-streamline': { 
-                title: "FHA Streamline", 
-                fit: "Homeowners with an existing FHA loan who want a lower rate with minimal paperwork.",
-                radar: ["No appraisal required.", "No income or employment verification required.", "Cannot roll closing costs into the loan balance; they must be paid out of pocket or covered by the lender via premium pricing."]
-            },
-            'va-irrrl': { 
-                title: "VA IRRRL (Streamline)", 
-                fit: "Veterans with an existing VA loan looking to lower their rate with minimal paperwork.",
-                radar: ["No appraisal required.", "No income or employment verification required.", "Closing costs can be rolled into the new loan."]
-            },
-            'rt-nonqm': { 
-                title: "Non-QM (Alt-Doc) Rate/Term", 
-                fit: "Self-employed homeowners wanting to refinance using Bank Statements, a P&L, or 1099s.",
-                radar: ["Requires alternative income documentation.", "Must have sufficient equity remaining in the home."]
-            },
-            'co-conv': { 
-                title: "Conventional Cash-Out", 
-                fit: "Homeowners wanting to pay off high-interest credit cards, fund major renovations, or buy an investment property.",
-                radar: ["You can generally only pull cash out up to standardized limits based on your home's appraised value.", "You must have owned the property for an established period of time."]
-            },
-            'co-fha': { 
-                title: "FHA Cash-Out", 
-                fit: "Homeowners wanting to tap equity who may have less-than-perfect credit.",
-                radar: ["Allows you to pull cash out up to standardized FHA equity limits.", "Requires payment of FHA Upfront Mortgage Insurance."]
-            },
-            'co-va': { 
-                title: "VA Cash-Out", 
-                fit: "Veterans wanting to tap equity. VA allows for highly favorable cash-out limits.",
-                radar: ["You can pull cash out leveraging significant portions of your home's value.", "Must pass a Net Tangible Benefit test."]
-            },
-            'co-jumbo': { 
-                title: "Jumbo Cash-Out", 
-                fit: "Homeowners with high-value properties wanting to extract significant equity.",
-                radar: ["Strict maximum cash-out limits apply.", "Requires heavy cash reserves left in the bank."]
-            },
-            'he': { 
-                title: "Home Equity (HELOC / HELOAN)", 
-                fit: "Homeowners with favorable interest rates on their primary mortgage who need cash.",
-                radar: ["You can choose between a revolving Line of Credit (HELOC) or a fixed lump sum (HELOAN).", "Combined Loan-to-Value (CLTV) limits apply to cap your total debt."]
-            },
-            'equity-adv': { 
-                title: "Standalone 2nd Lien (Alt-Doc)", 
-                fit: "Self-employed homeowners who want cash out but refuse to touch the interest rate on their 1st mortgage.",
-                radar: ["Unlike traditional bank HELOCs, you can use Bank Statements or a P&L to qualify.", "A maximum Combined Loan-to-Value (CLTV) cap applies to your 1st and 2nd mortgage together."]
-            }
-        };
-
-        // --- PRODUCT HUB CONTROLLER ---
-        function openProductHub(progId, occType, backTarget) {
-            let data = purEduText[progId] || refiEduText[progId] || {title: "Custom Strategy", fit: "Great for your specific scenario.", radar: []};
-            
-            document.getElementById('hub-title').innerText = data.title;
-            let eduHtml = `
-                <h4>Perfect For:</h4>
-                <p>${data.fit}</p>
-                <h4>On Your Radar:</h4>
-                <ul>
-                    ${data.radar.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-            `;
-            document.getElementById('hub-edu').innerHTML = eduHtml;
-
-            const backBtn = document.getElementById('hub-back-btn');
-            backBtn.setAttribute('onclick', `showWizard('${backTarget}')`);
-
-            showWizard('wizard-product-hub');
-        }
-
-        // --- SIMPLE PAYMENT CALC ---
-        function openCalc() { document.getElementById('calcModal').style.display = 'flex'; calculatePayment(); }
-        function closeCalc() { document.getElementById('calcModal').style.display = 'none'; }
-        let calcMode = 'purchase';
-        function switchCalcMode(mode) {
-            calcMode = mode;
-            document.getElementById('tabPurchase').classList.toggle('active', mode === 'purchase');
-            document.getElementById('tabRefi').classList.toggle('active', mode === 'refi');
-            document.getElementById('lblAmount').innerText = mode === 'purchase' ? "Home Price ($)" : "Current Balance ($)";
-            document.getElementById('lblDown').innerText = mode === 'purchase' ? "Down Payment ($)" : "Cash Out Desired ($)";
-            calculatePayment();
-        }
-        function calculatePayment() {
-            const val1 = parseFloat(document.getElementById('calcPrice').value) || 0; 
-            const val2 = parseFloat(document.getElementById('calcDown').value) || 0; 
-            const rateInput = document.getElementById('calcRate').value;
-            const rate = parseFloat(rateInput) || 6.5; 
-            const tax = parseFloat(document.getElementById('calcTaxes').value) || 0;
-            const ins = parseFloat(document.getElementById('calcIns').value) || 0;
-            
-            const loanAmount = calcMode === 'purchase' ? val1 - val2 : val1 + val2;
-            if (loanAmount > 0 && rate > 0) {
-                const total = calcPI(loanAmount, rate, 360) + (tax / 12) + (ins / 12);
-                document.getElementById('calcResultDisplay').innerText = formatCurrency(total);
-            } else {
-                document.getElementById('calcResultDisplay').innerText = "$0";
-            }
-        }
-
-        // --- FIX & FLIP CALCULATOR ---
-        function openFlipCalc() { 
-            document.getElementById('flipModal').style.display = 'flex'; 
-            calculateFlip(); 
-        }
-        
-        function closeFlipCalc() { 
-            document.getElementById('flipModal').style.display = 'none'; 
-        }
-
-        function calculateFlip() {
-            const pp = parseFloat(document.getElementById('flipPP').value) || 0;
-            const rehab = parseFloat(document.getElementById('flipRehab').value) || 0;
-            const arv = parseFloat(document.getElementById('flipARV').value) || 0;
-
-            if (pp > 0 || rehab > 0 || arv > 0) {
-                const calc1 = 0.95 * (pp + rehab);          // 95% Blended LTC
-                const calc2 = (0.90 * pp) + (1.00 * rehab); // 90% PP + 100% Budget
-                const calc3 = 0.75 * arv;                   // 75% LTARV
-
-                const maxLoan = Math.min(calc1, calc2, calc3);
-                
-                const totalCost = pp + rehab;
-                const cashToClose = totalCost - maxLoan;
-
-                const finalCash = cashToClose > 0 ? cashToClose : 0;
-                const finalLoan = maxLoan > 0 ? maxLoan : 0;
-
-                document.getElementById('flipLoanDisplay').innerText = formatCurrency(finalLoan);
-                document.getElementById('flipCashDisplay').innerText = formatCurrency(finalCash);
-            } else {
-                document.getElementById('flipLoanDisplay').innerText = "$0";
-                document.getElementById('flipCashDisplay').innerText = "$0";
-            }
-        }
-
-        // --- FORMS ---
         function handleFormSubmit(e) {
             e.preventDefault();
             const form = e.target;
             const formData = new FormData(form);
-            fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(formData).toString() })
+            fetch("/", { 
+                method: "POST", 
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+                body: new URLSearchParams(formData).toString() 
+            })
             .then(() => {
-                if (form.id === 'quoteForm') {
-                    form.style.display = 'none';
-                    document.getElementById('quote-success').style.display = 'block';
-                } else {
-                    alert('Message Sent Successfully!');
-                    form.reset();
-                }
+                alert('Message Sent Successfully!');
+                form.reset();
             }).catch(() => alert("Submission failed. Please try again."));
         }
     </script>
