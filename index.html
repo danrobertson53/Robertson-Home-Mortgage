@@ -305,8 +305,9 @@
             background-color: var(--bg-light);
             text-align: center;
             border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
             padding-top: 50px; 
-            padding-bottom: 80px; /* Added padding to separate the button from the footer */
+            padding-bottom: 80px; 
         }
 
         .contact-container {
@@ -448,7 +449,7 @@
             .nav-container { justify-content: flex-end; } 
             .hamburger { display: flex; }
             
-            /* Tightly Condensed Mobile Dropdown Menu */
+            /* High-Quality Mobile Dropdown Menu */
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -456,32 +457,32 @@
                 top: 60px; 
                 right: 24px; 
                 left: auto;
-                width: 150px; 
+                width: 200px; /* Slightly wider to accommodate larger text cleanly */
                 background-color: var(--white);
-                padding: 12px; 
+                padding: 15px; 
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                gap: 10px; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                gap: 5px; /* Manageable spacing between items */
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 0; 
+                padding: 12px 10px; /* Generous touch target area */
                 width: 100%;
-                text-align: right;
-                font-size: 0.95rem;
+                text-align: center; /* Perfect center alignment */
+                font-size: 1.15rem; /* Larger, readable text */
                 line-height: 1.2;
             }
             .nav-links a.nav-btn {
                 width: 100%;
                 margin: 5px 0 0 0; 
                 text-align: center;
-                padding: 8px 0; 
+                padding: 12px 0; 
+                font-size: 1.15rem; /* Matched button size */
             }
 
             /* Mobile Hero Updates */
             #hero {
-                /* Darkened overlay from 0.45 to 0.6 */
                 background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)), url('town-hero.png') no-repeat center 25%/cover;
                 padding-bottom: 40px;
             }
@@ -489,7 +490,6 @@
             .mobile-hero-logo { display: block; } 
             .hero-text-box { padding: 40px 20px; width: 92%; }
             
-            /* Overrides previously un-grouped mobile margins */
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
