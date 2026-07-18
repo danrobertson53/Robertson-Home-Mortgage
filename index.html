@@ -163,8 +163,9 @@
 
         /* Hero Section */
         #hero {
-            padding: 140px 0 40px; /* Reduced bottom padding to pull About section closer */
-            background: linear-gradient(rgba(10, 37, 64, 0.45), rgba(10, 37, 64, 0.45)), url('town-hero.png') no-repeat center center/cover;
+            padding: 140px 0 40px; 
+            /* Darkened overlay from 0.45 to 0.6 */
+            background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 60vh; 
             display: flex;
@@ -203,7 +204,7 @@
         #about {
             background-color: var(--white);
             text-align: left;
-            padding-top: 40px; /* Reduced top padding to stay tight against the Hero */
+            padding-top: 40px; 
             padding-bottom: 30px; 
         }
 
@@ -211,7 +212,7 @@
             font-size: 2.5rem;
             margin-bottom: 25px;
             letter-spacing: -0.5px;
-            text-align: center; /* Centered to match Get in Touch */
+            text-align: center; 
         }
 
         .about-text {
@@ -304,8 +305,8 @@
             background-color: var(--bg-light);
             text-align: center;
             border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
             padding-top: 50px; 
+            padding-bottom: 80px; /* Added padding to separate the button from the footer */
         }
 
         .contact-container {
@@ -447,7 +448,7 @@
             .nav-container { justify-content: flex-end; } 
             .hamburger { display: flex; }
             
-            /* Refined Mobile Dropdown Menu */
+            /* Tightly Condensed Mobile Dropdown Menu */
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -455,33 +456,33 @@
                 top: 60px; 
                 right: 24px; 
                 left: auto;
-                width: 180px; /* Slightly wider to comfortably hold larger text */
+                width: 150px; 
                 background-color: var(--white);
-                padding: 15px; 
+                padding: 12px; 
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-                gap: 12px; /* Perfect, uniform touch spacing */
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                gap: 10px; 
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 8px 0; 
+                padding: 0; 
                 width: 100%;
-                text-align: center; /* Center aligned for visual uniformity */
-                font-size: 1.15rem; /* Larger, easier-to-read font size */
+                text-align: right;
+                font-size: 0.95rem;
                 line-height: 1.2;
             }
             .nav-links a.nav-btn {
                 width: 100%;
-                margin: 0; 
+                margin: 5px 0 0 0; 
                 text-align: center;
-                padding: 12px 0; 
-                font-size: 1.1rem; /* Matched button size to links */
+                padding: 8px 0; 
             }
 
             /* Mobile Hero Updates */
             #hero {
-                background: linear-gradient(rgba(10, 37, 64, 0.45), rgba(10, 37, 64, 0.45)), url('town-hero.png') no-repeat center 25%/cover;
+                /* Darkened overlay from 0.45 to 0.6 */
+                background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)), url('town-hero.png') no-repeat center 25%/cover;
                 padding-bottom: 40px;
             }
             .hero-title { display: none; } 
@@ -562,7 +563,6 @@
     <!-- Unified About Section -->
     <section id="about">
         <div class="container">
-            <!-- Title updated to one word -->
             <h2 class="about-title">About</h2>
             
             <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
