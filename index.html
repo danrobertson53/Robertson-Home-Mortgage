@@ -29,15 +29,16 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--dark-brown);
-            line-height: 1.7;
+            line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
         }
 
         /* Serif Font for Headings to Match Logo */
-        h1, h2, h3, h4, .nav-links a, .accordion-header {
+        h1, h2, h3, h4, .accordion-header {
             font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
+            font-weight: 700;
         }
 
         a {
@@ -47,40 +48,37 @@
 
         /* Reusable Classes */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         .section-padding {
-            padding: 100px 0;
+            padding: 70px 0; /* Tightened spacing */
         }
 
         .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 24px;
-            font-weight: 700;
+            font-size: 2.4rem; /* More uniform sizing */
+            margin-bottom: 20px;
             letter-spacing: -0.5px;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 12px 28px;
             background-color: var(--navy);
             color: var(--white);
             border-radius: 4px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
             cursor: pointer;
             border: none;
         }
 
         .btn:hover {
             background-color: var(--navy-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
         }
 
         /* Navigation */
@@ -89,12 +87,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-light);
             z-index: 1000;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
             padding: 10px 0;
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -104,11 +100,29 @@
         }
 
         .nav-logo img {
-            height: 75px; 
+            height: 65px; 
             width: auto;
             mix-blend-mode: multiply; 
         }
 
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--navy);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Desktop Nav Links */
         .nav-links {
             display: flex;
             gap: 30px;
@@ -117,7 +131,8 @@
 
         .nav-links a {
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            color: var(--navy);
             transition: color 0.2s;
         }
 
@@ -126,75 +141,48 @@
         }
 
         .nav-links a.nav-btn {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--white);
             background-color: var(--navy);
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 4px;
-            font-size: 0.95rem;
         }
 
         .nav-links a.nav-btn:hover {
-            color: var(--white);
             background-color: var(--navy-light);
+            color: var(--white);
         }
 
         /* Hero Section */
         #hero {
-            padding: 160px 0 100px; /* Reduced padding */
-            /* Lightened the overlay from 0.85 to 0.4 to reveal more of the image */
-            background: linear-gradient(rgba(10, 37, 64, 0.4), rgba(10, 37, 64, 0.4)), url('town-hero.png') no-repeat center center/cover;
+            padding: 140px 0 80px; 
+            background: url('town-hero.png') no-repeat center center/cover;
             text-align: center;
-            min-height: 55vh; /* Reduced height so it takes up less screen */
+            min-height: 60vh; 
             display: flex;
             align-items: center;
-            color: var(--white);
         }
 
-        .hero-content {
-            max-width: 850px;
+        /* Frosted Glass Text Box for Readability */
+        .hero-text-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 8px;
+            max-width: 650px;
             margin: 0 auto;
-        }
-
-        /* Custom Hero Animations */
-        @keyframes titleReveal {
-            0% { opacity: 0; transform: translateY(20px); letter-spacing: -2px; }
-            100% { opacity: 1; transform: translateY(0); letter-spacing: 0; }
-        }
-
-        @keyframes fadeInText {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .hero-title {
-            color: var(--white);
-            font-size: 3rem; /* Scaled down text size */
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* Drop shadow ensures readability against lighter background */
-            opacity: 0;
-            animation: titleReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            animation-delay: 0.2s;
+            font-size: 3rem; 
+            margin-bottom: 15px;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
             font-size: 1.2rem;
-            color: #f8f8f8;
-            margin-bottom: 35px;
-            font-weight: 300;
-            line-height: 1.6;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-            opacity: 0;
-            animation: fadeInText 1s ease forwards;
-            animation-delay: 0.8s; /* Subtitle fades in slightly after the main title */
-        }
-
-        .hero-btn-wrapper {
-            opacity: 0;
-            animation: fadeInText 1s ease forwards;
-            animation-delay: 1.2s;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 400;
         }
 
         /* About Section */
@@ -205,14 +193,13 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: flex-start;
         }
 
         .about-text p {
-            font-size: 1.15rem;
-            color: var(--dark-brown);
-            margin-bottom: 24px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
         }
 
         /* Interactive Accordion Styles */
@@ -225,40 +212,34 @@
         .accordion-item {
             background: var(--white);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
 
         .accordion-header {
-            padding: 22px;
+            padding: 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.2rem;
             user-select: none;
-        }
-
-        .accordion-header:hover {
             background: #fafafa;
         }
 
         .accordion-icon {
             font-size: 1.5rem;
             line-height: 1;
-            transition: transform 0.3s ease;
             font-family: sans-serif;
             color: var(--navy);
+            transition: transform 0.2s ease;
         }
 
         .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            display: none; /* Handled by JS */
             background: var(--white);
-            padding: 0 22px;
+            padding: 0 20px;
+            border-top: 1px solid var(--border-light);
         }
 
         .accordion-content p {
@@ -266,21 +247,15 @@
             margin: 0;
             color: var(--text-light);
             font-size: 1.05rem;
-            border-top: 1px solid var(--border-light);
         }
 
         .accordion-item.active .accordion-icon {
             transform: rotate(45deg);
         }
 
-        .accordion-item.active {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-color: var(--navy);
-        }
-
         /* Bio Section */
         #bio {
-            background-color: #fcfcfc;
+            background-color: #f9f9f9;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
         }
@@ -289,10 +264,9 @@
             max-width: 800px;
             margin: 0 auto;
             background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            overflow: hidden;
+            border-radius: 8px;
             border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .bio-trigger {
@@ -301,7 +275,6 @@
             gap: 25px;
             padding: 30px;
             cursor: pointer;
-            transition: background 0.3s ease;
         }
 
         .bio-trigger:hover {
@@ -309,24 +282,23 @@
         }
 
         .bio-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             object-position: top center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             filter: grayscale(100%);
         }
 
         .bio-header-text h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 5px;
         }
 
         .bio-header-text span {
             display: block;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             font-size: 0.85rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
@@ -339,29 +311,19 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         .bio-details {
             display: none; 
-            padding: 0 30px 40px;
+            padding: 0 30px 30px;
             border-top: 1px dashed var(--border-light);
             margin-top: 10px;
             padding-top: 30px;
-            animation: fadeInDown 0.4s ease forwards;
         }
 
         .bio-details p {
-            color: var(--dark-brown);
             font-size: 1.1rem;
             margin-bottom: 15px;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Contact Section */
@@ -376,12 +338,12 @@
         }
 
         .contact-info {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
 
         .contact-info p {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #e2e8f0;
         }
 
@@ -394,9 +356,8 @@
         footer {
             background-color: #051626;
             color: #a0aec0;
-            padding: 60px 0 30px;
+            padding: 50px 0 30px;
             font-size: 0.85rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-grid {
@@ -418,11 +379,11 @@
         }
 
         .footer-col p {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-col a {
-            transition: color 0.2s;
+            color: #a0aec0;
         }
         
         .footer-col a:hover {
@@ -450,25 +411,16 @@
             border-radius: 2px;
         }
 
-        /* Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
             .about-grid {
                 grid-template-columns: 1fr;
             }
             .hero-title {
                 font-size: 2.4rem;
+            }
+            .hero-text-box {
+                padding: 40px 20px;
             }
             .bio-trigger {
                 flex-direction: column;
@@ -482,8 +434,25 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            /* Mobile Nav Logic */
+            .hamburger {
+                display: flex;
+            }
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 85px; /* Height of header */
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px 0;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
             }
         }
     </style>
@@ -496,12 +465,20 @@
             <a href="#hero" class="nav-logo">
                 <img src="Village-Lending.png" alt="Village Lending">
             </a>
-            <div class="nav-links">
-                <a href="#about">Our Approach</a>
-                <a href="#products">Products</a>
-                <a href="#bio">Leadership</a>
-                <a href="#contact">Contact</a>
-                <a href="#contact" class="nav-btn">Get Started</a>
+            
+            <!-- Mobile Hamburger Button -->
+            <div class="hamburger" id="hamburgerMenu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#about" onclick="closeMenu()">Our Approach</a>
+                <a href="#products" onclick="closeMenu()">Products</a>
+                <a href="#bio" onclick="closeMenu()">Leadership</a>
+                <a href="#contact" onclick="closeMenu()">Contact</a>
+                <a href="#contact" class="nav-btn" onclick="closeMenu()">Get Started</a>
             </div>
         </div>
     </nav>
@@ -509,12 +486,10 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-text-box">
                 <h1 class="hero-title">Village Lending</h1>
-                <p class="hero-subtitle">Experience tailored mortgage strategies designed to align with your family's long-term financial trajectory.</p>
-                <div class="hero-btn-wrapper">
-                    <a href="#about" class="btn" style="background-color: var(--white); color: var(--navy);">Discover Our Approach</a>
-                </div>
+                <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing in Goffstown.</p>
+                <a href="#about" class="btn">Discover Our Approach</a>
             </div>
         </div>
     </section>
@@ -523,14 +498,14 @@
     <section id="about" class="section-padding">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text reveal">
+                <div class="about-text">
                     <h2 class="section-title">The Bigger Picture</h2>
                     <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: your long-term financial trajectory.</p>
                     <p>At Village Lending, we believe a mortgage is a critical financial tool. We take the time to understand your goals, providing a highly personalized, community-focused experience right here in downtown Goffstown.</p>
                 </div>
                 
                 <!-- Dynamic Accordion Area -->
-                <div class="accordion-container reveal" style="transition-delay: 0.2s;">
+                <div class="accordion-container">
                     
                     <div class="accordion-item" onclick="toggleAccordion(this)">
                         <div class="accordion-header">
@@ -559,7 +534,7 @@
 
     <!-- Bio Section -->
     <section id="bio" class="section-padding">
-        <div class="container reveal">
+        <div class="container">
             <div class="bio-interactive-card">
                 
                 <!-- Clickable Trigger -->
@@ -584,7 +559,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section-padding">
-        <div class="container reveal">
+        <div class="container">
             <h2 class="section-title" style="color: var(--white);">Ready to Strategize?</h2>
             <div class="contact-info">
                 <p>Located in downtown Goffstown.</p>
@@ -633,38 +608,35 @@
 
     <!-- JavaScript for Interactivity -->
     <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
         }
-        window.addEventListener("scroll", reveal);
-        reveal(); 
+        
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
 
+        // Accordion Logic
         function toggleAccordion(element) {
             let allItems = document.querySelectorAll('.accordion-item');
             allItems.forEach(item => {
                 if(item !== element && item.classList.contains('active')) {
                     item.classList.remove('active');
-                    item.querySelector('.accordion-content').style.maxHeight = null;
+                    item.querySelector('.accordion-content').style.display = "none";
                 }
             });
 
             element.classList.toggle('active');
             let content = element.querySelector('.accordion-content');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
+            if (content.style.display === "block") {
+                content.style.display = "none";
             } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.display = "block";
             }
         }
 
+        // Bio Logic
         function toggleBio() {
             var content = document.getElementById("bioContent");
             var text = document.getElementById("bioToggleText");
