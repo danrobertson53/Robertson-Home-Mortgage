@@ -84,11 +84,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-            padding: 15px 0;
+            box-shadow: 0 1px 15px rgba(0,0,0,0.05);
+            padding: 10px 0;
             transition: all 0.3s ease;
         }
 
@@ -99,7 +99,7 @@
         }
 
         .nav-logo img {
-            height: 50px;
+            height: 75px; /* Increased logo size */
             width: auto;
         }
 
@@ -120,32 +120,51 @@
             color: var(--text-light);
         }
 
+        /* Fix for Nav Button */
+        .nav-links a.nav-btn {
+            color: var(--white);
+            background-color: var(--navy);
+            padding: 10px 24px;
+            border-radius: 4px;
+        }
+
+        .nav-links a.nav-btn:hover {
+            color: var(--white);
+            background-color: var(--navy-light);
+        }
+
         /* Hero Section */
         #hero {
-            padding: 180px 0 120px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            padding: 220px 0 160px;
+            /* Added the town-hero.png background with a navy gradient overlay for text readability */
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.75)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 80vh;
             display: flex;
             align-items: center;
+            color: var(--white);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
-        .hero-logo {
-            max-width: 400px;
-            width: 100%;
-            margin-bottom: 40px;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--white);
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--accent);
+            font-size: 1.3rem;
+            color: #e2e8f0;
             margin-bottom: 40px;
-            font-weight: 400;
+            font-weight: 300;
+            line-height: 1.6;
         }
 
         /* About Section */
@@ -157,7 +176,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .about-text p {
@@ -166,23 +185,65 @@
             margin-bottom: 24px;
         }
 
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
+        /* Interactive Accordion Styles */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .feature-card {
+        .accordion-item {
             background: var(--cream);
-            padding: 24px;
+            border: 1px solid rgba(10, 37, 64, 0.1);
             border-radius: 8px;
-            border-left: 4px solid var(--navy);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .feature-card h4 {
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
             color: var(--navy);
-            margin-bottom: 8px;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: #f0eee8;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--white);
+            padding: 0 20px;
+        }
+
+        .accordion-content p {
+            padding: 20px 0;
+            margin: 0;
+            color: var(--text-light);
+            font-size: 1rem;
+            border-top: 1px solid rgba(10, 37, 64, 0.05);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-item.active {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-color: var(--navy);
         }
 
         /* Bio Section */
@@ -190,51 +251,80 @@
             background-color: var(--cream);
         }
 
-        .bio-wrapper {
+        .bio-interactive-card {
+            max-width: 800px;
+            margin: 0 auto;
             background: var(--white);
             border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .bio-trigger {
             display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .bio-image {
-            flex: 0 0 400px;
+        .bio-trigger:hover {
+            background: #fafaf9;
         }
 
-        .bio-image img {
-            width: 100%;
-            height: 100%;
+        .bio-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             filter: grayscale(100%);
-            transition: filter 0.5s ease;
         }
 
-        .bio-wrapper:hover .bio-image img {
-            filter: grayscale(0%);
+        .bio-header-text h3 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
 
-        .bio-content {
-            padding: 60px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .bio-role {
+        .bio-header-text span {
+            display: block;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-light);
-            margin-bottom: 20px;
-            display: block;
+            margin-bottom: 10px;
         }
 
-        .bio-content p {
+        .bio-indicator {
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bio-details {
+            display: none; /* Hidden via JS initially */
+            padding: 0 30px 40px;
+            border-top: 1px dashed #e2e8f0;
+            margin-top: 10px;
+            padding-top: 30px;
+            animation: fadeInDown 0.4s ease forwards;
+        }
+
+        .bio-details p {
+            color: var(--text-light);
             font-size: 1.1rem;
-            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Contact Section */
@@ -265,7 +355,7 @@
 
         /* Footer */
         footer {
-            background-color: #051626; /* Darker Navy */
+            background-color: #051626;
             color: #a0aec0;
             padding: 60px 0 30px;
             font-size: 0.85rem;
@@ -335,13 +425,15 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .about-grid, .bio-wrapper {
+            .about-grid {
                 grid-template-columns: 1fr;
-                flex-direction: column;
             }
-            .bio-image {
-                flex: auto;
-                height: 400px;
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .bio-trigger {
+                flex-direction: column;
+                text-align: center;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -352,13 +444,7 @@
                 text-align: center;
             }
             .nav-links {
-                display: none; /* Simple mobile hide, in production use a hamburger menu */
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .bio-content {
-                padding: 40px 24px;
+                display: none;
             }
         }
     </style>
@@ -372,10 +458,10 @@
                 <img src="Village-Lending.png" alt="Village Lending">
             </a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#bio">Our Team</a>
+                <a href="#about">Our Approach</a>
+                <a href="#bio">Leadership</a>
                 <a href="#contact">Contact</a>
-                <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Get Started</a>
+                <a href="#contact" class="nav-btn">Get Started</a>
             </div>
         </div>
     </nav>
@@ -384,9 +470,9 @@
     <section id="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
-                <p class="hero-subtitle">Aligning your mortgage with your long-term financial trajectory. We don't just secure approvals; we structure strategic assets.</p>
-                <a href="#about" class="btn">Discover Our Approach</a>
+                <h1 class="hero-title">Boutique Mortgage Solutions in the Heart of Goffstown.</h1>
+                <p class="hero-subtitle">Experience white-glove service and tailored mortgage strategies designed to align with your family's long-term financial trajectory.</p>
+                <a href="#about" class="btn" style="background-color: var(--white); color: var(--navy);">Discover Our Approach</a>
             </div>
         </div>
     </section>
@@ -397,25 +483,43 @@
             <div class="about-grid">
                 <div class="about-text reveal">
                     <h2 class="section-title">The Bigger Picture</h2>
-                    <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
-                    <p>A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of solutions.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature-card">
-                            <h4>Tailored Solutions</h4>
-                            <p style="font-size: 0.9rem; margin:0;">Access to a vast network of wholesale lenders and investors.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Strategic Structuring</h4>
-                            <p style="font-size: 0.9rem; margin:0;">Ensuring debt structuring becomes a strategic asset for your future.</p>
-                        </div>
-                    </div>
+                    <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: your long-term financial trajectory.</p>
+                    <p>At Village Lending, we believe a mortgage is a critical financial tool. We take the time to understand your goals, providing a highly personalized, community-focused experience right here in downtown Goffstown.</p>
                 </div>
-                <div class="about-visual reveal" style="transition-delay: 0.2s;">
-                    <!-- A clean CSS shape/pattern to add visual interest without needing another image file -->
-                    <div style="width: 100%; padding-bottom: 100%; background: linear-gradient(135deg, #0a2540 0%, #163859 100%); border-radius: 50% 50% 50% 0; position: relative; box-shadow: 0 20px 40px rgba(10,37,64,0.15);">
-                        <div style="position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 2px solid #e2e8f0; border-radius: 50% 50% 50% 0; z-index: -1;"></div>
+                
+                <!-- Dynamic Accordion Area -->
+                <div class="accordion-container reveal" style="transition-delay: 0.2s;">
+                    
+                    <div class="accordion-item" onclick="toggleAccordion(this)">
+                        <div class="accordion-header">
+                            White-Glove Service
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>As a boutique brokerage, we limit our volume to ensure every client receives our undivided attention, proactive communication, and dedicated support from application to closing.</p>
+                        </div>
                     </div>
+
+                    <div class="accordion-item" onclick="toggleAccordion(this)">
+                        <div class="accordion-header">
+                            Vast Lender Network
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of tailored financial solutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" onclick="toggleAccordion(this)">
+                        <div class="accordion-header">
+                            Strategic Structuring
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions aligned perfectly with your future wealth.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -423,17 +527,25 @@
 
     <!-- Bio Section -->
     <section id="bio" class="section-padding">
-        <div class="container">
-            <div class="bio-wrapper reveal">
-                <div class="bio-image">
-                    <img src="dan-robertson.jpg" alt="Dan Robertson">
+        <div class="container reveal">
+            <div class="bio-interactive-card">
+                
+                <!-- Clickable Trigger -->
+                <div class="bio-trigger" onclick="toggleBio()">
+                    <img src="dan-robertson.jpg" alt="Dan Robertson" class="bio-avatar">
+                    <div class="bio-header-text">
+                        <h3>Dan Robertson</h3>
+                        <span>Broker Owner</span>
+                        <div class="bio-indicator" id="bioToggleText">Read Full Bio &rarr;</div>
+                    </div>
                 </div>
-                <div class="bio-content">
-                    <h2 class="section-title" style="margin-bottom: 5px;">Dan Robertson</h2>
-                    <span class="bio-role">Broker Owner</span>
-                    <p style="margin-top: 20px;">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan.</p>
-                    <p style="margin-top: 15px;">Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+
+                <!-- Hidden Content -->
+                <div class="bio-details" id="bioContent">
+                    <p>With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan.</p>
+                    <p>Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -487,8 +599,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Scroll Animations -->
+    <!-- JavaScript for Interactivity -->
     <script>
+        // Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -501,8 +614,42 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // Trigger once on load
-        reveal();
+        reveal(); // Trigger once on load
+
+        // Accordion Functionality
+        function toggleAccordion(element) {
+            // Close all other accordions
+            let allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(item => {
+                if(item !== element && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+
+            // Toggle current accordion
+            element.classList.toggle('active');
+            let content = element.querySelector('.accordion-content');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        // Bio Toggle Functionality
+        function toggleBio() {
+            var content = document.getElementById("bioContent");
+            var text = document.getElementById("bioToggleText");
+            
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                text.innerHTML = "Read Full Bio &rarr;";
+            } else {
+                content.style.display = "block";
+                text.innerHTML = "Close Bio &uarr;";
+            }
+        }
     </script>
 </body>
 </html>
