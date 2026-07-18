@@ -13,6 +13,7 @@
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
             --border-light: #eaeaea;
+            --bg-light: #f8f9fa;
         }
 
         /* Reset & Base Styles */
@@ -35,7 +36,7 @@
         }
 
         /* Serif Font for Headings to Match Logo */
-        h1, h2, h3, h4, .accordion-header {
+        h1, h2, h3, h4 {
             font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
@@ -48,26 +49,20 @@
 
         /* Reusable Classes */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         .section-padding {
-            padding: 70px 0; /* Tightened spacing */
-        }
-
-        .section-title {
-            font-size: 2.4rem; /* More uniform sizing */
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
+            padding: 80px 0; 
         }
 
         .btn {
             display: inline-block;
             padding: 12px 28px;
             background-color: var(--navy);
-            color: var(--white);
+            color: var(--white) !important;
             border-radius: 4px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
@@ -75,6 +70,7 @@
             transition: background-color 0.2s ease;
             cursor: pointer;
             border: none;
+            text-align: center;
         }
 
         .btn:hover {
@@ -162,7 +158,6 @@
             align-items: center;
         }
 
-        /* Frosted Glass Text Box for Readability */
         .hero-text-box {
             background-color: rgba(255, 255, 255, 0.95);
             padding: 50px 40px;
@@ -183,173 +178,175 @@
             color: var(--text-light);
             margin-bottom: 30px;
             font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* About Section */
+        /* Unified About Section & Bio Card */
         #about {
             background-color: var(--white);
+            text-align: left;
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: flex-start;
+        .accent-line {
+            height: 4px; 
+            width: 60px; 
+            background: var(--navy); 
+            margin: 0 0 20px 0;
         }
 
-        .about-text p {
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .about-text {
             font-size: 1.1rem;
+            color: var(--text-light);
             margin-bottom: 20px;
+            line-height: 1.7;
         }
 
-        /* Interactive Accordion Styles */
-        .accordion-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .accordion-item {
-            background: var(--white);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
+        /* Bio Team Card (Modeled from old site) */
+        .team-card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            margin-top: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-left: 5px solid var(--navy);
             overflow: hidden;
-        }
-
-        .accordion-header {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.2rem;
-            user-select: none;
-            background: #fafafa;
-        }
-
-        .accordion-icon {
-            font-size: 1.5rem;
-            line-height: 1;
-            font-family: sans-serif;
-            color: var(--navy);
-            transition: transform 0.2s ease;
-        }
-
-        .accordion-content {
-            display: none; /* Handled by JS */
-            background: var(--white);
-            padding: 0 20px;
             border-top: 1px solid var(--border-light);
+            border-right: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .accordion-content p {
-            padding: 20px 0;
+        .team-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px 30px 15px 30px;
+        }
+
+        .team-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: top center;
+            border: 3px solid var(--navy);
+            flex-shrink: 0;
+            filter: grayscale(100%);
+        }
+
+        .team-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.6rem;
+            line-height: 1.2;
+        }
+
+        .team-info h4 {
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+        }
+
+        .team-content {
+            padding: 0 30px 30px 30px;
+        }
+
+        .bio-text {
             color: var(--text-light);
             font-size: 1.05rem;
+            line-height: 1.7;
+            margin-top: 10px;
         }
 
-        .accordion-item.active .accordion-icon {
-            transform: rotate(45deg);
-        }
-
-        /* Bio Section */
-        #bio {
-            background-color: #f9f9f9;
+        /* Contact Section (With Netlify Form) */
+        #contact {
+            background-color: var(--bg-light);
+            text-align: center;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
         }
 
-        .bio-interactive-card {
-            max-width: 800px;
+        .contact-container {
+            max-width: 600px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: 8px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .bio-trigger {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding: 30px;
-            cursor: pointer;
-        }
-
-        .bio-trigger:hover {
-            background: #fafafa;
-        }
-
-        .bio-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: top center; 
-            filter: grayscale(100%);
-        }
-
-        .bio-header-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .bio-header-text span {
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            color: var(--text-light);
+        .contact-container h2 {
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
-        .bio-indicator {
-            color: var(--navy);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .bio-details {
-            display: none; 
-            padding: 0 30px 30px;
-            border-top: 1px dashed var(--border-light);
-            margin-top: 10px;
-            padding-top: 30px;
-        }
-
-        .bio-details p {
+        .contact-container p {
+            color: var(--text-light);
+            margin-bottom: 30px;
             font-size: 1.1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
             margin-bottom: 15px;
         }
 
-        /* Contact Section */
-        #contact {
-            background-color: var(--navy);
-            color: var(--white);
-            text-align: center;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 150px;
+            text-align: left;
         }
 
-        #contact .section-title {
-            color: var(--white);
+        .form-group input, .form-group textarea {
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            background: #fff;
+            width: 100%;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            transition: border-color 0.3s;
         }
 
-        .contact-info {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--navy);
+            outline: none;
         }
 
-        .contact-info p {
-            margin-bottom: 8px;
-            color: #e2e8f0;
+        .consent-wrapper {
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .contact-info a {
-            color: var(--white);
+        .consent-wrapper input[type="checkbox"] {
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .consent-wrapper a {
+            color: var(--navy);
             text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            font-size: 1.05rem;
+            padding: 15px;
         }
 
         /* Footer */
@@ -412,19 +409,24 @@
         }
 
         /* Mobile Responsiveness */
-        @media (max-width: 900px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.4rem;
             }
             .hero-text-box {
                 padding: 40px 20px;
             }
-            .bio-trigger {
+            .about-title {
+                font-size: 2.2rem;
+            }
+            .team-header {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -443,7 +445,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 85px; /* Height of header */
+                top: 85px; 
                 left: 0;
                 width: 100%;
                 background-color: var(--white);
@@ -453,6 +455,15 @@
             }
             .nav-links.active {
                 display: flex;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a.nav-btn {
+                width: auto;
+                margin-top: 10px;
             }
         }
     </style>
@@ -475,10 +486,8 @@
 
             <div class="nav-links" id="navLinks">
                 <a href="#about" onclick="closeMenu()">Our Approach</a>
-                <a href="#products" onclick="closeMenu()">Products</a>
-                <a href="#bio" onclick="closeMenu()">Leadership</a>
                 <a href="#contact" onclick="closeMenu()">Contact</a>
-                <a href="#contact" class="nav-btn" onclick="closeMenu()">Get Started</a>
+                <a href="https://2453979.my1003app.com/register" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
             </div>
         </div>
     </nav>
@@ -489,86 +498,66 @@
             <div class="hero-text-box">
                 <h1 class="hero-title">Village Lending</h1>
                 <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing in Goffstown.</p>
-                <a href="#about" class="btn">Discover Our Approach</a>
+                <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Unified About Section -->
     <section id="about" class="section-padding">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2 class="section-title">The Bigger Picture</h2>
-                    <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: your long-term financial trajectory.</p>
-                    <p>At Village Lending, we believe a mortgage is a critical financial tool. We take the time to understand your goals, providing a highly personalized, community-focused experience right here in downtown Goffstown.</p>
-                </div>
-                
-                <!-- Dynamic Accordion Area -->
-                <div class="accordion-container">
-                    
-                    <div class="accordion-item" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
-                            Vast Lender Network
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>We partner with a vast network of wholesale lenders and investors to provide a larger range of services and financial products to our customers.</p>
-                        </div>
-                    </div>
+            <div class="accent-line"></div>
+            <h2 class="about-title">About Village Lending</h2>
+            
+            <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
+            <p class="about-text">A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
 
-                    <div class="accordion-item" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
-                            Strategic Structuring
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>We carefully analyze how to structure your loan so it's the perfect fit for you, leveraging our extensive product offerings to bolster and support your long-term wealth.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bio Section -->
-    <section id="bio" class="section-padding">
-        <div class="container">
-            <div class="bio-interactive-card">
-                
-                <!-- Clickable Trigger -->
-                <div class="bio-trigger" onclick="toggleBio()">
-                    <img src="dan-robertson.jpg" alt="Dan Robertson" class="bio-avatar">
-                    <div class="bio-header-text">
+            <!-- Recreated Bio Card -->
+            <div class="team-card">
+                <div class="team-header">
+                    <img src="dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
+                    <div class="team-info">
                         <h3>Dan Robertson</h3>
-                        <span>Broker Owner</span>
-                        <div class="bio-indicator" id="bioToggleText">Read Full Bio &rarr;</div>
+                        <h4>Broker Owner</h4>
                     </div>
                 </div>
-
-                <!-- Hidden Content -->
-                <div class="bio-details" id="bioContent">
-                    <p>With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan.</p>
-                    <p>Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+                <div class="team-content">
+                    <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
                 </div>
-
             </div>
+            
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Form Section -->
     <section id="contact" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--white);">Ready to Strategize?</h2>
-            <div class="contact-info">
-                <p>Located in downtown Goffstown.</p>
-                <p>7 Main Street, Goffstown, NH 03045</p>
-                <p style="margin-top: 20px; font-weight: bold;">
-                    <a href="mailto:dan@village-lending.com">dan@village-lending.com</a>
-                </p>
-            </div>
-            <a href="mailto:dan@village-lending.com" class="btn" style="background-color: var(--white); color: var(--navy);">Email Us Today</a>
+        <div class="container contact-container">
+            <h2>Get in Touch.</h2>
+            <p>Ready to discuss your scenario? Send us a message.</p>
+            
+            <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                <input type="hidden" name="form-name" value="contact-form" />
+                
+                <div class="form-row">
+                    <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea rows="4" name="message" placeholder="How can we help?" required></textarea>
+                </div>
+                
+                <div class="consent-wrapper">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">By checking this box, you agree to our <a href="term_and_conditions.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Send Message</button>
+            </form>
         </div>
     </section>
 
@@ -606,7 +595,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
+    <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
         function toggleMenu() {
@@ -617,39 +606,21 @@
             document.getElementById("navLinks").classList.remove("active");
         }
 
-        // Accordion Logic
-        function toggleAccordion(element) {
-            let allItems = document.querySelectorAll('.accordion-item');
-            allItems.forEach(item => {
-                if(item !== element && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                    item.querySelector('.accordion-content').style.display = "none";
-                }
-            });
-
-            element.classList.toggle('active');
-            let content = element.querySelector('.accordion-content');
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+        // Netlify Form Submission Handling
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            fetch("/", { 
+                method: "POST", 
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+                body: new URLSearchParams(formData).toString() 
+            })
+            .then(() => {
+                alert('Message Sent Successfully!');
+                form.reset();
+            }).catch(() => alert("Submission failed. Please try again."));
         }
-
-        // Bio Logic
-        function toggleBio() {
-            var content = document.getElementById("bioContent");
-            var text = document.getElementById("bioToggleText");
-            
-            if (content.style.display === "block" || content.style.display === "") {
-                content.style.display = "none";
-                text.innerHTML = "Read Full Bio &rarr;";
-            } else {
-                content.style.display = "block";
-                text.innerHTML = "Close Bio &uarr;";
-            }
-        }
-        document.getElementById("bioContent").style.display = "none";
     </script>
 </body>
 </html>
