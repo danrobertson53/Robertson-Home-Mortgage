@@ -10,7 +10,7 @@
             --navy: #0a2540;
             --navy-light: #163859;
             --white: #ffffff;
-            --dark-brown: #1f1b18; /* Dark brown/black for text */
+            --dark-brown: #1f1b18; 
             --text-light: #5a5551;
             --border-light: #eaeaea;
         }
@@ -27,7 +27,6 @@
         }
 
         body {
-            /* Clean sans-serif for body text for maximum readability */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--dark-brown);
             line-height: 1.7;
@@ -107,7 +106,7 @@
         .nav-logo img {
             height: 75px; 
             width: auto;
-            mix-blend-mode: multiply; /* Helps blend textured backgrounds on white */
+            mix-blend-mode: multiply; 
         }
 
         .nav-links {
@@ -126,7 +125,6 @@
             color: var(--text-light);
         }
 
-        /* Nav Button */
         .nav-links a.nav-btn {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--white);
@@ -143,10 +141,11 @@
 
         /* Hero Section */
         #hero {
-            padding: 220px 0 160px;
-            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.75)), url('town-hero.png') no-repeat center center/cover;
+            padding: 160px 0 100px; /* Reduced padding */
+            /* Lightened the overlay from 0.85 to 0.4 to reveal more of the image */
+            background: linear-gradient(rgba(10, 37, 64, 0.4), rgba(10, 37, 64, 0.4)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
-            min-height: 80vh;
+            min-height: 55vh; /* Reduced height so it takes up less screen */
             display: flex;
             align-items: center;
             color: var(--white);
@@ -157,20 +156,45 @@
             margin: 0 auto;
         }
 
+        /* Custom Hero Animations */
+        @keyframes titleReveal {
+            0% { opacity: 0; transform: translateY(20px); letter-spacing: -2px; }
+            100% { opacity: 1; transform: translateY(0); letter-spacing: 0; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         .hero-title {
             color: var(--white);
-            font-size: 3.8rem;
+            font-size: 3rem; /* Scaled down text size */
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* Drop shadow ensures readability against lighter background */
+            opacity: 0;
+            animation: titleReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.2s;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: #f1f1f1;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            color: #f8f8f8;
+            margin-bottom: 35px;
             font-weight: 300;
             line-height: 1.6;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            opacity: 0;
+            animation: fadeInText 1s ease forwards;
+            animation-delay: 0.8s; /* Subtitle fades in slightly after the main title */
+        }
+
+        .hero-btn-wrapper {
+            opacity: 0;
+            animation: fadeInText 1s ease forwards;
+            animation-delay: 1.2s;
         }
 
         /* About Section */
@@ -289,7 +313,6 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            /* CRITICAL FIX: Centers the crop on the top portion of the image to keep your head in frame */
             object-position: top center; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             filter: grayscale(100%);
@@ -445,7 +468,7 @@
                 grid-template-columns: 1fr;
             }
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
             .bio-trigger {
                 flex-direction: column;
@@ -486,10 +509,12 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container">
-            <div class="hero-content reveal">
-                <h1 class="hero-title">Boutique Mortgage Solutions in the Heart of Goffstown.</h1>
+            <div class="hero-content">
+                <h1 class="hero-title">Village Lending</h1>
                 <p class="hero-subtitle">Experience tailored mortgage strategies designed to align with your family's long-term financial trajectory.</p>
-                <a href="#about" class="btn" style="background-color: var(--white); color: var(--navy);">Discover Our Approach</a>
+                <div class="hero-btn-wrapper">
+                    <a href="#about" class="btn" style="background-color: var(--white); color: var(--navy);">Discover Our Approach</a>
+                </div>
             </div>
         </div>
     </section>
@@ -608,7 +633,6 @@
 
     <!-- JavaScript for Interactivity -->
     <script>
-        // Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -621,11 +645,9 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once on load
+        reveal(); 
 
-        // Accordion Functionality
         function toggleAccordion(element) {
-            // Close all other accordions
             let allItems = document.querySelectorAll('.accordion-item');
             allItems.forEach(item => {
                 if(item !== element && item.classList.contains('active')) {
@@ -634,7 +656,6 @@
                 }
             });
 
-            // Toggle current accordion
             element.classList.toggle('active');
             let content = element.querySelector('.accordion-content');
             if (content.style.maxHeight) {
@@ -644,7 +665,6 @@
             }
         }
 
-        // Bio Toggle Functionality
         function toggleBio() {
             var content = document.getElementById("bioContent");
             var text = document.getElementById("bioToggleText");
@@ -657,7 +677,6 @@
                 text.innerHTML = "Close Bio &uarr;";
             }
         }
-        // Initialize bio hidden
         document.getElementById("bioContent").style.display = "none";
     </script>
 </body>
