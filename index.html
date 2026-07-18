@@ -202,6 +202,10 @@
             padding-bottom: 30px; 
         }
 
+        .about-text {
+            margin-bottom: 20px;
+        }
+
         /* Interactive Bio Card */
         .team-card {
             background-color: var(--bg-light);
@@ -299,6 +303,10 @@
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .contact-subtitle {
+            margin-bottom: 30px;
         }
 
         .form-row {
@@ -468,12 +476,13 @@
 
             /* Mobile Hero Updates */
             #hero {
-                background: var(--white); /* Removes background image on mobile for a clean look */
-                padding: 120px 0 20px; /* Reduced padding to keep it tight with the next section */
+                background: var(--bg-light); /* Uses the same light gray as the contact section */
+                padding: 140px 0 60px; /* Rebalanced padding */
                 min-height: auto;
+                border-bottom: 1px solid var(--border-light); /* Crisp dividing line */
             }
             .hero-text-box { 
-                background: transparent; /* Removes the frosted box */
+                background: transparent; 
                 box-shadow: none; 
                 padding: 0 20px; 
                 width: 100%; 
@@ -482,11 +491,13 @@
                 padding: 0; 
                 text-align: center; 
                 max-width: 90%; 
-                margin: 0 auto 25px auto;
+                margin: 0 auto 25px auto; /* Controls exact spacing down to the button */
             }
 
             /* Mobile Section Updates */
-            #about { padding-top: 10px; } /* Pulled up closer to the seamless white hero */
+            #about { 
+                padding: 60px 0; /* Ensures the white section breathes equally against the two gray ones */
+            }
             
             /* Mobile Bio Toggle Updates */
             .team-header { 
@@ -535,9 +546,7 @@
     <section id="hero">
         <div class="container">
             <div class="hero-text-box">
-                <!-- Text Title for both Mobile and Desktop -->
                 <h1 class="hero-title">Village Lending</h1>
-                
                 <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing.</p>
                 <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
             </div>
