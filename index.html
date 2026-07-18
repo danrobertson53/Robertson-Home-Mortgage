@@ -33,6 +33,8 @@
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
+            /* CRITICAL FIX: Stops mobile browsers from auto-scaling text in different sized boxes */
+            -webkit-text-size-adjust: 100%; 
         }
 
         h1, h2, h3, h4 {
@@ -76,15 +78,16 @@
             background-color: var(--navy-light);
         }
 
-        /* Unified Typography for Subtitles & Body Copy */
+        /* STRICTLY UNIFIED Typography for Subtitles & Body Copy */
         .hero-subtitle, 
         .about-text, 
         .contact-subtitle {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            font-size: 1.15rem;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem; /* Locked in size */
+            line-height: 1.6;  /* Locked in line spacing */
             color: var(--text-light);
             font-weight: 400;
+            margin-bottom: 20px; /* Locked in paragraph spacing */
         }
 
         /* Navigation */
@@ -200,6 +203,7 @@
         #about {
             background-color: var(--white);
             text-align: left;
+            padding-bottom: 30px; /* Tightened spacing to pull contact section up */
         }
 
         .accent-line {
@@ -298,6 +302,7 @@
             text-align: center;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
+            padding-top: 50px; /* Tightened spacing to reduce gap from About section */
         }
 
         .contact-container {
@@ -439,7 +444,7 @@
             .nav-container { justify-content: flex-end; } 
             .hamburger { display: flex; }
             
-            /* Highly Condensed Mobile Dropdown Menu */
+            /* Tightly Condensed Mobile Dropdown Menu */
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -447,26 +452,28 @@
                 top: 60px; 
                 right: 24px; 
                 left: auto;
-                width: 160px; 
+                width: 150px; 
                 background-color: var(--white);
-                padding: 8px; /* Tighter box padding */
+                padding: 12px; 
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                gap: 2px; /* Close flex gap */
+                /* Forces links to stack with exact precision */
+                gap: 10px; 
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 4px 10px; /* Minimal vertical padding */
+                padding: 0; 
                 width: 100%;
                 text-align: right;
                 font-size: 0.95rem;
+                line-height: 1.2;
             }
             .nav-links a.nav-btn {
                 width: 100%;
-                margin: 2px 0 0 0; 
+                margin: 5px 0 0 0; 
                 text-align: center;
-                padding: 6px; 
+                padding: 8px 0; 
             }
 
             /* Mobile Hero Updates */
@@ -477,11 +484,12 @@
             .mobile-hero-logo { display: block; } 
             .hero-text-box { padding: 40px 20px; width: 92%; }
             
+            /* Overrides previously un-grouped mobile margins */
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
                 max-width: 90%; 
-                margin: 0 auto 30px auto;
+                margin: 0 auto 25px auto;
             }
 
             /* Mobile Section Updates */
@@ -550,8 +558,8 @@
     <section id="about" class="section-padding">
         <div class="container">
             <div class="accent-line"></div>
-            <!-- Title updated to one line -->
-            <h2 class="about-title">Village Lending</h2>
+            <!-- Title updated to one word -->
+            <h2 class="about-title">About</h2>
             
             <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
             <p class="about-text">A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
@@ -655,7 +663,6 @@
             closeMenu(); // Close mobile menu if open
             const element = document.getElementById(targetId);
             if (element) {
-                // Dynamically fetch exact header height to align section perfectly without showing the previous section
                 const headerOffset = document.querySelector('nav').offsetHeight;
                 const y = element.getBoundingClientRect().top + window.scrollY - headerOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
