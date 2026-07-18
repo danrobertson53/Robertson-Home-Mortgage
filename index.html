@@ -76,6 +76,17 @@
             background-color: var(--navy-light);
         }
 
+        /* Unified Typography for Subtitles & Body Copy */
+        .hero-subtitle, 
+        .about-text, 
+        .contact-subtitle {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -150,7 +161,6 @@
         /* Hero Section */
         #hero {
             padding: 140px 0 80px; 
-            /* Added Navy Overlay for a more contemporary, balanced feel */
             background: linear-gradient(rgba(10, 37, 64, 0.45), rgba(10, 37, 64, 0.45)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 60vh; 
@@ -181,13 +191,8 @@
             mix-blend-mode: multiply;
         }
 
-        /* Unified Typography for Hero Subtitle and About Text */
         .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-light);
             margin-bottom: 30px;
-            font-weight: 400;
-            line-height: 1.6;
             padding: 0 15px; 
         }
 
@@ -210,12 +215,8 @@
             letter-spacing: -0.5px;
         }
 
-        /* Matches the hero subtitle exactly */
         .about-text {
-            font-size: 1.15rem;
-            color: var(--text-light);
             margin-bottom: 20px;
-            line-height: 1.6;
         }
 
         /* Interactive Bio Card */
@@ -309,10 +310,8 @@
             margin-bottom: 10px;
         }
 
-        .contact-container p {
-            color: var(--text-light);
+        .contact-subtitle {
             margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
         .form-row {
@@ -448,30 +447,30 @@
                 top: 60px; 
                 right: 24px; 
                 left: auto;
-                width: 170px; /* Slimmer width */
+                width: 160px; 
                 background-color: var(--white);
-                padding: 10px; /* Reduced box padding */
+                padding: 8px; /* Tighter box padding */
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                gap: 2px; /* Close flex gap */
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 6px 10px; /* Drastically condensed vertical spacing */
+                padding: 4px 10px; /* Minimal vertical padding */
                 width: 100%;
                 text-align: right;
                 font-size: 0.95rem;
             }
             .nav-links a.nav-btn {
                 width: 100%;
-                margin: 5px 0 0 0; /* Reduced top margin to keep it close */
+                margin: 2px 0 0 0; 
                 text-align: center;
-                padding: 8px; /* Tighter button padding */
+                padding: 6px; 
             }
 
             /* Mobile Hero Updates */
             #hero {
-                /* Keeps gradient overlay and frames the steeple */
                 background: linear-gradient(rgba(10, 37, 64, 0.45), rgba(10, 37, 64, 0.45)), url('town-hero.png') no-repeat center 25%/cover;
             }
             .hero-title { display: none; } 
@@ -481,8 +480,8 @@
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
-                margin: 0 auto 30px auto; 
                 max-width: 90%; 
+                margin: 0 auto 30px auto;
             }
 
             /* Mobile Section Updates */
@@ -580,7 +579,7 @@
     <section id="contact" class="section-padding">
         <div class="container contact-container">
             <h2>Get in Touch.</h2>
-            <p>Ready to discuss your scenario? Send us a message.</p>
+            <p class="contact-subtitle">Ready to discuss your scenario?<br>Send us a message.</p>
             
             <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
                 <input type="hidden" name="form-name" value="contact-form" />
