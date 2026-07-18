@@ -24,7 +24,6 @@
         }
 
         html {
-            /* Handled by JS now to avoid URL hash saving */
             scroll-behavior: auto; 
         }
 
@@ -93,6 +92,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; /* Helps anchor the mobile menu */
         }
 
         .nav-logo img {
@@ -173,7 +173,7 @@
         }
 
         .mobile-hero-logo {
-            display: none; /* Hidden on desktop */
+            display: none; 
             width: 100%;
             max-width: 220px;
             margin: 0 auto 20px auto;
@@ -186,7 +186,7 @@
             margin-bottom: 30px;
             font-weight: 400;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            padding: 0 15px; /* Clean margins */
+            padding: 0 15px; 
         }
 
         /* Unified About Section */
@@ -434,50 +434,66 @@
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             /* Mobile Nav Updates */
-            .nav-logo { display: none; } /* Hide logo on mobile header */
-            .nav-container { justify-content: flex-end; } /* Push hamburger to right */
+            .nav-logo { display: none; } 
+            .nav-container { justify-content: flex-end; } 
             .hamburger { display: flex; }
             
+            /* Compact Mobile Dropdown */
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 55px; /* Height of header without logo */
-                left: 0;
-                width: 100%;
+                top: 60px; /* Sits right below the header */
+                right: 24px; /* Tucked to the right side */
+                left: auto;
+                width: 200px; /* Tighter box */
                 background-color: var(--white);
-                padding: 10px 0 20px 0;
-                border-bottom: 1px solid var(--border-light);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid var(--border-light);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 15px 0;
+                padding: 10px 10px;
                 width: 100%;
-                text-align: center;
+                text-align: right;
+                font-size: 0.95rem;
             }
             .nav-links a.nav-btn {
-                width: 80%;
-                margin: 10px auto 0;
+                width: 100%;
+                margin: 10px 0 0 0;
+                text-align: center;
+                padding: 10px;
             }
 
             /* Mobile Hero Updates */
-            .hero-title { display: none; } /* Hide text title */
-            .mobile-hero-logo { display: block; } /* Show logo image */
-            .hero-text-box { padding: 40px 15px; width: 95%; }
-            .hero-subtitle { padding: 0 15px; text-align: center; margin: 0 auto 30px auto; }
+            #hero {
+                background-position: center 25%; 
+            }
+            .hero-title { display: none; } 
+            .mobile-hero-logo { display: block; } 
+            .hero-text-box { padding: 40px 20px; width: 92%; }
+            
+            .hero-subtitle { 
+                padding: 0; 
+                text-align: center; 
+                margin: 0 auto 30px auto; 
+                max-width: 90%; 
+                line-height: 1.5;
+            }
 
             /* Mobile Section Updates */
             .about-title { font-size: 2.2rem; }
             
             /* Mobile Bio Toggle Updates */
             .team-header { 
-                flex-direction: row; /* Keep side-by-side */
+                flex-direction: row; 
                 text-align: left;
                 padding: 20px;
             }
             .team-photo {
-                width: 75px; /* Slightly smaller to fit text beside it nicely */
+                width: 75px; 
                 height: 75px;
             }
             .team-info h3 { font-size: 1.35rem; }
@@ -506,7 +522,7 @@
             </div>
 
             <div class="nav-links" id="navLinks">
-                <a onclick="smoothScroll('about')">Our Approach</a>
+                <a onclick="smoothScroll('about')">About</a>
                 <a onclick="smoothScroll('contact')">Contact</a>
                 <a href="https://2453979.my1003app.com/register" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
             </div>
@@ -523,7 +539,7 @@
                 <!-- Logo Image on Mobile, Hidden on Desktop -->
                 <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
                 
-                <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing in Goffstown.</p>
+                <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing.</p>
                 <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
             </div>
         </div>
@@ -625,12 +641,18 @@
 
     <!-- JavaScript -->
     <script>
-        // Custom Smooth Scroll (Prevents URL hash from saving and reloading down the page)
+        // Forces page to top on reload, bypassing the browser's #hash memory
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 1);
+        };
+
+        // Custom Smooth Scroll 
         function smoothScroll(targetId) {
             closeMenu(); // Close mobile menu if open
             const element = document.getElementById(targetId);
             if (element) {
-                // Account for the fixed header height (adjust '70' if needed)
                 const y = element.getBoundingClientRect().top + window.scrollY - 70;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
