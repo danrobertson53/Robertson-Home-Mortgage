@@ -9,11 +9,10 @@
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
-            --cream: #f8f7f4;
             --white: #ffffff;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --accent: #4a5568;
+            --dark-brown: #1f1b18; /* Dark brown/black for text */
+            --text-light: #5a5551;
+            --border-light: #eaeaea;
         }
 
         /* Reset & Base Styles */
@@ -28,11 +27,18 @@
         }
 
         body {
+            /* Clean sans-serif for body text for maximum readability */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--text-dark);
+            color: var(--dark-brown);
             line-height: 1.7;
-            background-color: var(--cream);
+            background-color: var(--white);
             overflow-x: hidden;
+        }
+
+        /* Serif Font for Headings to Match Logo */
+        h1, h2, h3, h4, .nav-links a, .accordion-header {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--navy);
         }
 
         a {
@@ -52,8 +58,7 @@
         }
 
         .section-title {
-            color: var(--navy);
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 24px;
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -65,6 +70,7 @@
             background-color: var(--navy);
             color: var(--white);
             border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
@@ -87,7 +93,7 @@
             background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 1px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
             padding: 10px 0;
             transition: all 0.3s ease;
         }
@@ -99,8 +105,9 @@
         }
 
         .nav-logo img {
-            height: 75px; /* Increased logo size */
+            height: 75px; 
             width: auto;
+            mix-blend-mode: multiply; /* Helps blend textured backgrounds on white */
         }
 
         .nav-links {
@@ -111,8 +118,7 @@
 
         .nav-links a {
             font-weight: 600;
-            color: var(--navy);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             transition: color 0.2s;
         }
 
@@ -120,12 +126,14 @@
             color: var(--text-light);
         }
 
-        /* Fix for Nav Button */
+        /* Nav Button */
         .nav-links a.nav-btn {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--white);
             background-color: var(--navy);
             padding: 10px 24px;
             border-radius: 4px;
+            font-size: 0.95rem;
         }
 
         .nav-links a.nav-btn:hover {
@@ -136,7 +144,6 @@
         /* Hero Section */
         #hero {
             padding: 220px 0 160px;
-            /* Added the town-hero.png background with a navy gradient overlay for text readability */
             background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.75)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 80vh;
@@ -151,17 +158,16 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            color: var(--white);
+            font-size: 3.8rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 24px;
-            letter-spacing: -1px;
-            color: var(--white);
         }
 
         .hero-subtitle {
             font-size: 1.3rem;
-            color: #e2e8f0;
+            color: #f1f1f1;
             margin-bottom: 40px;
             font-weight: 300;
             line-height: 1.6;
@@ -181,7 +187,7 @@
 
         .about-text p {
             font-size: 1.15rem;
-            color: var(--text-light);
+            color: var(--dark-brown);
             margin-bottom: 24px;
         }
 
@@ -193,32 +199,34 @@
         }
 
         .accordion-item {
-            background: var(--cream);
-            border: 1px solid rgba(10, 37, 64, 0.1);
+            background: var(--white);
+            border: 1px solid var(--border-light);
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .accordion-header {
-            padding: 20px;
+            padding: 22px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: var(--navy);
             user-select: none;
         }
 
         .accordion-header:hover {
-            background: #f0eee8;
+            background: #fafafa;
         }
 
         .accordion-icon {
             font-size: 1.5rem;
             line-height: 1;
             transition: transform 0.3s ease;
+            font-family: sans-serif;
+            color: var(--navy);
         }
 
         .accordion-content {
@@ -226,15 +234,15 @@
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             background: var(--white);
-            padding: 0 20px;
+            padding: 0 22px;
         }
 
         .accordion-content p {
             padding: 20px 0;
             margin: 0;
             color: var(--text-light);
-            font-size: 1rem;
-            border-top: 1px solid rgba(10, 37, 64, 0.05);
+            font-size: 1.05rem;
+            border-top: 1px solid var(--border-light);
         }
 
         .accordion-item.active .accordion-icon {
@@ -242,13 +250,15 @@
         }
 
         .accordion-item.active {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             border-color: var(--navy);
         }
 
         /* Bio Section */
         #bio {
-            background-color: var(--cream);
+            background-color: #fcfcfc;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .bio-interactive-card {
@@ -256,8 +266,9 @@
             margin: 0 auto;
             background: var(--white);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             overflow: hidden;
+            border: 1px solid var(--border-light);
         }
 
         .bio-trigger {
@@ -270,7 +281,7 @@
         }
 
         .bio-trigger:hover {
-            background: #fafaf9;
+            background: #fafafa;
         }
 
         .bio-avatar {
@@ -278,13 +289,14 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            /* CRITICAL FIX: Centers the crop on the top portion of the image to keep your head in frame */
+            object-position: top center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             filter: grayscale(100%);
         }
 
         .bio-header-text h3 {
-            color: var(--navy);
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 5px;
         }
 
@@ -293,6 +305,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: 0.85rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
             color: var(--text-light);
             margin-bottom: 10px;
@@ -300,6 +313,7 @@
 
         .bio-indicator {
             color: var(--navy);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             display: flex;
@@ -308,16 +322,16 @@
         }
 
         .bio-details {
-            display: none; /* Hidden via JS initially */
+            display: none; 
             padding: 0 30px 40px;
-            border-top: 1px dashed #e2e8f0;
+            border-top: 1px dashed var(--border-light);
             margin-top: 10px;
             padding-top: 30px;
             animation: fadeInDown 0.4s ease forwards;
         }
 
         .bio-details p {
-            color: var(--text-light);
+            color: var(--dark-brown);
             font-size: 1.1rem;
             margin-bottom: 15px;
         }
@@ -359,6 +373,7 @@
             color: #a0aec0;
             padding: 60px 0 30px;
             font-size: 0.85rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-grid {
@@ -376,6 +391,7 @@
             font-size: 1rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-col p {
@@ -429,7 +445,7 @@
                 grid-template-columns: 1fr;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             .bio-trigger {
                 flex-direction: column;
@@ -459,6 +475,7 @@
             </a>
             <div class="nav-links">
                 <a href="#about">Our Approach</a>
+                <a href="#products">Products</a>
                 <a href="#bio">Leadership</a>
                 <a href="#contact">Contact</a>
                 <a href="#contact" class="nav-btn">Get Started</a>
@@ -471,7 +488,7 @@
         <div class="container">
             <div class="hero-content reveal">
                 <h1 class="hero-title">Boutique Mortgage Solutions in the Heart of Goffstown.</h1>
-                <p class="hero-subtitle">Experience white-glove service and tailored mortgage strategies designed to align with your family's long-term financial trajectory.</p>
+                <p class="hero-subtitle">Experience tailored mortgage strategies designed to align with your family's long-term financial trajectory.</p>
                 <a href="#about" class="btn" style="background-color: var(--white); color: var(--navy);">Discover Our Approach</a>
             </div>
         </div>
@@ -492,21 +509,11 @@
                     
                     <div class="accordion-item" onclick="toggleAccordion(this)">
                         <div class="accordion-header">
-                            White-Glove Service
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>As a boutique brokerage, we limit our volume to ensure every client receives our undivided attention, proactive communication, and dedicated support from application to closing.</p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
                             Vast Lender Network
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of tailored financial solutions.</p>
+                            <p>We partner with a vast network of wholesale lenders and investors to provide a larger range of services and financial products to our customers.</p>
                         </div>
                     </div>
 
@@ -516,7 +523,7 @@
                             <span class="accordion-icon">+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions aligned perfectly with your future wealth.</p>
+                            <p>We carefully analyze how to structure your loan so it's the perfect fit for you, leveraging our extensive product offerings to bolster and support your long-term wealth.</p>
                         </div>
                     </div>
 
@@ -553,7 +560,7 @@
     <!-- Contact Section -->
     <section id="contact" class="section-padding">
         <div class="container reveal">
-            <h2 class="section-title">Ready to Strategize?</h2>
+            <h2 class="section-title" style="color: var(--white);">Ready to Strategize?</h2>
             <div class="contact-info">
                 <p>Located in downtown Goffstown.</p>
                 <p>7 Main Street, Goffstown, NH 03045</p>
@@ -642,7 +649,7 @@
             var content = document.getElementById("bioContent");
             var text = document.getElementById("bioToggleText");
             
-            if (content.style.display === "block") {
+            if (content.style.display === "block" || content.style.display === "") {
                 content.style.display = "none";
                 text.innerHTML = "Read Full Bio &rarr;";
             } else {
@@ -650,6 +657,8 @@
                 text.innerHTML = "Close Bio &uarr;";
             }
         }
+        // Initialize bio hidden
+        document.getElementById("bioContent").style.display = "none";
     </script>
 </body>
 </html>
