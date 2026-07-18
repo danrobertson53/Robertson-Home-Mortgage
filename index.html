@@ -37,10 +37,18 @@
             -webkit-text-size-adjust: 100%; 
         }
 
-        h1, h2, h3, h4 {
+        /* Unified Typography for Main Headings */
+        .hero-title, 
+        .about-title, 
+        .contact-container h2 {
             font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.2;
         }
 
         a {
@@ -181,20 +189,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .hero-title {
-            font-size: 3rem; 
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
-
-        .mobile-hero-logo {
-            display: none; 
-            width: 100%;
-            max-width: 220px;
-            margin: 0 auto 20px auto;
-            mix-blend-mode: multiply;
-        }
-
         .hero-subtitle {
             margin-bottom: 30px;
             padding: 0 15px; 
@@ -206,17 +200,6 @@
             text-align: left;
             padding-top: 40px; 
             padding-bottom: 30px; 
-        }
-
-        .about-title {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            letter-spacing: -0.5px;
-            text-align: center; 
-        }
-
-        .about-text {
-            margin-bottom: 20px;
         }
 
         /* Interactive Bio Card */
@@ -260,6 +243,9 @@
             margin: 0 0 5px 0;
             font-size: 1.6rem;
             line-height: 1.2;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--navy);
+            font-weight: 700;
         }
 
         .team-info h4 {
@@ -313,15 +299,6 @@
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
-        }
-
-        .contact-container h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .contact-subtitle {
-            margin-bottom: 30px;
         }
 
         .form-row {
@@ -445,6 +422,14 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            /* Adjust unified heading sizes for mobile */
+            .hero-title, 
+            .about-title, 
+            .contact-container h2 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
             .nav-logo { display: none; } 
             .nav-container { justify-content: flex-end; } 
             .hamburger { display: flex; }
@@ -457,20 +442,20 @@
                 top: 60px; 
                 right: 24px; 
                 left: auto;
-                width: 200px; /* Slightly wider to accommodate larger text cleanly */
+                width: 200px; 
                 background-color: var(--white);
                 padding: 15px; 
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
                 box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-                gap: 5px; /* Manageable spacing between items */
+                gap: 5px; 
             }
             .nav-links.active { display: flex; }
             .nav-links a {
-                padding: 12px 10px; /* Generous touch target area */
+                padding: 12px 10px; 
                 width: 100%;
-                text-align: center; /* Perfect center alignment */
-                font-size: 1.15rem; /* Larger, readable text */
+                text-align: center; 
+                font-size: 1.15rem; 
                 line-height: 1.2;
             }
             .nav-links a.nav-btn {
@@ -478,18 +463,21 @@
                 margin: 5px 0 0 0; 
                 text-align: center;
                 padding: 12px 0; 
-                font-size: 1.15rem; /* Matched button size */
+                font-size: 1.15rem; 
             }
 
             /* Mobile Hero Updates */
             #hero {
-                background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)), url('town-hero.png') no-repeat center 25%/cover;
-                padding-bottom: 40px;
+                background: var(--white); /* Removes background image on mobile for a clean look */
+                padding: 120px 0 20px; /* Reduced padding to keep it tight with the next section */
+                min-height: auto;
             }
-            .hero-title { display: none; } 
-            .mobile-hero-logo { display: block; } 
-            .hero-text-box { padding: 40px 20px; width: 92%; }
-            
+            .hero-text-box { 
+                background: transparent; /* Removes the frosted box */
+                box-shadow: none; 
+                padding: 0 20px; 
+                width: 100%; 
+            }
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
@@ -498,8 +486,7 @@
             }
 
             /* Mobile Section Updates */
-            #about { padding-top: 40px; }
-            .about-title { font-size: 2.2rem; }
+            #about { padding-top: 10px; } /* Pulled up closer to the seamless white hero */
             
             /* Mobile Bio Toggle Updates */
             .team-header { 
@@ -548,11 +535,8 @@
     <section id="hero">
         <div class="container">
             <div class="hero-text-box">
-                <!-- Text on Desktop, Hidden on Mobile -->
+                <!-- Text Title for both Mobile and Desktop -->
                 <h1 class="hero-title">Village Lending</h1>
-                
-                <!-- Logo Image on Mobile, Hidden on Desktop -->
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
                 
                 <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing.</p>
                 <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
