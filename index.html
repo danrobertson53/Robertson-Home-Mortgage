@@ -203,20 +203,21 @@
         #about {
             background-color: var(--white);
             text-align: left;
-            padding-bottom: 30px; /* Tightened spacing to pull contact section up */
+            padding-bottom: 30px; 
         }
 
         .accent-line {
             height: 4px; 
             width: 60px; 
             background: var(--navy); 
-            margin: 0 0 20px 0;
+            margin: 0 auto 20px auto; /* Centered visually */
         }
 
         .about-title {
             font-size: 2.5rem;
             margin-bottom: 25px;
             letter-spacing: -0.5px;
+            text-align: center; /* Centered to match Get in Touch */
         }
 
         .about-text {
@@ -283,7 +284,14 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
+        /* New Smooth Transition Dropdown Container */
         .team-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .team-content-inner {
             padding: 0 30px 30px 30px;
             border-top: 1px dashed var(--border-light);
             margin-top: -10px;
@@ -294,6 +302,7 @@
             color: var(--text-light);
             font-size: 1.05rem;
             line-height: 1.7;
+            margin: 0;
         }
 
         /* Contact Form Section */
@@ -302,7 +311,7 @@
             text-align: center;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
-            padding-top: 50px; /* Tightened spacing to reduce gap from About section */
+            padding-top: 50px; 
         }
 
         .contact-container {
@@ -458,7 +467,6 @@
                 border-radius: 8px;
                 border: 1px solid var(--border-light);
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                /* Forces links to stack with exact precision */
                 gap: 10px; 
             }
             .nav-links.active { display: flex; }
@@ -484,7 +492,6 @@
             .mobile-hero-logo { display: block; } 
             .hero-text-box { padding: 40px 20px; width: 92%; }
             
-            /* Overrides previously un-grouped mobile margins */
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
@@ -558,7 +565,6 @@
     <section id="about" class="section-padding">
         <div class="container">
             <div class="accent-line"></div>
-            <!-- Title updated to one word -->
             <h2 class="about-title">About</h2>
             
             <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
@@ -574,9 +580,11 @@
                         <span class="bio-toggle-text" id="bioToggleText">Read Bio &darr;</span>
                     </div>
                 </div>
-                <!-- Hidden by default -->
-                <div class="team-content" id="bioContent" style="display: none;">
-                    <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+                <!-- Smooth Dropdown Content -->
+                <div class="team-content" id="bioContent">
+                    <div class="team-content-inner">
+                        <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+                    </div>
                 </div>
             </div>
             
@@ -586,7 +594,7 @@
     <!-- Contact Form Section -->
     <section id="contact" class="section-padding">
         <div class="container contact-container">
-            <h2>Get in Touch.</h2>
+            <h2>Get in Touch</h2>
             <p class="contact-subtitle">Ready to discuss your scenario?<br>Send us a message.</p>
             
             <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
@@ -678,16 +686,16 @@
             document.getElementById("navLinks").classList.remove("active");
         }
 
-        // Bio Dropdown Toggle
+        // Bio Dropdown Toggle with smooth max-height animation
         function toggleBio() {
             var content = document.getElementById("bioContent");
             var text = document.getElementById("bioToggleText");
             
-            if (content.style.display === "block") {
-                content.style.display = "none";
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
                 text.innerHTML = "Read Bio &darr;";
             } else {
-                content.style.display = "block";
+                content.style.maxHeight = content.scrollHeight + "px";
                 text.innerHTML = "Close Bio &uarr;";
             }
         }
