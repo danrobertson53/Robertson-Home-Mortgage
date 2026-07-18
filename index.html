@@ -3,206 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robertson Home Mortgage | Dan Robertson</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <title>Village Lending | Goffstown, NH</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
-        *, *::before, *::after { box-sizing: border-box; }
-
+        /* CSS Variables */
         :root {
-            --mortgage-blue: #003366;      
-            --brand-gold: #FFC72C;        
+            --navy: #0a2540;
+            --navy-light: #163859;
             --white: #ffffff;
-            --text-dark: #333333;
-            --bg-light: #f4f6f8;
-            --footer-bg: #002855;
+            --dark-brown: #1f1b18; 
+            --text-light: #5a5551;
+            --border-light: #eaeaea;
+            --bg-light: #f8f9fa;
         }
 
-        html { scroll-behavior: smooth; } 
-        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; background-color: var(--white); }
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* --- LAYOUT CONTROL --- */
-        .content-wrapper { display: flex; flex-direction: column; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* --- NAVIGATION --- */
-        nav { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--brand-gold); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-logo-container { display: flex; align-items: center; }
-        .nav-img { height: 50px; width: auto; object-fit: contain; display: block; }
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--mortgage-blue); font-weight: 600; font-size: 0.9rem; transition: color 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--brand-gold); }
-        .nav-btn-portal { background-color: var(--mortgage-blue); color: white !important; padding: 10px 20px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; letter-spacing: 0.5px; }
-        .nav-btn-portal:hover { background-color: var(--brand-gold); color: var(--text-dark) !important; }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .bar { width: 25px; height: 3px; background-color: var(--mortgage-blue); transition: 0.3s; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark-brown);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Serif Font for Headings to Match Logo */
+        h1, h2, h3, h4 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Reusable Classes */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0; 
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--navy);
+            color: var(--white) !important;
+            border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--navy-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 65px; 
+            width: auto;
+            mix-blend-mode: multiply; 
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--navy);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Desktop Nav Links */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--navy);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-links a.nav-btn {
+            color: var(--white);
+            background-color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .nav-links a.nav-btn:hover {
+            background-color: var(--navy-light);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        #hero {
+            padding: 140px 0 80px; 
+            background: url('town-hero.png') no-repeat center center/cover;
+            text-align: center;
+            min-height: 60vh; 
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-text-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 8px;
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-title {
+            font-size: 3rem; 
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Unified About Section & Bio Card */
+        #about {
+            background-color: var(--white);
+            text-align: left;
+        }
+
+        .accent-line {
+            height: 4px; 
+            width: 60px; 
+            background: var(--navy); 
+            margin: 0 0 20px 0;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Bio Team Card (Modeled from old site) */
+        .team-card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            margin-top: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-left: 5px solid var(--navy);
+            overflow: hidden;
+            border-top: 1px solid var(--border-light);
+            border-right: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .team-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px 30px 15px 30px;
+        }
+
+        .team-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: top center;
+            border: 3px solid var(--navy);
+            flex-shrink: 0;
+            filter: grayscale(100%);
+        }
+
+        .team-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.6rem;
+            line-height: 1.2;
+        }
+
+        .team-info h4 {
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+        }
+
+        .team-content {
+            padding: 0 30px 30px 30px;
+        }
+
+        .bio-text {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        /* Contact Section (With Netlify Form) */
+        #contact {
+            background-color: var(--bg-light);
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-container p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 150px;
+            text-align: left;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            background: #fff;
+            width: 100%;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--navy);
+            outline: none;
+        }
+
+        .consent-wrapper {
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .consent-wrapper input[type="checkbox"] {
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .consent-wrapper a {
+            color: var(--navy);
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            font-size: 1.05rem;
+            padding: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #051626;
+            color: #a0aec0;
+            padding: 50px 0 30px;
+            font-size: 0.85rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #a0aec0;
+        }
         
-        .mobile-menu { position: fixed; top: 75px; right: 0; width: 220px; background: white; padding: 10px 0; box-shadow: -5px 10px 20px rgba(0,0,0,0.1); display: none; flex-direction: column; align-items: flex-end; gap: 0; z-index: 999; border-bottom: 4px solid var(--brand-gold); border-bottom-left-radius: 15px; }
-        .mobile-menu.active { display: flex; }
-        .mobile-menu a { text-decoration: none; color: var(--mortgage-blue); font-weight: 600; font-size: 0.95rem; padding: 12px 25px; border-bottom: 1px solid #f9f9f9; width: 100%; text-align: right; display: block; cursor: pointer; }
+        .footer-col a:hover {
+            color: var(--white);
+        }
 
-        /* --- HERO SECTION --- */
-        .hero { position: relative; height: 55vh; min-height: 500px; background-image: url('town-hero.png'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.4)); }
-        .hero-content { position: relative; z-index: 1; padding: 0 20px; width: 100%; max-width: 800px; transform: translateY(-20px); }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 5px; font-weight: 800; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.25rem; font-weight: 600; margin: 0 auto; opacity: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); max-width: 580px; line-height: 1.2; text-wrap: balance; }
-        .hero-apply-btn { display: inline-block; margin-top: 25px; padding: 12px 30px; border: 2px solid var(--brand-gold); color: var(--brand-gold); text-decoration: none; text-transform: uppercase; font-weight: 700; border-radius: 50px; font-size: 1rem; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.3); }
-        .hero-apply-btn:hover { background: var(--brand-gold); color: var(--mortgage-blue); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-        /* --- ABOUT SECTION --- */
-        .about-section { background-color: white; padding: 80px 5%; text-align: left; }
-        .about-container { max-width: 900px; margin: 0 auto; }
-        .about-container h2 { color: var(--mortgage-blue); font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
-        .about-container p { color: #555; font-size: 1rem; line-height: 1.8; margin-bottom: 20px; }
-        
-        .team-card { background-color: #f8f9fa; border-radius: 12px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); overflow: hidden; transition: all 0.3s ease; max-width: 800px; margin-left: auto; margin-right: auto;}
-        .team-header { display: flex; align-items: center; gap: 20px; padding: 20px; position: relative; }
-        .team-photo { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--brand-gold); flex-shrink: 0; }
-        .team-info { flex: 1; }
-        .team-info h3 { color: var(--mortgage-blue); margin: 0 0 5px 0; font-size: 1.4rem; font-weight: 800; }
-        .team-info h4 { color: #889bb0; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin: 0; font-weight: 700; }
-        .team-content { padding: 0 20px 25px 20px; background: #f8f9fa; }
-        .bio-text { font-family: 'Poppins', sans-serif; color: #555; font-size: 0.95rem; line-height: 1.7; font-weight: 400; margin-top: 10px; }
-        .gold-line { height: 4px; width: 60px; background: var(--brand-gold); margin: 0 0 25px 0; }
+        .eho-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-        /* --- CONTACT FORMS --- */
-        .form-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; text-align: left; }
-        .form-group input, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: #fff; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);}
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--brand-gold); outline: none; }
-        .btn-submit { background: var(--mortgage-blue); color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 800; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: background 0.3s; display: inline-flex; justify-content: center; text-decoration: none;}
-        .btn-submit:hover { background: #002244; }
+        .eho-wrap img {
+            width: 35px;
+            background: white;
+            padding: 3px;
+            border-radius: 2px;
+        }
 
-        /* --- FOOTER --- */
-        footer { background-color: var(--footer-bg); color: rgba(255,255,255,0.85); padding: 60px 5% 40px 5%; font-size: 0.9rem; }
-        .disclaimer { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.75rem; max-width: 900px; margin: 0 auto; line-height: 1.5; }
-
-        /* --- MOBILE RESPONSIVENESS --- */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            #about, #general-contact { scroll-margin-top: 85px; }
-            nav { padding: 10px 15px; }
-            .nav-links { display: none; } 
-            .hamburger { display: flex; } 
-            .hero { height: auto; min-height: 0; padding: 60px 0 80px 0; }
-            .hero h1 { font-size: 2.2rem; }
-            .form-row { flex-direction: column; gap: 15px; } 
-            .btn-submit { width: 100%; margin: 0; box-sizing: border-box; }
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .hero-text-box {
+                padding: 40px 20px;
+            }
+            .about-title {
+                font-size: 2.2rem;
+            }
+            .team-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            /* Mobile Nav Logic */
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 85px; 
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px 0;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a.nav-btn {
+                width: auto;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
-        <div class="nav-logo-container">
-            <a href="#"><img src="./robertson-logo-new.png" alt="Robertson Home Mortgage" class="nav-img"></a>
-        </div>
-        <div class="nav-links">
-            <a onclick="smoothScrollTo('about')">About Us</a>
-            <a onclick="smoothScrollTo('general-contact')">Contact</a>
-            <a href="https://2453979.my1003app.com/register" class="nav-btn-portal" target="_blank">Apply Now</a>
-        </div>
-        <div class="hamburger" onclick="toggleMobileMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="Village-Lending.png" alt="Village Lending">
+            </a>
+            
+            <!-- Mobile Hamburger Button -->
+            <div class="hamburger" id="hamburgerMenu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#about" onclick="closeMenu()">Our Approach</a>
+                <a href="#contact" onclick="closeMenu()">Contact</a>
+                <a href="https://2453979.my1003app.com/register" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
+            </div>
         </div>
     </nav>
 
-    <div id="mobileMenu" class="mobile-menu">
-        <a onclick="toggleMobileMenu(); smoothScrollTo('about')">About Us</a>
-        <a onclick="toggleMobileMenu(); smoothScrollTo('general-contact')">Contact</a>
-        <a href="https://2453979.my1003app.com/register" target="_blank" style="color:var(--brand-gold);">Apply Now</a>
-    </div>
-
-    <div class="content-wrapper">
-        <div id="home" class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="main-text">
-                    <h1>Ready, Set, Own.</h1>
-                    <p>Expert mortgage guidance and personalized solutions.</p>
-                    <a href="https://2453979.my1003app.com/register" target="_blank" class="hero-apply-btn">Start Pre-Approval</a>
-                </div>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-text-box">
+                <h1 class="hero-title">Village Lending</h1>
+                <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing in Goffstown.</p>
+                <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
             </div>
         </div>
+    </section>
 
-        <div id="about" class="about-section">
-            <div class="about-container">
-                <div class="gold-line"></div>
-                <h2>About Robertson Home Mortgage</h2>
-                <p>Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
-                <p>A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Robertson Home Mortgage unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
+    <!-- Unified About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="accent-line"></div>
+            <h2 class="about-title">About Village Lending</h2>
+            
+            <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
+            <p class="about-text">A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
 
-                <div class="team-card">
-                    <div class="team-header">
-                        <img src="./dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
-                        <div class="team-info">
-                            <h3>Dan Robertson</h3>
-                            <h4>BROKER OWNER</h4>
-                        </div>
-                    </div>
-                    <div class="team-content">
-                        <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Robertson Home Mortgage, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+            <!-- Recreated Bio Card -->
+            <div class="team-card">
+                <div class="team-header">
+                    <img src="dan-robertson.jpg" alt="Dan Robertson" class="team-photo">
+                    <div class="team-info">
+                        <h3>Dan Robertson</h3>
+                        <h4>Broker Owner</h4>
                     </div>
                 </div>
+                <div class="team-content">
+                    <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+                </div>
             </div>
+            
         </div>
+    </section>
 
-        <div id="general-contact" class="about-section" style="background: var(--bg-light); text-align: center;">
-            <div class="about-container">
-                <h2 style="margin-bottom: 10px;">Get in Touch.</h2>
-                <p style="margin-bottom: 30px;">Ready to discuss your scenario? Send us a message.</p>
-                <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)" style="max-width: 600px; margin: 0 auto;">
-                    <input type="hidden" name="form-name" value="contact-form" />
-                    <div class="form-row">
-                        <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
-                        <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;"><input type="tel" name="phone" placeholder="Phone Number" required></div>
-                    <div class="form-group"><textarea rows="4" name="message" placeholder="How can we help?" required></textarea></div>
-                    
-                    <div style="text-align: left; margin-top: 15px; margin-bottom: 20px; font-size: 0.75rem; color: #666;">
-                        <input type="checkbox" id="consent" name="consent" required style="margin-right: 5px;">
-                        <label for="consent">By checking this box, you agree to our <a href="./terms-and-conditions.pdf" target="_blank" style="color: var(--mortgage-blue);">Terms of Use</a> and <a href="./privacy.pdf" target="_blank" style="color: var(--mortgage-blue);">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
-                    </div>
+    <!-- Contact Form Section -->
+    <section id="contact" class="section-padding">
+        <div class="container contact-container">
+            <h2>Get in Touch.</h2>
+            <p>Ready to discuss your scenario? Send us a message.</p>
+            
+            <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
+                <input type="hidden" name="form-name" value="contact-form" />
+                
+                <div class="form-row">
+                    <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea rows="4" name="message" placeholder="How can we help?" required></textarea>
+                </div>
+                
+                <div class="consent-wrapper">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">By checking this box, you agree to our <a href="term_and_conditions.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                </div>
 
-                    <button type="submit" class="btn-submit" style="margin: 0 auto; min-width: 200px;">Send Message</button>
-                </form>
-            </div>
+                <button type="submit" class="btn btn-submit">Send Message</button>
+            </form>
         </div>
-    </div> 
-    
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="disclaimer">
-            <p>19 High Street, Goffstown, NH 03045 | <a href="mailto:dan@robertsonhomemortgage.com" style="color: rgba(255,255,255,0.7); text-decoration: none;">dan@robertsonhomemortgage.com</a></p>
-            <p style="margin: 10px 0;">
-                <a href="./privacy.pdf" target="_blank" style="color: var(--brand-gold); text-decoration: none;">Privacy Policy</a> | 
-                <a href="./terms-and-conditions.pdf" target="_blank" style="color: var(--brand-gold); text-decoration: none;">Terms of Service</a>
-            </p>
-            <p>©2026 Robertson Home Mortgage LLC. NMLS # 2453979. <a href="https://www.nmlsconsumeraccess.org/" target="_blank" style="color: rgba(255,255,255,0.7);">www.nmlsconsumeraccess.org</a></p>
-            <p>Robertson Home Mortgage LLC is an Equal Housing Opportunity Mortgage Broker. Licensed by the NH Department of Banking.</p>
-            <div style="display: flex; justify-content: center; margin-top: 15px;">
-                <img src="./eho-logo.png" alt="Equal Housing Opportunity" style="height: 35px; width: auto; opacity: 0.8;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Village Lending</h3>
+                    <p>7 Main Street<br>Goffstown, NH 03045</p>
+                    <p><a href="mailto:dan@village-lending.com">dan@village-lending.com</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal & Compliance</h3>
+                    <p><a href="Privacy.pdf" target="_blank">Privacy Policy</a></p>
+                    <p><a href="term_and_conditions.pdf" target="_blank">Terms of Service</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Licensing</h3>
+                    <p>NMLS # 2453979</p>
+                    <p><a href="https://www.nmlsconsumeraccess.org" target="_blank">www.nmlsconsumeraccess.org</a></p>
+                    <p>Licensed by the NH Department of Banking.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="eho-wrap">
+                    <img src="eho-logo.png" alt="Equal Housing Opportunity">
+                    <span>Equal Housing Opportunity Mortgage Broker</span>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 Robertson Home Mortgage LLC d/b/a Village Lending.
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        function toggleMobileMenu() { 
-            document.getElementById('mobileMenu').classList.toggle('active'); 
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
         }
         
-        function smoothScrollTo(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-            window.scrollTo({ top: y, behavior: "smooth" });
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
         }
 
+        // Netlify Form Submission Handling
         function handleFormSubmit(e) {
             e.preventDefault();
             const form = e.target;
