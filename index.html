@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Village Lending | Goffstown, NH</title>
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Montserrat (Sans-Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
     <style>
         /* CSS Variables */
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
             --gold: #d4af37; /* Elegant metallic/champagne gold */
-            --white: #ffffff;
+            --white: #fcfbf9; /* Warm alabaster instead of pure white */
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
-            --border-light: #eaeaea;
-            --bg-light: #f8f9fa;
+            --border-light: #e5e3dc; /* Slightly warmer border to match alabaster */
+            --bg-light: #f5f4f0; /* Warm beige-gray instead of cool gray */
         }
 
         /* Reset & Base Styles */
@@ -29,7 +35,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--dark-brown);
             line-height: 1.6;
             background-color: var(--white);
@@ -42,7 +48,7 @@
         .hero-title, 
         .about-title, 
         .contact-container h2 {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Playfair Display', serif;
             color: var(--navy);
             font-weight: 700;
             font-size: 2.5rem;
@@ -74,7 +80,7 @@
             background-color: var(--navy);
             color: var(--white) !important;
             border-radius: 4px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -92,7 +98,7 @@
         .hero-subtitle, 
         .about-text, 
         .contact-subtitle {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem; /* Locked in size */
             line-height: 1.6;  /* Locked in line spacing */
             color: var(--text-light);
@@ -160,7 +166,7 @@
         }
 
         .nav-links a.nav-btn {
-            color: var(--white);
+            color: #ffffff; /* Explicitly true white for contrast on navy */
             background-color: var(--navy);
             padding: 10px 20px;
             border-radius: 4px;
@@ -183,7 +189,7 @@
         }
 
         .hero-text-box {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(252, 251, 249, 0.95); /* Matched to alabaster */
             padding: 50px 40px;
             border-radius: 8px;
             max-width: 650px;
@@ -241,7 +247,7 @@
             background-color: var(--bg-light);
             border-radius: 12px;
             margin-top: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04); /* Softer, larger shadow */
             border-left: 5px solid var(--gold); /* Gold Accent */
             overflow: hidden;
             border-top: 1px solid var(--border-light);
@@ -259,7 +265,7 @@
         }
 
         .team-header:hover {
-            background-color: #f0f2f5;
+            background-color: #edece8; /* Slightly darker hover for warm background */
         }
 
         .team-photo {
@@ -270,14 +276,14 @@
             object-position: top center;
             border: 3px solid var(--gold); /* Gold Accent */
             flex-shrink: 0;
-            filter: grayscale(100%);
+            /* Grayscale filter removed for warmth and humanization */
         }
 
         .team-info h3 {
             margin: 0 0 5px 0;
             font-size: 1.6rem;
             line-height: 1.2;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Playfair Display', serif;
             color: var(--navy);
             font-weight: 700;
         }
@@ -288,7 +294,7 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             margin: 0 0 5px 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
 
@@ -296,7 +302,7 @@
             font-size: 0.85rem;
             color: var(--navy);
             font-weight: 600;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         /* Smooth Transition Dropdown Container */
@@ -358,9 +364,9 @@
             padding: 14px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
-            background: #fff;
+            background: #ffffff; /* True white forms pop nicely off the alabaster background */
             width: 100%;
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
             transition: border-color 0.3s;
@@ -417,12 +423,12 @@
         }
 
         .footer-col h3 {
-            color: var(--white);
+            color: #ffffff;
             margin-bottom: 20px;
             font-size: 1rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-col p {
@@ -628,121 +634,4 @@
             <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
                 <input type="hidden" name="form-name" value="contact-form" />
                 
-                <div class="form-row">
-                    <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
-                    <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
-                </div>
-                
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <input type="tel" name="phone" placeholder="Phone Number" required>
-                </div>
-                
-                <div class="form-group">
-                    <textarea rows="4" name="message" placeholder="How can we help?" required></textarea>
-                </div>
-                
-                <div class="consent-wrapper">
-                    <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent">By checking this box, you agree to our <a href="term_and_conditions.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
-                </div>
-
-                <button type="submit" class="btn btn-submit">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Village Lending</h3>
-                    <p>7 Main Street<br>Goffstown, NH 03045</p>
-                    <p><a href="mailto:dan@village-lending.com">dan@village-lending.com</a></p>
-                </div>
-                <div class="footer-col">
-                    <h3>Legal & Compliance</h3>
-                    <p><a href="Privacy.pdf" target="_blank">Privacy Policy</a></p>
-                    <p><a href="term_and_conditions.pdf" target="_blank">Terms of Service</a></p>
-                </div>
-                <div class="footer-col">
-                    <h3>Licensing</h3>
-                    <p>NMLS # 2453979</p>
-                    <p><a href="https://www.nmlsconsumeraccess.org" target="_blank">www.nmlsconsumeraccess.org</a></p>
-                    <p>Licensed by the NH Department of Banking.</p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="eho-wrap">
-                    <img src="eho-logo.png" alt="Equal Housing Opportunity">
-                    <span>Equal Housing Opportunity Mortgage Broker</span>
-                </div>
-                <div class="copyright">
-                    &copy; 2026 Robertson Home Mortgage LLC d/b/a Village Lending.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Forces page to top on reload, bypassing the browser's #hash memory
-        window.onload = function() {
-            setTimeout(function() {
-                window.scrollTo(0, 0);
-            }, 1);
-        };
-
-        // Snappier, Exact Offset Smooth Scroll
-        function smoothScroll(targetId) {
-            closeMenu(); // Close mobile menu if open
-            const element = document.getElementById(targetId);
-            if (element) {
-                const headerOffset = document.querySelector('nav').offsetHeight;
-                const y = element.getBoundingClientRect().top + window.scrollY - headerOffset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        }
-
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("active");
-        }
-        
-        function closeMenu() {
-            document.getElementById("navLinks").classList.remove("active");
-        }
-
-        // Bio Dropdown Toggle with smooth max-height animation
-        function toggleBio() {
-            var content = document.getElementById("bioContent");
-            var text = document.getElementById("bioToggleText");
-            
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                text.innerHTML = "Read Bio &darr;";
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                text.innerHTML = "Close Bio &uarr;";
-            }
-        }
-
-        // Netlify Form Submission Handling
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            fetch("/", { 
-                method: "POST", 
-                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
-                body: new URLSearchParams(formData).toString() 
-            })
-            .then(() => {
-                alert('Message Sent Successfully!');
-                form.reset();
-            }).catch(() => alert("Submission failed. Please try again."));
-        }
-    </script>
-</body>
-</html>
+                <div class="form
