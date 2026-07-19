@@ -634,4 +634,115 @@
                 </div>
                 
                 <div class="form-group" style="margin-bottom: 15px;">
-                    <input type="tel" name="phone" placeholder="Phone Number" requ
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea rows="4" name="message" placeholder="How can we help?" required></textarea>
+                </div>
+                
+                <div class="consent-wrapper">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">By checking this box, you agree to our <a href="term_and_conditions.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Village Lending</h3>
+                    <p>7 Main Street<br>Goffstown, NH 03045</p>
+                    <p><a href="mailto:dan@village-lending.com">dan@village-lending.com</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal & Compliance</h3>
+                    <p><a href="Privacy.pdf" target="_blank">Privacy Policy</a></p>
+                    <p><a href="term_and_conditions.pdf" target="_blank">Terms of Service</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Licensing</h3>
+                    <p>NMLS # 2453979</p>
+                    <p><a href="https://www.nmlsconsumeraccess.org" target="_blank">www.nmlsconsumeraccess.org</a></p>
+                    <p>Licensed by the NH Department of Banking.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="eho-wrap">
+                    <img src="eho-logo.png" alt="Equal Housing Opportunity">
+                    <span>Equal Housing Opportunity Mortgage Broker</span>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 Robertson Home Mortgage LLC d/b/a Village Lending.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Forces page to top on reload, bypassing the browser's #hash memory
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 1);
+        };
+
+        // Snappier, Exact Offset Smooth Scroll
+        function smoothScroll(targetId) {
+            closeMenu(); // Close mobile menu if open
+            const element = document.getElementById(targetId);
+            if (element) {
+                const headerOffset = document.querySelector('nav').offsetHeight;
+                const y = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+        
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
+
+        // Bio Dropdown Toggle with smooth max-height animation
+        function toggleBio() {
+            var content = document.getElementById("bioContent");
+            var text = document.getElementById("bioToggleText");
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                text.innerHTML = "Read Bio &darr;";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                text.innerHTML = "Close Bio &uarr;";
+            }
+        }
+
+        // Netlify Form Submission Handling
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            fetch("/", { 
+                method: "POST", 
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+                body: new URLSearchParams(formData).toString() 
+            })
+            .then(() => {
+                alert('Message Sent Successfully!');
+                form.reset();
+            }).catch(() => alert("Submission failed. Please try again."));
+        }
+    </script>
+</body>
+</html>
