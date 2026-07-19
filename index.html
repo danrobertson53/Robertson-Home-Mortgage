@@ -9,6 +9,7 @@
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
+            --gold: #d4af37; /* Elegant metallic/champagne gold */
             --white: #ffffff;
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
@@ -76,14 +77,15 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             font-size: 1rem;
-            transition: background-color 0.2s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             text-align: center;
         }
 
         .btn:hover {
-            background-color: var(--navy-light);
+            background-color: var(--gold);
+            color: var(--navy) !important;
         }
 
         /* STRICTLY UNIFIED Typography for Subtitles & Body Copy */
@@ -154,7 +156,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--text-light);
+            color: var(--gold);
         }
 
         .nav-links a.nav-btn {
@@ -162,17 +164,17 @@
             background-color: var(--navy);
             padding: 10px 20px;
             border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .nav-links a.nav-btn:hover {
-            background-color: var(--navy-light);
-            color: var(--white);
+            background-color: var(--gold);
+            color: var(--navy);
         }
 
         /* Hero Section */
         #hero {
             padding: 140px 0 40px; 
-            /* Darkened overlay from 0.45 to 0.6 */
             background: linear-gradient(rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 60vh; 
@@ -198,7 +200,7 @@
         .mobile-hero-logo {
             display: none; 
             width: 100%;
-            max-width: 280px; /* Slightly larger to be prominent */
+            max-width: 280px; 
             margin: 0 auto 25px auto;
             mix-blend-mode: multiply;
         }
@@ -219,7 +221,7 @@
         .accent-line {
             height: 4px; 
             width: 60px; 
-            background: var(--navy); 
+            background: var(--gold); /* Gold Accent */
             margin: 0 auto 20px auto;
         }
 
@@ -240,7 +242,7 @@
             border-radius: 12px;
             margin-top: 50px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border-left: 5px solid var(--navy);
+            border-left: 5px solid var(--gold); /* Gold Accent */
             overflow: hidden;
             border-top: 1px solid var(--border-light);
             border-right: 1px solid var(--border-light);
@@ -266,7 +268,7 @@
             border-radius: 12px;
             object-fit: cover;
             object-position: top center;
-            border: 3px solid var(--navy);
+            border: 3px solid var(--gold); /* Gold Accent */
             flex-shrink: 0;
             filter: grayscale(100%);
         }
@@ -365,7 +367,7 @@
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--navy);
+            border-color: var(--gold); /* Gold Focus Accent */
             outline: none;
         }
 
@@ -432,7 +434,7 @@
         }
         
         .footer-col a:hover {
-            color: var(--white);
+            color: var(--gold);
         }
 
         .footer-bottom {
@@ -504,7 +506,7 @@
 
             /* Mobile Hero Updates */
             #hero {
-                background: var(--bg-light); /* Kept the clean gray background */
+                background: var(--bg-light); 
                 padding: 120px 0 40px; 
                 min-height: auto;
                 border-bottom: 1px solid var(--border-light);
@@ -515,8 +517,8 @@
                 padding: 0 20px; 
                 width: 100%; 
             }
-            .hero-title { display: none; } /* Hide text heading on mobile */
-            .mobile-hero-logo { display: block; } /* Show logo image on mobile */
+            .hero-title { display: none; } 
+            .mobile-hero-logo { display: block; } 
             
             .hero-subtitle { 
                 padding: 0; 
@@ -526,7 +528,7 @@
             }
 
             /* Mobile Section Updates */
-            #about { padding-top: 40px; } 
+            #about { padding-top: 40px; }
             
             /* Mobile Bio Toggle Updates */
             .team-header { 
