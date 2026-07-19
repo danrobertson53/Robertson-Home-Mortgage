@@ -4,23 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Village Lending | Goffstown, NH</title>
-    
-    <!-- Google Fonts: Playfair Display (Serif) & Montserrat (Sans-Serif) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
     <style>
         /* CSS Variables */
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
             --gold: #d4af37; /* Elegant metallic/champagne gold */
-            --white: #fcfbf9; /* Warm alabaster instead of pure white */
+            --white: #ffffff;
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
-            --border-light: #e5e3dc; /* Slightly warmer border to match alabaster */
-            --bg-light: #f5f4f0; /* Warm beige-gray instead of cool gray */
+            --border-light: #eaeaea;
+            --bg-light: #f8f9fa;
         }
 
         /* Reset & Base Styles */
@@ -35,7 +29,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--dark-brown);
             line-height: 1.6;
             background-color: var(--white);
@@ -48,7 +42,7 @@
         .hero-title, 
         .about-title, 
         .contact-container h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
             font-size: 2.5rem;
@@ -80,7 +74,7 @@
             background-color: var(--navy);
             color: var(--white) !important;
             border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -98,7 +92,7 @@
         .hero-subtitle, 
         .about-text, 
         .contact-subtitle {
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 1.1rem; /* Locked in size */
             line-height: 1.6;  /* Locked in line spacing */
             color: var(--text-light);
@@ -166,7 +160,7 @@
         }
 
         .nav-links a.nav-btn {
-            color: #ffffff; /* Explicitly true white for contrast on navy */
+            color: var(--white);
             background-color: var(--navy);
             padding: 10px 20px;
             border-radius: 4px;
@@ -189,7 +183,7 @@
         }
 
         .hero-text-box {
-            background-color: rgba(252, 251, 249, 0.95); /* Matched to alabaster */
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 50px 40px;
             border-radius: 8px;
             max-width: 650px;
@@ -247,7 +241,7 @@
             background-color: var(--bg-light);
             border-radius: 12px;
             margin-top: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04); /* Softer, larger shadow */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             border-left: 5px solid var(--gold); /* Gold Accent */
             overflow: hidden;
             border-top: 1px solid var(--border-light);
@@ -265,7 +259,7 @@
         }
 
         .team-header:hover {
-            background-color: #edece8; /* Slightly darker hover for warm background */
+            background-color: #f0f2f5;
         }
 
         .team-photo {
@@ -276,14 +270,14 @@
             object-position: top center;
             border: 3px solid var(--gold); /* Gold Accent */
             flex-shrink: 0;
-            /* Grayscale filter removed for warmth and humanization */
+            filter: grayscale(100%);
         }
 
         .team-info h3 {
             margin: 0 0 5px 0;
             font-size: 1.6rem;
             line-height: 1.2;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
         }
@@ -294,7 +288,7 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             margin: 0 0 5px 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
         }
 
@@ -302,7 +296,7 @@
             font-size: 0.85rem;
             color: var(--navy);
             font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* Smooth Transition Dropdown Container */
@@ -364,9 +358,9 @@
             padding: 14px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 1rem;
-            background: #ffffff; /* True white forms pop nicely off the alabaster background */
+            background: #fff;
             width: 100%;
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
             transition: border-color 0.3s;
@@ -423,12 +417,12 @@
         }
 
         .footer-col h3 {
-            color: #ffffff;
+            color: var(--white);
             margin-bottom: 20px;
             font-size: 1rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-col p {
@@ -634,4 +628,10 @@
             <form class="contact-form" id="contactForm" name="contact-form" data-netlify="true" onsubmit="handleFormSubmit(event)">
                 <input type="hidden" name="form-name" value="contact-form" />
                 
-                <div class="form
+                <div class="form-row">
+                    <div class="form-group"><input type="text" name="name" placeholder="Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <input type="tel" name="phone" placeholder="Phone Number" requ
