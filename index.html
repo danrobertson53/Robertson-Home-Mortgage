@@ -5,24 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Village Lending | Goffstown, NH</title>
     
-    <!-- Google Fonts: Playfair Display (Headings) & Montserrat (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
     <style>
         /* CSS Variables */
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
-            --gold: #d4af37; 
+            --gold: #d4af37; /* Elegant metallic/champagne gold */
             --white: #ffffff;
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
             --border-light: #eaeaea;
             --bg-light: #f8f9fa;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Montserrat', sans-serif;
         }
 
         /* Reset & Base Styles */
@@ -37,11 +30,12 @@
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--dark-brown);
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
+            /* CRITICAL FIX: Stops mobile browsers from auto-scaling text in different sized boxes */
             -webkit-text-size-adjust: 100%; 
         }
 
@@ -62,7 +56,7 @@
         .hero-title, 
         .about-title, 
         .section-title {
-            font-family: var(--font-heading);
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
             font-size: 2.5rem;
@@ -84,13 +78,17 @@
             padding: 0 24px;
         }
 
+        .section-padding {
+            padding: 80px 0; 
+        }
+
         .btn {
             display: inline-block;
             padding: 14px 32px;
             background-color: var(--navy);
             color: var(--white) !important;
             border-radius: 4px;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -112,14 +110,13 @@
         /* STRICTLY UNIFIED Typography for Subtitles & Body Copy */
         .hero-subtitle, 
         .about-text, 
-        .contact-subtitle,
-        .feature-text {
-            font-family: var(--font-body);
-            font-size: 1.1rem; 
-            line-height: 1.7;  
+        .contact-subtitle {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem; /* Locked in size */
+            line-height: 1.6;  /* Locked in line spacing */
             color: var(--text-light);
             font-weight: 400;
-            margin-bottom: 20px; 
+            margin-bottom: 20px; /* Locked in paragraph spacing */
         }
 
         /* Navigation */
@@ -179,6 +176,7 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .nav-links a:hover {
@@ -218,7 +216,7 @@
         }
 
         .hero-title {
-            font-size: 3.5rem; 
+            font-size: 3rem; 
             margin-bottom: 15px;
             line-height: 1.1;
         }
@@ -236,46 +234,6 @@
             padding: 0 15px; 
         }
 
-        /* NEW Features Section */
-        #features {
-            padding: 80px 0;
-            background-color: var(--bg-light);
-            text-align: center;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .feature-item {
-            padding: 30px;
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .feature-item h3 {
-            font-family: var(--font-heading);
-            color: var(--navy);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
         /* Unified About Section */
         #about {
             background-color: var(--white);
@@ -287,7 +245,7 @@
         .accent-line {
             height: 4px; 
             width: 60px; 
-            background: var(--gold); 
+            background: var(--gold); /* Gold Accent */
             margin: 0 auto 20px auto;
         }
 
@@ -305,7 +263,7 @@
             border-radius: 12px;
             margin-top: 50px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            border-left: 6px solid var(--gold); 
+            border-left: 6px solid var(--gold); /* Gold Accent */
             overflow: hidden;
             border-top: 1px solid var(--border-light);
             border-right: 1px solid var(--border-light);
@@ -331,7 +289,7 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
-            border: 3px solid var(--gold); 
+            border: 3px solid var(--gold); /* Gold Accent */
             flex-shrink: 0;
             filter: grayscale(100%);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -339,27 +297,28 @@
 
         .team-info h3 {
             margin: 0 0 5px 0;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             line-height: 1.2;
-            font-family: var(--font-heading);
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
+            font-weight: 700;
         }
 
         .team-info h4 {
             color: var(--text-light);
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             margin: 0 0 8px 0;
-            font-family: var(--font-body);
-            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
         }
 
         .bio-toggle-text {
             font-size: 0.9rem;
             color: var(--navy);
             font-weight: 600;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             transition: color 0.2s;
         }
         
@@ -386,7 +345,7 @@
             font-size: 1.05rem;
             line-height: 1.7;
             margin: 0;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* Contact Form Section */
@@ -400,7 +359,7 @@
         }
 
         .contact-container {
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -427,7 +386,7 @@
             padding: 16px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 1rem;
             background: #fff;
             width: 100%;
@@ -492,15 +451,15 @@
         .footer-col h3 {
             color: var(--white);
             margin-bottom: 20px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-family: var(--font-heading);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-col p {
             margin-bottom: 10px;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .footer-col a {
@@ -518,7 +477,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .eho-wrap {
@@ -597,8 +556,6 @@
                 max-width: 100%; 
                 margin: 0 auto 25px auto;
             }
-
-            .features-grid { grid-template-columns: 1fr; gap: 20px; }
             
             .team-header { 
                 flex-direction: row; 
@@ -609,7 +566,7 @@
                 width: 80px; 
                 height: 80px;
             }
-            .team-info h3 { font-size: 1.4rem; }
+            .team-info h3 { font-size: 1.35rem; }
             .team-content-inner {
                 padding: 0 20px 20px 20px; /* Adjust alignment for mobile */
             }
@@ -656,30 +613,7 @@
                 <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
                 
                 <p class="hero-subtitle">Clear, simple home loans tailored to you. Your local partner for buying or refinancing.</p>
-                <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Start Pre-Approval</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW Value/Features Section -->
-    <section id="features">
-        <div class="container fade-in-section">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Wholesale Access</h3>
-                    <p class="feature-text">We shop dozens of lenders to find the exact right structure and rate for your scenario.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Speed & Tech</h3>
-                    <p class="feature-text">Modern tools for a seamless upload process and faster clear-to-close times.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Local Expertise</h3>
-                    <p class="feature-text">Based in Goffstown, NH. We understand the local market and are always a phone call away.</p>
-                </div>
+                <a href="https://2453979.my1003app.com/register" target="_blank" class="btn">Apply Now</a>
             </div>
         </div>
     </section>
