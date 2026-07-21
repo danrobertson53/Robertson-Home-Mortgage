@@ -10,7 +10,7 @@
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
-            --gold: #d4af37; /* Elegant metallic/champagne gold */
+            --gold: #d4af37;
             --white: #ffffff;
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
@@ -35,7 +35,6 @@
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
-            /* CRITICAL FIX: Stops mobile browsers from auto-scaling text in different sized boxes */
             -webkit-text-size-adjust: 100%; 
         }
 
@@ -44,7 +43,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, visibility;
+            will-change: opacity, transform;
         }
         
         .fade-in-section.is-visible {
@@ -53,7 +52,6 @@
         }
 
         /* Unified Typography for Main Headings */
-        .hero-title, 
         .about-title, 
         .section-title {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -76,10 +74,6 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
-        }
-
-        .section-padding {
-            padding: 80px 0; 
         }
 
         .btn {
@@ -107,16 +101,16 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
         }
 
-        /* STRICTLY UNIFIED Typography for Subtitles & Body Copy */
+        /* Typography for Subtitles & Body Copy */
         .hero-subtitle, 
         .about-text, 
         .contact-subtitle {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.1rem; /* Locked in size */
-            line-height: 1.6;  /* Locked in line spacing */
+            font-size: 1.1rem; 
+            line-height: 1.6;  
             color: var(--text-light);
             font-weight: 400;
-            margin-bottom: 20px; /* Locked in paragraph spacing */
+            margin-bottom: 20px; 
         }
 
         /* Navigation */
@@ -125,11 +119,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: var(--white);
             border-bottom: 1px solid var(--border-light);
             z-index: 1000;
             padding: 10px 0;
-            backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.03);
         }
 
@@ -196,45 +189,46 @@
             color: var(--navy);
         }
 
-        /* Hero Section */
+        /* Unified Clean Hero Section */
         #hero {
-            padding: 160px 0 80px; 
-            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('town-hero.png') no-repeat center center/cover;
+            padding: 180px 0 100px; 
+            background: var(--bg-light);
             text-align: center;
-            min-height: 70vh; 
-            display: flex;
-            align-items: center;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .hero-text-box {
-            background-color: rgba(255, 255, 255, 0.97);
-            padding: 60px 50px;
-            border-radius: 8px;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            padding: 0 20px;
         }
 
-        .hero-title {
-            font-size: 3rem; 
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
-
-        .mobile-hero-logo {
-            display: none; 
+        .hero-logo {
+            display: block; 
             width: 100%;
-            max-width: 280px; 
+            max-width: 320px; 
             margin: 0 auto 25px auto;
             mix-blend-mode: multiply;
         }
 
-        .hero-subtitle {
-            margin-bottom: 35px;
-            padding: 0 15px; 
+        /* Visually hide H1 for clean look, but keep for SEO */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
 
-        /* Unified About Section */
+        .hero-subtitle {
+            margin-bottom: 35px;
+        }
+
+        /* About Section */
         #about {
             background-color: var(--white);
             text-align: left;
@@ -245,12 +239,8 @@
         .accent-line {
             height: 4px; 
             width: 60px; 
-            background: var(--gold); /* Gold Accent */
+            background: var(--gold);
             margin: 0 auto 20px auto;
-        }
-
-        .about-title {
-            text-align: center; 
         }
 
         .about-text {
@@ -263,7 +253,7 @@
             border-radius: 12px;
             margin-top: 50px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            border-left: 6px solid var(--gold); /* Gold Accent */
+            border-left: 6px solid var(--gold);
             overflow: hidden;
             border-top: 1px solid var(--border-light);
             border-right: 1px solid var(--border-light);
@@ -289,7 +279,7 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
-            border: 3px solid var(--gold); /* Gold Accent */
+            border: 3px solid var(--gold); 
             flex-shrink: 0;
             filter: grayscale(100%);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -326,7 +316,6 @@
             color: var(--gold);
         }
 
-        /* Smooth Transition Dropdown Container */
         .team-content {
             max-height: 0;
             overflow: hidden;
@@ -334,7 +323,7 @@
         }
 
         .team-content-inner {
-            padding: 0 30px 30px 155px; /* Aligns text with header text */
+            padding: 0 30px 30px 155px; 
             border-top: 1px dashed var(--border-light);
             margin-top: -10px;
             padding-top: 25px;
@@ -495,7 +484,6 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero-title, 
             .about-title, 
             .section-title {
                 font-size: 2.2rem;
@@ -536,25 +524,11 @@
             }
 
             #hero {
-                background: var(--bg-light); 
                 padding: 140px 0 60px; 
-                min-height: auto;
-                border-bottom: 1px solid var(--border-light);
             }
-            .hero-text-box { 
-                background: transparent; 
-                box-shadow: none; 
-                padding: 0 20px; 
-                width: 100%; 
-            }
-            .hero-title { display: none; } 
-            .mobile-hero-logo { display: block; } 
             
-            .hero-subtitle { 
-                padding: 0; 
-                text-align: center; 
-                max-width: 100%; 
-                margin: 0 auto 25px auto;
+            .hero-logo { 
+                max-width: 280px; 
             }
             
             .team-header { 
@@ -568,7 +542,7 @@
             }
             .team-info h3 { font-size: 1.35rem; }
             .team-content-inner {
-                padding: 0 20px 20px 20px; /* Adjust alignment for mobile */
+                padding: 0 20px 20px 20px; 
             }
 
             .form-row { flex-direction: column; gap: 20px; }
@@ -606,11 +580,10 @@
     <section id="hero">
         <div class="container fade-in-section">
             <div class="hero-text-box">
-                <!-- Text Title for Desktop, Hidden on Mobile -->
-                <h1 class="hero-title">Village Lending</h1>
+                <!-- H1 is visually hidden for a cleaner look, but kept for SEO indexing -->
+                <h1 class="sr-only">Village Lending</h1>
                 
-                <!-- Prominent Logo Image for Mobile, Hidden on Desktop -->
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
+                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
                 
                 <p class="hero-subtitle">Your Local Home Financing Partner.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
@@ -716,12 +689,9 @@
 
     <!-- JavaScript -->
     <script>
-        // Forces page to top on reload, bypassing the browser's #hash memory
-        window.onload = function() {
-            setTimeout(function() {
-                window.scrollTo(0, 0);
-            }, 1);
-        };
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
 
         // Scroll Observer for Fade-In Animations
         document.addEventListener("DOMContentLoaded", function() {
@@ -735,7 +705,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Only animate once
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -747,7 +717,7 @@
 
         // Snappier, Exact Offset Smooth Scroll
         function smoothScroll(targetId) {
-            closeMenu(); // Close mobile menu if open
+            closeMenu(); 
             const element = document.getElementById(targetId);
             if (element) {
                 const headerOffset = document.querySelector('nav').offsetHeight;
@@ -765,7 +735,7 @@
             document.getElementById("navLinks").classList.remove("active");
         }
 
-        // Bio Dropdown Toggle with smooth max-height animation
+        // Bio Dropdown Toggle
         function toggleBio() {
             var content = document.getElementById("bioContent");
             var text = document.getElementById("bioToggleText");
