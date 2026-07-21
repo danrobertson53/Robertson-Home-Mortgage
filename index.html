@@ -198,7 +198,8 @@
         /* Hero Section */
         #hero {
             padding: 160px 0 80px; 
-            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('town-hero.png') no-repeat center center/cover;
+            /* Light, bright overlay instead of the heavy navy */
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 70vh; 
             display: flex;
@@ -211,22 +212,18 @@
             border-radius: 12px;
             max-width: 750px;
             margin: 0 auto;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border-top: 6px solid var(--gold);
         }
 
         .hero-title {
-            font-size: 3.5rem; /* Slightly larger on desktop */
+            font-size: 3.5rem; 
             margin-bottom: 15px;
             line-height: 1.1;
         }
-
-        .mobile-hero-logo {
-            display: none; 
-            width: 100%;
-            max-width: 280px; 
-            margin: 0 auto 25px auto;
-            mix-blend-mode: multiply;
+        
+        .mobile-stack {
+            display: inline;
         }
 
         .hero-subtitle {
@@ -235,7 +232,7 @@
             font-size: 1.25rem;
         }
 
-        /* Desktop Only: Trust marks to fill out the box */
+        /* Trust marks to fill out the box */
         .hero-trust-marks {
             display: flex;
             justify-content: center;
@@ -526,12 +523,19 @@
             .hero-title, 
             .about-title, 
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
                 margin-bottom: 15px;
             }
+            
+            /* Stacks "Lending" below "Village" on mobile */
+            .mobile-stack {
+                display: block;
+            }
 
-            .nav-logo { display: none; } 
-            .nav-container { justify-content: flex-end; } 
+            .nav-logo img {
+                height: 45px; /* Sized down slightly for the mobile header */
+            }
+
             .hamburger { display: flex; }
             
             .nav-links {
@@ -564,32 +568,31 @@
             }
 
             #hero {
-                background: var(--bg-light); 
-                padding: 140px 0 60px; 
+                padding: 140px 0 80px; 
                 min-height: auto;
                 border-bottom: 1px solid var(--border-light);
             }
+            
             .hero-text-box { 
-                background: transparent; 
-                box-shadow: none; 
-                border-top: none; /* Removes desktop gold accent for mobile */
-                padding: 0 20px; 
+                padding: 40px 20px; 
                 width: 100%; 
+                border-top: 4px solid var(--gold);
             }
-            .hero-title { display: none; } 
-            .mobile-hero-logo { display: block; } 
             
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
                 max-width: 100%; 
                 margin: 0 auto 25px auto;
-                font-size: 1.1rem;
+                font-size: 1.15rem;
             }
 
-            /* Keeps mobile exactly as it was by hiding the new trust marks */
+            /* Adjusts the Trust Marks to look nice on mobile */
             .hero-trust-marks {
-                display: none;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 35px;
+                align-items: center;
             }
             
             .team-header { 
@@ -641,16 +644,13 @@
     <section id="hero">
         <div class="container fade-in-section">
             <div class="hero-text-box">
-                <!-- Text Title for Desktop, Hidden on Mobile -->
-                <h1 class="hero-title">Village Lending</h1>
                 
-                <!-- Prominent Logo Image for Mobile, Hidden on Desktop -->
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
+                <h1 class="hero-title">Village <span class="mobile-stack">Lending</span></h1>
                 
                 <p class="hero-subtitle">Your Local Home Financing Partner.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
                 
-                <!-- Desktop Only: Adds value and fills out the box -->
+                <!-- Trust marks for both Desktop and Mobile -->
                 <div class="hero-trust-marks">
                     <span>Local Expertise</span>
                     <span>Wholesale Rates</span>
