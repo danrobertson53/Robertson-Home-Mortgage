@@ -198,7 +198,6 @@
         /* Hero Section */
         #hero {
             padding: 160px 0 80px; 
-            /* Light, bright overlay instead of the heavy navy */
             background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 70vh; 
@@ -207,7 +206,7 @@
         }
 
         .hero-text-box {
-            background-color: rgba(255, 255, 255, 0.96);
+            background-color: rgba(255, 255, 255, 0.85); /* Faint opacity to show the town beneath */
             padding: 70px 50px;
             border-radius: 12px;
             max-width: 750px;
@@ -527,13 +526,12 @@
                 margin-bottom: 15px;
             }
             
-            /* Stacks "Lending" below "Village" on mobile */
             .mobile-stack {
                 display: block;
             }
 
             .nav-logo img {
-                height: 45px; /* Sized down slightly for the mobile header */
+                height: 45px; 
             }
 
             .hamburger { display: flex; }
@@ -574,9 +572,11 @@
             }
             
             .hero-text-box { 
+                background: rgba(255, 255, 255, 0.85); /* Matches faint opacity */
+                box-shadow: none; 
+                border-top: none; /* Removed the yellow trim for mobile */
                 padding: 40px 20px; 
                 width: 100%; 
-                border-top: 4px solid var(--gold);
             }
             
             .hero-subtitle { 
@@ -587,12 +587,23 @@
                 font-size: 1.15rem;
             }
 
-            /* Adjusts the Trust Marks to look nice on mobile */
+            /* Trust Marks horizontally stacked on mobile, decreased size */
             .hero-trust-marks {
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 35px;
-                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+
+            .hero-trust-marks span {
+                font-size: 0.8rem;
+                gap: 4px;
+            }
+
+            .hero-trust-marks span::before {
+                font-size: 1rem;
             }
             
             .team-header { 
@@ -647,7 +658,8 @@
                 
                 <h1 class="hero-title">Village <span class="mobile-stack">Lending</span></h1>
                 
-                <p class="hero-subtitle">Your Local Home Financing Partner.</p>
+                <!-- Updated subtitle copy -->
+                <p class="hero-subtitle">Your local resource to home financing.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
                 
                 <!-- Trust marks for both Desktop and Mobile -->
