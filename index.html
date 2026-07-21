@@ -10,7 +10,7 @@
         :root {
             --navy: #0a2540;
             --navy-light: #163859;
-            --gold: #d4af37;
+            --gold: #d4af37; /* Elegant metallic/champagne gold */
             --white: #ffffff;
             --dark-brown: #1f1b18; 
             --text-light: #5a5551;
@@ -35,6 +35,7 @@
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
+            /* CRITICAL FIX: Stops mobile browsers from auto-scaling text in different sized boxes */
             -webkit-text-size-adjust: 100%; 
         }
 
@@ -52,6 +53,7 @@
         }
 
         /* Unified Typography for Main Headings */
+        .hero-title, 
         .about-title, 
         .section-title {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -74,6 +76,10 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0; 
         }
 
         .btn {
@@ -101,7 +107,7 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
         }
 
-        /* Typography for Subtitles & Body Copy */
+        /* STRICTLY UNIFIED Typography for Subtitles & Body Copy */
         .hero-subtitle, 
         .about-text, 
         .contact-subtitle {
@@ -189,46 +195,74 @@
             color: var(--navy);
         }
 
-        /* Unified Clean Hero Section */
+        /* Hero Section */
         #hero {
-            padding: 180px 0 100px; 
-            background: var(--bg-light);
+            padding: 160px 0 80px; 
+            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
-            border-bottom: 1px solid var(--border-light);
+            min-height: 70vh; 
+            display: flex;
+            align-items: center;
         }
 
         .hero-text-box {
-            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.96);
+            padding: 70px 50px;
+            border-radius: 12px;
+            max-width: 750px;
             margin: 0 auto;
-            padding: 0 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            border-top: 6px solid var(--gold);
         }
 
-        .hero-logo {
-            display: block; 
+        .hero-title {
+            font-size: 3.5rem; /* Slightly larger on desktop */
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .mobile-hero-logo {
+            display: none; 
             width: 100%;
-            max-width: 320px; 
+            max-width: 280px; 
             margin: 0 auto 25px auto;
             mix-blend-mode: multiply;
         }
 
-        /* Visually hide H1 for clean look, but keep for SEO */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
         .hero-subtitle {
             margin-bottom: 35px;
+            padding: 0 15px; 
+            font-size: 1.25rem;
         }
 
-        /* About Section */
+        /* Desktop Only: Trust marks to fill out the box */
+        .hero-trust-marks {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .hero-trust-marks span {
+            font-size: 0.95rem;
+            color: var(--navy);
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-trust-marks span::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Unified About Section */
         #about {
             background-color: var(--white);
             text-align: left;
@@ -243,6 +277,10 @@
             margin: 0 auto 20px auto;
         }
 
+        .about-title {
+            text-align: center; 
+        }
+
         .about-text {
             margin-bottom: 20px;
         }
@@ -253,7 +291,7 @@
             border-radius: 12px;
             margin-top: 50px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            border-left: 6px solid var(--gold);
+            border-left: 6px solid var(--gold); 
             overflow: hidden;
             border-top: 1px solid var(--border-light);
             border-right: 1px solid var(--border-light);
@@ -316,6 +354,7 @@
             color: var(--gold);
         }
 
+        /* Smooth Transition Dropdown Container */
         .team-content {
             max-height: 0;
             overflow: hidden;
@@ -484,6 +523,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            .hero-title, 
             .about-title, 
             .section-title {
                 font-size: 2.2rem;
@@ -524,11 +564,32 @@
             }
 
             #hero {
+                background: var(--bg-light); 
                 padding: 140px 0 60px; 
+                min-height: auto;
+                border-bottom: 1px solid var(--border-light);
             }
+            .hero-text-box { 
+                background: transparent; 
+                box-shadow: none; 
+                border-top: none; /* Removes desktop gold accent for mobile */
+                padding: 0 20px; 
+                width: 100%; 
+            }
+            .hero-title { display: none; } 
+            .mobile-hero-logo { display: block; } 
             
-            .hero-logo { 
-                max-width: 280px; 
+            .hero-subtitle { 
+                padding: 0; 
+                text-align: center; 
+                max-width: 100%; 
+                margin: 0 auto 25px auto;
+                font-size: 1.1rem;
+            }
+
+            /* Keeps mobile exactly as it was by hiding the new trust marks */
+            .hero-trust-marks {
+                display: none;
             }
             
             .team-header { 
@@ -580,13 +641,21 @@
     <section id="hero">
         <div class="container fade-in-section">
             <div class="hero-text-box">
-                <!-- H1 is visually hidden for a cleaner look, but kept for SEO indexing -->
-                <h1 class="sr-only">Village Lending</h1>
+                <!-- Text Title for Desktop, Hidden on Mobile -->
+                <h1 class="hero-title">Village Lending</h1>
                 
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
+                <!-- Prominent Logo Image for Mobile, Hidden on Desktop -->
+                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
                 
                 <p class="hero-subtitle">Your Local Home Financing Partner.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
+                
+                <!-- Desktop Only: Adds value and fills out the box -->
+                <div class="hero-trust-marks">
+                    <span>Local Expertise</span>
+                    <span>Wholesale Rates</span>
+                    <span>Tailored Solutions</span>
+                </div>
             </div>
         </div>
     </section>
