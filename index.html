@@ -210,7 +210,6 @@
         /* Hero Section */
         #hero {
             padding: 160px 0 80px; 
-            /* 90% white overlay across the entire background */
             background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 70vh; 
@@ -227,15 +226,17 @@
         .hero-logo {
             display: block; 
             width: 100%;
-            max-width: 380px; /* Sized beautifully for desktop */
-            margin: 0 auto 25px auto;
+            max-width: 380px; /* Base width constraint */
+            margin: 0 auto 10px auto; /* Tucked closely to the subtitle */
             mix-blend-mode: multiply;
         }
 
         .hero-subtitle {
-            margin-bottom: 35px;
-            padding: 0 15px; 
+            margin: 0 auto 35px auto;
+            padding: 0; 
+            max-width: 380px; /* Constrains text width to exactly match the logo */
             font-size: 1.25rem;
+            line-height: 1.4;
         }
 
         .hero-trust-marks {
@@ -582,8 +583,8 @@
             }
             
             .hero-logo {
-                max-width: 280px;
-                margin: 0 auto 5px auto; 
+                max-width: 260px; /* Constrains logo size specifically for mobile */
+                margin: 0 auto 5px auto; /* Pulled extremely close to the subtitle */
             }
 
             /* Remove logo from mobile navigation */
@@ -593,9 +594,10 @@
             .hero-subtitle { 
                 padding: 0; 
                 text-align: center; 
-                max-width: 100%; 
+                max-width: 260px; /* Perfect width matching to ensure borders align with logo */
                 margin: 0 auto 25px auto;
                 font-size: 1.15rem;
+                line-height: 1.3;
             }
 
             .hero-trust-marks {
@@ -691,8 +693,8 @@
             <div class="accent-line"></div>
             <h2 class="about-title section-title">About</h2>
             
-            <p class="about-text">In an era where getting a mortgage often means dealing with a faceless online black box, Village Lending was built on a different philosophy: local trust and real relationships. We believe you should be able to walk into a brick-and-mortar shop, sit down, and speak directly with the people working in your best interest.</p>
-            <p class="about-text">As a true local resource, we do the shopping for you, combining top-tier options with high-quality, personalized service. Whether you are buying your first home or refinancing, our goal is to make the process transparent, approachable, and rooted right here in the community.</p>
+            <p class="about-text">Purchasing a home is one of life's most significant milestones, and it deserves more than an automated, impersonal process. Village Lending was established to bring the human element back to home financing. We operate on a simple principle: offering our neighbors transparent, face-to-face guidance with a steadfast commitment to their best interests.</p>
+            <p class="about-text">As an independent, locally focused resource, we partner with a wide network of wholesale lenders to do the shopping for you. Whether you are purchasing your first home or refinancing an existing property, we combine top-tier lending options with premium, personalized service to ensure you feel confident and informed every step of the way.</p>
 
             <!-- Interactive Bio Card -->
             <div class="team-card">
@@ -707,7 +709,7 @@
                 <!-- Smooth Dropdown Content -->
                 <div class="team-content" id="bioContent">
                     <div class="team-content-inner">
-                        <p class="bio-text">Dan has been in the mortgage industry since 2014, gaining a wealth of experience across local credit unions, correspondent lenders, and even building lending departments from the ground up for fintech startups. But after experiencing every side of the business, he noticed a growing problem: the human element was disappearing.<br><br>Dan founded Village Lending to bring mortgage lending back to Main Street. He is passionate about making the home financing process relatable and comprehensible—proving that having a trusted, local expert in your corner beats an anonymous online portal every single time.</p>
+                        <p class="bio-text">Dan began his career in the mortgage industry in 2014. Over the years, his expertise has spanned multiple facets of the financial sector, including roles at local credit unions, correspondent lenders, and pioneering fintech startups where he developed comprehensive lending operations from the ground up.<br><br>Throughout this journey, Dan recognized a crucial missing component in modern finance: genuine, human connection. He founded Village Lending to bridge the gap between advanced lending solutions and authentic, local service. Dan is dedicated to demystifying the mortgage process, translating complex financial terms into clear, actionable advice, and ensuring that every client receives the dedicated support they deserve.</p>
                     </div>
                 </div>
             </div>
