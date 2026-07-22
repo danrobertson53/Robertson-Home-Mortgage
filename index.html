@@ -226,13 +226,14 @@
         .hero-logo {
             display: block; 
             width: 100%;
-            max-width: 380px; 
-            margin: 0 auto; 
+            max-width: 380px; /* Base width constraint */
+            margin: 0 auto 10px auto; 
             mix-blend-mode: multiply;
         }
 
         .hero-subtitle {
-            margin: -45px auto 30px auto; 
+            /* Kept tighter for desktop */
+            margin: -10px auto 30px auto; 
             padding: 0; 
             max-width: 380px; /* Constrains text width to perfectly match the logo */
             font-size: 1.25rem;
@@ -590,7 +591,8 @@
             .nav-container { justify-content: flex-end; } 
             
             .hero-subtitle { 
-                margin: -45px auto 25px auto; 
+                /* Relaxed mobile margin so it doesn't crash into the logo */
+                margin: -10px auto 25px auto; 
                 padding: 0; 
                 text-align: center; 
                 max-width: 260px; 
