@@ -198,7 +198,8 @@
         /* Hero Section */
         #hero {
             padding: 160px 0 80px; 
-            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('town-hero.png') no-repeat center center/cover;
+            /* 90% white overlay across the entire background to eliminate the need for a card */
+            background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 70vh; 
             display: flex;
@@ -206,13 +207,10 @@
         }
 
         .hero-text-box {
-            background-color: rgba(255, 255, 255, 0.85); /* Faint opacity to show the town beneath */
-            padding: 70px 50px;
-            border-radius: 12px;
+            /* Removed background, borders, and shadows entirely */
+            padding: 0 20px;
             max-width: 750px;
             margin: 0 auto;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-top: 6px solid var(--gold);
         }
 
         .hero-title {
@@ -221,8 +219,12 @@
             line-height: 1.1;
         }
         
+        .mobile-stack {
+            display: inline;
+        }
+
         .mobile-hero-logo {
-            display: none; /* Hidden on desktop, shown on mobile */
+            display: none; 
         }
 
         .hero-subtitle {
@@ -231,14 +233,12 @@
             font-size: 1.25rem;
         }
 
-        /* Trust marks to fill out the box */
         .hero-trust-marks {
             display: flex;
             justify-content: center;
             gap: 25px;
             margin-top: 40px;
             padding-top: 25px;
-            border-top: 1px solid var(--border-light);
         }
 
         .hero-trust-marks span {
@@ -519,29 +519,21 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            .hero-title, 
             .about-title, 
             .section-title {
                 font-size: 2.8rem;
                 margin-bottom: 15px;
             }
             
-            /* Hide the text title on mobile, show the image logo */
-            .hero-title {
-                display: none;
-            }
-            
-            .mobile-hero-logo {
+            .mobile-stack {
                 display: block;
-                width: 100%;
-                max-width: 260px;
-                margin: 0 auto 20px auto;
-                mix-blend-mode: multiply;
             }
 
-            /* Remove logo from mobile navigation */
-            .nav-logo { display: none !important; } 
-            .nav-container { justify-content: flex-end; } 
-            
+            .nav-logo img {
+                height: 45px; 
+            }
+
             .hamburger { display: flex; }
             
             .nav-links {
@@ -579,21 +571,27 @@
                 border-bottom: 1px solid var(--border-light);
             }
             
-            /* Forces the hero container to break out of horizontal padding to form an edge-to-edge section */
-            #hero .container {
-                padding: 0;
-                max-width: 100%;
-            }
-            
-            /* Converts the floating card into a full-width translucent band */
             .hero-text-box { 
-                background: rgba(255, 255, 255, 0.88); /* Just opaque enough for perfect readability */
-                box-shadow: none; 
-                border-top: none; 
-                border-radius: 0; /* Removes corners to create a flush section block */
-                padding: 50px 20px; 
+                padding: 20px; 
                 width: 100%; 
             }
+            
+            /* Hide text title on mobile, show the image logo */
+            .hero-title {
+                display: none;
+            }
+            
+            .mobile-hero-logo {
+                display: block;
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto 20px auto;
+                mix-blend-mode: multiply;
+            }
+
+            /* Remove logo from mobile navigation */
+            .nav-logo { display: none !important; } 
+            .nav-container { justify-content: flex-end; } 
             
             .hero-subtitle { 
                 padding: 0; 
@@ -603,7 +601,6 @@
                 font-size: 1.15rem;
             }
 
-            /* Trust Marks horizontally stacked on mobile, decreased size */
             .hero-trust-marks {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -611,6 +608,7 @@
                 gap: 12px;
                 margin-top: 30px;
                 padding-top: 20px;
+                border-top: none; /* Keep it clean without lines */
             }
 
             .hero-trust-marks span {
@@ -678,7 +676,6 @@
                 <!-- Shown on Mobile -->
                 <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
                 
-                <!-- Subtitle copy -->
                 <p class="hero-subtitle">Your local resource to home financing.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
                 
