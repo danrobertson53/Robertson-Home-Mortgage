@@ -39,6 +39,19 @@
             -webkit-text-size-adjust: 100%; 
         }
 
+        /* Visually hide elements but keep them for SEO (Screen Readers) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         /* Scroll Animation Classes */
         .fade-in-section {
             opacity: 0;
@@ -53,7 +66,6 @@
         }
 
         /* Unified Typography for Main Headings */
-        .hero-title, 
         .about-title, 
         .section-title {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -198,7 +210,7 @@
         /* Hero Section */
         #hero {
             padding: 160px 0 80px; 
-            /* 90% white overlay across the entire background to eliminate the need for a card */
+            /* 90% white overlay across the entire background */
             background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
             min-height: 70vh; 
@@ -207,24 +219,17 @@
         }
 
         .hero-text-box {
-            /* Removed background, borders, and shadows entirely */
             padding: 0 20px;
             max-width: 750px;
             margin: 0 auto;
         }
 
-        .hero-title {
-            font-size: 3.5rem; 
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
-        
-        .mobile-stack {
-            display: inline;
-        }
-
-        .mobile-hero-logo {
-            display: none; 
+        .hero-logo {
+            display: block; 
+            width: 100%;
+            max-width: 380px; /* Sized beautifully for desktop */
+            margin: 0 auto 25px auto;
+            mix-blend-mode: multiply;
         }
 
         .hero-subtitle {
@@ -519,15 +524,10 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero-title, 
             .about-title, 
             .section-title {
                 font-size: 2.8rem;
                 margin-bottom: 15px;
-            }
-            
-            .mobile-stack {
-                display: block;
             }
 
             .nav-logo img {
@@ -571,22 +571,19 @@
                 border-bottom: 1px solid var(--border-light);
             }
             
+            #hero .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            
             .hero-text-box { 
-                padding: 20px; 
+                padding: 50px 20px; 
                 width: 100%; 
             }
             
-            /* Hide text title on mobile, show the image logo */
-            .hero-title {
-                display: none;
-            }
-            
-            .mobile-hero-logo {
-                display: block;
-                width: 100%;
-                max-width: 260px;
-                margin: 0 auto 20px auto;
-                mix-blend-mode: multiply;
+            .hero-logo {
+                max-width: 280px;
+                margin: 0 auto 5px auto; 
             }
 
             /* Remove logo from mobile navigation */
@@ -608,7 +605,7 @@
                 gap: 12px;
                 margin-top: 30px;
                 padding-top: 20px;
-                border-top: none; /* Keep it clean without lines */
+                border-top: none; 
             }
 
             .hero-trust-marks span {
@@ -670,11 +667,11 @@
         <div class="container fade-in-section">
             <div class="hero-text-box">
                 
-                <!-- Shown on Desktop -->
-                <h1 class="hero-title">Village Lending</h1>
+                <!-- H1 visually hidden for SEO, replaces the old text title -->
+                <h1 class="sr-only">Village Lending</h1>
                 
-                <!-- Shown on Mobile -->
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
+                <!-- Logo shown universally on Desktop & Mobile -->
+                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
                 
                 <p class="hero-subtitle">Your local resource to home financing.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
@@ -694,8 +691,8 @@
             <div class="accent-line"></div>
             <h2 class="about-title section-title">About</h2>
             
-            <p class="about-text">Most lenders focus solely on the "approval"—treating a mortgage as a one-time transaction. That approach ignores the bigger picture: a client's long-term financial trajectory.</p>
-            <p class="about-text">A mortgage is a critical financial tool. By partnering with a vast network of wholesale lenders and investors, Village Lending unlocks access to an incredibly diverse range of solutions. This network ensures that debt structuring becomes a strategic asset—creating more flexibility and more tailored solutions.</p>
+            <p class="about-text">In an era where getting a mortgage often means dealing with a faceless online black box, Village Lending was built on a different philosophy: local trust and real relationships. We believe you should be able to walk into a brick-and-mortar shop, sit down, and speak directly with the people working in your best interest.</p>
+            <p class="about-text">As a true local resource, we do the shopping for you, combining top-tier options with high-quality, personalized service. Whether you are buying your first home or refinancing, our goal is to make the process transparent, approachable, and rooted right here in the community.</p>
 
             <!-- Interactive Bio Card -->
             <div class="team-card">
@@ -710,7 +707,7 @@
                 <!-- Smooth Dropdown Content -->
                 <div class="team-content" id="bioContent">
                     <div class="team-content-inner">
-                        <p class="bio-text">With over a decade of experience across credit unions, correspondent lending, and fintech startups, Dan brings a multifaceted perspective to every loan. Previously serving as the Qualifying Individual for a pioneering fintech startup, he built lending architectures and investor-focused lien strategies from the ground up. Now, as the founder of Village Lending, Dan applies this expertise directly to your portfolio—ensuring your mortgage isn't just a transaction, but a precise tool aligned with your financial goals.</p>
+                        <p class="bio-text">Dan has been in the mortgage industry since 2014, gaining a wealth of experience across local credit unions, correspondent lenders, and even building lending departments from the ground up for fintech startups. But after experiencing every side of the business, he noticed a growing problem: the human element was disappearing.<br><br>Dan founded Village Lending to bring mortgage lending back to Main Street. He is passionate about making the home financing process relatable and comprehensible—proving that having a trusted, local expert in your corner beats an anonymous online portal every single time.</p>
                     </div>
                 </div>
             </div>
