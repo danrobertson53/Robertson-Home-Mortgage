@@ -221,8 +221,8 @@
             line-height: 1.1;
         }
         
-        .mobile-stack {
-            display: inline;
+        .mobile-hero-logo {
+            display: none; /* Hidden on desktop, shown on mobile */
         }
 
         .hero-subtitle {
@@ -519,21 +519,29 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero-title, 
             .about-title, 
             .section-title {
                 font-size: 2.8rem;
                 margin-bottom: 15px;
             }
             
-            .mobile-stack {
+            /* Hide the text title on mobile, show the image logo */
+            .hero-title {
+                display: none;
+            }
+            
+            .mobile-hero-logo {
                 display: block;
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto 20px auto;
+                mix-blend-mode: multiply;
             }
 
-            .nav-logo img {
-                height: 45px; 
-            }
-
+            /* Remove logo from mobile navigation */
+            .nav-logo { display: none !important; } 
+            .nav-container { justify-content: flex-end; } 
+            
             .hamburger { display: flex; }
             
             .nav-links {
@@ -571,11 +579,19 @@
                 border-bottom: 1px solid var(--border-light);
             }
             
+            /* Forces the hero container to break out of horizontal padding to form an edge-to-edge section */
+            #hero .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            
+            /* Converts the floating card into a full-width translucent band */
             .hero-text-box { 
-                background: rgba(255, 255, 255, 0.85); /* Matches faint opacity */
+                background: rgba(255, 255, 255, 0.88); /* Just opaque enough for perfect readability */
                 box-shadow: none; 
-                border-top: none; /* Removed the yellow trim for mobile */
-                padding: 40px 20px; 
+                border-top: none; 
+                border-radius: 0; /* Removes corners to create a flush section block */
+                padding: 50px 20px; 
                 width: 100%; 
             }
             
@@ -656,9 +672,13 @@
         <div class="container fade-in-section">
             <div class="hero-text-box">
                 
-                <h1 class="hero-title">Village <span class="mobile-stack">Lending</span></h1>
+                <!-- Shown on Desktop -->
+                <h1 class="hero-title">Village Lending</h1>
                 
-                <!-- Updated subtitle copy -->
+                <!-- Shown on Mobile -->
+                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="mobile-hero-logo">
+                
+                <!-- Subtitle copy -->
                 <p class="hero-subtitle">Your local resource to home financing.</p>
                 <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
                 
