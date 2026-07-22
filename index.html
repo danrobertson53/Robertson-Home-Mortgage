@@ -227,12 +227,11 @@
             display: block; 
             width: 100%;
             max-width: 380px; 
-            margin: 0 auto; /* Removed all bottom margin */
+            margin: 0 auto; 
             mix-blend-mode: multiply;
         }
 
         .hero-subtitle {
-            /* Negative top margin pulls the text up tightly into the logo */
             margin: -45px auto 30px auto; 
             padding: 0; 
             max-width: 380px; /* Constrains text width to perfectly match the logo */
@@ -365,10 +364,8 @@
         }
 
         .team-content-inner {
-            padding: 0 30px 30px 155px; 
+            padding: 25px 30px 30px 155px; 
             border-top: 1px dashed var(--border-light);
-            margin-top: -10px;
-            padding-top: 25px;
         }
 
         .bio-text {
@@ -593,8 +590,7 @@
             .nav-container { justify-content: flex-end; } 
             
             .hero-subtitle { 
-                /* Negative top margin applied for mobile as well */
-                margin: -8px auto 25px auto; 
+                margin: -45px auto 25px auto; 
                 padding: 0; 
                 text-align: center; 
                 max-width: 260px; 
@@ -631,8 +627,10 @@
                 height: 80px;
             }
             .team-info h3 { font-size: 1.35rem; }
+            
+            /* Ensures top padding is preserved on mobile so text does not clip */
             .team-content-inner {
-                padding: 0 20px 20px 20px; 
+                padding: 20px; 
             }
 
             .form-row { flex-direction: column; gap: 20px; }
