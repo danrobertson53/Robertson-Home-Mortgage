@@ -226,15 +226,16 @@
         .hero-logo {
             display: block; 
             width: 100%;
-            max-width: 380px; /* Base width constraint */
-            margin: 0 auto 10px auto; /* Tucked closely to the subtitle */
+            max-width: 380px; 
+            margin: 0 auto; /* Removed all bottom margin */
             mix-blend-mode: multiply;
         }
 
         .hero-subtitle {
-            margin: 0 auto 35px auto;
+            /* Negative top margin pulls the text up tightly into the logo */
+            margin: -10px auto 30px auto; 
             padding: 0; 
-            max-width: 380px; /* Constrains text width to exactly match the logo */
+            max-width: 380px; /* Constrains text width to perfectly match the logo */
             font-size: 1.25rem;
             line-height: 1.4;
         }
@@ -583,8 +584,8 @@
             }
             
             .hero-logo {
-                max-width: 260px; /* Constrains logo size specifically for mobile */
-                margin: 0 auto 5px auto; /* Pulled extremely close to the subtitle */
+                max-width: 260px; 
+                margin: 0 auto; 
             }
 
             /* Remove logo from mobile navigation */
@@ -592,10 +593,11 @@
             .nav-container { justify-content: flex-end; } 
             
             .hero-subtitle { 
+                /* Negative top margin applied for mobile as well */
+                margin: -8px auto 25px auto; 
                 padding: 0; 
                 text-align: center; 
-                max-width: 260px; /* Perfect width matching to ensure borders align with logo */
-                margin: 0 auto 25px auto;
+                max-width: 260px; 
                 font-size: 1.15rem;
                 line-height: 1.3;
             }
@@ -693,7 +695,7 @@
             <div class="accent-line"></div>
             <h2 class="about-title section-title">About</h2>
             
-            <p class="about-text">Purchasing a home is one of life's most significant milestones, and it deserves more than an automated, impersonal process. Village Lending was established to bring the human element back to home financing. We operate on a simple principle: offering our neighbors transparent, face-to-face guidance with a steadfast commitment to their best interests.</p>
+            <p class="about-text">Purchasing a home is one of life's most significant milestones, and it deserves exceptional service tailored to your unique needs. Village Lending was established to provide our customers with transparent, face-to-face guidance and a steadfast commitment to their best interests.</p>
             <p class="about-text">As an independent, locally focused resource, we partner with a wide network of wholesale lenders to do the shopping for you. Whether you are purchasing your first home or refinancing an existing property, we combine top-tier lending options with premium, personalized service to ensure you feel confident and informed every step of the way.</p>
 
             <!-- Interactive Bio Card -->
@@ -709,7 +711,7 @@
                 <!-- Smooth Dropdown Content -->
                 <div class="team-content" id="bioContent">
                     <div class="team-content-inner">
-                        <p class="bio-text">Dan began his career in the mortgage industry in 2014. Over the years, his expertise has spanned multiple facets of the financial sector, including roles at local credit unions, correspondent lenders, and pioneering fintech startups where he developed comprehensive lending operations from the ground up.<br><br>Throughout this journey, Dan recognized a crucial missing component in modern finance: genuine, human connection. He founded Village Lending to bridge the gap between advanced lending solutions and authentic, local service. Dan is dedicated to demystifying the mortgage process, translating complex financial terms into clear, actionable advice, and ensuring that every client receives the dedicated support they deserve.</p>
+                        <p class="bio-text">Dan began his career in the mortgage industry in 2014. Over the years, his expertise has spanned multiple facets of the financial sector, including roles at local credit unions, correspondent lenders, and pioneering fintech startups where he developed comprehensive lending operations from the ground up.<br><br>Throughout this journey, Dan recognized a crucial component to achieving a great mortgage experience: genuine connection. He founded Village Lending to provide high-quality lending solutions paired with authentic, local service. Dan is dedicated to demystifying the mortgage process, translating complex financial terms into clear, actionable advice, and ensuring that every client receives the dedicated support they deserve.</p>
                     </div>
                 </div>
             </div>
