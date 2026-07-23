@@ -65,15 +65,67 @@
             transform: none;
         }
 
-        /* Initial Page Load Animation for Logo */
-        @keyframes subtleFadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
+        /* --- THE PILLAR REVEAL LOGO ANIMATION --- */
+        .hero-animated-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 0 auto 10px auto; /* Tucked closely to the subtitle */
+            max-width: 420px;
+        }
+
+        .logo-pillar {
+            width: 10px;
+            height: 140px;
+            border-left: 2.5px solid var(--navy);
+            border-right: 2.5px solid var(--navy);
+            transform-origin: top;
+            transform: scaleY(0);
+            animation: drawPillar 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.2s; /* Slight delay to let page render smoothly */
+        }
+
+        .logo-text-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-word-wrap {
+            overflow: hidden;
+            line-height: 1.1;
+        }
+
+        .logo-word {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(100%);
+            opacity: 0;
+            animation: slideWordUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .logo-word.word-1 {
+            animation-delay: 0.6s; /* Triggers right as pillars finish */
+        }
+
+        .logo-word.word-2 {
+            animation-delay: 0.75s; /* Slight stagger for elegance */
+        }
+
+        @keyframes drawPillar {
+            to { transform: scaleY(1); }
+        }
+
+        @keyframes slideWordUp {
+            to {
                 transform: translateY(0);
+                opacity: 1;
             }
         }
 
@@ -235,18 +287,6 @@
             margin: 0 auto;
         }
 
-        .hero-logo {
-            display: block; 
-            width: 100%;
-            max-width: 380px; 
-            margin: 0 auto; 
-            mix-blend-mode: multiply;
-            /* Added Fade In Animation */
-            opacity: 0; /* Starts hidden */
-            animation: subtleFadeUp 1s ease-out forwards;
-            animation-delay: 0.1s; /* Tiny delay ensures smooth execution after render */
-        }
-
         .hero-subtitle {
             /* Negative top margin pulls the text up tightly into the logo */
             margin: -10px auto 30px auto; 
@@ -254,6 +294,16 @@
             max-width: 380px; /* Constrains text width to perfectly match the logo */
             font-size: 1.25rem;
             line-height: 1.4;
+            /* Subtitle fades in gently after the main logo finishes animating */
+            opacity: 0;
+            animation: slideWordUp 0.8s ease forwards;
+            animation-delay: 1.2s;
+        }
+        
+        .btn-animate {
+            opacity: 0;
+            animation: slideWordUp 0.8s ease forwards;
+            animation-delay: 1.4s;
         }
 
         .hero-trust-marks {
@@ -262,6 +312,9 @@
             gap: 25px;
             margin-top: 40px;
             padding-top: 25px;
+            opacity: 0;
+            animation: slideWordUp 0.8s ease forwards;
+            animation-delay: 1.6s;
         }
 
         .hero-trust-marks span {
@@ -597,12 +650,24 @@
                 width: 100%; 
             }
             
-            .hero-logo {
-                max-width: 260px; 
-                margin: 0 auto; 
+            /* Responsive adjustments for the custom code logo */
+            .hero-animated-logo {
+                max-width: 260px;
+                gap: 12px;
+            }
+            
+            .logo-pillar {
+                height: 90px;
+                width: 6px;
+                border-left: 1.5px solid var(--navy);
+                border-right: 1.5px solid var(--navy);
+            }
+            
+            .logo-word {
+                font-size: 2.5rem;
             }
 
-            /* Remove logo from mobile navigation */
+            /* Remove regular image logo from mobile navigation */
             .nav-logo { display: none !important; } 
             .nav-container { justify-content: flex-end; } 
             
@@ -687,14 +752,25 @@
         <div class="container fade-in-section">
             <div class="hero-text-box">
                 
-                <!-- H1 visually hidden for SEO, replaces the old text title -->
+                <!-- H1 visually hidden for SEO -->
                 <h1 class="sr-only">Village Lending</h1>
                 
-                <!-- Logo shown universally on Desktop & Mobile with Fade In Animation -->
-                <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
+                <!-- Pure CSS/HTML Animated "Pillar" Logo Replica -->
+                <div class="hero-animated-logo">
+                    <div class="logo-pillar pillar-left"></div>
+                    <div class="logo-text-stack">
+                        <div class="logo-word-wrap">
+                            <div class="logo-word word-1">Village</div>
+                        </div>
+                        <div class="logo-word-wrap">
+                            <div class="logo-word word-2">Lending</div>
+                        </div>
+                    </div>
+                    <div class="logo-pillar pillar-right"></div>
+                </div>
                 
                 <p class="hero-subtitle">Your local resource to home financing.</p>
-                <a href="https://villagelending.my1003app.com" target="_blank" class="btn">Apply Now</a>
+                <a href="https://villagelending.my1003app.com" target="_blank" class="btn btn-animate">Apply Now</a>
                 
                 <!-- Trust marks for both Desktop and Mobile -->
                 <div class="hero-trust-marks">
