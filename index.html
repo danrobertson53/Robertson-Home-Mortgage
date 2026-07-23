@@ -65,6 +65,18 @@
             transform: none;
         }
 
+        /* Initial Page Load Animation for Logo */
+        @keyframes subtleFadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Unified Typography for Main Headings */
         .about-title, 
         .section-title {
@@ -226,13 +238,17 @@
         .hero-logo {
             display: block; 
             width: 100%;
-            max-width: 380px; /* Base width constraint */
-            margin: 0 auto 10px auto; 
+            max-width: 380px; 
+            margin: 0 auto; 
             mix-blend-mode: multiply;
+            /* Added Fade In Animation */
+            opacity: 0; /* Starts hidden */
+            animation: subtleFadeUp 1s ease-out forwards;
+            animation-delay: 0.1s; /* Tiny delay ensures smooth execution after render */
         }
 
         .hero-subtitle {
-            /* Kept tighter for desktop */
+            /* Negative top margin pulls the text up tightly into the logo */
             margin: -10px auto 30px auto; 
             padding: 0; 
             max-width: 380px; /* Constrains text width to perfectly match the logo */
@@ -674,7 +690,7 @@
                 <!-- H1 visually hidden for SEO, replaces the old text title -->
                 <h1 class="sr-only">Village Lending</h1>
                 
-                <!-- Logo shown universally on Desktop & Mobile -->
+                <!-- Logo shown universally on Desktop & Mobile with Fade In Animation -->
                 <img src="Village-Lending.png" alt="Village Lending Mortgage Solutions" class="hero-logo">
                 
                 <p class="hero-subtitle">Your local resource to home financing.</p>
