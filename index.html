@@ -35,7 +35,6 @@
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
-            /* CRITICAL FIX: Stops mobile browsers from auto-scaling text in different sized boxes */
             -webkit-text-size-adjust: 100%; 
         }
 
@@ -295,7 +294,6 @@
         }
 
         .hero-subtitle {
-            /* Kept tighter for desktop */
             margin: -10px auto 30px auto; 
             padding: 0; 
             max-width: 380px; 
@@ -644,7 +642,6 @@
                 width: 100%; 
             }
             
-            /* Responsive adjustments for the custom code logo */
             .hero-animated-logo {
                 max-width: 260px;
                 gap: 12px;
@@ -661,12 +658,10 @@
                 font-size: 2.5rem;
             }
 
-            /* Remove regular image logo from mobile navigation */
             .nav-logo { display: none !important; } 
             .nav-container { justify-content: flex-end; } 
             
             .hero-subtitle { 
-                /* Added top margin back to give a touch of space below the animated logo on mobile */
                 margin: 5px auto 25px auto; 
                 padding: 0; 
                 text-align: center; 
@@ -705,7 +700,6 @@
             }
             .team-info h3 { font-size: 1.35rem; }
             
-            /* Ensures top padding is preserved on mobile so text does not clip */
             .team-content-inner {
                 padding: 20px; 
             }
@@ -829,7 +823,8 @@
                 
                 <div class="consent-wrapper">
                     <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent">By checking this box, you agree to our <a href="term_and_conditions.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
+                    <!-- Exact filename link updated below -->
+                    <label for="consent">By checking this box, you agree to our <a href="TERMS%20OF%20SERVICE%20_%20TERMS%20OF%20USE.pdf" target="_blank">Terms of Use</a> and <a href="Privacy.pdf" target="_blank">Privacy Policy</a>. You consent to receive phone calls and SMS messages from Robertson Home Mortgage LLC d/b/a Village Lending to provide updates and information. Message and data rates may apply. Reply STOP to opt out.</label>
                 </div>
 
                 <button type="submit" class="btn btn-submit">Send Message</button>
@@ -849,7 +844,8 @@
                 <div class="footer-col">
                     <h3>Legal & Compliance</h3>
                     <p><a href="Privacy.pdf" target="_blank">Privacy Policy</a></p>
-                    <p><a href="term_and_conditions.pdf" target="_blank">Terms of Service</a></p>
+                    <!-- Exact filename link updated below -->
+                    <p><a href="TERMS%20OF%20SERVICE%20_%20TERMS%20OF%20USE.pdf" target="_blank">Terms of Service</a></p>
                 </div>
                 <div class="footer-col">
                     <h3>Licensing</h3>
