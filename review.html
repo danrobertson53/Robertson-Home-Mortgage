@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Share Your Experience | Village Lending</title>
+
+    <!--
+        INVITE-ONLY REVIEW PAGE. This page is intentionally NOT linked from the
+        homepage or the main navigation — Dan sends the link directly to a client
+        after closing. Submissions go to Netlify Forms (form name:
+        review-submission) for Dan's review. Nothing auto-publishes: Dan approves
+        a review, then it is added to the homepage on the next deploy.
+        See BUILD-NOTES.md for the moderation and compliance model.
+    -->
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --navy: #0a2540;
+            --navy-light: #163859;
+            --gold: #d4af37; /* Elegant metallic/champagne gold */
+            --white: #ffffff;
+            --dark-brown: #1f1b18;
+            --text-light: #5a5551;
+            --border-light: #eaeaea;
+            --bg-light: #f8f9fa;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark-brown);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Scroll Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Unified Typography for Main Headings */
+        .section-title {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Reusable Classes */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--navy);
+            color: var(--white) !important;
+            border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(10, 37, 64, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--gold);
+            color: var(--navy) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .accent-line {
+            height: 4px;
+            width: 60px;
+            background: var(--gold);
+            margin: 0 auto 20px auto;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-logo img {
+            height: 65px;
+            width: auto;
+            mix-blend-mode: multiply;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--navy);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+            transition: color 0.2s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.nav-btn {
+            color: var(--white);
+            background-color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a.nav-btn:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Review Form Section */
+        #review {
+            padding: 160px 0 100px;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .review-intro {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 640px;
+            margin: 0 auto 15px auto;
+        }
+
+        .review-invite-note {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            max-width: 640px;
+            margin: 0 auto 45px auto;
+        }
+
+        .review-form-container {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 150px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            background: #fff;
+            width: 100%;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            outline: none;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230a2540' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            cursor: pointer;
+        }
+
+        .field-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* Star Rating Input */
+        .star-rating {
+            border: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+
+        .star-rating legend {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            padding: 0;
+        }
+
+        .stars-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 4px;
+        }
+
+        .stars-input input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .stars-input label {
+            font-size: 2.4rem;
+            line-height: 1;
+            color: #ddd;
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .stars-input label:hover,
+        .stars-input label:hover ~ label,
+        .stars-input input:checked ~ label {
+            color: var(--gold);
+        }
+
+        .stars-input label:hover {
+            transform: scale(1.12);
+        }
+
+        .stars-input input:focus-visible + label {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Honeypot — hidden from human visitors, catches bots */
+        .hp-field {
+            display: none;
+        }
+
+        .consent-wrapper {
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .consent-wrapper input[type="checkbox"] {
+            margin-top: 5px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: var(--navy);
+        }
+
+        .review-moderation-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            text-align: center;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 10px 0 30px 0;
+        }
+
+        .btn-submit {
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 18px;
+        }
+
+        .form-error {
+            display: none;
+            color: #9b2c2c;
+            background-color: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* Success Panel (shown after a successful submission) */
+        .review-success {
+            display: none;
+            text-align: center;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-left: 6px solid var(--gold);
+            border-radius: 12px;
+            padding: 45px 36px;
+        }
+
+        .review-success-mark {
+            display: block;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+
+        .review-success h3 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--navy);
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .review-success p {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #051626;
+            color: #a0aec0;
+            padding: 60px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .footer-col a {
+            color: #a0aec0;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        /* Affiliated Business Disclosure (footer) */
+        .footer-affiliated {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0 0 28px 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .footer-affiliated .affiliated-link {
+            display: inline-block;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .footer-affiliated .affiliated-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-affiliated p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #a0aec0;
+            max-width: 720px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .eho-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .eho-wrap img {
+            width: 35px;
+            background: white;
+            padding: 3px;
+            border-radius: 2px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+            }
+
+            .nav-logo img {
+                height: 45px;
+            }
+
+            .hamburger { display: flex; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 24px;
+                left: auto;
+                width: 220px;
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid var(--border-light);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+                gap: 5px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a {
+                padding: 12px 10px;
+                width: 100%;
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .nav-links a.nav-btn {
+                width: 100%;
+                margin: 5px 0 0 0;
+                text-align: center;
+                padding: 12px 0;
+            }
+
+            .nav-logo { display: none !important; }
+            .nav-container { justify-content: flex-end; }
+
+            #review {
+                padding: 130px 0 80px;
+            }
+
+            .stars-input label {
+                font-size: 2.6rem;
+                padding: 6px;
+            }
+
+            .review-success {
+                padding: 36px 24px;
+            }
+
+            .form-row { flex-direction: column; gap: 0; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-affiliated p { font-size: 0.82rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .eho-wrap { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo" style="cursor:pointer;">
+                <img src="Village-Lending.png" alt="Village Lending">
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <div class="hamburger" id="hamburgerMenu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#about">About</a>
+                <a href="index.html#reviews">Reviews</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://villagelending.my1003app.com" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Review Form Section -->
+    <section id="review">
+        <div class="container fade-in-section">
+            <div class="accent-line"></div>
+            <h2 class="section-title">Share Your Experience</h2>
+            <p class="review-intro">Thank you for taking a moment to tell us how your loan went. Your words help other New Hampshire homebuyers know what to expect when they work with us.</p>
+            <p class="review-invite-note">This page is by invitation only &mdash; Dan sends this link to clients after closing.</p>
+
+            <div class="review-form-container">
+                <form id="reviewForm" name="review-submission" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleReviewSubmit(event)">
+                    <input type="hidden" name="form-name" value="review-submission" />
+                    <p class="hp-field">
+                        <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" /></label>
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full name</label>
+                            <input type="text" id="full-name" name="full-name" placeholder="Your full name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="town">Town</label>
+                            <input type="text" id="town" name="town" placeholder="e.g. Goffstown" autocomplete="address-level2" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                        <p class="field-note">Your email is never published &mdash; it&rsquo;s only so we can reach you about your review.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service-type">What did we help you with?</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="" disabled selected>Select the service you used</option>
+                            <option value="Purchase">Purchase</option>
+                            <option value="Refinance">Refinance</option>
+                            <option value="HELOC">HELOC</option>
+                            <option value="Second mortgage">Second mortgage</option>
+                            <option value="Investor loan">Investor loan</option>
+                        </select>
+                    </div>
+
+                    <fieldset class="star-rating">
+                        <legend>Your rating</legend>
+                        <div class="stars-input">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="5 stars" aria-label="5 stars">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 stars" aria-label="4 stars">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 stars" aria-label="3 stars">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="2 stars" aria-label="2 stars">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="1 star" aria-label="1 star">&#9733;</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <label for="review-text">Your review</label>
+                        <textarea id="review-text" name="review" rows="6" placeholder="Tell us about your experience working with Dan and Village Lending..." required></textarea>
+                    </div>
+
+                    <div class="consent-wrapper">
+                        <input type="checkbox" id="closed-loan" name="closed-loan-confirmation" value="Yes, I closed a loan with Village Lending" required>
+                        <label for="closed-loan">I closed a loan with Village Lending.</label>
+                    </div>
+
+                    <div class="consent-wrapper">
+                        <input type="checkbox" id="publish-consent" name="publish-consent" value="Yes, I agree to publication" required>
+                        <label for="publish-consent">I agree to Village Lending publishing my first name, town, and review on its website.</label>
+                    </div>
+
+                    <p class="review-moderation-note">Every submission is reviewed before anything appears on the site. We publish reviews as written, and your email address is never published.</p>
+
+                    <button type="submit" class="btn btn-submit">Submit My Review</button>
+                    <p class="form-error" id="reviewFormError">Something went wrong sending your review. Please try again &mdash; or email Dan directly at <a href="mailto:dan@village-lending.com">dan@village-lending.com</a>.</p>
+                </form>
+
+                <!-- Thank-you panel, shown after a successful submission -->
+                <div class="review-success" id="reviewSuccess">
+                    <span class="review-success-mark">&#10003;</span>
+                    <h3>Thank you for your review!</h3>
+                    <p>Dan will read your submission personally. Approved reviews appear on the Village Lending homepage &mdash; thank you for sharing your experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid fade-in-section">
+                <div class="footer-col">
+                    <h3>Village Lending</h3>
+                    <p>7 Main Street<br>Goffstown, NH 03045</p>
+                    <p><a href="mailto:dan@village-lending.com">dan@village-lending.com</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal & Compliance</h3>
+                    <p><a href="Privacy.pdf" target="_blank">Privacy Policy</a></p>
+                    <p><a href="TERMS%20OF%20SERVICE%20_%20TERMS%20OF%20USE.pdf" target="_blank">Terms of Service</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Licensing</h3>
+                    <p>NMLS # 2453979</p>
+                    <p>Dan Robertson, NMLS # 1289763</p>
+                    <p><a href="https://www.nmlsconsumeraccess.org" target="_blank">www.nmlsconsumeraccess.org</a></p>
+                    <p>Licensed by the NH Department of Banking.</p>
+                </div>
+            </div>
+
+            <!-- Affiliated Business Disclosure -->
+            <div class="footer-affiliated">
+                <a class="affiliated-link" href="https://village-realestate.com" target="_blank">Buying or selling a home? Visit Village Realty &rarr;</a>
+                <p>Affiliated Business Disclosure: Village Lending (Robertson Home Mortgage LLC) and Village Realty (Robertson Home Realty LLC) are affiliated companies under common ownership. You are not required to use either company &mdash; you are free to shop for and choose any lender or real estate brokerage.</p>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="eho-wrap">
+                    <img src="eho-logo.png" alt="Equal Housing Opportunity">
+                    <span>Equal Housing Opportunity Mortgage Broker</span>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 Robertson Home Mortgage LLC d/b/a Village Lending.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // Scroll Observer for Fade-In Animations
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
+
+        // Netlify Form Submission Handling (review-submission)
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                form.style.display = "none";
+                document.getElementById("reviewSuccess").style.display = "block";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }).catch(() => {
+                document.getElementById("reviewFormError").style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>
