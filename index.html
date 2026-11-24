@@ -1022,7 +1022,7 @@
             <div class="nav-links" id="navLinks">
                 <a onclick="smoothScroll('about')">About</a>
                 <a onclick="smoothScroll('programs')">Loan Programs</a>
-                <a onclick="smoothScroll('reviews')">Reviews</a>
+                <!-- Reviews nav link hidden Nov 24, 2026 (Dan) — restore with the reviews section: <a onclick="smoothScroll('reviews')">Reviews</a> -->
                 <a onclick="smoothScroll('contact')">Contact</a>
                 <a href="https://villagelending.my1003app.com" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
             </div>
@@ -1183,12 +1183,15 @@
         </div>
     </section>
 
+    <!-- REVIEW SECTION HIDDEN Nov 24, 2026 (Dan) — hidden until ample approved reviews exist. The section contains inner HTML comments, so it is hidden in pieces (wraps A–D below); remove all four wrappers to restore. -->
     <!-- Client Reviews Section -->
+    <!-- HIDDEN (A) — section open through intro
     <section id="reviews">
         <div class="container fade-in-section">
             <div class="accent-line"></div>
             <h2 class="section-title">What Our Clients Say</h2>
             <p class="reviews-intro">Reviews from real clients, shared with permission. Every review below comes from a borrower Dan worked with &mdash; and every submission is reviewed before it appears here.</p>
+    HIDDEN (A) -->
 
             <!--
                 APPROVED REVIEWS: paste one .review-card block per approved review
@@ -1209,17 +1212,21 @@
                 </article>
                 For a 4-star review, make the fifth star: <span class="star-off">&#9733;</span>
             -->
-            <div class="reviews-grid">
+            <!-- HIDDEN (B) — grid open tag: <div class="reviews-grid"> -->
                 <!-- Approved review cards go here. -->
-            </div>
+            <!-- HIDDEN (B) — grid close tag: </div> -->
 
             <!-- Honest empty state: remove this block once the first approved review is published. -->
+            <!-- HIDDEN (C) — empty state
             <div class="reviews-empty">
                 <span class="reviews-empty-mark">&ldquo;</span>
                 <p>Reviews from recent clients will appear here &mdash; Dan invites clients to share their experience after closing.</p>
             </div>
+            HIDDEN (C) -->
+            <!-- HIDDEN (D) — container + section close
         </div>
     </section>
+    HIDDEN (D) -->
 
     <!-- Contact Form Section -->
     <section id="contact">
