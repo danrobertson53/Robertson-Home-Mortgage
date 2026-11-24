@@ -30,7 +30,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--dark-brown);
             line-height: 1.6;
             background-color: var(--white);
@@ -134,10 +134,10 @@
             font-family: 'Georgia', 'Times New Roman', serif;
             color: var(--navy);
             font-weight: 700;
-            font-size: 2.5rem;
+            font-size: 2rem;
             letter-spacing: -0.5px;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.2;
         }
 
@@ -154,7 +154,7 @@
         }
 
         .section-padding {
-            padding: 80px 0; 
+            padding: 60px 0;
         }
 
         .btn {
@@ -279,10 +279,10 @@
 
         /* Hero Section */
         #hero {
-            padding: 160px 0 80px; 
+            padding: 140px 0 60px;
             background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('town-hero.png') no-repeat center center/cover;
             text-align: center;
-            min-height: 70vh; 
+            min-height: 60vh;
             display: flex;
             align-items: center;
         }
@@ -342,8 +342,8 @@
         #about {
             background-color: var(--white);
             text-align: left;
-            padding-top: 80px; 
-            padding-bottom: 80px; 
+            padding-top: 60px;
+            padding-bottom: 60px;
         }
 
         .accent-line {
@@ -357,7 +357,7 @@
         .team-card {
             background-color: var(--white);
             border-radius: 12px;
-            margin-top: 50px;
+            margin-top: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
             border-left: 6px solid var(--gold); 
             overflow: hidden;
@@ -448,8 +448,8 @@
             text-align: center;
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
-            padding-top: 80px; 
-            padding-bottom: 100px; 
+            padding-top: 60px;
+            padding-bottom: 80px;
         }
 
         .contact-container {
@@ -525,7 +525,7 @@
         footer {
             background-color: #051626;
             color: #a0aec0;
-            padding: 60px 0 30px;
+            padding: 50px 0 30px;
             font-size: 0.9rem;
         }
 
@@ -583,11 +583,291 @@
             border-radius: 2px;
         }
 
+        /* Reviews / Testimonials Section */
+        #reviews {
+            background-color: var(--white);
+            border-top: 1px solid var(--border-light);
+            padding-top: 60px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .reviews-intro {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 640px;
+            margin: 0 auto 36px auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            text-align: left;
+        }
+
+        .review-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 30px 28px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 1.25rem;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .review-stars .star-off {
+            color: #ddd;
+        }
+
+        .review-quote {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-brown);
+            margin: 0;
+            flex: 1;
+        }
+
+        .review-quote::before {
+            content: '\201C';
+            color: var(--gold);
+            font-size: 2.2rem;
+            line-height: 0;
+            vertical-align: -0.35em;
+            margin-right: 2px;
+        }
+
+        .review-attribution {
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .review-name {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.95rem;
+        }
+
+        .review-town {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .review-service {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            border-radius: 20px;
+            padding: 4px 12px;
+            white-space: nowrap;
+        }
+
+        /* Honest empty state — shown until the first approved review is published */
+        .reviews-empty {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-left: 6px solid var(--gold);
+            border-radius: 12px;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 40px 36px;
+            text-align: center;
+        }
+
+        .reviews-empty-mark {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 3.5rem;
+            line-height: 0.6;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .reviews-empty p {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Loan Programs Section */
+        #programs {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-light);
+            padding-top: 60px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .programs-intro {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 680px;
+            margin: 0 auto 36px auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            text-align: left;
+        }
+
+        .program-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 30px 28px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .program-title {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .program-desc {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .program-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .program-features li {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--dark-brown);
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '\2713';
+            color: var(--gold);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .program-link {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--navy);
+            cursor: pointer;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-light);
+            display: block;
+        }
+
+        .program-link:hover {
+            color: var(--gold);
+        }
+
+        .programs-disclaimer {
+            max-width: 720px;
+            margin: 36px auto 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Affiliated Business Disclosure (footer) */
+        .footer-affiliated {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0 0 28px 0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .footer-affiliated .affiliated-link {
+            display: inline-block;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .footer-affiliated .affiliated-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-affiliated p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #a0aec0;
+            max-width: 720px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Reviews & programs grids: two columns on tablet widths */
+        @media (max-width: 900px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .about-title, 
             .section-title {
-                font-size: 2.8rem;
+                font-size: 1.75rem;
                 margin-bottom: 15px;
             }
 
@@ -627,7 +907,7 @@
             }
 
             #hero {
-                padding: 140px 0 80px; 
+                padding: 120px 0 48px;
                 min-height: auto;
                 border-bottom: 1px solid var(--border-light);
             }
@@ -705,6 +985,18 @@
             }
 
             .form-row { flex-direction: column; gap: 20px; }
+
+            .reviews-grid { grid-template-columns: 1fr; }
+            .review-card { padding: 26px 22px; }
+            .reviews-empty { padding: 32px 24px; }
+            .reviews-intro { margin-bottom: 28px; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .program-card { padding: 26px 22px; }
+            .programs-intro { margin-bottom: 28px; }
+            #about, #programs, #reviews { padding: 48px 0; }
+            #contact { padding: 48px 0 64px; }
+            .footer-affiliated p { font-size: 0.82rem; }
+
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .eho-wrap { justify-content: center; }
@@ -729,6 +1021,8 @@
 
             <div class="nav-links" id="navLinks">
                 <a onclick="smoothScroll('about')">About</a>
+                <a onclick="smoothScroll('programs')">Loan Programs</a>
+                <a onclick="smoothScroll('reviews')">Reviews</a>
                 <a onclick="smoothScroll('contact')">Contact</a>
                 <a href="https://villagelending.my1003app.com" class="nav-btn" target="_blank" onclick="closeMenu()">Apply Now</a>
             </div>
@@ -799,9 +1093,138 @@
         </div>
     </section>
 
+    <!-- Loan Programs Section -->
+    <section id="programs">
+        <div class="container fade-in-section">
+            <div class="accent-line"></div>
+            <h2 class="section-title">Loan Programs</h2>
+            <p class="programs-intro">There is no single best loan &mdash; there is the loan that fits your situation. As an independent broker, I shop these programs across my wholesale lender network to find the fit for you.</p>
+
+            <div class="programs-grid">
+                <article class="program-card">
+                    <h3 class="program-title">Conventional Loans</h3>
+                    <p class="program-desc">The standard path for buyers with solid credit &mdash; and often the simplest one.</p>
+                    <ul class="program-features">
+                        <li>Down payments as low as 3% for qualified buyers</li>
+                        <li>No upfront mortgage insurance premium</li>
+                        <li>Mortgage insurance can drop off once you&rsquo;ve built enough equity</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">FHA Loans</h3>
+                    <p class="program-desc">Government-backed loans designed for buyers with smaller down payments or less-than-perfect credit.</p>
+                    <ul class="program-features">
+                        <li>3.5% down for qualified borrowers</li>
+                        <li>More flexible credit guidelines</li>
+                        <li>Mortgage insurance required</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">VA Loans</h3>
+                    <p class="program-desc">An earned benefit for eligible veterans, active-duty service members, and surviving spouses.</p>
+                    <ul class="program-features">
+                        <li>No down payment for qualified borrowers</li>
+                        <li>No monthly mortgage insurance</li>
+                        <li>A benefit you&rsquo;ve earned &mdash; I&rsquo;ll walk you through using it</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">First-Time Homebuyer</h3>
+                    <p class="program-desc">Buying your first home comes with a lot of questions. This one is guidance first, paperwork second.</p>
+                    <ul class="program-features">
+                        <li>A step-by-step walkthrough of your first purchase</li>
+                        <li>Down-payment assistance and state programs, including New Hampshire Housing (NH Housing Finance Authority)</li>
+                        <li>Plain answers before you make an offer</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">DSCR / Investor Loans</h3>
+                    <p class="program-desc">For real estate investors buying property to rent, not to live in.</p>
+                    <ul class="program-features">
+                        <li>Qualification based on the property&rsquo;s rental income</li>
+                        <li>Built for non-owner-occupied properties</li>
+                        <li>A fit for landlords and portfolio builders</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">HELOCs &amp; Second Mortgages</h3>
+                    <p class="program-desc">Tap the equity you&rsquo;ve built without refinancing your first mortgage.</p>
+                    <ul class="program-features">
+                        <li>Home equity lines of credit (HELOCs)</li>
+                        <li>Fixed second mortgages</li>
+                        <li>For renovations, debt consolidation, or other major expenses</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+
+                <article class="program-card">
+                    <h3 class="program-title">Refinance</h3>
+                    <p class="program-desc">Refinancing reshapes a mortgage around where you are now &mdash; a shorter term, no more mortgage insurance, or cash out for something big. We&rsquo;ll run the numbers on a matched-term basis, so you can judge the real trade-off before deciding anything.</p>
+                    <ul class="program-features">
+                        <li>Shorten your loan term</li>
+                        <li>Drop mortgage insurance</li>
+                        <li>Pull cash out for major expenses</li>
+                    </ul>
+                    <a class="program-link" onclick="smoothScroll('contact')">Talk to Dan about this program</a>
+                </article>
+            </div>
+
+            <p class="programs-disclaimer">All loans are subject to credit approval. Not all applicants will qualify. Terms and conditions apply. This page is general information about loan programs, not a commitment to lend.</p>
+        </div>
+    </section>
+
+    <!-- Client Reviews Section -->
+    <section id="reviews">
+        <div class="container fade-in-section">
+            <div class="accent-line"></div>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="reviews-intro">Reviews from real clients, shared with permission. Every review below comes from a borrower Dan worked with &mdash; and every submission is reviewed before it appears here.</p>
+
+            <!--
+                APPROVED REVIEWS: paste one .review-card block per approved review
+                inside .reviews-grid (below), then remove the .reviews-empty block.
+                Only publish reviews Dan has approved from the review-submission
+                form. Publish the review as written &mdash; do not edit wording in
+                any way that changes its meaning, and do not publish reviews that
+                mention a specific rate. See BUILD-NOTES.md.
+
+                TEMPLATE (copy, fill in, uncomment):
+                <article class="review-card">
+                    <div class="review-stars" role="img" aria-label="Rated 5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote class="review-quote">REVIEW TEXT AS SUBMITTED</blockquote>
+                    <div class="review-attribution">
+                        <div><span class="review-name">FIRST NAME</span><br><span class="review-town">TOWN, NH</span></div>
+                        <span class="review-service">PURCHASE</span>
+                    </div>
+                </article>
+                For a 4-star review, make the fifth star: <span class="star-off">&#9733;</span>
+            -->
+            <div class="reviews-grid">
+                <!-- Approved review cards go here. -->
+            </div>
+
+            <!-- Honest empty state: remove this block once the first approved review is published. -->
+            <div class="reviews-empty">
+                <span class="reviews-empty-mark">&ldquo;</span>
+                <p>Reviews from recent clients will appear here &mdash; Dan invites clients to share their experience after closing.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form Section -->
     <section id="contact">
         <div class="container contact-container fade-in-section">
+            <div class="accent-line"></div>
             <h2 class="section-title">Get in Touch</h2>
             <p class="contact-subtitle">Ready to discuss your scenario?<br>Send us a message.</p>
             
@@ -850,9 +1273,16 @@
                 <div class="footer-col">
                     <h3>Licensing</h3>
                     <p>NMLS # 2453979</p>
+                    <p>Dan Robertson, NMLS # 1289763</p>
                     <p><a href="https://www.nmlsconsumeraccess.org" target="_blank">www.nmlsconsumeraccess.org</a></p>
                     <p>Licensed by the NH Department of Banking.</p>
                 </div>
+            </div>
+
+            <!-- Affiliated Business Disclosure -->
+            <div class="footer-affiliated">
+                <a class="affiliated-link" href="https://village-realestate.com" target="_blank">Buying or selling a home? Visit Village Realty &rarr;</a>
+                <p>Affiliated Business Disclosure: Village Lending (Robertson Home Mortgage LLC) and Village Realty (Robertson Home Realty LLC) are affiliated companies under common ownership. You are not required to use either company &mdash; you are free to shop for and choose any lender or real estate brokerage.</p>
             </div>
 
             <div class="footer-bottom">
